@@ -1,0 +1,1435 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "http://schema.getpostman.com/v2/collection",
+    "type": "object",
+    "properties": {
+        "info": {
+            "title": "Information",
+            "description": "Detailed description of the info block",
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "title": "Name of the collection",
+                    "description": "A short, one line description of a collection"
+                },
+                "description": {
+                    "type": "string",
+                    "title": "Description of the collection",
+                    "description": "A longer description of a collection"
+                },
+                "version": {
+                    "type": "object",
+                    "description": "Each collection can be versioned, using semantic versioning",
+                    "properties": {
+                        "major": {
+                            "type": "integer"
+                        },
+                        "minor": {
+                            "type": "integer"
+                        },
+                        "patch": {
+                            "type": "integer"
+                        },
+                        "identifier": {
+                            "type": "string",
+                            "maxLength": 10
+                        },
+                        "meta": {}
+                    },
+                    "required": [
+                        "major",
+                        "minor",
+                        "patch"
+                    ]
+                },
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name",
+                "schema"
+            ]
+        },
+        "items": {
+            "title": "Array of Items",
+            "description": "",
+            "type": "array",
+            "items": {
+                "oneOf": [
+                    {
+                        "type": "object",
+                        "title": "Item",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "request": {
+                                "title": "Postman Request",
+                                "description": "A request represents an HTTP request.",
+                                "type": "object",
+                                "properties": {
+                                    "url": {
+                                        "type": "object",
+                                        "properties": {
+                                            "protocol": {
+                                                "type": "string"
+                                            },
+                                            "domain": {
+                                                "type": "string"
+                                            },
+                                            "segments": {
+                                                "type": "array",
+                                                "items": {
+                                                    "oneOf": [
+                                                        {
+                                                            "type": "string"
+                                                        },
+                                                        {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "type": {
+                                                                    "type": "string"
+                                                                },
+                                                                "value": {
+                                                                    "type": "string"
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            "port": {
+                                                "type": "string"
+                                            },
+                                            "query": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "key": {
+                                                            "type": "string"
+                                                        },
+                                                        "value": {
+                                                            "type": "string"
+                                                        },
+                                                        "description": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "fragment": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "method": {
+                                        "type": "string",
+                                        "enum": [
+                                            "GET",
+                                            "PUT",
+                                            "POST",
+                                            "PATCH",
+                                            "DELETE",
+                                            "COPY",
+                                            "HEAD",
+                                            "OPTIONS",
+                                            "LINK",
+                                            "UNLINK",
+                                            "PURGE",
+                                            "LOCK",
+                                            "UNLOCK",
+                                            "PROPFIND",
+                                            "VIEW"
+                                        ]
+                                    },
+                                    "headers": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "key": {
+                                                    "type": "string"
+                                                },
+                                                "value": {
+                                                    "type": "string"
+                                                },
+                                                "description": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "required": [
+                                                "key",
+                                                "value"
+                                            ]
+                                        }
+                                    },
+                                    "data": {
+                                        "type": "object",
+                                        "properties": {
+                                            "mode": {
+                                                "enum": [
+                                                    "raw",
+                                                    "urlencoded",
+                                                    "params"
+                                                ]
+                                            },
+                                            "content": {
+                                                "oneOf": [
+                                                    {
+                                                        "type": "string"
+                                                    },
+                                                    {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "key": {
+                                                                    "type": "string"
+                                                                },
+                                                                "value": {
+                                                                    "type": "string"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "events": {
+                                        "type": "object",
+                                        "properties": {
+                                            "setup": {
+                                                "oneOf": [
+                                                    {
+                                                        "type": "string"
+                                                    },
+                                                    {
+                                                        "title": "Script",
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "string"
+                                                            },
+                                                            "type": {
+                                                                "type": "string"
+                                                            },
+                                                            "exec": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "string"
+                                                                }
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "id",
+                                                            "type",
+                                                            "exec"
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "test": {
+                                                "oneOf": [
+                                                    {
+                                                        "type": "string"
+                                                    },
+                                                    {
+                                                        "title": "Script",
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "string"
+                                                            },
+                                                            "type": {
+                                                                "type": "string"
+                                                            },
+                                                            "exec": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "string"
+                                                                }
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "id",
+                                                            "type",
+                                                            "exec"
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "teardown": {
+                                                "oneOf": [
+                                                    {
+                                                        "type": "string"
+                                                    },
+                                                    {
+                                                        "title": "Script",
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "string"
+                                                            },
+                                                            "type": {
+                                                                "type": "string"
+                                                            },
+                                                            "exec": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "string"
+                                                                }
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "id",
+                                                            "type",
+                                                            "exec"
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                },
+                                "required": [
+                                    "method",
+                                    "url",
+                                    "headers"
+                                ]
+                            },
+                            "sample": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "request": {
+                                            "title": "Postman Request",
+                                            "description": "A request represents an HTTP request.",
+                                            "type": "object",
+                                            "properties": {
+                                                "url": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "protocol": {
+                                                            "type": "string"
+                                                        },
+                                                        "domain": {
+                                                            "type": "string"
+                                                        },
+                                                        "segments": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "oneOf": [
+                                                                    {
+                                                                        "type": "string"
+                                                                    },
+                                                                    {
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                            "type": {
+                                                                                "type": "string"
+                                                                            },
+                                                                            "value": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            }
+                                                        },
+                                                        "port": {
+                                                            "type": "string"
+                                                        },
+                                                        "query": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "key": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "value": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "description": {
+                                                                        "type": "string"
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "fragment": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "method": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "GET",
+                                                        "PUT",
+                                                        "POST",
+                                                        "PATCH",
+                                                        "DELETE",
+                                                        "COPY",
+                                                        "HEAD",
+                                                        "OPTIONS",
+                                                        "LINK",
+                                                        "UNLINK",
+                                                        "PURGE",
+                                                        "LOCK",
+                                                        "UNLOCK",
+                                                        "PROPFIND",
+                                                        "VIEW"
+                                                    ]
+                                                },
+                                                "headers": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "key": {
+                                                                "type": "string"
+                                                            },
+                                                            "value": {
+                                                                "type": "string"
+                                                            },
+                                                            "description": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "key",
+                                                            "value"
+                                                        ]
+                                                    }
+                                                },
+                                                "data": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "mode": {
+                                                            "enum": [
+                                                                "raw",
+                                                                "urlencoded",
+                                                                "params"
+                                                            ]
+                                                        },
+                                                        "content": {
+                                                            "oneOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                            "key": {
+                                                                                "type": "string"
+                                                                            },
+                                                                            "value": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                },
+                                                "events": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "setup": {
+                                                            "oneOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "title": "Script",
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "id": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "type": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "exec": {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "id",
+                                                                        "type",
+                                                                        "exec"
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        "test": {
+                                                            "oneOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "title": "Script",
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "id": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "type": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "exec": {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "id",
+                                                                        "type",
+                                                                        "exec"
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        "teardown": {
+                                                            "oneOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "title": "Script",
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "id": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "type": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "exec": {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "id",
+                                                                        "type",
+                                                                        "exec"
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "required": [
+                                                "method",
+                                                "url",
+                                                "headers"
+                                            ]
+                                        },
+                                        "environment": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "string"
+                                                    },
+                                                    "value": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "response": {
+                                            "title": "Response",
+                                            "description": "A response represents an HTTP response.",
+                                            "properties": {
+                                                "responseCode": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "code": {
+                                                            "type": "number",
+                                                            "description": "The numeric HTTP response code."
+                                                        },
+                                                        "name": {
+                                                            "type": "string",
+                                                            "description": "The textual HTTP response code."
+                                                        },
+                                                        "detail": {
+                                                            "type": "string",
+                                                            "description": "Detailed explanation of the response code."
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "code",
+                                                        "name"
+                                                    ]
+                                                },
+                                                "time": {
+                                                    "oneOf": [
+                                                        {
+                                                            "type": "string"
+                                                        },
+                                                        {
+                                                            "type": "number"
+                                                        }
+                                                    ],
+                                                    "description": "The time taken by the request to complete."
+                                                },
+                                                "headers": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "name": {
+                                                                "type": "string",
+                                                                "description": "Name of the header."
+                                                            },
+                                                            "key": {
+                                                                "type": "string",
+                                                                "description": "Key of the header [LHS]."
+                                                            },
+                                                            "value": {
+                                                                "type": "string",
+                                                                "description": "Value of the header [RHS]."
+                                                            },
+                                                            "description": {
+                                                                "type": "string",
+                                                                "description": "Description of the header."
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "name",
+                                                            "key",
+                                                            "value",
+                                                            "description"
+                                                        ]
+                                                    }
+                                                },
+                                                "cookies": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "domain": {
+                                                                "type": "string",
+                                                                "description": "The domain for which this cookie is valid."
+                                                            },
+                                                            "expirationDate": {
+                                                                "type": "number",
+                                                                "description": "The timestamp of the time when the cookie expires."
+                                                            },
+                                                            "hostOnly": {
+                                                                "type": "boolean",
+                                                                "description": "Indicates if this cookie is Host Only."
+                                                            },
+                                                            "httpOnly": {
+                                                                "type": "boolean",
+                                                                "description": "Indicates if this cookie is HTTP Only."
+                                                            },
+                                                            "name": {
+                                                                "type": "string",
+                                                                "description": "This is the name of the Cookie."
+                                                            },
+                                                            "path": {
+                                                                "type": "string",
+                                                                "description": "The path associated with the Cookie."
+                                                            },
+                                                            "secure": {
+                                                                "type": "boolean",
+                                                                "description": "Indicates if the 'secure' flag is set on the Cookie."
+                                                            },
+                                                            "session": {
+                                                                "type": "boolean",
+                                                                "description": "True if the cookie is a session cookie."
+                                                            },
+                                                            "storeId": {
+                                                                "type": "string",
+                                                                "description": "The ID of the cookie store containing this cookie."
+                                                            },
+                                                            "value": {
+                                                                "type": "string",
+                                                                "description": "The value of the Cookie."
+                                                            },
+                                                            "expires": {
+                                                                "type": "string",
+                                                                "description": "Human readable expiration time."
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "domain",
+                                                            "expirationDate",
+                                                            "hostOnly",
+                                                            "httpOnly",
+                                                            "name",
+                                                            "path",
+                                                            "secure",
+                                                            "session",
+                                                            "storeId",
+                                                            "value",
+                                                            "expires"
+                                                        ]
+                                                    }
+                                                },
+                                                "mime": {
+                                                    "type": "string",
+                                                    "description": "Mimetype of the response."
+                                                },
+                                                "text": {
+                                                    "type": "string",
+                                                    "description": "The raw text of the response."
+                                                },
+                                                "rawDataType": {
+                                                    "type": "string",
+                                                    "description": "The data type of the raw response."
+                                                }
+                                            },
+                                            "required": [
+                                                "responseCode",
+                                                "headers",
+                                                "text"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "required": [
+                            "request"
+                        ]
+                    },
+                    {
+                        "type": "array",
+                        "title": "Array of Items",
+                        "items": {
+                            "type": "object",
+                            "title": "Item",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "request": {
+                                    "title": "Postman Request",
+                                    "description": "A request represents an HTTP request.",
+                                    "type": "object",
+                                    "properties": {
+                                        "url": {
+                                            "type": "object",
+                                            "properties": {
+                                                "protocol": {
+                                                    "type": "string"
+                                                },
+                                                "domain": {
+                                                    "type": "string"
+                                                },
+                                                "segments": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "oneOf": [
+                                                            {
+                                                                "type": "string"
+                                                            },
+                                                            {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "type": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "value": {
+                                                                        "type": "string"
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                "port": {
+                                                    "type": "string"
+                                                },
+                                                "query": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "key": {
+                                                                "type": "string"
+                                                            },
+                                                            "value": {
+                                                                "type": "string"
+                                                            },
+                                                            "description": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "fragment": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "method": {
+                                            "type": "string",
+                                            "enum": [
+                                                "GET",
+                                                "PUT",
+                                                "POST",
+                                                "PATCH",
+                                                "DELETE",
+                                                "COPY",
+                                                "HEAD",
+                                                "OPTIONS",
+                                                "LINK",
+                                                "UNLINK",
+                                                "PURGE",
+                                                "LOCK",
+                                                "UNLOCK",
+                                                "PROPFIND",
+                                                "VIEW"
+                                            ]
+                                        },
+                                        "headers": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "key": {
+                                                        "type": "string"
+                                                    },
+                                                    "value": {
+                                                        "type": "string"
+                                                    },
+                                                    "description": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "key",
+                                                    "value"
+                                                ]
+                                            }
+                                        },
+                                        "data": {
+                                            "type": "object",
+                                            "properties": {
+                                                "mode": {
+                                                    "enum": [
+                                                        "raw",
+                                                        "urlencoded",
+                                                        "params"
+                                                    ]
+                                                },
+                                                "content": {
+                                                    "oneOf": [
+                                                        {
+                                                            "type": "string"
+                                                        },
+                                                        {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "key": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "value": {
+                                                                        "type": "string"
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        "events": {
+                                            "type": "object",
+                                            "properties": {
+                                                "setup": {
+                                                    "oneOf": [
+                                                        {
+                                                            "type": "string"
+                                                        },
+                                                        {
+                                                            "title": "Script",
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "string"
+                                                                },
+                                                                "type": {
+                                                                    "type": "string"
+                                                                },
+                                                                "exec": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string"
+                                                                    }
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "id",
+                                                                "type",
+                                                                "exec"
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                "test": {
+                                                    "oneOf": [
+                                                        {
+                                                            "type": "string"
+                                                        },
+                                                        {
+                                                            "title": "Script",
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "string"
+                                                                },
+                                                                "type": {
+                                                                    "type": "string"
+                                                                },
+                                                                "exec": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string"
+                                                                    }
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "id",
+                                                                "type",
+                                                                "exec"
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                "teardown": {
+                                                    "oneOf": [
+                                                        {
+                                                            "type": "string"
+                                                        },
+                                                        {
+                                                            "title": "Script",
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "string"
+                                                                },
+                                                                "type": {
+                                                                    "type": "string"
+                                                                },
+                                                                "exec": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string"
+                                                                    }
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "id",
+                                                                "type",
+                                                                "exec"
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "required": [
+                                        "method",
+                                        "url",
+                                        "headers"
+                                    ]
+                                },
+                                "sample": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "request": {
+                                                "title": "Postman Request",
+                                                "description": "A request represents an HTTP request.",
+                                                "type": "object",
+                                                "properties": {
+                                                    "url": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "protocol": {
+                                                                "type": "string"
+                                                            },
+                                                            "domain": {
+                                                                "type": "string"
+                                                            },
+                                                            "segments": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "oneOf": [
+                                                                        {
+                                                                            "type": "string"
+                                                                        },
+                                                                        {
+                                                                            "type": "object",
+                                                                            "properties": {
+                                                                                "type": {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                "value": {
+                                                                                    "type": "string"
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            },
+                                                            "port": {
+                                                                "type": "string"
+                                                            },
+                                                            "query": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "key": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "value": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "description": {
+                                                                            "type": "string"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            },
+                                                            "fragment": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "method": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "GET",
+                                                            "PUT",
+                                                            "POST",
+                                                            "PATCH",
+                                                            "DELETE",
+                                                            "COPY",
+                                                            "HEAD",
+                                                            "OPTIONS",
+                                                            "LINK",
+                                                            "UNLINK",
+                                                            "PURGE",
+                                                            "LOCK",
+                                                            "UNLOCK",
+                                                            "PROPFIND",
+                                                            "VIEW"
+                                                        ]
+                                                    },
+                                                    "headers": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "key": {
+                                                                    "type": "string"
+                                                                },
+                                                                "value": {
+                                                                    "type": "string"
+                                                                },
+                                                                "description": {
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "key",
+                                                                "value"
+                                                            ]
+                                                        }
+                                                    },
+                                                    "data": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "mode": {
+                                                                "enum": [
+                                                                    "raw",
+                                                                    "urlencoded",
+                                                                    "params"
+                                                                ]
+                                                            },
+                                                            "content": {
+                                                                "oneOf": [
+                                                                    {
+                                                                        "type": "string"
+                                                                    },
+                                                                    {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "type": "object",
+                                                                            "properties": {
+                                                                                "key": {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                "value": {
+                                                                                    "type": "string"
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    "events": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "setup": {
+                                                                "oneOf": [
+                                                                    {
+                                                                        "type": "string"
+                                                                    },
+                                                                    {
+                                                                        "title": "Script",
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                            "id": {
+                                                                                "type": "string"
+                                                                            },
+                                                                            "type": {
+                                                                                "type": "string"
+                                                                            },
+                                                                            "exec": {
+                                                                                "type": "array",
+                                                                                "items": {
+                                                                                    "type": "string"
+                                                                                }
+                                                                            }
+                                                                        },
+                                                                        "required": [
+                                                                            "id",
+                                                                            "type",
+                                                                            "exec"
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            },
+                                                            "test": {
+                                                                "oneOf": [
+                                                                    {
+                                                                        "type": "string"
+                                                                    },
+                                                                    {
+                                                                        "title": "Script",
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                            "id": {
+                                                                                "type": "string"
+                                                                            },
+                                                                            "type": {
+                                                                                "type": "string"
+                                                                            },
+                                                                            "exec": {
+                                                                                "type": "array",
+                                                                                "items": {
+                                                                                    "type": "string"
+                                                                                }
+                                                                            }
+                                                                        },
+                                                                        "required": [
+                                                                            "id",
+                                                                            "type",
+                                                                            "exec"
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            },
+                                                            "teardown": {
+                                                                "oneOf": [
+                                                                    {
+                                                                        "type": "string"
+                                                                    },
+                                                                    {
+                                                                        "title": "Script",
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                            "id": {
+                                                                                "type": "string"
+                                                                            },
+                                                                            "type": {
+                                                                                "type": "string"
+                                                                            },
+                                                                            "exec": {
+                                                                                "type": "array",
+                                                                                "items": {
+                                                                                    "type": "string"
+                                                                                }
+                                                                            }
+                                                                        },
+                                                                        "required": [
+                                                                            "id",
+                                                                            "type",
+                                                                            "exec"
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "required": [
+                                                    "method",
+                                                    "url",
+                                                    "headers"
+                                                ]
+                                            },
+                                            "environment": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "value": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "response": {
+                                                "title": "Response",
+                                                "description": "A response represents an HTTP response.",
+                                                "properties": {
+                                                    "responseCode": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "code": {
+                                                                "type": "number",
+                                                                "description": "The numeric HTTP response code."
+                                                            },
+                                                            "name": {
+                                                                "type": "string",
+                                                                "description": "The textual HTTP response code."
+                                                            },
+                                                            "detail": {
+                                                                "type": "string",
+                                                                "description": "Detailed explanation of the response code."
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "code",
+                                                            "name"
+                                                        ]
+                                                    },
+                                                    "time": {
+                                                        "oneOf": [
+                                                            {
+                                                                "type": "string"
+                                                            },
+                                                            {
+                                                                "type": "number"
+                                                            }
+                                                        ],
+                                                        "description": "The time taken by the request to complete."
+                                                    },
+                                                    "headers": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "description": "Name of the header."
+                                                                },
+                                                                "key": {
+                                                                    "type": "string",
+                                                                    "description": "Key of the header [LHS]."
+                                                                },
+                                                                "value": {
+                                                                    "type": "string",
+                                                                    "description": "Value of the header [RHS]."
+                                                                },
+                                                                "description": {
+                                                                    "type": "string",
+                                                                    "description": "Description of the header."
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "name",
+                                                                "key",
+                                                                "value",
+                                                                "description"
+                                                            ]
+                                                        }
+                                                    },
+                                                    "cookies": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "domain": {
+                                                                    "type": "string",
+                                                                    "description": "The domain for which this cookie is valid."
+                                                                },
+                                                                "expirationDate": {
+                                                                    "type": "number",
+                                                                    "description": "The timestamp of the time when the cookie expires."
+                                                                },
+                                                                "hostOnly": {
+                                                                    "type": "boolean",
+                                                                    "description": "Indicates if this cookie is Host Only."
+                                                                },
+                                                                "httpOnly": {
+                                                                    "type": "boolean",
+                                                                    "description": "Indicates if this cookie is HTTP Only."
+                                                                },
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "description": "This is the name of the Cookie."
+                                                                },
+                                                                "path": {
+                                                                    "type": "string",
+                                                                    "description": "The path associated with the Cookie."
+                                                                },
+                                                                "secure": {
+                                                                    "type": "boolean",
+                                                                    "description": "Indicates if the 'secure' flag is set on the Cookie."
+                                                                },
+                                                                "session": {
+                                                                    "type": "boolean",
+                                                                    "description": "True if the cookie is a session cookie."
+                                                                },
+                                                                "storeId": {
+                                                                    "type": "string",
+                                                                    "description": "The ID of the cookie store containing this cookie."
+                                                                },
+                                                                "value": {
+                                                                    "type": "string",
+                                                                    "description": "The value of the Cookie."
+                                                                },
+                                                                "expires": {
+                                                                    "type": "string",
+                                                                    "description": "Human readable expiration time."
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "domain",
+                                                                "expirationDate",
+                                                                "hostOnly",
+                                                                "httpOnly",
+                                                                "name",
+                                                                "path",
+                                                                "secure",
+                                                                "session",
+                                                                "storeId",
+                                                                "value",
+                                                                "expires"
+                                                            ]
+                                                        }
+                                                    },
+                                                    "mime": {
+                                                        "type": "string",
+                                                        "description": "Mimetype of the response."
+                                                    },
+                                                    "text": {
+                                                        "type": "string",
+                                                        "description": "The raw text of the response."
+                                                    },
+                                                    "rawDataType": {
+                                                        "type": "string",
+                                                        "description": "The data type of the raw response."
+                                                    }
+                                                },
+                                                "required": [
+                                                    "responseCode",
+                                                    "headers",
+                                                    "text"
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "required": [
+                                "request"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "scripts": {
+            "type": "array",
+            "items": {
+                "title": "Script",
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "exec": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "required": [
+                    "id",
+                    "type",
+                    "exec"
+                ]
+            }
+        },
+        "variables": {
+            "type": "array",
+            "items": {
+                "title": "Variable",
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    },
+    "required": [
+        "info",
+        "items"
+    ]
+}
