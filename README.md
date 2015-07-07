@@ -2,7 +2,7 @@
 
 # Postman Schemas
 
-Repository of all schemas for JSON structures compatible with Postman (such as the Postman Collection Format). The schemas are also hosted online, at [schemas.getpostman.com](https://schema.getpostman.com). 
+Repository of all schemas for JSON structures compatible with Postman (such as the Postman Collection Format). The schemas are also hosted online, at [schema.getpostman.com](https://schema.getpostman.com). 
 
 ## Usage
 
