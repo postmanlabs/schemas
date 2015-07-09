@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://schema.getpostman.com/collection/v1/",
+    "id": "https://schema.getpostman.com/json/collection/v1/",
     "type": "object",
     "properties": {
         "id": {
@@ -57,15 +57,13 @@
                         "uniqueItems": true,
                         "description": "Postman preserves the order of your requests within each folder. This field holds a sequence of [UUIDs](https://en.wikipedia.org/wiki/Globally_unique_identifier), where each ID corresponds to a particular Postman request."
                     },
-                    "collection": {
+                    "collection_id": {
                         "type": "string",
                         "description": "Postman folders are always a part of a collection. That collection's unique ID (which is a [UUID](https://en.wikipedia.org/wiki/Globally_unique_identifier)) is stored in this field."
                     }
                 },
                 "required": [
                     "id",
-                    "owner",
-                    "collection",
                     "name",
                     "description",
                     "order"
@@ -114,28 +112,35 @@
                         "description": "A request can have a specific data mode, and Postman supports three."
                     },
                     "data": {
-                        "type": "array",
-                        "description": "Data is an array of key-values that the request goes with. POST data, PUT data, etc goes here.",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "key": {
-                                    "type": "string"
-                                },
-                                "value": {
-                                    "type": "string"
-                                },
-                                "enabled": {
-                                    "type": "boolean"
-                                },
-                                "type": {
-                                    "enum": [
-                                        "file",
-                                        "text"
-                                    ]
+                        "oneOf": [
+                            {
+                                "type": "array",
+                                "description": "Data is an array of key-values that the request goes with. POST data, PUT data, etc goes here.",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "key": {
+                                            "type": "string"
+                                        },
+                                        "value": {
+                                            "type": "string"
+                                        },
+                                        "enabled": {
+                                            "type": "boolean"
+                                        },
+                                        "type": {
+                                            "enum": [
+                                                "file",
+                                                "text"
+                                            ]
+                                        }
+                                    }
                                 }
+                            },
+                            {
+                                "type": "null"
                             }
-                        }
+                        ]
                     },
                     "descriptionFormat": {
                         "oneOf": [
@@ -193,7 +198,7 @@
                                 "type": "null"
                             }
                         ],
-                        "description": "A Postman request allows you to use Path Variabled in a request, e.g: ``{{url}}``. This field stores these variables."
+                        "description": "A Postman request allows you to use Path Variables in a request, e.g: ``/search/:bookId``. This field stores these variables."
                     },
                     "url": {
                         "type": "string",
@@ -240,6 +245,9 @@
                                         },
                                         {
                                             "type": "object"
+                                        },
+                                        {
+                                            "type": "null"
                                         }
                                     ],
                                     "description": "A response is associated with a request. This fields contains the UUID of the request corresponding to this response."
@@ -424,6 +432,10 @@
                             }
                         ],
                         "description": "Contains the raw data (parameters) that Postman sends to the server"
+                    },
+                    "collectionId": {
+                        "type": "string",
+                        "description": "This field contains the unique ID of the collection to which this request belongs."
                     }
                 },
                 "required": [

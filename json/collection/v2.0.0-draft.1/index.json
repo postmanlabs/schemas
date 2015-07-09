@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "http://schema.getpostman.com/v2/collection",
+    "id": "http://schema.getpostman.com/json/collection/v2-draft/",
     "type": "object",
     "properties": {
         "info": {
@@ -11,27 +11,35 @@
                 "name": {
                     "type": "string",
                     "title": "Name of the collection",
-                    "description": "A short, one line description of a collection"
+                    "description": "A collection's friendly name is defined by this field. You would want to set this field to a value that would allow you to easily identify this collection among a bunch of other collections, as such outlining its usage or content."
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Every collection is identified by the unique value of this field. The value of this field is usually easiest to generate using a UID generator function. If you already have a collection, it is recommended that you maintain the same id since changing the id usually implies that this is a different collection than it was originally."
                 },
                 "description": {
                     "type": "string",
                     "title": "Description of the collection",
-                    "description": "A longer description of a collection"
+                    "description": "Provide a long description of this collection using this field. This field supports markdown syntax to better format the description."
                 },
                 "version": {
                     "type": "object",
-                    "description": "Each collection can be versioned, using semantic versioning",
+                    "description": "Postman allows you to version your collections as they grow, and this field holds the version number. While optional, it is recommended that you use this field to its fullest extent!",
                     "properties": {
                         "major": {
+                            "description": "Increment this number if you make changes to the collection that changes its behaviour. E.g: Removing or adding new test scripts. (partly or completely).",
                             "type": "integer"
                         },
                         "minor": {
+                            "description": "You should increment this number if you make changes that will not break anything that uses the collection. E.g: removing a folder.",
                             "type": "integer"
                         },
                         "patch": {
+                            "description": "Ideally, minor changes to a collection should result in the increment of this number.",
                             "type": "integer"
                         },
                         "identifier": {
+                            "description": "A human friendly ideantifier to make sense of the version numbers. E.g: 'beta-3'",
                             "type": "string",
                             "maxLength": 10
                         },
@@ -44,6 +52,7 @@
                     ]
                 },
                 "schema": {
+                    "description": "This should ideally hold a link to the Postman schema that is used to validate this collection. E.g: https://schema.getpostman.com/collection/v1",
                     "type": "string"
                 }
             },
@@ -54,15 +63,18 @@
         },
         "items": {
             "title": "Array of Items",
-            "description": "",
+            "description": "Items are entities which contain an actual HTTP request, and sample responses attached to it. This field can contain individual Items, or an array of items.",
             "type": "array",
             "items": {
+                "description": "",
                 "oneOf": [
                     {
                         "type": "object",
                         "title": "Item",
+                        "description": "Items are entities which contain an actual HTTP request, and sample responses attached to it.",
                         "properties": {
                             "name": {
+                                "description": "A friendly name can be attached to each Item.",
                                 "type": "string"
                             },
                             "request": {
@@ -72,15 +84,19 @@
                                 "properties": {
                                     "url": {
                                         "type": "object",
+                                        "description": "Contains the complete broken-down URL for this request, along with the path variables, if any.",
                                         "properties": {
                                             "protocol": {
-                                                "type": "string"
+                                                "type": "string",
+                                                "description": "The protocol associated with the request, E.g: 'http'"
                                             },
                                             "domain": {
-                                                "type": "string"
+                                                "type": "string",
+                                                "description": "The domain for the URL, E.g: api.yourdomain.com"
                                             },
                                             "segments": {
                                                 "type": "array",
+                                                "description": "The complete path of the current url, broken down into segments. A segment could be a string, or a path variable.",
                                                 "items": {
                                                     "oneOf": [
                                                         {
@@ -101,12 +117,15 @@
                                                 }
                                             },
                                             "port": {
-                                                "type": "string"
+                                                "type": "string",
+                                                "description": "The port number present in this URL. An empty value implies 80/443 depending on whether the protocol field contains http/https."
                                             },
                                             "query": {
                                                 "type": "array",
+                                                "description": "An array of QueryParams, which is basically the query string part of the URL, parsed into separate variables",
                                                 "items": {
                                                     "type": "object",
+                                                    "title": "QueryParam",
                                                     "properties": {
                                                         "key": {
                                                             "type": "string"
@@ -121,11 +140,13 @@
                                                 }
                                             },
                                             "fragment": {
+                                                "description": "Contains the URL fragment (if any). Usually this is not transmitted over the network, but it could be useful to store this in some cases.",
                                                 "type": "string"
                                             }
                                         }
                                     },
                                     "method": {
+                                        "description": "The HTTP method associated with this request.",
                                         "type": "string",
                                         "enum": [
                                             "GET",
@@ -147,16 +168,22 @@
                                     },
                                     "headers": {
                                         "type": "array",
+                                        "description": "No HTTP request is complete without its headers, and the same is true for a Postman request. This field is an array containing all the headers.",
                                         "items": {
                                             "type": "object",
+                                            "title": "Header",
+                                            "description": "Represents a single HTTP Header",
                                             "properties": {
                                                 "key": {
+                                                    "description": "This holds the LHS of the HTTP Header, e.g ``Content-Type`` or ``X-Custom-Header``",
                                                     "type": "string"
                                                 },
                                                 "value": {
-                                                    "type": "string"
+                                                    "type": "string",
+                                                    "description": "The value (or the RHS) of the Header is stored in this field."
                                                 },
                                                 "description": {
+                                                    "description": "An optional field that can be used to elaborate on the use of this particular header.",
                                                     "type": "string"
                                                 }
                                             },
@@ -168,8 +195,10 @@
                                     },
                                     "data": {
                                         "type": "object",
+                                        "description": "This field contains the data usually contained in the request body.",
                                         "properties": {
                                             "mode": {
+                                                "description": "Postman stores the type of data associated with this request in this field.",
                                                 "enum": [
                                                     "raw",
                                                     "urlencoded",
@@ -177,12 +206,14 @@
                                                 ]
                                             },
                                             "content": {
+                                                "description": "Contains the request body data. If the mode is ``raw``, this field contains the raw data in string format. Otherwise, it contains an array of Parameters.",
                                                 "oneOf": [
                                                     {
                                                         "type": "string"
                                                     },
                                                     {
                                                         "type": "array",
+                                                        "title": "Parameter",
                                                         "items": {
                                                             "type": "object",
                                                             "properties": {
@@ -201,6 +232,7 @@
                                     },
                                     "events": {
                                         "type": "object",
+                                        "description": "Postman allows you to run scripts when running a request, and each request can have scripts for \"setup\", \"test\" and \"teardown\" events. These coould be scripts defined inline, or an ID that points to a global script",
                                         "properties": {
                                             "setup": {
                                                 "oneOf": [
@@ -210,15 +242,19 @@
                                                     {
                                                         "title": "Script",
                                                         "type": "object",
+                                                        "description": "A script is a snippet of Javascript code that can be used to to perform setup or teardown operations on a particular response.",
                                                         "properties": {
                                                             "id": {
+                                                                "description": "A unique, user defined identifier that can  be used to refer to this script from requests.",
                                                                 "type": "string"
                                                             },
                                                             "type": {
+                                                                "description": "Type of the script. E.g: 'text/javascript'",
                                                                 "type": "string"
                                                             },
                                                             "exec": {
                                                                 "type": "array",
+                                                                "description": "This is an array of strings, where each line represents a single line of code. Having lines separate makes it possible to easily track changes made to scripts.",
                                                                 "items": {
                                                                     "type": "string"
                                                                 }
@@ -240,15 +276,19 @@
                                                     {
                                                         "title": "Script",
                                                         "type": "object",
+                                                        "description": "A script is a snippet of Javascript code that can be used to to perform setup or teardown operations on a particular response.",
                                                         "properties": {
                                                             "id": {
+                                                                "description": "A unique, user defined identifier that can  be used to refer to this script from requests.",
                                                                 "type": "string"
                                                             },
                                                             "type": {
+                                                                "description": "Type of the script. E.g: 'text/javascript'",
                                                                 "type": "string"
                                                             },
                                                             "exec": {
                                                                 "type": "array",
+                                                                "description": "This is an array of strings, where each line represents a single line of code. Having lines separate makes it possible to easily track changes made to scripts.",
                                                                 "items": {
                                                                     "type": "string"
                                                                 }
@@ -270,15 +310,19 @@
                                                     {
                                                         "title": "Script",
                                                         "type": "object",
+                                                        "description": "A script is a snippet of Javascript code that can be used to to perform setup or teardown operations on a particular response.",
                                                         "properties": {
                                                             "id": {
+                                                                "description": "A unique, user defined identifier that can  be used to refer to this script from requests.",
                                                                 "type": "string"
                                                             },
                                                             "type": {
+                                                                "description": "Type of the script. E.g: 'text/javascript'",
                                                                 "type": "string"
                                                             },
                                                             "exec": {
                                                                 "type": "array",
+                                                                "description": "This is an array of strings, where each line represents a single line of code. Having lines separate makes it possible to easily track changes made to scripts.",
                                                                 "items": {
                                                                     "type": "string"
                                                                 }
@@ -316,15 +360,19 @@
                                             "properties": {
                                                 "url": {
                                                     "type": "object",
+                                                    "description": "Contains the complete broken-down URL for this request, along with the path variables, if any.",
                                                     "properties": {
                                                         "protocol": {
-                                                            "type": "string"
+                                                            "type": "string",
+                                                            "description": "The protocol associated with the request, E.g: 'http'"
                                                         },
                                                         "domain": {
-                                                            "type": "string"
+                                                            "type": "string",
+                                                            "description": "The domain for the URL, E.g: api.yourdomain.com"
                                                         },
                                                         "segments": {
                                                             "type": "array",
+                                                            "description": "The complete path of the current url, broken down into segments. A segment could be a string, or a path variable.",
                                                             "items": {
                                                                 "oneOf": [
                                                                     {
@@ -345,12 +393,15 @@
                                                             }
                                                         },
                                                         "port": {
-                                                            "type": "string"
+                                                            "type": "string",
+                                                            "description": "The port number present in this URL. An empty value implies 80/443 depending on whether the protocol field contains http/https."
                                                         },
                                                         "query": {
                                                             "type": "array",
+                                                            "description": "An array of QueryParams, which is basically the query string part of the URL, parsed into separate variables",
                                                             "items": {
                                                                 "type": "object",
+                                                                "title": "QueryParam",
                                                                 "properties": {
                                                                     "key": {
                                                                         "type": "string"
@@ -365,11 +416,13 @@
                                                             }
                                                         },
                                                         "fragment": {
+                                                            "description": "Contains the URL fragment (if any). Usually this is not transmitted over the network, but it could be useful to store this in some cases.",
                                                             "type": "string"
                                                         }
                                                     }
                                                 },
                                                 "method": {
+                                                    "description": "The HTTP method associated with this request.",
                                                     "type": "string",
                                                     "enum": [
                                                         "GET",
@@ -391,16 +444,22 @@
                                                 },
                                                 "headers": {
                                                     "type": "array",
+                                                    "description": "No HTTP request is complete without its headers, and the same is true for a Postman request. This field is an array containing all the headers.",
                                                     "items": {
                                                         "type": "object",
+                                                        "title": "Header",
+                                                        "description": "Represents a single HTTP Header",
                                                         "properties": {
                                                             "key": {
+                                                                "description": "This holds the LHS of the HTTP Header, e.g ``Content-Type`` or ``X-Custom-Header``",
                                                                 "type": "string"
                                                             },
                                                             "value": {
-                                                                "type": "string"
+                                                                "type": "string",
+                                                                "description": "The value (or the RHS) of the Header is stored in this field."
                                                             },
                                                             "description": {
+                                                                "description": "An optional field that can be used to elaborate on the use of this particular header.",
                                                                 "type": "string"
                                                             }
                                                         },
@@ -412,8 +471,10 @@
                                                 },
                                                 "data": {
                                                     "type": "object",
+                                                    "description": "This field contains the data usually contained in the request body.",
                                                     "properties": {
                                                         "mode": {
+                                                            "description": "Postman stores the type of data associated with this request in this field.",
                                                             "enum": [
                                                                 "raw",
                                                                 "urlencoded",
@@ -421,12 +482,14 @@
                                                             ]
                                                         },
                                                         "content": {
+                                                            "description": "Contains the request body data. If the mode is ``raw``, this field contains the raw data in string format. Otherwise, it contains an array of Parameters.",
                                                             "oneOf": [
                                                                 {
                                                                     "type": "string"
                                                                 },
                                                                 {
                                                                     "type": "array",
+                                                                    "title": "Parameter",
                                                                     "items": {
                                                                         "type": "object",
                                                                         "properties": {
@@ -445,6 +508,7 @@
                                                 },
                                                 "events": {
                                                     "type": "object",
+                                                    "description": "Postman allows you to run scripts when running a request, and each request can have scripts for \"setup\", \"test\" and \"teardown\" events. These coould be scripts defined inline, or an ID that points to a global script",
                                                     "properties": {
                                                         "setup": {
                                                             "oneOf": [
@@ -454,15 +518,19 @@
                                                                 {
                                                                     "title": "Script",
                                                                     "type": "object",
+                                                                    "description": "A script is a snippet of Javascript code that can be used to to perform setup or teardown operations on a particular response.",
                                                                     "properties": {
                                                                         "id": {
+                                                                            "description": "A unique, user defined identifier that can  be used to refer to this script from requests.",
                                                                             "type": "string"
                                                                         },
                                                                         "type": {
+                                                                            "description": "Type of the script. E.g: 'text/javascript'",
                                                                             "type": "string"
                                                                         },
                                                                         "exec": {
                                                                             "type": "array",
+                                                                            "description": "This is an array of strings, where each line represents a single line of code. Having lines separate makes it possible to easily track changes made to scripts.",
                                                                             "items": {
                                                                                 "type": "string"
                                                                             }
@@ -484,15 +552,19 @@
                                                                 {
                                                                     "title": "Script",
                                                                     "type": "object",
+                                                                    "description": "A script is a snippet of Javascript code that can be used to to perform setup or teardown operations on a particular response.",
                                                                     "properties": {
                                                                         "id": {
+                                                                            "description": "A unique, user defined identifier that can  be used to refer to this script from requests.",
                                                                             "type": "string"
                                                                         },
                                                                         "type": {
+                                                                            "description": "Type of the script. E.g: 'text/javascript'",
                                                                             "type": "string"
                                                                         },
                                                                         "exec": {
                                                                             "type": "array",
+                                                                            "description": "This is an array of strings, where each line represents a single line of code. Having lines separate makes it possible to easily track changes made to scripts.",
                                                                             "items": {
                                                                                 "type": "string"
                                                                             }
@@ -514,15 +586,19 @@
                                                                 {
                                                                     "title": "Script",
                                                                     "type": "object",
+                                                                    "description": "A script is a snippet of Javascript code that can be used to to perform setup or teardown operations on a particular response.",
                                                                     "properties": {
                                                                         "id": {
+                                                                            "description": "A unique, user defined identifier that can  be used to refer to this script from requests.",
                                                                             "type": "string"
                                                                         },
                                                                         "type": {
+                                                                            "description": "Type of the script. E.g: 'text/javascript'",
                                                                             "type": "string"
                                                                         },
                                                                         "exec": {
                                                                             "type": "array",
+                                                                            "description": "This is an array of strings, where each line represents a single line of code. Having lines separate makes it possible to easily track changes made to scripts.",
                                                                             "items": {
                                                                                 "type": "string"
                                                                             }
@@ -568,15 +644,15 @@
                                                     "properties": {
                                                         "code": {
                                                             "type": "number",
-                                                            "description": "The numeric HTTP response code."
+                                                            "description": "Each HTTP response has a numeric response code (explained in [rfc-2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html). This code is stored in this field by Postman."
                                                         },
                                                         "name": {
                                                             "type": "string",
-                                                            "description": "The textual HTTP response code."
+                                                            "description": "Since it is rather hard to keep track of what a number means, responses can have a Human-friendly string describing the response code."
                                                         },
                                                         "detail": {
                                                             "type": "string",
-                                                            "description": "Detailed explanation of the response code."
+                                                            "description": "Detailed explanation about the response code goes here."
                                                         }
                                                     },
                                                     "required": [
@@ -602,26 +678,24 @@
                                                         "properties": {
                                                             "name": {
                                                                 "type": "string",
-                                                                "description": "Name of the header."
+                                                                "description": "Some headers can have names associated with them, which are stored in this field."
                                                             },
                                                             "key": {
                                                                 "type": "string",
-                                                                "description": "Key of the header [LHS]."
+                                                                "description": "The left hand side (LHS) or 'key' of the header."
                                                             },
                                                             "value": {
                                                                 "type": "string",
-                                                                "description": "Value of the header [RHS]."
+                                                                "description": "Value of the header, or the right hand side (RHS)."
                                                             },
                                                             "description": {
                                                                 "type": "string",
-                                                                "description": "Description of the header."
+                                                                "description": "An optional description about the header."
                                                             }
                                                         },
                                                         "required": [
-                                                            "name",
                                                             "key",
-                                                            "value",
-                                                            "description"
+                                                            "value"
                                                         ]
                                                     }
                                                 },
@@ -629,6 +703,8 @@
                                                     "type": "array",
                                                     "items": {
                                                         "type": "object",
+                                                        "title": "Cookie",
+                                                        "description": "A Cookie, that follows the [Google Chrome format](https://developer.chrome.com/extensions/cookies)",
                                                         "properties": {
                                                             "domain": {
                                                                 "type": "string",
@@ -640,11 +716,11 @@
                                                             },
                                                             "hostOnly": {
                                                                 "type": "boolean",
-                                                                "description": "Indicates if this cookie is Host Only."
+                                                                "description": "True if the cookie is a host-only cookie. (i.e. a request's URL domain must exactly match the domain of the cookie)."
                                                             },
                                                             "httpOnly": {
                                                                 "type": "boolean",
-                                                                "description": "Indicates if this cookie is HTTP Only."
+                                                                "description": "Indicates if this cookie is HTTP Only. (if True, the cookie is inaccessible to client-side scripts)"
                                                             },
                                                             "name": {
                                                                 "type": "string",
@@ -656,7 +732,7 @@
                                                             },
                                                             "secure": {
                                                                 "type": "boolean",
-                                                                "description": "Indicates if the 'secure' flag is set on the Cookie."
+                                                                "description": "Indicates if the 'secure' flag is set on the Cookie, meaning that it is transmitted over secure connections only. (typically HTTPS)"
                                                             },
                                                             "session": {
                                                                 "type": "boolean",
@@ -723,8 +799,10 @@
                         "items": {
                             "type": "object",
                             "title": "Item",
+                            "description": "Items are entities which contain an actual HTTP request, and sample responses attached to it.",
                             "properties": {
                                 "name": {
+                                    "description": "A friendly name can be attached to each Item.",
                                     "type": "string"
                                 },
                                 "request": {
@@ -734,15 +812,19 @@
                                     "properties": {
                                         "url": {
                                             "type": "object",
+                                            "description": "Contains the complete broken-down URL for this request, along with the path variables, if any.",
                                             "properties": {
                                                 "protocol": {
-                                                    "type": "string"
+                                                    "type": "string",
+                                                    "description": "The protocol associated with the request, E.g: 'http'"
                                                 },
                                                 "domain": {
-                                                    "type": "string"
+                                                    "type": "string",
+                                                    "description": "The domain for the URL, E.g: api.yourdomain.com"
                                                 },
                                                 "segments": {
                                                     "type": "array",
+                                                    "description": "The complete path of the current url, broken down into segments. A segment could be a string, or a path variable.",
                                                     "items": {
                                                         "oneOf": [
                                                             {
@@ -763,12 +845,15 @@
                                                     }
                                                 },
                                                 "port": {
-                                                    "type": "string"
+                                                    "type": "string",
+                                                    "description": "The port number present in this URL. An empty value implies 80/443 depending on whether the protocol field contains http/https."
                                                 },
                                                 "query": {
                                                     "type": "array",
+                                                    "description": "An array of QueryParams, which is basically the query string part of the URL, parsed into separate variables",
                                                     "items": {
                                                         "type": "object",
+                                                        "title": "QueryParam",
                                                         "properties": {
                                                             "key": {
                                                                 "type": "string"
@@ -783,11 +868,13 @@
                                                     }
                                                 },
                                                 "fragment": {
+                                                    "description": "Contains the URL fragment (if any). Usually this is not transmitted over the network, but it could be useful to store this in some cases.",
                                                     "type": "string"
                                                 }
                                             }
                                         },
                                         "method": {
+                                            "description": "The HTTP method associated with this request.",
                                             "type": "string",
                                             "enum": [
                                                 "GET",
@@ -809,16 +896,22 @@
                                         },
                                         "headers": {
                                             "type": "array",
+                                            "description": "No HTTP request is complete without its headers, and the same is true for a Postman request. This field is an array containing all the headers.",
                                             "items": {
                                                 "type": "object",
+                                                "title": "Header",
+                                                "description": "Represents a single HTTP Header",
                                                 "properties": {
                                                     "key": {
+                                                        "description": "This holds the LHS of the HTTP Header, e.g ``Content-Type`` or ``X-Custom-Header``",
                                                         "type": "string"
                                                     },
                                                     "value": {
-                                                        "type": "string"
+                                                        "type": "string",
+                                                        "description": "The value (or the RHS) of the Header is stored in this field."
                                                     },
                                                     "description": {
+                                                        "description": "An optional field that can be used to elaborate on the use of this particular header.",
                                                         "type": "string"
                                                     }
                                                 },
@@ -830,8 +923,10 @@
                                         },
                                         "data": {
                                             "type": "object",
+                                            "description": "This field contains the data usually contained in the request body.",
                                             "properties": {
                                                 "mode": {
+                                                    "description": "Postman stores the type of data associated with this request in this field.",
                                                     "enum": [
                                                         "raw",
                                                         "urlencoded",
@@ -839,12 +934,14 @@
                                                     ]
                                                 },
                                                 "content": {
+                                                    "description": "Contains the request body data. If the mode is ``raw``, this field contains the raw data in string format. Otherwise, it contains an array of Parameters.",
                                                     "oneOf": [
                                                         {
                                                             "type": "string"
                                                         },
                                                         {
                                                             "type": "array",
+                                                            "title": "Parameter",
                                                             "items": {
                                                                 "type": "object",
                                                                 "properties": {
@@ -863,6 +960,7 @@
                                         },
                                         "events": {
                                             "type": "object",
+                                            "description": "Postman allows you to run scripts when running a request, and each request can have scripts for \"setup\", \"test\" and \"teardown\" events. These coould be scripts defined inline, or an ID that points to a global script",
                                             "properties": {
                                                 "setup": {
                                                     "oneOf": [
@@ -872,15 +970,19 @@
                                                         {
                                                             "title": "Script",
                                                             "type": "object",
+                                                            "description": "A script is a snippet of Javascript code that can be used to to perform setup or teardown operations on a particular response.",
                                                             "properties": {
                                                                 "id": {
+                                                                    "description": "A unique, user defined identifier that can  be used to refer to this script from requests.",
                                                                     "type": "string"
                                                                 },
                                                                 "type": {
+                                                                    "description": "Type of the script. E.g: 'text/javascript'",
                                                                     "type": "string"
                                                                 },
                                                                 "exec": {
                                                                     "type": "array",
+                                                                    "description": "This is an array of strings, where each line represents a single line of code. Having lines separate makes it possible to easily track changes made to scripts.",
                                                                     "items": {
                                                                         "type": "string"
                                                                     }
@@ -902,15 +1004,19 @@
                                                         {
                                                             "title": "Script",
                                                             "type": "object",
+                                                            "description": "A script is a snippet of Javascript code that can be used to to perform setup or teardown operations on a particular response.",
                                                             "properties": {
                                                                 "id": {
+                                                                    "description": "A unique, user defined identifier that can  be used to refer to this script from requests.",
                                                                     "type": "string"
                                                                 },
                                                                 "type": {
+                                                                    "description": "Type of the script. E.g: 'text/javascript'",
                                                                     "type": "string"
                                                                 },
                                                                 "exec": {
                                                                     "type": "array",
+                                                                    "description": "This is an array of strings, where each line represents a single line of code. Having lines separate makes it possible to easily track changes made to scripts.",
                                                                     "items": {
                                                                         "type": "string"
                                                                     }
@@ -932,15 +1038,19 @@
                                                         {
                                                             "title": "Script",
                                                             "type": "object",
+                                                            "description": "A script is a snippet of Javascript code that can be used to to perform setup or teardown operations on a particular response.",
                                                             "properties": {
                                                                 "id": {
+                                                                    "description": "A unique, user defined identifier that can  be used to refer to this script from requests.",
                                                                     "type": "string"
                                                                 },
                                                                 "type": {
+                                                                    "description": "Type of the script. E.g: 'text/javascript'",
                                                                     "type": "string"
                                                                 },
                                                                 "exec": {
                                                                     "type": "array",
+                                                                    "description": "This is an array of strings, where each line represents a single line of code. Having lines separate makes it possible to easily track changes made to scripts.",
                                                                     "items": {
                                                                         "type": "string"
                                                                     }
@@ -978,15 +1088,19 @@
                                                 "properties": {
                                                     "url": {
                                                         "type": "object",
+                                                        "description": "Contains the complete broken-down URL for this request, along with the path variables, if any.",
                                                         "properties": {
                                                             "protocol": {
-                                                                "type": "string"
+                                                                "type": "string",
+                                                                "description": "The protocol associated with the request, E.g: 'http'"
                                                             },
                                                             "domain": {
-                                                                "type": "string"
+                                                                "type": "string",
+                                                                "description": "The domain for the URL, E.g: api.yourdomain.com"
                                                             },
                                                             "segments": {
                                                                 "type": "array",
+                                                                "description": "The complete path of the current url, broken down into segments. A segment could be a string, or a path variable.",
                                                                 "items": {
                                                                     "oneOf": [
                                                                         {
@@ -1007,12 +1121,15 @@
                                                                 }
                                                             },
                                                             "port": {
-                                                                "type": "string"
+                                                                "type": "string",
+                                                                "description": "The port number present in this URL. An empty value implies 80/443 depending on whether the protocol field contains http/https."
                                                             },
                                                             "query": {
                                                                 "type": "array",
+                                                                "description": "An array of QueryParams, which is basically the query string part of the URL, parsed into separate variables",
                                                                 "items": {
                                                                     "type": "object",
+                                                                    "title": "QueryParam",
                                                                     "properties": {
                                                                         "key": {
                                                                             "type": "string"
@@ -1027,11 +1144,13 @@
                                                                 }
                                                             },
                                                             "fragment": {
+                                                                "description": "Contains the URL fragment (if any). Usually this is not transmitted over the network, but it could be useful to store this in some cases.",
                                                                 "type": "string"
                                                             }
                                                         }
                                                     },
                                                     "method": {
+                                                        "description": "The HTTP method associated with this request.",
                                                         "type": "string",
                                                         "enum": [
                                                             "GET",
@@ -1053,16 +1172,22 @@
                                                     },
                                                     "headers": {
                                                         "type": "array",
+                                                        "description": "No HTTP request is complete without its headers, and the same is true for a Postman request. This field is an array containing all the headers.",
                                                         "items": {
                                                             "type": "object",
+                                                            "title": "Header",
+                                                            "description": "Represents a single HTTP Header",
                                                             "properties": {
                                                                 "key": {
+                                                                    "description": "This holds the LHS of the HTTP Header, e.g ``Content-Type`` or ``X-Custom-Header``",
                                                                     "type": "string"
                                                                 },
                                                                 "value": {
-                                                                    "type": "string"
+                                                                    "type": "string",
+                                                                    "description": "The value (or the RHS) of the Header is stored in this field."
                                                                 },
                                                                 "description": {
+                                                                    "description": "An optional field that can be used to elaborate on the use of this particular header.",
                                                                     "type": "string"
                                                                 }
                                                             },
@@ -1074,8 +1199,10 @@
                                                     },
                                                     "data": {
                                                         "type": "object",
+                                                        "description": "This field contains the data usually contained in the request body.",
                                                         "properties": {
                                                             "mode": {
+                                                                "description": "Postman stores the type of data associated with this request in this field.",
                                                                 "enum": [
                                                                     "raw",
                                                                     "urlencoded",
@@ -1083,12 +1210,14 @@
                                                                 ]
                                                             },
                                                             "content": {
+                                                                "description": "Contains the request body data. If the mode is ``raw``, this field contains the raw data in string format. Otherwise, it contains an array of Parameters.",
                                                                 "oneOf": [
                                                                     {
                                                                         "type": "string"
                                                                     },
                                                                     {
                                                                         "type": "array",
+                                                                        "title": "Parameter",
                                                                         "items": {
                                                                             "type": "object",
                                                                             "properties": {
@@ -1107,6 +1236,7 @@
                                                     },
                                                     "events": {
                                                         "type": "object",
+                                                        "description": "Postman allows you to run scripts when running a request, and each request can have scripts for \"setup\", \"test\" and \"teardown\" events. These coould be scripts defined inline, or an ID that points to a global script",
                                                         "properties": {
                                                             "setup": {
                                                                 "oneOf": [
@@ -1116,15 +1246,19 @@
                                                                     {
                                                                         "title": "Script",
                                                                         "type": "object",
+                                                                        "description": "A script is a snippet of Javascript code that can be used to to perform setup or teardown operations on a particular response.",
                                                                         "properties": {
                                                                             "id": {
+                                                                                "description": "A unique, user defined identifier that can  be used to refer to this script from requests.",
                                                                                 "type": "string"
                                                                             },
                                                                             "type": {
+                                                                                "description": "Type of the script. E.g: 'text/javascript'",
                                                                                 "type": "string"
                                                                             },
                                                                             "exec": {
                                                                                 "type": "array",
+                                                                                "description": "This is an array of strings, where each line represents a single line of code. Having lines separate makes it possible to easily track changes made to scripts.",
                                                                                 "items": {
                                                                                     "type": "string"
                                                                                 }
@@ -1146,15 +1280,19 @@
                                                                     {
                                                                         "title": "Script",
                                                                         "type": "object",
+                                                                        "description": "A script is a snippet of Javascript code that can be used to to perform setup or teardown operations on a particular response.",
                                                                         "properties": {
                                                                             "id": {
+                                                                                "description": "A unique, user defined identifier that can  be used to refer to this script from requests.",
                                                                                 "type": "string"
                                                                             },
                                                                             "type": {
+                                                                                "description": "Type of the script. E.g: 'text/javascript'",
                                                                                 "type": "string"
                                                                             },
                                                                             "exec": {
                                                                                 "type": "array",
+                                                                                "description": "This is an array of strings, where each line represents a single line of code. Having lines separate makes it possible to easily track changes made to scripts.",
                                                                                 "items": {
                                                                                     "type": "string"
                                                                                 }
@@ -1176,15 +1314,19 @@
                                                                     {
                                                                         "title": "Script",
                                                                         "type": "object",
+                                                                        "description": "A script is a snippet of Javascript code that can be used to to perform setup or teardown operations on a particular response.",
                                                                         "properties": {
                                                                             "id": {
+                                                                                "description": "A unique, user defined identifier that can  be used to refer to this script from requests.",
                                                                                 "type": "string"
                                                                             },
                                                                             "type": {
+                                                                                "description": "Type of the script. E.g: 'text/javascript'",
                                                                                 "type": "string"
                                                                             },
                                                                             "exec": {
                                                                                 "type": "array",
+                                                                                "description": "This is an array of strings, where each line represents a single line of code. Having lines separate makes it possible to easily track changes made to scripts.",
                                                                                 "items": {
                                                                                     "type": "string"
                                                                                 }
@@ -1230,15 +1372,15 @@
                                                         "properties": {
                                                             "code": {
                                                                 "type": "number",
-                                                                "description": "The numeric HTTP response code."
+                                                                "description": "Each HTTP response has a numeric response code (explained in [rfc-2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html). This code is stored in this field by Postman."
                                                             },
                                                             "name": {
                                                                 "type": "string",
-                                                                "description": "The textual HTTP response code."
+                                                                "description": "Since it is rather hard to keep track of what a number means, responses can have a Human-friendly string describing the response code."
                                                             },
                                                             "detail": {
                                                                 "type": "string",
-                                                                "description": "Detailed explanation of the response code."
+                                                                "description": "Detailed explanation about the response code goes here."
                                                             }
                                                         },
                                                         "required": [
@@ -1264,26 +1406,24 @@
                                                             "properties": {
                                                                 "name": {
                                                                     "type": "string",
-                                                                    "description": "Name of the header."
+                                                                    "description": "Some headers can have names associated with them, which are stored in this field."
                                                                 },
                                                                 "key": {
                                                                     "type": "string",
-                                                                    "description": "Key of the header [LHS]."
+                                                                    "description": "The left hand side (LHS) or 'key' of the header."
                                                                 },
                                                                 "value": {
                                                                     "type": "string",
-                                                                    "description": "Value of the header [RHS]."
+                                                                    "description": "Value of the header, or the right hand side (RHS)."
                                                                 },
                                                                 "description": {
                                                                     "type": "string",
-                                                                    "description": "Description of the header."
+                                                                    "description": "An optional description about the header."
                                                                 }
                                                             },
                                                             "required": [
-                                                                "name",
                                                                 "key",
-                                                                "value",
-                                                                "description"
+                                                                "value"
                                                             ]
                                                         }
                                                     },
@@ -1291,6 +1431,8 @@
                                                         "type": "array",
                                                         "items": {
                                                             "type": "object",
+                                                            "title": "Cookie",
+                                                            "description": "A Cookie, that follows the [Google Chrome format](https://developer.chrome.com/extensions/cookies)",
                                                             "properties": {
                                                                 "domain": {
                                                                     "type": "string",
@@ -1302,11 +1444,11 @@
                                                                 },
                                                                 "hostOnly": {
                                                                     "type": "boolean",
-                                                                    "description": "Indicates if this cookie is Host Only."
+                                                                    "description": "True if the cookie is a host-only cookie. (i.e. a request's URL domain must exactly match the domain of the cookie)."
                                                                 },
                                                                 "httpOnly": {
                                                                     "type": "boolean",
-                                                                    "description": "Indicates if this cookie is HTTP Only."
+                                                                    "description": "Indicates if this cookie is HTTP Only. (if True, the cookie is inaccessible to client-side scripts)"
                                                                 },
                                                                 "name": {
                                                                     "type": "string",
@@ -1318,7 +1460,7 @@
                                                                 },
                                                                 "secure": {
                                                                     "type": "boolean",
-                                                                    "description": "Indicates if the 'secure' flag is set on the Cookie."
+                                                                    "description": "Indicates if the 'secure' flag is set on the Cookie, meaning that it is transmitted over secure connections only. (typically HTTPS)"
                                                                 },
                                                                 "session": {
                                                                     "type": "boolean",
@@ -1384,19 +1526,24 @@
             }
         },
         "scripts": {
+            "description": "Postman allows you to configure scripts to run when specific events occur. These scripts are stored here, and can be referenced in the collection by their ID.",
             "type": "array",
             "items": {
                 "title": "Script",
                 "type": "object",
+                "description": "A script is a snippet of Javascript code that can be used to to perform setup or teardown operations on a particular response.",
                 "properties": {
                     "id": {
+                        "description": "A unique, user defined identifier that can  be used to refer to this script from requests.",
                         "type": "string"
                     },
                     "type": {
+                        "description": "Type of the script. E.g: 'text/javascript'",
                         "type": "string"
                     },
                     "exec": {
                         "type": "array",
+                        "description": "This is an array of strings, where each line represents a single line of code. Having lines separate makes it possible to easily track changes made to scripts.",
                         "items": {
                             "type": "string"
                         }
@@ -1410,18 +1557,22 @@
             }
         },
         "variables": {
+            "description": "Using variables in your Postman requests eliminates the need to duplicate requests, which can save a lot of time. Variables can be defined, and referenced to from any part of a request.",
             "type": "array",
             "items": {
                 "title": "Variable",
                 "type": "object",
                 "properties": {
                     "id": {
+                        "description": "A variable ID is a unique user-defined value that identifies the variable within a collection. In traditional terms, this would be a variable name.",
                         "type": "string"
                     },
                     "value": {
+                        "description": "The value that a variable holds in this collection. Ultimately, the variables will be replaced by this value, when say running a set of requests from a collection",
                         "type": "string"
                     },
                     "type": {
+                        "description": "A variable may have multiple types. This field specifies the type of the variable.",
                         "type": "string"
                     }
                 }
