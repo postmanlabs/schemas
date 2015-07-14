@@ -796,6 +796,7 @@
                     {
                         "title": "Folder",
                         "description": "One of the primary goals of Postman is to organize the development of APIs. To this end, it is necessary to be able to group requests together. This can be achived using 'Folders'. A folder just is an ordered set of requests.",
+                        "type": "object",
                         "properties": {
                             "name": {
                                 "type": "string",
