@@ -186,6 +186,158 @@
                         ],
                         "description": "The HTTP method associated with this request."
                     },
+                    "currentHelper": {
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Postman can associate helpers with a request, which help with activities such as OAuth, Basic Authentication, etc. The type of helper associated with this request is stored in this field."
+                    },
+                    "helperAttributes": {
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "object",
+                                "title": "DigestAuth",
+                                "description": "Helper attributes for Digest Authentication",
+                                "properties": {
+                                    "id": {
+                                        "type": "string",
+                                        "enum": [
+                                            "digest"
+                                        ],
+                                        "description": "This field contains the type of the helper. In this case, it is ``digest``"
+                                    },
+                                    "algorithm": {
+                                        "type": "string",
+                                        "description": "The hashing algorithm used in this Digest authenticated request is stored in this field."
+                                    },
+                                    "username": {
+                                        "type": "string",
+                                        "description": "The username to be used for digest Authentication is stored in this field."
+                                    },
+                                    "realm": {
+                                        "type": "string",
+                                        "description": "The authentication 'realm' is stored in this field. Refer to [RFC 2617](https://tools.ietf.org/html/rfc2617) for details."
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "description": "The password to be used for digest Authentication is stored in this field."
+                                    },
+                                    "nonce": {
+                                        "type": "string",
+                                        "description": "The Digest server challenges clients. A nonce is a part of that challenge, stored in this field."
+                                    },
+                                    "qop": {
+                                        "type": "string",
+                                        "description": "Indicates what \"quality of protection\" the client has applied to the message."
+                                    },
+                                    "nonceCount": {
+                                        "type": "string",
+                                        "description": "The nonceCount is the hexadecimal count of the number of requests (including the current request) that the client has sent with the nonce value in this request."
+                                    },
+                                    "clientNonce": {
+                                        "type": "string",
+                                        "description": "A client nonce enhances the security of HTTP Digest Authentication, and it is stored in this field."
+                                    },
+                                    "opaque": {
+                                        "type": "string",
+                                        "description": "A string of data, specified by the server, which should be returned by the client unchanged."
+                                    }
+                                }
+                            },
+                            {
+                                "type": "object",
+                                "title": "BasicAuth",
+                                "description": "Helper attributes for Basic Authentication",
+                                "properties": {
+                                    "id": {
+                                        "type": "string",
+                                        "enum": [
+                                            "basic"
+                                        ],
+                                        "description": "This field contains the type of the helper. In this case, it is ``basic``"
+                                    },
+                                    "username": {
+                                        "type": "string",
+                                        "description": "The username to be used for Basic Authentication is stored in this field."
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "description": "The password to be used for digest Authentication is stored in this field."
+                                    }
+                                }
+                            },
+                            {
+                                "type": "object",
+                                "title": "OAuth1",
+                                "description": "Helper attributes for OAuth-1 Authentication",
+                                "properties": {
+                                    "id": {
+                                        "type": "string",
+                                        "enum": [
+                                            "oAuth1"
+                                        ],
+                                        "description": "This field contains the type of the helper. In this case, it is ``oAuth1``"
+                                    },
+                                    "consumerKey": {
+                                        "type": "string",
+                                        "description": "The oAuth1 Consumer Secret, along with the Consumer Key authenticates the client. This field holds the oAuth1 Consumer Key"
+                                    },
+                                    "consumerSecret": {
+                                        "type": "string",
+                                        "description": "The oAuth1 Consumer Secret, along with the Consumer Key authenticates the client. The consumer secret is stored in this field."
+                                    },
+                                    "token": {
+                                        "type": "string",
+                                        "description": "The request token is a temporary credential, and is stored by Postman in this field."
+                                    },
+                                    "tokenSecret": {
+                                        "type": "string",
+                                        "description": "The request token secret is a temporary credential."
+                                    },
+                                    "signatureMethod": {
+                                        "type": "string",
+                                        "description": "The name of the signature method used by the client to sign the request."
+                                    },
+                                    "nonce": {
+                                        "type": "string",
+                                        "description": "A nonce is a random string, uniquely generated by the client to allow the server to verify that a request has never been made before and helps prevent replay attacks when requests are made over a non-secure channel."
+                                    },
+                                    "version": {
+                                        "type": "string",
+                                        "description": "The oAuth version, usually, this is ``1.0`` for OAuth-1"
+                                    },
+                                    "realm": {
+                                        "type": "string",
+                                        "description": "The realm directive is required for all authentication schemes that issue a challenge. Refer to [RFC 2617](http://tools.ietf.org/html/rfc2617#section-1.2) for more details."
+                                    },
+                                    "header": {
+                                        "type": "boolean",
+                                        "description": "Set this parameter to 'true' if you want Postman to add the OAuth parameters to the request headers. If false, the query string is used instead."
+                                    },
+                                    "auto": {
+                                        "type": "boolean",
+                                        "description": "This field controls whether OAuth1 parameters are automatically added to the request."
+                                    },
+                                    "includeEmpty": {
+                                        "type": "boolean",
+                                        "description": "If you would like to include empty parameters in the request, set this to 'true', else set it to 'false'"
+                                    }
+                                }
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "A helper may require a number of parameters to actually be helpful. The parameters used by the helper can be stored in this field, as an object. E.g when using Basic Authentication, the username and password will be stored here."
+                    },
                     "pathVariables": {
                         "oneOf": [
                             {
@@ -266,6 +418,7 @@
                                 },
                                 "responseCode": {
                                     "type": "object",
+                                    "title": "ResponseCode",
                                     "properties": {
                                         "code": {
                                             "type": "number",
@@ -298,6 +451,7 @@
                                 },
                                 "headers": {
                                     "type": "array",
+                                    "title": "Header",
                                     "items": {
                                         "type": "object",
                                         "properties": {
@@ -327,6 +481,7 @@
                                 },
                                 "cookies": {
                                     "type": "array",
+                                    "title": "Cookie",
                                     "items": {
                                         "type": "object",
                                         "properties": {
