@@ -166,14 +166,14 @@
                                             "VIEW"
                                         ]
                                     },
-                                    "_postman_helper": {
-                                        "type": "string",
-                                        "enum": [
-                                            "basic",
-                                            "digest",
-                                            "oAuth1",
-                                            "awsSigV4",
-                                            "normal"
+                                    "_postman_currentHelper": {
+                                        "oneOf": [
+                                            {
+                                                "type": "string"
+                                            },
+                                            {
+                                                "type": "null"
+                                            }
                                         ],
                                         "description": "Postman can associate helpers with a request, which help with activities such as OAuth, Basic Authentication, etc. The type of helper associated with this request is stored in this field."
                                     },
@@ -189,6 +189,9 @@
                                                 "properties": {
                                                     "id": {
                                                         "type": "string",
+                                                        "enum": [
+                                                            "digest"
+                                                        ],
                                                         "description": "This field contains the type of the helper. In this case, it is ``digest``"
                                                     },
                                                     "algorithm": {
@@ -236,6 +239,9 @@
                                                 "properties": {
                                                     "id": {
                                                         "type": "string",
+                                                        "enum": [
+                                                            "basic"
+                                                        ],
                                                         "description": "This field contains the type of the helper. In this case, it is ``basic``"
                                                     },
                                                     "username": {
@@ -255,6 +261,9 @@
                                                 "properties": {
                                                     "id": {
                                                         "type": "string",
+                                                        "enum": [
+                                                            "oAuth1"
+                                                        ],
                                                         "description": "This field contains the type of the helper. In this case, it is ``oAuth1``"
                                                     },
                                                     "consumerKey": {
@@ -551,14 +560,14 @@
                                                         "VIEW"
                                                     ]
                                                 },
-                                                "_postman_helper": {
-                                                    "type": "string",
-                                                    "enum": [
-                                                        "basic",
-                                                        "digest",
-                                                        "oAuth1",
-                                                        "awsSigV4",
-                                                        "normal"
+                                                "_postman_currentHelper": {
+                                                    "oneOf": [
+                                                        {
+                                                            "type": "string"
+                                                        },
+                                                        {
+                                                            "type": "null"
+                                                        }
                                                     ],
                                                     "description": "Postman can associate helpers with a request, which help with activities such as OAuth, Basic Authentication, etc. The type of helper associated with this request is stored in this field."
                                                 },
@@ -574,6 +583,9 @@
                                                             "properties": {
                                                                 "id": {
                                                                     "type": "string",
+                                                                    "enum": [
+                                                                        "digest"
+                                                                    ],
                                                                     "description": "This field contains the type of the helper. In this case, it is ``digest``"
                                                                 },
                                                                 "algorithm": {
@@ -621,6 +633,9 @@
                                                             "properties": {
                                                                 "id": {
                                                                     "type": "string",
+                                                                    "enum": [
+                                                                        "basic"
+                                                                    ],
                                                                     "description": "This field contains the type of the helper. In this case, it is ``basic``"
                                                                 },
                                                                 "username": {
@@ -640,6 +655,9 @@
                                                             "properties": {
                                                                 "id": {
                                                                     "type": "string",
+                                                                    "enum": [
+                                                                        "oAuth1"
+                                                                    ],
                                                                     "description": "This field contains the type of the helper. In this case, it is ``oAuth1``"
                                                                 },
                                                                 "consumerKey": {
@@ -1128,14 +1146,14 @@
                                                                 "VIEW"
                                                             ]
                                                         },
-                                                        "_postman_helper": {
-                                                            "type": "string",
-                                                            "enum": [
-                                                                "basic",
-                                                                "digest",
-                                                                "oAuth1",
-                                                                "awsSigV4",
-                                                                "normal"
+                                                        "_postman_currentHelper": {
+                                                            "oneOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "null"
+                                                                }
                                                             ],
                                                             "description": "Postman can associate helpers with a request, which help with activities such as OAuth, Basic Authentication, etc. The type of helper associated with this request is stored in this field."
                                                         },
@@ -1151,6 +1169,9 @@
                                                                     "properties": {
                                                                         "id": {
                                                                             "type": "string",
+                                                                            "enum": [
+                                                                                "digest"
+                                                                            ],
                                                                             "description": "This field contains the type of the helper. In this case, it is ``digest``"
                                                                         },
                                                                         "algorithm": {
@@ -1198,6 +1219,9 @@
                                                                     "properties": {
                                                                         "id": {
                                                                             "type": "string",
+                                                                            "enum": [
+                                                                                "basic"
+                                                                            ],
                                                                             "description": "This field contains the type of the helper. In this case, it is ``basic``"
                                                                         },
                                                                         "username": {
@@ -1217,6 +1241,9 @@
                                                                     "properties": {
                                                                         "id": {
                                                                             "type": "string",
+                                                                            "enum": [
+                                                                                "oAuth1"
+                                                                            ],
                                                                             "description": "This field contains the type of the helper. In this case, it is ``oAuth1``"
                                                                         },
                                                                         "consumerKey": {
@@ -1513,14 +1540,14 @@
                                                                             "VIEW"
                                                                         ]
                                                                     },
-                                                                    "_postman_helper": {
-                                                                        "type": "string",
-                                                                        "enum": [
-                                                                            "basic",
-                                                                            "digest",
-                                                                            "oAuth1",
-                                                                            "awsSigV4",
-                                                                            "normal"
+                                                                    "_postman_currentHelper": {
+                                                                        "oneOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "null"
+                                                                            }
                                                                         ],
                                                                         "description": "Postman can associate helpers with a request, which help with activities such as OAuth, Basic Authentication, etc. The type of helper associated with this request is stored in this field."
                                                                     },
@@ -1536,6 +1563,9 @@
                                                                                 "properties": {
                                                                                     "id": {
                                                                                         "type": "string",
+                                                                                        "enum": [
+                                                                                            "digest"
+                                                                                        ],
                                                                                         "description": "This field contains the type of the helper. In this case, it is ``digest``"
                                                                                     },
                                                                                     "algorithm": {
@@ -1583,6 +1613,9 @@
                                                                                 "properties": {
                                                                                     "id": {
                                                                                         "type": "string",
+                                                                                        "enum": [
+                                                                                            "basic"
+                                                                                        ],
                                                                                         "description": "This field contains the type of the helper. In this case, it is ``basic``"
                                                                                     },
                                                                                     "username": {
@@ -1602,6 +1635,9 @@
                                                                                 "properties": {
                                                                                     "id": {
                                                                                         "type": "string",
+                                                                                        "enum": [
+                                                                                            "oAuth1"
+                                                                                        ],
                                                                                         "description": "This field contains the type of the helper. In this case, it is ``oAuth1``"
                                                                                     },
                                                                                     "consumerKey": {
