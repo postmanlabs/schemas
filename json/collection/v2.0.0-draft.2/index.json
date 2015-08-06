@@ -184,6 +184,38 @@
                                             },
                                             {
                                                 "type": "object",
+                                                "title": "AWS-SignatureV4",
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "awsSigV4"
+                                                        ],
+                                                        "description": "This field contains the type of the helper. In this case, it is ``awsSigV4``"
+                                                    },
+                                                    "accessKey": {
+                                                        "type": "string",
+                                                        "description": "AWS Signature V4 calculation requires the AWS Access Key of the AWS IAM user being used. This key is stored in this field.\n *Note: Do not use your AWS root credentials here.*"
+                                                    },
+                                                    "secretKey": {
+                                                        "type": "string",
+                                                        "description": "The AWS Secret key associated with the Access Key is stored in this field.\n *Note: Do not use your AWS root credentials here.*"
+                                                    },
+                                                    "region": {
+                                                        "type": "string",
+                                                        "description": "The AWS region code, must be one of the ones mentioned in the [AWS Documentation](http://docs.aws.amazon.com/general/latest/gr/rande.html)"
+                                                    },
+                                                    "service": {
+                                                        "type": "string",
+                                                        "description": "The AWS Service endpoint. Refer to the [AWS Documentation](http://docs.aws.amazon.com/general/latest/gr/rande.html) for possible values."
+                                                    }
+                                                },
+                                                "required": [
+                                                    "id"
+                                                ]
+                                            },
+                                            {
+                                                "type": "object",
                                                 "title": "DigestAuth",
                                                 "description": "Helper attributes for Digest Authentication",
                                                 "properties": {
@@ -230,7 +262,10 @@
                                                         "type": "string",
                                                         "description": "A string of data, specified by the server, which should be returned by the client unchanged."
                                                     }
-                                                }
+                                                },
+                                                "required": [
+                                                    "id"
+                                                ]
                                             },
                                             {
                                                 "type": "object",
@@ -252,7 +287,10 @@
                                                         "type": "string",
                                                         "description": "The password to be used for digest Authentication is stored in this field."
                                                     }
-                                                }
+                                                },
+                                                "required": [
+                                                    "id"
+                                                ]
                                             },
                                             {
                                                 "type": "object",
@@ -310,10 +348,18 @@
                                                         "type": "boolean",
                                                         "description": "If you would like to include empty parameters in the request, set this to 'true', else set it to 'false'"
                                                     }
-                                                }
+                                                },
+                                                "required": [
+                                                    "id"
+                                                ]
                                             },
                                             {
                                                 "type": "null"
+                                            },
+                                            {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {}
                                             }
                                         ],
                                         "description": "A helper may require a number of parameters to actually be helpful. The parameters used by the helper can be stored in this field, as an object. E.g when using Basic Authentication, the username and password will be stored here."
@@ -578,6 +624,38 @@
                                                         },
                                                         {
                                                             "type": "object",
+                                                            "title": "AWS-SignatureV4",
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "awsSigV4"
+                                                                    ],
+                                                                    "description": "This field contains the type of the helper. In this case, it is ``awsSigV4``"
+                                                                },
+                                                                "accessKey": {
+                                                                    "type": "string",
+                                                                    "description": "AWS Signature V4 calculation requires the AWS Access Key of the AWS IAM user being used. This key is stored in this field.\n *Note: Do not use your AWS root credentials here.*"
+                                                                },
+                                                                "secretKey": {
+                                                                    "type": "string",
+                                                                    "description": "The AWS Secret key associated with the Access Key is stored in this field.\n *Note: Do not use your AWS root credentials here.*"
+                                                                },
+                                                                "region": {
+                                                                    "type": "string",
+                                                                    "description": "The AWS region code, must be one of the ones mentioned in the [AWS Documentation](http://docs.aws.amazon.com/general/latest/gr/rande.html)"
+                                                                },
+                                                                "service": {
+                                                                    "type": "string",
+                                                                    "description": "The AWS Service endpoint. Refer to the [AWS Documentation](http://docs.aws.amazon.com/general/latest/gr/rande.html) for possible values."
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "id"
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "object",
                                                             "title": "DigestAuth",
                                                             "description": "Helper attributes for Digest Authentication",
                                                             "properties": {
@@ -624,7 +702,10 @@
                                                                     "type": "string",
                                                                     "description": "A string of data, specified by the server, which should be returned by the client unchanged."
                                                                 }
-                                                            }
+                                                            },
+                                                            "required": [
+                                                                "id"
+                                                            ]
                                                         },
                                                         {
                                                             "type": "object",
@@ -646,7 +727,10 @@
                                                                     "type": "string",
                                                                     "description": "The password to be used for digest Authentication is stored in this field."
                                                                 }
-                                                            }
+                                                            },
+                                                            "required": [
+                                                                "id"
+                                                            ]
                                                         },
                                                         {
                                                             "type": "object",
@@ -704,10 +788,18 @@
                                                                     "type": "boolean",
                                                                     "description": "If you would like to include empty parameters in the request, set this to 'true', else set it to 'false'"
                                                                 }
-                                                            }
+                                                            },
+                                                            "required": [
+                                                                "id"
+                                                            ]
                                                         },
                                                         {
                                                             "type": "null"
+                                                        },
+                                                        {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {}
                                                         }
                                                     ],
                                                     "description": "A helper may require a number of parameters to actually be helpful. The parameters used by the helper can be stored in this field, as an object. E.g when using Basic Authentication, the username and password will be stored here."
@@ -1164,6 +1256,38 @@
                                                                 },
                                                                 {
                                                                     "type": "object",
+                                                                    "title": "AWS-SignatureV4",
+                                                                    "properties": {
+                                                                        "id": {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "awsSigV4"
+                                                                            ],
+                                                                            "description": "This field contains the type of the helper. In this case, it is ``awsSigV4``"
+                                                                        },
+                                                                        "accessKey": {
+                                                                            "type": "string",
+                                                                            "description": "AWS Signature V4 calculation requires the AWS Access Key of the AWS IAM user being used. This key is stored in this field.\n *Note: Do not use your AWS root credentials here.*"
+                                                                        },
+                                                                        "secretKey": {
+                                                                            "type": "string",
+                                                                            "description": "The AWS Secret key associated with the Access Key is stored in this field.\n *Note: Do not use your AWS root credentials here.*"
+                                                                        },
+                                                                        "region": {
+                                                                            "type": "string",
+                                                                            "description": "The AWS region code, must be one of the ones mentioned in the [AWS Documentation](http://docs.aws.amazon.com/general/latest/gr/rande.html)"
+                                                                        },
+                                                                        "service": {
+                                                                            "type": "string",
+                                                                            "description": "The AWS Service endpoint. Refer to the [AWS Documentation](http://docs.aws.amazon.com/general/latest/gr/rande.html) for possible values."
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "id"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "object",
                                                                     "title": "DigestAuth",
                                                                     "description": "Helper attributes for Digest Authentication",
                                                                     "properties": {
@@ -1210,7 +1334,10 @@
                                                                             "type": "string",
                                                                             "description": "A string of data, specified by the server, which should be returned by the client unchanged."
                                                                         }
-                                                                    }
+                                                                    },
+                                                                    "required": [
+                                                                        "id"
+                                                                    ]
                                                                 },
                                                                 {
                                                                     "type": "object",
@@ -1232,7 +1359,10 @@
                                                                             "type": "string",
                                                                             "description": "The password to be used for digest Authentication is stored in this field."
                                                                         }
-                                                                    }
+                                                                    },
+                                                                    "required": [
+                                                                        "id"
+                                                                    ]
                                                                 },
                                                                 {
                                                                     "type": "object",
@@ -1290,10 +1420,18 @@
                                                                             "type": "boolean",
                                                                             "description": "If you would like to include empty parameters in the request, set this to 'true', else set it to 'false'"
                                                                         }
-                                                                    }
+                                                                    },
+                                                                    "required": [
+                                                                        "id"
+                                                                    ]
                                                                 },
                                                                 {
                                                                     "type": "null"
+                                                                },
+                                                                {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {}
                                                                 }
                                                             ],
                                                             "description": "A helper may require a number of parameters to actually be helpful. The parameters used by the helper can be stored in this field, as an object. E.g when using Basic Authentication, the username and password will be stored here."
@@ -1558,6 +1696,38 @@
                                                                             },
                                                                             {
                                                                                 "type": "object",
+                                                                                "title": "AWS-SignatureV4",
+                                                                                "properties": {
+                                                                                    "id": {
+                                                                                        "type": "string",
+                                                                                        "enum": [
+                                                                                            "awsSigV4"
+                                                                                        ],
+                                                                                        "description": "This field contains the type of the helper. In this case, it is ``awsSigV4``"
+                                                                                    },
+                                                                                    "accessKey": {
+                                                                                        "type": "string",
+                                                                                        "description": "AWS Signature V4 calculation requires the AWS Access Key of the AWS IAM user being used. This key is stored in this field.\n *Note: Do not use your AWS root credentials here.*"
+                                                                                    },
+                                                                                    "secretKey": {
+                                                                                        "type": "string",
+                                                                                        "description": "The AWS Secret key associated with the Access Key is stored in this field.\n *Note: Do not use your AWS root credentials here.*"
+                                                                                    },
+                                                                                    "region": {
+                                                                                        "type": "string",
+                                                                                        "description": "The AWS region code, must be one of the ones mentioned in the [AWS Documentation](http://docs.aws.amazon.com/general/latest/gr/rande.html)"
+                                                                                    },
+                                                                                    "service": {
+                                                                                        "type": "string",
+                                                                                        "description": "The AWS Service endpoint. Refer to the [AWS Documentation](http://docs.aws.amazon.com/general/latest/gr/rande.html) for possible values."
+                                                                                    }
+                                                                                },
+                                                                                "required": [
+                                                                                    "id"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "object",
                                                                                 "title": "DigestAuth",
                                                                                 "description": "Helper attributes for Digest Authentication",
                                                                                 "properties": {
@@ -1604,7 +1774,10 @@
                                                                                         "type": "string",
                                                                                         "description": "A string of data, specified by the server, which should be returned by the client unchanged."
                                                                                     }
-                                                                                }
+                                                                                },
+                                                                                "required": [
+                                                                                    "id"
+                                                                                ]
                                                                             },
                                                                             {
                                                                                 "type": "object",
@@ -1626,7 +1799,10 @@
                                                                                         "type": "string",
                                                                                         "description": "The password to be used for digest Authentication is stored in this field."
                                                                                     }
-                                                                                }
+                                                                                },
+                                                                                "required": [
+                                                                                    "id"
+                                                                                ]
                                                                             },
                                                                             {
                                                                                 "type": "object",
@@ -1684,10 +1860,18 @@
                                                                                         "type": "boolean",
                                                                                         "description": "If you would like to include empty parameters in the request, set this to 'true', else set it to 'false'"
                                                                                     }
-                                                                                }
+                                                                                },
+                                                                                "required": [
+                                                                                    "id"
+                                                                                ]
                                                                             },
                                                                             {
                                                                                 "type": "null"
+                                                                            },
+                                                                            {
+                                                                                "type": "object",
+                                                                                "additionalProperties": false,
+                                                                                "properties": {}
                                                                             }
                                                                         ],
                                                                         "description": "A helper may require a number of parameters to actually be helpful. The parameters used by the helper can be stored in this field, as an object. E.g when using Basic Authentication, the username and password will be stored here."

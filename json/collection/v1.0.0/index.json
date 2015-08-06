@@ -250,7 +250,10 @@
                                         "type": "string",
                                         "description": "A string of data, specified by the server, which should be returned by the client unchanged."
                                     }
-                                }
+                                },
+                                "required": [
+                                    "id"
+                                ]
                             },
                             {
                                 "type": "object",
@@ -272,7 +275,10 @@
                                         "type": "string",
                                         "description": "The password to be used for digest Authentication is stored in this field."
                                     }
-                                }
+                                },
+                                "required": [
+                                    "id"
+                                ]
                             },
                             {
                                 "type": "object",
@@ -330,10 +336,18 @@
                                         "type": "boolean",
                                         "description": "If you would like to include empty parameters in the request, set this to 'true', else set it to 'false'"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "id"
+                                ]
                             },
                             {
                                 "type": "null"
+                            },
+                            {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {}
                             }
                         ],
                         "description": "A helper may require a number of parameters to actually be helpful. The parameters used by the helper can be stored in this field, as an object. E.g when using Basic Authentication, the username and password will be stored here."
