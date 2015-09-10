@@ -612,7 +612,8 @@
                     "method",
                     "url",
                     "headers",
-                    "name"
+                    "name",
+                    "collectionId"
                 ]
             }
         }
