@@ -619,6 +619,24 @@
         },
         "variables": {
             "type": "array",
+            "items": {
+                "type": "object",
+                "title": "Variable",
+                "properties": {
+                    "key": {
+                        "type": "string",
+                        "description": "The ``key`` property contains the variable name."
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "Contains the value of the variable."
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "This field contains the type of the variable."
+                    }
+                }
+            },
             "description": "Postman now supports adding collection level variables, in addition to environments. While it is recommended that environments be used for sensitive information, you can use collection variables to hold values that are tied to a collection, so that sharing collections is easier."
         }
     },
