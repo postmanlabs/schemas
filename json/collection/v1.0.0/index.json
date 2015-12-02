@@ -257,6 +257,59 @@
                             },
                             {
                                 "type": "object",
+                                "title": "HawkAuth",
+                                "description": "Helper attributes for Hawk Authentication",
+                                "properties": {
+                                    "id": {
+                                        "type": "string",
+                                        "enum": [
+                                            "hawk"
+                                        ],
+                                        "description": "This field contains the type of the Postman helper. In this case, it is ``hawk``"
+                                    },
+                                    "hawk_id": {
+                                        "type": "string",
+                                        "description": "Hawk Authentication requires a client identifier to be passed to the server. This field contains that identifier."
+                                    },
+                                    "hawk_key": {
+                                        "type": "string",
+                                        "description": "The secret that's shared by the server and the client. It is recommended to use an environment variable here, and set the value in your environment."
+                                    },
+                                    "algorithm": {
+                                        "type": "string",
+                                        "description": "The hashing algorithm used in this Digest authenticated request is stored in this field."
+                                    },
+                                    "user": {
+                                        "type": "string",
+                                        "description": "One can optionally send their username (if available) to the Hawk protected endpoint. This field holds the value, if given."
+                                    },
+                                    "nonce": {
+                                        "type": "string",
+                                        "description": "The Digest server challenges clients. A nonce is a part of that challenge, stored in this field."
+                                    },
+                                    "ext": {
+                                        "type": "string",
+                                        "description": "Extra data sent to the app."
+                                    },
+                                    "dlg": {
+                                        "type": "string",
+                                        "description": "This field is used when Hawk auth is used as a part of a larger protocol and serves as a place for handling complex scenarios such as access delegation."
+                                    },
+                                    "app": {
+                                        "type": "string",
+                                        "description": "Serves to identify the backend app in case multiple ones are supported. This field is optional."
+                                    },
+                                    "timestamp": {
+                                        "type": "string",
+                                        "description": "Contains the timestamp used when signing the request."
+                                    }
+                                },
+                                "required": [
+                                    "id"
+                                ]
+                            },
+                            {
+                                "type": "object",
                                 "title": "BasicAuth",
                                 "description": "Helper attributes for Basic Authentication",
                                 "properties": {
