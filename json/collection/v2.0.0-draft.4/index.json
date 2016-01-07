@@ -1,0 +1,622 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://schema.getpostman.com/json/collection/v2.0.0-draft.4/",
+    "type": "object",
+    "properties": {
+        "info": {
+            "$ref": "#/definitions/info"
+        },
+        "item": {
+            "anyOf": [
+                {
+                    "$ref": "#/definitions/item"
+                },
+                {
+                    "$ref": "#/definitions/item-group"
+                }
+            ]
+        },
+        "event": {
+            "description": "Postman allows you to configure scripts to run when specific events occur. These scripts are stored here, and can be referenced in the collection by their ID.",
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/event"
+            }
+        },
+        "variable": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/variable"
+            }
+        },
+        "script": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/script"
+            }
+        }
+    },
+    "required": [
+        "info",
+        "item"
+    ],
+    "definitions": {
+        "cookie": {
+            "type": "object",
+            "title": "Cookie",
+            "id": "cookie",
+            "description": "A Cookie, that follows the [Google Chrome format](https://developer.chrome.com/extensions/cookies)",
+            "properties": {
+                "domain": {
+                    "type": "string",
+                    "description": "The domain for which this cookie is valid."
+                },
+                "expires": {
+                    "type": "string",
+                    "description": "When the cookie expires."
+                },
+                "maxAge": {
+                    "type": "string"
+                },
+                "hostOnly": {
+                    "type": "boolean",
+                    "description": "True if the cookie is a host-only cookie. (i.e. a request's URL domain must exactly match the domain of the cookie)."
+                },
+                "httpOnly": {
+                    "type": "boolean",
+                    "description": "Indicates if this cookie is HTTP Only. (if True, the cookie is inaccessible to client-side scripts)"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "This is the name of the Cookie."
+                },
+                "path": {
+                    "type": "string",
+                    "description": "The path associated with the Cookie."
+                },
+                "secure": {
+                    "type": "boolean",
+                    "description": "Indicates if the 'secure' flag is set on the Cookie, meaning that it is transmitted over secure connections only. (typically HTTPS)"
+                },
+                "session": {
+                    "type": "boolean",
+                    "description": "True if the cookie is a session cookie."
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value of the Cookie."
+                }
+            },
+            "required": [
+                "domain",
+                "path"
+            ]
+        },
+        "event": {
+            "$schema": "http://json-schema.org/draft-04/schema#",
+            "id": "event",
+            "title": "Event",
+            "description": "An Event",
+            "type": "object",
+            "properties": {
+                "listen": {
+                    "type": "string",
+                    "description": "A collection's friendly name is defined by this field. You would want to set this field to a value that would allow you to easily identify this collection among a bunch of other collections, as such outlining its usage or content."
+                },
+                "script": {
+                    "$ref": "#/definitions/script"
+                }
+            },
+            "required": [
+                "listen",
+                "schema"
+            ]
+        },
+        "header": {
+            "type": "object",
+            "title": "Header",
+            "id": "header",
+            "description": "Represents a single HTTP Header",
+            "properties": {
+                "key": {
+                    "description": "This holds the LHS of the HTTP Header, e.g ``Content-Type`` or ``X-Custom-Header``",
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value (or the RHS) of the Header is stored in this field."
+                },
+                "description": {
+                    "description": "An optional field that can be used to elaborate on the use of this particular header.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "key",
+                "value"
+            ]
+        },
+        "info": {
+            "$schema": "http://json-schema.org/draft-04/schema#",
+            "id": "info",
+            "title": "Information",
+            "description": "Detailed description of the info block",
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "title": "Name of the collection",
+                    "description": "A collection's friendly name is defined by this field. You would want to set this field to a value that would allow you to easily identify this collection among a bunch of other collections, as such outlining its usage or content."
+                },
+                "_postman_compat_id": {
+                    "type": "string",
+                    "description": "Every collection is identified by the unique value of this field. The value of this field is usually easiest to generate using a UID generator function. If you already have a collection, it is recommended that you maintain the same id since changing the id usually implies that is a different collection than it was originally.\n *Note: This field exists for compatibility reasons with Collection Format V1.*"
+                },
+                "description": {
+                    "type": "string",
+                    "title": "Description of the collection",
+                    "description": "Provide a long description of this collection using this field. This field supports markdown syntax to better format the description."
+                },
+                "version": {
+                    "oneOf": [
+                        {
+                            "type": "object",
+                            "description": "Postman allows you to version your collections as they grow, and this field holds the version number. While optional, it is recommended that you use this field to its fullest extent!",
+                            "properties": {
+                                "major": {
+                                    "description": "Increment this number if you make changes to the collection that changes its behaviour. E.g: Removing or adding new test scripts. (partly or completely).",
+                                    "type": "integer"
+                                },
+                                "minor": {
+                                    "description": "You should increment this number if you make changes that will not break anything that uses the collection. E.g: removing a folder.",
+                                    "type": "integer"
+                                },
+                                "patch": {
+                                    "description": "Ideally, minor changes to a collection should result in the increment of this number.",
+                                    "type": "integer"
+                                },
+                                "identifier": {
+                                    "description": "A human friendly ideantifier to make sense of the version numbers. E.g: 'beta-3'",
+                                    "type": "string",
+                                    "maxLength": 10
+                                },
+                                "meta": {}
+                            },
+                            "required": [
+                                "major",
+                                "minor",
+                                "patch"
+                            ]
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "schema": {
+                    "description": "This should ideally hold a link to the Postman schema that is used to validate this collection. E.g: https://schema.getpostman.com/collection/v1",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name",
+                "schema"
+            ]
+        },
+        "item-group": {
+            "title": "ItemGroup",
+            "id": "item-group",
+            "description": "One of the primary goals of Postman is to organize the development of APIs. To this end, it is necessary to be able to group requests together. This can be achived using 'Folders'. A folder just is an ordered set of requests.",
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "A folder's friendly name is defined by this field. You would want to set this field to a value that would allow you to easily identify this folder."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Essays about the folder go into this field!"
+                },
+                "item": {
+                    "title": "Array of Items",
+                    "description": "Items are entities which contain an actual HTTP request, and sample responses attached to it. Folders may contain many items.",
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/item"
+                            },
+                            {
+                                "$ref": "#/definitions/item-group"
+                            }
+                        ]
+                    }
+                }
+            },
+            "required": [
+                "items"
+            ]
+        },
+        "item": {
+            "type": "object",
+            "title": "Item",
+            "id": "item",
+            "description": "Items are entities which contain an actual HTTP request, and sample responses attached to it.",
+            "properties": {
+                "name": {
+                    "description": "A friendly name can be attached to each Item.",
+                    "type": "string"
+                },
+                "event": {
+                    "description": "Postman allows you to configure scripts to run when specific events occur. These scripts are stored here, and can be referenced in the collection by their ID.",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/event"
+                    }
+                },
+                "request": {
+                    "$ref": "#/definitions/request"
+                },
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "request": {
+                                "$ref": "#/definitions/request"
+                            },
+                            "environment": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "value": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "response": {
+                                "$ref": "#/definitions/response"
+                            }
+                        }
+                    }
+                }
+            },
+            "required": [
+                "request"
+            ]
+        },
+        "request": {
+            "$schema": "http://json-schema.org/draft-04/schema#",
+            "id": "request",
+            "title": "Postman Request",
+            "description": "A request represents an HTTP request.",
+            "oneOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "url": {
+                            "$ref": "#/definitions/url"
+                        },
+                        "method": {
+                            "description": "The HTTP method associated with this request.",
+                            "type": "string",
+                            "enum": [
+                                "GET",
+                                "PUT",
+                                "POST",
+                                "PATCH",
+                                "DELETE",
+                                "COPY",
+                                "HEAD",
+                                "OPTIONS",
+                                "LINK",
+                                "UNLINK",
+                                "PURGE",
+                                "LOCK",
+                                "UNLOCK",
+                                "PROPFIND",
+                                "VIEW"
+                            ]
+                        },
+                        "header": {
+                            "oneOf": [
+                                {
+                                    "type": "array",
+                                    "description": "No HTTP request is complete without its headers, and the same is true for a Postman request. This field is an array containing all the headers.",
+                                    "items": {
+                                        "oneOf": [
+                                            {
+                                                "$ref": "#/definitions/header"
+                                            },
+                                            {
+                                                "type": "string"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "data": {
+                            "type": "object",
+                            "description": "This field contains the data usually contained in the request body.",
+                            "properties": {
+                                "mode": {
+                                    "description": "Postman stores the type of data associated with this request in this field.",
+                                    "enum": [
+                                        "raw",
+                                        "urlencoded",
+                                        "params"
+                                    ]
+                                },
+                                "content": {
+                                    "description": "Contains the request body data. If the mode is ``raw``, this field contains the raw data in string format. Otherwise, it contains an array of Parameters.",
+                                    "oneOf": [
+                                        {
+                                            "type": "string"
+                                        },
+                                        {
+                                            "type": "array",
+                                            "title": "Parameter",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "key": {
+                                                        "type": "string"
+                                                    },
+                                                    "value": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "string"
+                }
+            ]
+        },
+        "response": {
+            "$schema": "http://json-schema.org/draft-04/schema#",
+            "id": "response",
+            "title": "Response",
+            "description": "A response represents an HTTP response.",
+            "properties": {
+                "request": {
+                    "$ref": "#/definitions/request"
+                },
+                "time": {
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "number"
+                        }
+                    ],
+                    "description": "The time taken by the request to complete."
+                },
+                "header": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/header"
+                    }
+                },
+                "cookie": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/cookie"
+                    }
+                },
+                "data": {
+                    "type": "string",
+                    "description": "The raw text of the response."
+                },
+                "environment": {
+                    "type": "array",
+                    "items": {}
+                }
+            },
+            "required": [
+                "responseCode",
+                "headers",
+                "text"
+            ]
+        },
+        "script": {
+            "$schema": "http://json-schema.org/draft-04/schema#",
+            "id": "script",
+            "title": "Script",
+            "type": "object",
+            "description": "A script is a snippet of Javascript code that can be used to to perform setup or teardown operations on a particular response.",
+            "properties": {
+                "id": {
+                    "description": "A unique, user defined identifier that can  be used to refer to this script from requests.",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "Type of the script. E.g: 'text/javascript'",
+                    "type": "string"
+                },
+                "exec": {
+                    "type": "array",
+                    "description": "This is an array of strings, where each line represents a single line of code. Having lines separate makes it possible to easily track changes made to scripts.",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "src": {
+                    "$ref": "#/definitions/url"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Script name"
+                }
+            }
+        },
+        "url": {
+            "type": "object",
+            "description": "Contains the complete broken-down URL for this request, along with the path variables, if any.",
+            "id": "url",
+            "properties": {
+                "protocol": {
+                    "type": "string",
+                    "description": "The protocol associated with the request, E.g: 'http'"
+                },
+                "domain": {
+                    "oneOf": [
+                        {
+                            "type": "string",
+                            "description": "The domain for the URL, E.g: api.yourdomain.com"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            },
+                            "description": "The domain, split into subdomain strings."
+                        }
+                    ]
+                },
+                "path": {
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "array",
+                            "description": "The complete path of the current url, broken down into segments. A segment could be a string, or a path variable.",
+                            "items": {
+                                "oneOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "value": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "port": {
+                    "type": "string",
+                    "description": "The port number present in this URL. An empty value implies 80/443 depending on whether the protocol field contains http/https."
+                },
+                "query": {
+                    "type": "array",
+                    "description": "An array of QueryParams, which is basically the query string part of the URL, parsed into separate variables",
+                    "items": {
+                        "type": "object",
+                        "title": "QueryParam",
+                        "properties": {
+                            "key": {
+                                "type": "string"
+                            },
+                            "value": {
+                                "type": "string"
+                            },
+                            "description": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "hash": {
+                    "description": "Contains the URL fragment (if any). Usually this is not transmitted over the network, but it could be useful to store this in some cases.",
+                    "type": "string"
+                }
+            }
+        },
+        "variable": {
+            "id": "variable",
+            "title": "Variable",
+            "description": "Using variables in your Postman requests eliminates the need to duplicate requests, which can save a lot of time. Variables can be defined, and referenced to from any part of a request.",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "description": "A variable ID is a unique user-defined value that identifies the variable within a collection. In traditional terms, this would be a variable name.",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "The value that a variable holds in this collection. Ultimately, the variables will be replaced by this value, when say running a set of requests from a collection",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "A variable may have multiple types. This field specifies the type of the variable.",
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Variable name"
+                }
+            }
+        },
+        "https://schema.getpostman.com/json/collection/v2.0.0-draft.4/": {
+            "$schema": "http://json-schema.org/draft-04/schema#",
+            "id": "https://schema.getpostman.com/json/collection/v2.0.0-draft.4/",
+            "type": "object",
+            "properties": {
+                "info": {
+                    "$ref": "#/definitions/info"
+                },
+                "item": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/item"
+                        },
+                        {
+                            "$ref": "#/definitions/item-group"
+                        }
+                    ]
+                },
+                "event": {
+                    "description": "Postman allows you to configure scripts to run when specific events occur. These scripts are stored here, and can be referenced in the collection by their ID.",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/event"
+                    }
+                },
+                "variable": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/variable"
+                    }
+                },
+                "script": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/script"
+                    }
+                }
+            },
+            "required": [
+                "info",
+                "item"
+            ]
+        }
+    }
+}
