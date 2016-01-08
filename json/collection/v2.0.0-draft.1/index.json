@@ -4,16 +4,16 @@
     "type": "object",
     "properties": {
         "info": {
-            "$ref": "http://schema.getpostman.com/v2/collection/info"
+            "$ref": "#/definitions/info"
         },
         "items": {
-            "$ref": "http://schema.getpostman.com/v2/collection/items"
+            "$ref": "#/definitions/items"
         },
         "scripts": {
             "description": "Postman allows you to configure scripts to run when specific events occur. These scripts are stored here, and can be referenced in the collection by their ID.",
             "type": "array",
             "items": {
-                "$ref": "http://schema.getpostman.com/v2/collection/script"
+                "$ref": "#/definitions/script"
             }
         },
         "variables": {
@@ -44,9 +44,9 @@
         "items"
     ],
     "definitions": {
-        "http://schema.getpostman.com/v2/collection/info": {
+        "info": {
             "$schema": "http://json-schema.org/draft-04/schema#",
-            "id": "http://schema.getpostman.com/v2/collection/info",
+            "id": "info",
             "title": "Information",
             "description": "Detailed description of the info block",
             "type": "object",
@@ -104,10 +104,10 @@
                 "schema"
             ]
         },
-        "http://schema.getpostman.com/v2/collection/item": {
+        "item": {
             "type": "object",
             "title": "Item",
-            "id": "http://schema.getpostman.com/v2/collection/item",
+            "id": "item",
             "description": "Items are entities which contain an actual HTTP request, and sample responses attached to it.",
             "properties": {
                 "name": {
@@ -115,7 +115,7 @@
                     "type": "string"
                 },
                 "request": {
-                    "$ref": "http://schema.getpostman.com/v2/collection/request"
+                    "$ref": "#/definitions/request"
                 },
                 "sample": {
                     "type": "array",
@@ -126,7 +126,7 @@
                                 "type": "string"
                             },
                             "request": {
-                                "$ref": "http://schema.getpostman.com/v2/collection/request"
+                                "$ref": "#/definitions/request"
                             },
                             "environment": {
                                 "type": "array",
@@ -143,7 +143,7 @@
                                 }
                             },
                             "response": {
-                                "$ref": "http://schema.getpostman.com/v2/collection/response"
+                                "$ref": "#/definitions/response"
                             }
                         }
                     }
@@ -153,9 +153,9 @@
                 "request"
             ]
         },
-        "http://schema.getpostman.com/v2/collection/items": {
+        "items": {
             "$schema": "http://json-schema.org/draft-04/schema#",
-            "id": "http://schema.getpostman.com/v2/collection/items",
+            "id": "items",
             "title": "Array of Items",
             "description": "Items are entities which contain an actual HTTP request, and sample responses attached to it. This field can contain individual Items, or an array of items.",
             "type": "array",
@@ -163,21 +163,21 @@
                 "description": "",
                 "oneOf": [
                     {
-                        "$ref": "http://schema.getpostman.com/v2/collection/item"
+                        "$ref": "#/definitions/item"
                     },
                     {
                         "type": "array",
                         "title": "Array of Items",
                         "items": {
-                            "$ref": "http://schema.getpostman.com/v2/collection/item"
+                            "$ref": "#/definitions/item"
                         }
                     }
                 ]
             }
         },
-        "http://schema.getpostman.com/v2/collection/request": {
+        "request": {
             "$schema": "http://json-schema.org/draft-04/schema#",
-            "id": "http://schema.getpostman.com/v2/collection/request",
+            "id": "request",
             "title": "Postman Request",
             "description": "A request represents an HTTP request.",
             "type": "object",
@@ -340,7 +340,7 @@
                                     "type": "string"
                                 },
                                 {
-                                    "$ref": "http://schema.getpostman.com/v2/collection/script"
+                                    "$ref": "#/definitions/script"
                                 }
                             ]
                         },
@@ -350,7 +350,7 @@
                                     "type": "string"
                                 },
                                 {
-                                    "$ref": "http://schema.getpostman.com/v2/collection/script"
+                                    "$ref": "#/definitions/script"
                                 }
                             ]
                         },
@@ -360,7 +360,7 @@
                                     "type": "string"
                                 },
                                 {
-                                    "$ref": "http://schema.getpostman.com/v2/collection/script"
+                                    "$ref": "#/definitions/script"
                                 }
                             ]
                         }
@@ -373,9 +373,9 @@
                 "headers"
             ]
         },
-        "http://schema.getpostman.com/v2/collection/response": {
+        "response": {
             "$schema": "http://json-schema.org/draft-04/schema#",
-            "id": "http://schema.getpostman.com/v2/collection/response",
+            "id": "response",
             "title": "Response",
             "description": "A response represents an HTTP response.",
             "properties": {
@@ -525,9 +525,9 @@
                 "text"
             ]
         },
-        "http://schema.getpostman.com/v2/collection/script": {
+        "script": {
             "$schema": "http://json-schema.org/draft-04/schema#",
-            "id": "http://schema.getpostman.com/v2/collection/script",
+            "id": "script",
             "title": "Script",
             "type": "object",
             "description": "A script is a snippet of Javascript code that can be used to to perform setup or teardown operations on a particular response.",
@@ -560,16 +560,16 @@
             "type": "object",
             "properties": {
                 "info": {
-                    "$ref": "http://schema.getpostman.com/v2/collection/info"
+                    "$ref": "#/definitions/info"
                 },
                 "items": {
-                    "$ref": "http://schema.getpostman.com/v2/collection/items"
+                    "$ref": "#/definitions/items"
                 },
                 "scripts": {
                     "description": "Postman allows you to configure scripts to run when specific events occur. These scripts are stored here, and can be referenced in the collection by their ID.",
                     "type": "array",
                     "items": {
-                        "$ref": "http://schema.getpostman.com/v2/collection/script"
+                        "$ref": "#/definitions/script"
                     }
                 },
                 "variables": {

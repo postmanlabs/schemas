@@ -33,7 +33,7 @@
         "folders": {
             "type": "array",
             "items": {
-                "$ref": "http://schema.getpostman.com/v1/collection/folder"
+                "$ref": "#/definitions/folder"
             },
             "description": "Folders are the way to go if you want to group your requests and to keep things organised. Folders can also be useful in sequentially requesting a part of the entire collection by using [Postman Collection Runner](https://www.getpostman.com/docs/jetpacks_running_collections) or [Newman](https://github.com/postmanlabs/newman) on a particular folder."
         },
@@ -45,7 +45,7 @@
             "type": "array",
             "description": "",
             "items": {
-                "$ref": "http://schema.getpostman.com/v1/collection/request"
+                "$ref": "#/definitions/request"
             }
         }
     },
@@ -56,9 +56,9 @@
         "requests"
     ],
     "definitions": {
-        "http://schema.getpostman.com/v1/collection/folder": {
+        "folder": {
             "$schema": "http://json-schema.org/draft-04/schema#",
-            "id": "http://schema.getpostman.com/v1/collection/folder",
+            "id": "folder",
             "title": "Folder",
             "description": "One of the primary goals of Postman is to organize the development of APIs. To this end, it is necessary to be able to group requests together. This can be achived using 'Folders'. A folder just is an ordered set of requests.",
             "type": "object",
@@ -95,9 +95,9 @@
                 "order"
             ]
         },
-        "http://schema.getpostman.com/v1/collection/request/response": {
+        "response": {
             "$schema": "http://json-schema.org/draft-04/schema#",
-            "id": "http://schema.getpostman.com/v1/collection/request/response",
+            "id": "response",
             "title": "Response",
             "description": "A response represents an HTTP response.",
             "properties": {
@@ -284,9 +284,9 @@
                 "request"
             ]
         },
-        "http://schema.getpostman.com/v1/collection/request": {
+        "request": {
             "$schema": "http://json-schema.org/draft-04/schema#",
-            "id": "http://schema.getpostman.com/v1/collection/request",
+            "id": "request",
             "title": "Request",
             "description": "A request represents an HTTP request.",
             "type": "object",
@@ -409,6 +409,38 @@
                     "oneOf": [
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "object",
+                            "title": "AWS-SignatureV4",
+                            "properties": {
+                                "id": {
+                                    "type": "string",
+                                    "enum": [
+                                        "awsSigV4"
+                                    ],
+                                    "description": "This field contains the type of the helper. In this case, it is ``awsSigV4``"
+                                },
+                                "accessKey": {
+                                    "type": "string",
+                                    "description": "AWS Signature V4 calculation requires the AWS Access Key of the AWS IAM user being used. This key is stored in this field.\n *Note: Do not use your AWS root credentials here.*"
+                                },
+                                "secretKey": {
+                                    "type": "string",
+                                    "description": "The AWS Secret key associated with the Access Key is stored in this field.\n *Note: Do not use your AWS root credentials here.*"
+                                },
+                                "region": {
+                                    "type": "string",
+                                    "description": "The AWS region code, must be one of the ones mentioned in the [AWS Documentation](http://docs.aws.amazon.com/general/latest/gr/rande.html)"
+                                },
+                                "service": {
+                                    "type": "string",
+                                    "description": "The AWS Service endpoint. Refer to the [AWS Documentation](http://docs.aws.amazon.com/general/latest/gr/rande.html) for possible values."
+                                }
+                            },
+                            "required": [
+                                "id"
+                            ]
                         },
                         {
                             "type": "object",
@@ -662,7 +694,7 @@
                     "type": "array",
                     "description": "A Postman request can have multiple responses associated with it. These responses are stored in this field.",
                     "items": {
-                        "$ref": "http://schema.getpostman.com/v1/collection/request/response"
+                        "$ref": "#/definitions/response"
                     }
                 },
                 "rawModeData": {
@@ -728,7 +760,7 @@
                 "folders": {
                     "type": "array",
                     "items": {
-                        "$ref": "http://schema.getpostman.com/v1/collection/folder"
+                        "$ref": "#/definitions/folder"
                     },
                     "description": "Folders are the way to go if you want to group your requests and to keep things organised. Folders can also be useful in sequentially requesting a part of the entire collection by using [Postman Collection Runner](https://www.getpostman.com/docs/jetpacks_running_collections) or [Newman](https://github.com/postmanlabs/newman) on a particular folder."
                 },
@@ -740,7 +772,7 @@
                     "type": "array",
                     "description": "",
                     "items": {
-                        "$ref": "http://schema.getpostman.com/v1/collection/request"
+                        "$ref": "#/definitions/request"
                     }
                 }
             },
