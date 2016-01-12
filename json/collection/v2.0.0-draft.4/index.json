@@ -574,49 +574,6 @@
                     "description": "Variable name"
                 }
             }
-        },
-        "https://schema.getpostman.com/json/collection/v2.0.0-draft.4/": {
-            "$schema": "http://json-schema.org/draft-04/schema#",
-            "id": "https://schema.getpostman.com/json/collection/v2.0.0-draft.4/",
-            "type": "object",
-            "properties": {
-                "info": {
-                    "$ref": "#/definitions/info"
-                },
-                "item": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/definitions/item"
-                        },
-                        {
-                            "$ref": "#/definitions/item-group"
-                        }
-                    ]
-                },
-                "event": {
-                    "description": "Postman allows you to configure scripts to run when specific events occur. These scripts are stored here, and can be referenced in the collection by their ID.",
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/event"
-                    }
-                },
-                "variable": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/variable"
-                    }
-                },
-                "script": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/script"
-                    }
-                }
-            },
-            "required": [
-                "info",
-                "item"
-            ]
         }
     }
 }
