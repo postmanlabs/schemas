@@ -33,7 +33,7 @@
         "folders": {
             "type": "array",
             "items": {
-                "$ref": "#/definitions/folder"
+                "$ref": "/json/collection/v1.1.0-draft.1/folder"
             },
             "description": "Folders are the way to go if you want to group your requests and to keep things organised. Folders can also be useful in sequentially requesting a part of the entire collection by using [Postman Collection Runner](https://www.getpostman.com/docs/jetpacks_running_collections) or [Newman](https://github.com/postmanlabs/newman) on a particular folder."
         },
@@ -45,7 +45,7 @@
             "type": "array",
             "description": "",
             "items": {
-                "$ref": "#/definitions/request"
+                "$ref": "/json/collection/v1.1.0-draft.1/request"
             }
         },
         "variables": {
@@ -631,7 +631,7 @@
                     "type": "array",
                     "description": "A Postman request can have multiple responses associated with it. These responses are stored in this field.",
                     "items": {
-                        "$ref": "#/definitions/response"
+                        "$ref": "/json/collection/v1.1.0-draft.1/response"
                     }
                 },
                 "rawModeData": {
