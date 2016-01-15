@@ -1,20 +1,21 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://schema.getpostman.com/json/collection/v2.0.0-draft.4/",
+    "id": "http://schema.getpostman.com/json/collection/v2.0.0-draft.4/",
     "type": "object",
     "properties": {
         "info": {
-            "$ref": "/json/collection/v2.0.0-draft.4/info"
+            "$ref": "#/definitions/info"
         },
         "item": {
             "type": "array",
             "items": {
+                "title": "Items",
                 "oneOf": [
                     {
-                        "$ref": "/json/collection/v2.0.0-draft.4/item"
+                        "$ref": "#/definitions/item"
                     },
                     {
-                        "$ref": "/json/collection/v2.0.0-draft.4/item-group"
+                        "$ref": "#/definitions/item-group"
                     }
                 ]
             }
@@ -23,19 +24,19 @@
             "description": "Postman allows you to configure scripts to run when specific events occur. These scripts are stored here, and can be referenced in the collection by their ID.",
             "type": "array",
             "items": {
-                "$ref": "/json/collection/v2.0.0-draft.4/event"
+                "$ref": "#/definitions/event"
             }
         },
         "variable": {
             "type": "array",
             "items": {
-                "$ref": "/json/collection/v2.0.0-draft.4/variable"
+                "$ref": "#/definitions/variable"
             }
         },
         "script": {
             "type": "array",
             "items": {
-                "$ref": "/json/collection/v2.0.0-draft.4/script"
+                "$ref": "#/definitions/script"
             }
         }
     },
@@ -47,7 +48,7 @@
         "auth": {
             "type": "object",
             "title": "Auth",
-            "id": "auth",
+            "id": "#/definitions/auth",
             "description": "Represents authentication helpers provided by Postman",
             "properties": {
                 "type": {
@@ -223,7 +224,7 @@
         "cookie": {
             "type": "object",
             "title": "Cookie",
-            "id": "cookie",
+            "id": "#/definitions/cookie",
             "description": "A Cookie, that follows the [Google Chrome format](https://developer.chrome.com/extensions/cookies)",
             "properties": {
                 "domain": {
@@ -273,7 +274,7 @@
         },
         "event": {
             "$schema": "http://json-schema.org/draft-04/schema#",
-            "id": "event",
+            "id": "#/definitions/event",
             "title": "Event",
             "description": "An Event",
             "type": "object",
@@ -283,7 +284,7 @@
                     "description": "A collection's friendly name is defined by this field. You would want to set this field to a value that would allow you to easily identify this collection among a bunch of other collections, as such outlining its usage or content."
                 },
                 "script": {
-                    "$ref": "/json/collection/v2.0.0-draft.4/script"
+                    "$ref": "#/definitions/script"
                 }
             },
             "required": [
@@ -293,7 +294,7 @@
         "header": {
             "type": "object",
             "title": "Header",
-            "id": "header",
+            "id": "#/definitions/header",
             "description": "Represents a single HTTP Header",
             "properties": {
                 "key": {
@@ -316,7 +317,7 @@
         },
         "info": {
             "$schema": "http://json-schema.org/draft-04/schema#",
-            "id": "info",
+            "id": "#/definitions/info",
             "title": "Information",
             "description": "Detailed description of the info block",
             "type": "object",
@@ -383,7 +384,7 @@
         },
         "item-group": {
             "title": "ItemGroup",
-            "id": "item-group",
+            "id": "#/definitions/item-group",
             "description": "One of the primary goals of Postman is to organize the development of APIs. To this end, it is necessary to be able to group requests together. This can be achived using 'Folders'. A folder just is an ordered set of requests.",
             "type": "object",
             "properties": {
@@ -402,10 +403,10 @@
                     "items": {
                         "anyOf": [
                             {
-                                "$ref": "/json/collection/v2.0.0-draft.4/item"
+                                "$ref": "#/definitions/item"
                             },
                             {
-                                "$ref": "/json/collection/v2.0.0-draft.4/item-group"
+                                "$ref": "#/definitions/item-group"
                             }
                         ]
                     }
@@ -418,7 +419,7 @@
         "item": {
             "type": "object",
             "title": "Item",
-            "id": "item",
+            "id": "#/definitions/item",
             "description": "Items are entities which contain an actual HTTP request, and sample responses attached to it.",
             "properties": {
                 "name": {
@@ -429,11 +430,11 @@
                     "description": "Postman allows you to configure scripts to run when specific events occur. These scripts are stored here, and can be referenced in the collection by their ID.",
                     "type": "array",
                     "items": {
-                        "$ref": "/json/collection/v2.0.0-draft.4/event"
+                        "$ref": "#/definitions/event"
                     }
                 },
                 "request": {
-                    "$ref": "/json/collection/v2.0.0-draft.4/request"
+                    "$ref": "#/definitions/request"
                 },
                 "response": {
                     "type": "array",
@@ -444,7 +445,7 @@
                                 "type": "string"
                             },
                             "request": {
-                                "$ref": "/json/collection/v2.0.0-draft.4/request"
+                                "$ref": "#/definitions/request"
                             },
                             "environment": {
                                 "type": "array",
@@ -461,7 +462,7 @@
                                 }
                             },
                             "response": {
-                                "$ref": "/json/collection/v2.0.0-draft.4/response"
+                                "$ref": "#/definitions/response"
                             }
                         }
                     }
@@ -473,7 +474,7 @@
         },
         "request": {
             "$schema": "http://json-schema.org/draft-04/schema#",
-            "id": "request",
+            "id": "#/definitions/request",
             "title": "Postman Request",
             "description": "A request represents an HTTP request.",
             "oneOf": [
@@ -481,10 +482,10 @@
                     "type": "object",
                     "properties": {
                         "url": {
-                            "$ref": "/json/collection/v2.0.0-draft.4/url"
+                            "$ref": "#/definitions/url"
                         },
                         "auth": {
-                            "$ref": "/json/collection/v2.0.0-draft.4/auth"
+                            "$ref": "#/definitions/auth"
                         },
                         "method": {
                             "description": "The HTTP method associated with this request.",
@@ -515,7 +516,7 @@
                                     "items": {
                                         "oneOf": [
                                             {
-                                                "$ref": "/json/collection/v2.0.0-draft.4/header"
+                                                "$ref": "#/definitions/header"
                                             },
                                             {
                                                 "type": "string"
@@ -574,12 +575,12 @@
         },
         "response": {
             "$schema": "http://json-schema.org/draft-04/schema#",
-            "id": "response",
+            "id": "#/definitions/response",
             "title": "Response",
             "description": "A response represents an HTTP response.",
             "properties": {
                 "request": {
-                    "$ref": "/json/collection/v2.0.0-draft.4/request"
+                    "$ref": "#/definitions/request"
                 },
                 "time": {
                     "oneOf": [
@@ -595,13 +596,13 @@
                 "header": {
                     "type": "array",
                     "items": {
-                        "$ref": "/json/collection/v2.0.0-draft.4/header"
+                        "$ref": "#/definitions/header"
                     }
                 },
                 "cookie": {
                     "type": "array",
                     "items": {
-                        "$ref": "/json/collection/v2.0.0-draft.4/cookie"
+                        "$ref": "#/definitions/cookie"
                     }
                 },
                 "data": {
@@ -621,7 +622,7 @@
         },
         "script": {
             "$schema": "http://json-schema.org/draft-04/schema#",
-            "id": "script",
+            "id": "#/definitions/script",
             "title": "Script",
             "type": "object",
             "description": "A script is a snippet of Javascript code that can be used to to perform setup or teardown operations on a particular response.",
@@ -649,7 +650,7 @@
                     ]
                 },
                 "src": {
-                    "$ref": "/json/collection/v2.0.0-draft.4/url"
+                    "$ref": "#/definitions/url"
                 },
                 "name": {
                     "type": "string",
@@ -659,7 +660,7 @@
         },
         "url": {
             "description": "Contains the complete broken-down URL for this request, along with the path variables, if any.",
-            "id": "url",
+            "id": "#/definitions/url",
             "oneOf": [
                 {
                     "type": "object",
@@ -747,7 +748,7 @@
             ]
         },
         "variable": {
-            "id": "variable",
+            "id": "#/definitions/variable",
             "title": "Variable",
             "description": "Using variables in your Postman requests eliminates the need to duplicate requests, which can save a lot of time. Variables can be defined, and referenced to from any part of a request.",
             "type": "object",

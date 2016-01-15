@@ -58,7 +58,7 @@
     "definitions": {
         "folder": {
             "$schema": "http://json-schema.org/draft-04/schema#",
-            "id": "folder",
+            "id": "#/definitions/folder",
             "title": "Folder",
             "description": "One of the primary goals of Postman is to organize the development of APIs. To this end, it is necessary to be able to group requests together. This can be achived using 'Folders'. A folder just is an ordered set of requests.",
             "type": "object",
@@ -97,7 +97,7 @@
         },
         "request": {
             "$schema": "http://json-schema.org/draft-04/schema#",
-            "id": "request",
+            "id": "#/definitions/request",
             "title": "Request",
             "description": "A request represents an HTTP request.",
             "type": "object",
