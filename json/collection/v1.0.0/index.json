@@ -83,7 +83,7 @@
                     "uniqueItems": true,
                     "description": "Postman preserves the order of your requests within each folder. This field holds a sequence of [UUIDs](https://en.wikipedia.org/wiki/Globally_unique_identifier), where each ID corresponds to a particular Postman request."
                 },
-                "collection_id": {
+                "collectionId": {
                     "type": "string",
                     "description": "Postman folders are always a part of a collection. That collection's unique ID (which is a [UUID](https://en.wikipedia.org/wiki/Globally_unique_identifier)) is stored in this field."
                 }
