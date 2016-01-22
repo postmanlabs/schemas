@@ -281,7 +281,7 @@
             "properties": {
                 "listen": {
                     "type": "string",
-                    "description": "A collection's friendly name is defined by this field. You would want to set this field to a value that would allow you to easily identify this collection among a bunch of other collections, as such outlining its usage or content."
+                    "description": "Can be set to `test` or `prerequest` for test scripts or pre-request scripts respectively."
                 },
                 "script": {
                     "$ref": "#/definitions/script"
@@ -327,7 +327,7 @@
                     "title": "Name of the collection",
                     "description": "A collection's friendly name is defined by this field. You would want to set this field to a value that would allow you to easily identify this collection among a bunch of other collections, as such outlining its usage or content."
                 },
-                "_postman_compat_id": {
+                "_postman_id": {
                     "type": "string",
                     "description": "Every collection is identified by the unique value of this field. The value of this field is usually easiest to generate using a UID generator function. If you already have a collection, it is recommended that you maintain the same id since changing the id usually implies that is a different collection than it was originally.\n *Note: This field exists for compatibility reasons with Collection Format V1.*"
                 },
@@ -340,6 +340,7 @@
                     "oneOf": [
                         {
                             "type": "object",
+                            "title": "Version",
                             "description": "Postman allows you to version your collections as they grow, and this field holds the version number. While optional, it is recommended that you use this field to its fullest extent!",
                             "properties": {
                                 "major": {
@@ -397,10 +398,10 @@
                     "description": "Essays about the folder go into this field!"
                 },
                 "item": {
-                    "title": "Array of Items",
                     "description": "Items are entities which contain an actual HTTP request, and sample responses attached to it. Folders may contain many items.",
                     "type": "array",
                     "items": {
+                        "title": "Items",
                         "anyOf": [
                             {
                                 "$ref": "#/definitions/item"
@@ -438,6 +439,7 @@
                 },
                 "response": {
                     "type": "array",
+                    "title": "Responses",
                     "items": {
                         "type": "object",
                         "properties": {
@@ -449,10 +451,11 @@
                             },
                             "environment": {
                                 "type": "array",
+                                "description": "Holds the environment state at the time when the request was written",
                                 "items": {
                                     "type": "object",
                                     "properties": {
-                                        "id": {
+                                        "key": {
                                             "type": "string"
                                         },
                                         "value": {
@@ -475,11 +478,12 @@
         "request": {
             "$schema": "http://json-schema.org/draft-04/schema#",
             "id": "#/definitions/request",
-            "title": "Postman Request",
-            "description": "A request represents an HTTP request.",
+            "title": "Request",
+            "description": "A request represents an HTTP request. If a string, the string is assumed to be the request URL and the method is assumed to be 'GET'.",
             "oneOf": [
                 {
                     "type": "object",
+                    "title": "Request",
                     "properties": {
                         "url": {
                             "$ref": "#/definitions/url"
@@ -583,6 +587,7 @@
                     "$ref": "#/definitions/request"
                 },
                 "time": {
+                    "title": "Timestamp for the response.",
                     "oneOf": [
                         {
                             "type": "string"
@@ -659,8 +664,9 @@
             }
         },
         "url": {
-            "description": "Contains the complete broken-down URL for this request, along with the path variables, if any.",
+            "description": "If object, contains the complete broken-down URL for this request. If string, contains the literal request URL.",
             "id": "#/definitions/url",
+            "title": "Url",
             "oneOf": [
                 {
                     "type": "object",
