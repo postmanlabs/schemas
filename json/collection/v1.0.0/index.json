@@ -86,6 +86,10 @@
                 "collection_id": {
                     "type": "string",
                     "description": "Postman folders are always a part of a collection. That collection's unique ID (which is a [UUID](https://en.wikipedia.org/wiki/Globally_unique_identifier)) is stored in this field."
+                },
+                "collection": {
+                    "type": "string",
+                    "description": "Postman folders are always a part of a collection. That collection's unique ID (which is a [UUID](https://en.wikipedia.org/wiki/Globally_unique_identifier)) is stored in this field."
                 }
             },
             "required": [
@@ -711,15 +715,33 @@
                 "collectionId": {
                     "type": "string",
                     "description": "This field contains the unique ID of the collection to which this request belongs."
+                },
+                "collection": {
+                    "type": "string",
+                    "description": "This field contains the unique ID of the collection to which this request belongs."
                 }
             },
-            "required": [
-                "id",
-                "method",
-                "url",
-                "headers",
-                "name",
-                "collectionId"
+            "anyOf": [
+                {
+                    "required": [
+                        "id",
+                        "method",
+                        "url",
+                        "headers",
+                        "name",
+                        "collectionId"
+                    ]
+                },
+                {
+                    "required": [
+                        "id",
+                        "method",
+                        "url",
+                        "headers",
+                        "name",
+                        "collection"
+                    ]
+                }
             ]
         }
     }
