@@ -441,33 +441,7 @@
                     "type": "array",
                     "title": "Responses",
                     "items": {
-                        "type": "object",
-                        "properties": {
-                            "name": {
-                                "type": "string"
-                            },
-                            "request": {
-                                "$ref": "#/definitions/request"
-                            },
-                            "environment": {
-                                "type": "array",
-                                "description": "Holds the environment state at the time when the request was written",
-                                "items": {
-                                    "type": "object",
-                                    "properties": {
-                                        "key": {
-                                            "type": "string"
-                                        },
-                                        "value": {
-                                            "type": "string"
-                                        }
-                                    }
-                                }
-                            },
-                            "response": {
-                                "$ref": "#/definitions/response"
-                            }
-                        }
+                        "$ref": "#/definitions/response"
                     }
                 }
             },
@@ -583,7 +557,7 @@
             "title": "Response",
             "description": "A response represents an HTTP response.",
             "properties": {
-                "request": {
+                "originalRequest": {
                     "$ref": "#/definitions/request"
                 },
                 "time": {
@@ -599,10 +573,25 @@
                     "description": "The time taken by the request to complete."
                 },
                 "header": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/header"
-                    }
+                    "oneOf": [
+                        {
+                            "type": "array",
+                            "description": "No HTTP request is complete without its headers, and the same is true for a Postman request. This field is an array containing all the headers.",
+                            "items": {
+                                "oneOf": [
+                                    {
+                                        "$ref": "#/definitions/header"
+                                    },
+                                    {
+                                        "type": "string"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
                 },
                 "cookie": {
                     "type": "array",
@@ -614,16 +603,15 @@
                     "type": "string",
                     "description": "The raw text of the response."
                 },
-                "environment": {
-                    "type": "array",
-                    "items": {}
+                "status": {
+                    "type": "string",
+                    "description": "The response status, e.g: '200 OK'"
+                },
+                "code": {
+                    "type": "integer",
+                    "description": "The numerical response code, example: 200, 201, 404, etc."
                 }
-            },
-            "required": [
-                "responseCode",
-                "headers",
-                "text"
-            ]
+            }
         },
         "script": {
             "$schema": "http://json-schema.org/draft-04/schema#",
