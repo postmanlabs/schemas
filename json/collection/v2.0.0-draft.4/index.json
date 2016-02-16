@@ -8,6 +8,7 @@
         },
         "item": {
             "type": "array",
+            "description": "Items are the basic unit for a Postman collection. You can think of them as corresponding to a single API endpoint. Each Item has one request and may have multiple API responses associated with it.",
             "items": {
                 "title": "Items",
                 "oneOf": [
@@ -28,16 +29,14 @@
             }
         },
         "variable": {
+            "description": "Collection variables allow you to define a set of variables, that are a *part of the collection*, as opposed to environments, which are separate entities.\n*Note: ",
             "type": "array",
             "items": {
                 "$ref": "#/definitions/variable"
             }
         },
-        "script": {
-            "type": "array",
-            "items": {
-                "$ref": "#/definitions/script"
-            }
+        "auth": {
+            "$ref": "#/definitions/auth"
         }
     },
     "required": [
@@ -149,9 +148,7 @@
                         }
                     }
                 },
-                "noauth": {
-                    "type": "object"
-                },
+                "noauth": {},
                 "oauth1": {
                     "type": "object",
                     "properties": {
@@ -265,11 +262,42 @@
                 "value": {
                     "type": "string",
                     "description": "The value of the Cookie."
+                },
+                "extensions": {
+                    "type": "array",
+                    "description": "Custom attributes for a cookie go here, such as the [Priority Field](https://code.google.com/p/chromium/issues/detail?id=232693)"
                 }
             },
             "required": [
                 "domain",
                 "path"
+            ]
+        },
+        "description": {
+            "$schema": "http://json-schema.org/draft-04/schema#",
+            "id": "#/definitions/description",
+            "description": "A Description can be a raw text, or be an object, which holds the description along with its format.",
+            "oneOf": [
+                {
+                    "type": "object",
+                    "title": "Description",
+                    "properties": {
+                        "content": {
+                            "type": "string",
+                            "description": "The content of the description goes here, as a raw string."
+                        },
+                        "type": {
+                            "type": "string",
+                            "description": "Holds the mime type of the raw description content. E.g: 'text/markdown' or 'text/html'.\nThe type is used to correctly render the description when generating documentation, or in the Postman app."
+                        },
+                        "version": {
+                            "description": "Description can have versions associated with it, which should be put in this property."
+                        }
+                    }
+                },
+                {
+                    "type": "string"
+                }
             ]
         },
         "event": {
@@ -285,6 +313,10 @@
                 },
                 "script": {
                     "$ref": "#/definitions/script"
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether the event is disabled. If absent, the event is assumed to be enabled."
                 }
             },
             "required": [
@@ -332,9 +364,7 @@
                     "description": "Every collection is identified by the unique value of this field. The value of this field is usually easiest to generate using a UID generator function. If you already have a collection, it is recommended that you maintain the same id since changing the id usually implies that is a different collection than it was originally.\n *Note: This field exists for compatibility reasons with Collection Format V1.*"
                 },
                 "description": {
-                    "type": "string",
-                    "title": "Description of the collection",
-                    "description": "Provide a long description of this collection using this field. This field supports markdown syntax to better format the description."
+                    "$ref": "#/definitions/description"
                 },
                 "version": {
                     "oneOf": [
@@ -384,7 +414,7 @@
             ]
         },
         "item-group": {
-            "title": "ItemGroup",
+            "title": "Folder",
             "id": "#/definitions/item-group",
             "description": "One of the primary goals of Postman is to organize the development of APIs. To this end, it is necessary to be able to group requests together. This can be achived using 'Folders'. A folder just is an ordered set of requests.",
             "type": "object",
@@ -411,6 +441,9 @@
                             }
                         ]
                     }
+                },
+                "auth": {
+                    "$ref": "#/definitions/auth"
                 }
             },
             "required": [
@@ -423,6 +456,10 @@
             "id": "#/definitions/item",
             "description": "Items are entities which contain an actual HTTP request, and sample responses attached to it.",
             "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "A unique ID that is used to identify collections internally"
+                },
                 "name": {
                     "description": "A friendly name can be attached to each Item.",
                     "type": "string"
@@ -560,8 +597,8 @@
                 "originalRequest": {
                     "$ref": "#/definitions/request"
                 },
-                "time": {
-                    "title": "Timestamp for the response.",
+                "responseTime": {
+                    "title": "ResponseTime",
                     "oneOf": [
                         {
                             "type": "string"
