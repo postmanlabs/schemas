@@ -29,7 +29,7 @@
             }
         },
         "variable": {
-            "description": "Collection variables allow you to define a set of variables, that are a *part of the collection*, as opposed to environments, which are separate entities.\n*Note: ",
+            "description": "Collection variables allow you to define a set of variables, that are a *part of the collection*, as opposed to environments, which are separate entities.\n*Note: Collection variables must not contain any sensitive information.*",
             "type": "array",
             "items": {
                 "$ref": "#/definitions/variable"
@@ -701,10 +701,11 @@
                             "description": "The protocol associated with the request, E.g: 'http'"
                         },
                         "domain": {
+                            "title": "Domain",
+                            "description": "The domain for the URL, E.g: api.yourdomain.com. Can be stored as a string or as an array of strings.",
                             "oneOf": [
                                 {
-                                    "type": "string",
-                                    "description": "The domain for the URL, E.g: api.yourdomain.com"
+                                    "type": "string"
                                 },
                                 {
                                     "type": "array",
