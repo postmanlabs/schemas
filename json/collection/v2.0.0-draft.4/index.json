@@ -561,9 +561,9 @@
                                 },
                                 "urlencoded": {
                                     "type": "array",
-                                    "title": "UrlEncodedParameter",
                                     "items": {
                                         "type": "object",
+                                        "title": "UrlEncodedParameter",
                                         "properties": {
                                             "key": {
                                                 "type": "string"
@@ -579,9 +579,9 @@
                                 },
                                 "formdata": {
                                     "type": "array",
-                                    "title": "FormParameter",
                                     "items": {
                                         "type": "object",
+                                        "title": "FormParameter",
                                         "properties": {
                                             "key": {
                                                 "type": "string"
