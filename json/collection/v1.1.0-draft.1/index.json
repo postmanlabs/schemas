@@ -33,7 +33,7 @@
         "folders": {
             "type": "array",
             "items": {
-                "$ref": "/json/collection/v1.1.0-draft.1/folder"
+                "$ref": "#/definitions/folder"
             },
             "description": "Folders are the way to go if you want to group your requests and to keep things organised. Folders can also be useful in sequentially requesting a part of the entire collection by using [Postman Collection Runner](https://www.getpostman.com/docs/jetpacks_running_collections) or [Newman](https://github.com/postmanlabs/newman) on a particular folder."
         },
@@ -45,7 +45,7 @@
             "type": "array",
             "description": "",
             "items": {
-                "$ref": "/json/collection/v1.1.0-draft.1/request"
+                "$ref": "#/definitions/request"
             }
         },
         "variables": {
@@ -78,9 +78,237 @@
         "requests"
     ],
     "definitions": {
-        "undefined": {
+        "folder": {
             "$schema": "http://json-schema.org/draft-04/schema#",
-            "id": "request",
+            "id": "#/definitions/folder",
+            "title": "Folder",
+            "description": "One of the primary goals of Postman is to organize the development of APIs. To this end, it is necessary to be able to group requests together. This can be achived using 'Folders'. A folder just is an ordered set of requests.",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "In order to be able to uniquely identify different folders within a collection, Postman assigns each folder a unique ID (a [UUID](https://en.wikipedia.org/wiki/Globally_unique_identifier)). This field contains that value."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A folder's friendly name is defined by this field. You would want to set this field to a value that would allow you to easily identify this folder."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Essays about the folder go into this field!"
+                },
+                "order": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "uniqueItems": true,
+                    "description": "Postman preserves the order of your requests within each folder. This field holds a sequence of [UUIDs](https://en.wikipedia.org/wiki/Globally_unique_identifier), where each ID corresponds to a particular Postman request."
+                },
+                "collection_id": {
+                    "type": "string",
+                    "description": "Postman folders are always a part of a collection. That collection's unique ID (which is a [UUID](https://en.wikipedia.org/wiki/Globally_unique_identifier)) is stored in this field."
+                }
+            },
+            "required": [
+                "id",
+                "name",
+                "description",
+                "order"
+            ]
+        },
+        "response": {
+            "$schema": "http://json-schema.org/draft-04/schema#",
+            "id": "#/definitions/response",
+            "title": "Response",
+            "description": "A response represents an HTTP response.",
+            "properties": {
+                "request": {
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "object"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "A response is associated with a request. This fields contains the UUID of the request corresponding to this response."
+                },
+                "id": {
+                    "type": "string",
+                    "description": "In order to unambiguously identify a response, Postman assigns a UUID to it, and stores it in this field."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A response can have a friendly name, which goes here."
+                },
+                "status": {
+                    "type": "string",
+                    "description": ""
+                },
+                "responseCode": {
+                    "type": "object",
+                    "title": "ResponseCode",
+                    "properties": {
+                        "code": {
+                            "type": "number",
+                            "description": "The numeric HTTP response code."
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The textual HTTP response code."
+                        },
+                        "detail": {
+                            "type": "string",
+                            "description": "Detailed explanation of the response code."
+                        }
+                    },
+                    "required": [
+                        "code",
+                        "name"
+                    ]
+                },
+                "time": {
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "number"
+                        }
+                    ],
+                    "description": "The time taken by this particular HTTP transaction to complete is stored in this field."
+                },
+                "headers": {
+                    "type": "array",
+                    "title": "Header",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "description": "Some headers can have names associated with them, which are stored in this field."
+                            },
+                            "key": {
+                                "type": "string",
+                                "description": "The left hand side (LHS) or 'key' of the header."
+                            },
+                            "value": {
+                                "type": "string",
+                                "description": "Value of the header, or the right hand side (RHS)."
+                            },
+                            "description": {
+                                "type": "string",
+                                "description": "An optional description about the header."
+                            }
+                        },
+                        "required": [
+                            "name",
+                            "key",
+                            "value"
+                        ]
+                    }
+                },
+                "cookies": {
+                    "type": "array",
+                    "title": "Cookie",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "domain": {
+                                "type": "string",
+                                "description": "The domain for which this cookie is valid."
+                            },
+                            "expirationDate": {
+                                "type": "number",
+                                "description": "The timestamp of the time when the cookie expires."
+                            },
+                            "hostOnly": {
+                                "type": "boolean",
+                                "description": "Indicates if this cookie is Host Only."
+                            },
+                            "httpOnly": {
+                                "type": "boolean",
+                                "description": "Indicates if this cookie is HTTP Only."
+                            },
+                            "name": {
+                                "type": "string",
+                                "description": "This is the name of the Cookie."
+                            },
+                            "path": {
+                                "type": "string",
+                                "description": "The path associated with the Cookie."
+                            },
+                            "secure": {
+                                "type": "boolean",
+                                "description": "Indicates if the 'secure' flag is set on the Cookie."
+                            },
+                            "session": {
+                                "type": "boolean",
+                                "description": "True if the cookie is a session cookie."
+                            },
+                            "storeId": {
+                                "type": "string",
+                                "description": "The ID of the cookie store containing this cookie."
+                            },
+                            "value": {
+                                "type": "string",
+                                "description": "The value of the Cookie."
+                            },
+                            "expires": {
+                                "type": "string",
+                                "description": "Human readable expiration time."
+                            }
+                        },
+                        "required": [
+                            "domain",
+                            "expirationDate",
+                            "hostOnly",
+                            "httpOnly",
+                            "name",
+                            "path",
+                            "secure",
+                            "session",
+                            "storeId",
+                            "value",
+                            "expires"
+                        ]
+                    }
+                },
+                "mime": {
+                    "type": "string",
+                    "description": "Mimetype of the response."
+                },
+                "text": {
+                    "type": "string",
+                    "description": "The raw text of the response."
+                },
+                "language": {
+                    "type": "string",
+                    "enum": [
+                        "html",
+                        "javascript",
+                        "xml"
+                    ],
+                    "description": "The language associated with the response."
+                },
+                "rawDataType": {
+                    "type": "string",
+                    "description": "The data type of the raw response."
+                }
+            },
+            "required": [
+                "id",
+                "responseCode",
+                "request"
+            ]
+        },
+        "request": {
+            "$schema": "http://json-schema.org/draft-04/schema#",
+            "id": "#/definitions/request",
             "title": "Request",
             "description": "A request represents an HTTP request.",
             "type": "object",
@@ -403,7 +631,7 @@
                     "type": "array",
                     "description": "A Postman request can have multiple responses associated with it. These responses are stored in this field.",
                     "items": {
-                        "$ref": "/json/collection/v1.1.0-draft.1/response"
+                        "$ref": "#/definitions/response"
                     }
                 },
                 "rawModeData": {

@@ -556,28 +556,44 @@
                                         "formdata"
                                     ]
                                 },
-                                "content": {
-                                    "description": "Contains the request body data. If the mode is ``raw``, this field contains the raw data in string format. Otherwise, it contains an array of Parameters.",
-                                    "oneOf": [
-                                        {
-                                            "type": "string"
-                                        },
-                                        {
-                                            "type": "array",
-                                            "title": "Parameter",
-                                            "items": {
-                                                "type": "object",
-                                                "properties": {
-                                                    "key": {
-                                                        "type": "string"
-                                                    },
-                                                    "value": {
-                                                        "type": "string"
-                                                    }
-                                                }
+                                "raw": {
+                                    "type": "string"
+                                },
+                                "urlencoded": {
+                                    "type": "array",
+                                    "title": "UrlEncodedParameter",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "key": {
+                                                "type": "string"
+                                            },
+                                            "value": {
+                                                "type": "string"
+                                            },
+                                            "enabled": {
+                                                "type": "boolean"
                                             }
                                         }
-                                    ]
+                                    }
+                                },
+                                "formdata": {
+                                    "type": "array",
+                                    "title": "FormParameter",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "key": {
+                                                "type": "string"
+                                            },
+                                            "value": {
+                                                "type": "string"
+                                            },
+                                            "enabled": {
+                                                "type": "boolean"
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
