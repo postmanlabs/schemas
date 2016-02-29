@@ -386,7 +386,7 @@
                                     "type": "integer"
                                 },
                                 "identifier": {
-                                    "description": "A human friendly ideantifier to make sense of the version numbers. E.g: 'beta-3'",
+                                    "description": "A human friendly identifier to make sense of the version numbers. E.g: 'beta-3'",
                                     "type": "string",
                                     "maxLength": 10
                                 },
@@ -527,16 +527,10 @@
                             "oneOf": [
                                 {
                                     "type": "array",
+                                    "title": "Headers",
                                     "description": "No HTTP request is complete without its headers, and the same is true for a Postman request. This field is an array containing all the headers.",
                                     "items": {
-                                        "oneOf": [
-                                            {
-                                                "$ref": "#/definitions/header"
-                                            },
-                                            {
-                                                "type": "string"
-                                            }
-                                        ]
+                                        "$ref": "#/definitions/header"
                                     }
                                 },
                                 {
@@ -544,7 +538,7 @@
                                 }
                             ]
                         },
-                        "data": {
+                        "body": {
                             "type": "object",
                             "description": "This field contains the data usually contained in the request body.",
                             "properties": {
@@ -623,12 +617,14 @@
                             "type": "number"
                         }
                     ],
-                    "description": "The time taken by the request to complete."
+                    "description": "The time taken by the request to complete. If a number, the unit is milliseconds."
                 },
                 "header": {
+                    "title": "Headers",
                     "oneOf": [
                         {
                             "type": "array",
+                            "title": "Header",
                             "description": "No HTTP request is complete without its headers, and the same is true for a Postman request. This field is an array containing all the headers.",
                             "items": {
                                 "oneOf": [
@@ -636,6 +632,7 @@
                                         "$ref": "#/definitions/header"
                                     },
                                     {
+                                        "title": "Header",
                                         "type": "string"
                                     }
                                 ]
@@ -652,7 +649,7 @@
                         "$ref": "#/definitions/cookie"
                     }
                 },
-                "data": {
+                "body": {
                     "type": "string",
                     "description": "The raw text of the response."
                 },

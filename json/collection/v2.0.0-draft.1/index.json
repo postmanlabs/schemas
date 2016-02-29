@@ -82,7 +82,7 @@
                             "type": "integer"
                         },
                         "identifier": {
-                            "description": "A human friendly ideantifier to make sense of the version numbers. E.g: 'beta-3'",
+                            "description": "A human friendly identifier to make sense of the version numbers. E.g: 'beta-3'",
                             "type": "string",
                             "maxLength": 10
                         },
