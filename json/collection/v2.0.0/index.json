@@ -229,7 +229,14 @@
                     "description": "The domain for which this cookie is valid."
                 },
                 "expires": {
-                    "type": "string",
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "number"
+                        }
+                    ],
                     "description": "When the cookie expires."
                 },
                 "maxAge": {
@@ -336,10 +343,6 @@
                 "value": {
                     "type": "string",
                     "description": "The value (or the RHS) of the Header is stored in this field."
-                },
-                "description": {
-                    "description": "An optional field that can be used to elaborate on the use of this particular header.",
-                    "type": "string"
                 }
             },
             "required": [
@@ -375,15 +378,15 @@
                             "properties": {
                                 "major": {
                                     "description": "Increment this number if you make changes to the collection that changes its behaviour. E.g: Removing or adding new test scripts. (partly or completely).",
-                                    "type": "integer"
+                                    "type": "string"
                                 },
                                 "minor": {
                                     "description": "You should increment this number if you make changes that will not break anything that uses the collection. E.g: removing a folder.",
-                                    "type": "integer"
+                                    "type": "string"
                                 },
                                 "patch": {
                                     "description": "Ideally, minor changes to a collection should result in the increment of this number.",
-                                    "type": "integer"
+                                    "type": "string"
                                 },
                                 "identifier": {
                                     "description": "A human friendly identifier to make sense of the version numbers. E.g: 'beta-3'",
@@ -667,39 +670,47 @@
             "$schema": "http://json-schema.org/draft-04/schema#",
             "id": "#/definitions/script",
             "title": "Script",
-            "type": "object",
             "description": "A script is a snippet of Javascript code that can be used to to perform setup or teardown operations on a particular response.",
-            "properties": {
-                "id": {
-                    "description": "A unique, user defined identifier that can  be used to refer to this script from requests.",
-                    "type": "string"
-                },
-                "type": {
-                    "description": "Type of the script. E.g: 'text/javascript'",
-                    "type": "string"
-                },
-                "exec": {
-                    "oneOf": [
-                        {
-                            "type": "array",
-                            "description": "This is an array of strings, where each line represents a single line of code. Having lines separate makes it possible to easily track changes made to scripts.",
-                            "items": {
-                                "type": "string"
-                            }
-                        },
-                        {
+            "oneOf": [
+                {
+                    "title": "Script",
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "description": "A unique, user defined identifier that can  be used to refer to this script from requests.",
                             "type": "string"
+                        },
+                        "type": {
+                            "description": "Type of the script. E.g: 'text/javascript'",
+                            "type": "string"
+                        },
+                        "exec": {
+                            "oneOf": [
+                                {
+                                    "type": "array",
+                                    "description": "This is an array of strings, where each line represents a single line of code. Having lines separate makes it possible to easily track changes made to scripts.",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "src": {
+                            "$ref": "#/definitions/url"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "Script name"
                         }
-                    ]
+                    }
                 },
-                "src": {
-                    "$ref": "#/definitions/url"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "Script name"
+                {
+                    "type": "string"
                 }
-            }
+            ]
         },
         "url": {
             "description": "If object, contains the complete broken-down URL for this request. If string, contains the literal request URL.",
@@ -810,8 +821,7 @@
                     "type": "string"
                 },
                 "value": {
-                    "description": "The value that a variable holds in this collection. Ultimately, the variables will be replaced by this value, when say running a set of requests from a collection",
-                    "type": "string"
+                    "description": "The value that a variable holds in this collection. Ultimately, the variables will be replaced by this value, when say running a set of requests from a collection"
                 },
                 "type": {
                     "description": "A variable may have multiple types. This field specifies the type of the variable.",
