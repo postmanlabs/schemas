@@ -682,7 +682,8 @@
                                 "enum": [
                                     "html",
                                     "javascript",
-                                    "xml"
+                                    "xml",
+                                    "Text"
                                 ],
                                 "description": "The language associated with the response."
                             },
