@@ -250,7 +250,7 @@
                     "type": "boolean",
                     "description": "Indicates if this cookie is HTTP Only. (if True, the cookie is inaccessible to client-side scripts)"
                 },
-                "name": {
+                "key": {
                     "type": "string",
                     "description": "This is the name of the Cookie."
                 },
@@ -607,10 +607,6 @@
             "title": "Response",
             "description": "A response represents an HTTP response.",
             "properties": {
-                "id": {
-                    "description": "A unique, user defined identifier that can  be used to refer to this script from requests.",
-                    "type": "string"
-                },
                 "originalRequest": {
                     "$ref": "#/definitions/request"
                 },
