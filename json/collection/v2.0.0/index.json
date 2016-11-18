@@ -167,7 +167,7 @@
                         "signatureMethod": {
                             "type": "string"
                         },
-                        "timeStamp": {
+                        "timestamp": {
                             "type": "string"
                         },
                         "nonce": {
