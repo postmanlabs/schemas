@@ -550,7 +550,8 @@
                                     "enum": [
                                         "raw",
                                         "urlencoded",
-                                        "formdata"
+                                        "formdata",
+                                        "file"
                                     ]
                                 },
                                 "raw": {
