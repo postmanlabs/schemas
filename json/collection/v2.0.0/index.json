@@ -591,6 +591,18 @@
                                             }
                                         }
                                     }
+                                },
+                                "file": {
+                                    "type": "object",
+                                    "properties": {
+                                        "src": {
+                                            "type": "string",
+                                            "description": "Contains the name of the file to upload. _Not the path_."
+                                        },
+                                        "content": {
+                                            "type": "string"
+                                        }
+                                    }
                                 }
                             }
                         }
