@@ -130,9 +130,10 @@
                     "enum": [
                         "raw",
                         "urlencoded",
-                        "params"
+                        "params",
+                        "binary"
                     ],
-                    "description": "A request can have a specific data mode, and Postman supports three."
+                    "description": "A request can have a specific data mode, and Postman supports these."
                 },
                 "data": {
                     "oneOf": [
