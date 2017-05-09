@@ -427,8 +427,7 @@
                     "description": "A folder's friendly name is defined by this field. You would want to set this field to a value that would allow you to easily identify this folder."
                 },
                 "description": {
-                    "type": "string",
-                    "description": "Essays about the folder go into this field!"
+                    "$ref": "#/definitions/description"
                 },
                 "item": {
                     "description": "Items are entities which contain an actual HTTP request, and sample responses attached to it. Folders may contain many items.",
@@ -463,9 +462,8 @@
                     "type": "string",
                     "description": "A unique ID that is used to identify collections internally"
                 },
-                "name": {
-                    "description": "A friendly name can be attached to each Item.",
-                    "type": "string"
+                "description": {
+                    "$ref": "#/definitions/description"
                 },
                 "event": {
                     "description": "Postman allows you to configure scripts to run when specific events occur. These scripts are stored here, and can be referenced in the collection by their ID.",
