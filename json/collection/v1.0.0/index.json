@@ -146,6 +146,9 @@
                                     "key": {
                                         "type": "string"
                                     },
+                                    "description": {
+                                        "type": "string"
+                                    },
                                     "value": {
                                         "type": "string"
                                     },
@@ -721,6 +724,75 @@
                 "collection": {
                     "type": "string",
                     "description": "This field contains the unique ID of the collection to which this request belongs."
+                },
+                "queryParams": {
+                    "type": "array",
+                    "items": {
+                        "$schema": "http://json-schema.org/draft-04/schema#",
+                        "id": "urlparam",
+                        "title": "UrlParam",
+                        "description": "A response represents an HTTP response.",
+                        "properties": {
+                            "key": {
+                                "type": "string",
+                                "description": "The key of a URL parameter."
+                            },
+                            "value": {
+                                "type": "string",
+                                "description": "The value of a URL parameter"
+                            },
+                            "description": {
+                                "type": "string",
+                                "description": "You can associate descriptions with URL parameters, which are stored in this field."
+                            }
+                        }
+                    }
+                },
+                "headerData": {
+                    "type": "array",
+                    "items": {
+                        "$schema": "http://json-schema.org/draft-04/schema#",
+                        "id": "header",
+                        "title": "Header",
+                        "description": "A response represents an HTTP response.",
+                        "properties": {
+                            "key": {
+                                "type": "string",
+                                "description": "Name of the header goes here. e.g: `Content-Type`"
+                            },
+                            "value": {
+                                "type": "string",
+                                "description": "The value of the header"
+                            },
+                            "description": {
+                                "type": "string",
+                                "description": "You can associate descriptions with headers too."
+                            }
+                        }
+                    }
+                },
+                "pathVariableData": {
+                    "type": "array",
+                    "items": {
+                        "$schema": "http://json-schema.org/draft-04/schema#",
+                        "id": "pathvariable",
+                        "title": "PathVariable",
+                        "description": "A request URL may contain one or more path variables (e.g: `:varname`)",
+                        "properties": {
+                            "key": {
+                                "type": "string",
+                                "description": "The identifier of a path variable goes here."
+                            },
+                            "value": {
+                                "type": "string",
+                                "description": "The value of the path variable will be substituted in place of the key."
+                            },
+                            "description": {
+                                "type": "string",
+                                "description": "Extra description about a path variable may be added in this field."
+                            }
+                        }
+                    }
                 }
             },
             "anyOf": [
