@@ -343,6 +343,9 @@
                 "value": {
                     "type": "string",
                     "description": "The value (or the RHS) of the Header is stored in this field."
+                },
+                "description": {
+                    "$ref": "#/definitions/description"
                 }
             },
             "required": [
@@ -569,6 +572,9 @@
                                             },
                                             "enabled": {
                                                 "type": "boolean"
+                                            },
+                                            "description": {
+                                                "$ref": "#/definitions/description"
                                             }
                                         }
                                     }
@@ -587,6 +593,9 @@
                                             },
                                             "enabled": {
                                                 "type": "boolean"
+                                            },
+                                            "description": {
+                                                "$ref": "#/definitions/description"
                                             }
                                         }
                                     }
@@ -798,7 +807,7 @@
                                         "type": "string"
                                     },
                                     "description": {
-                                        "type": "string"
+                                        "$ref": "#/definitions/description"
                                     }
                                 }
                             }
@@ -841,6 +850,9 @@
                 "name": {
                     "type": "string",
                     "description": "Variable name"
+                },
+                "description": {
+                    "$ref": "#/definitions/description"
                 }
             }
         }
