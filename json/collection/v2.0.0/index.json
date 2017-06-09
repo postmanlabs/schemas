@@ -801,10 +801,24 @@
                                 "title": "QueryParam",
                                 "properties": {
                                     "key": {
-                                        "type": "string"
+                                        "oneOf": [
+                                            {
+                                                "type": "string"
+                                            },
+                                            {
+                                                "type": "null"
+                                            }
+                                        ]
                                     },
                                     "value": {
-                                        "type": "string"
+                                        "oneOf": [
+                                            {
+                                                "type": "string"
+                                            },
+                                            {
+                                                "type": "null"
+                                            }
+                                        ]
                                     },
                                     "description": {
                                         "$ref": "#/definitions/description"

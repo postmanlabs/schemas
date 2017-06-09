@@ -734,11 +734,25 @@
                         "description": "A response represents an HTTP response.",
                         "properties": {
                             "key": {
-                                "type": "string",
+                                "oneOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "type": "null"
+                                    }
+                                ],
                                 "description": "The key of a URL parameter."
                             },
                             "value": {
-                                "type": "string",
+                                "oneOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "type": "null"
+                                    }
+                                ],
                                 "description": "The value of a URL parameter"
                             },
                             "description": {
