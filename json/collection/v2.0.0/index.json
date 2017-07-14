@@ -872,6 +872,10 @@
                 {
                     "type": "object",
                     "properties": {
+                        "raw": {
+                            "type": "string",
+                            "description": "The string representation of the request URL, including the protocol, host, path, hash, query parameter(s) and path variable(s)."
+                        },
                         "protocol": {
                             "type": "string",
                             "description": "The protocol associated with the request, E.g: 'http'"
