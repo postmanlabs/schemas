@@ -698,6 +698,66 @@
                 "type"
             ]
         },
+        "certificate-list": {
+            "id": "#/definitions/certificate-list",
+            "title": "Certificate List",
+            "description": "A representation of a list of ssl certificates",
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/certificate"
+            }
+        },
+        "certificate": {
+            "id": "#/definitions/certificate",
+            "title": "Certificate",
+            "description": "A representation of an ssl certificate",
+            "type": "object",
+            "properties": {
+                "name": {
+                    "description": "A name for the certificate for user reference",
+                    "type": "string"
+                },
+                "matches": {
+                    "description": "A list of Url match pattern strings, to identify Urls this certificate can be used for.",
+                    "type": "array",
+                    "item": {
+                        "type": "string",
+                        "description": "An Url match pattern string"
+                    }
+                },
+                "key": {
+                    "description": "An object containing path to file containing private key, on the file system",
+                    "type": "object",
+                    "properties": {
+                        "src": {
+                            "description": "The path to file containing key for certificate, on the file system"
+                        }
+                    }
+                },
+                "cert": {
+                    "description": "An object containing path to file certificate, on the file system",
+                    "type": "object",
+                    "properties": {
+                        "src": {
+                            "description": "The path to file containing key for certificate, on the file system"
+                        }
+                    }
+                },
+                "passphrase": {
+                    "description": "The passphrase for the certificate",
+                    "type": "string"
+                }
+            }
+        },
+        "cookie-list": {
+            "id": "#/definitions/cookie-list",
+            "title": "Certificate List",
+            "description": "A representation of a list of cookies",
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/cookie"
+            }
+        },
         "cookie": {
             "type": "object",
             "title": "Cookie",
@@ -709,7 +769,14 @@
                     "description": "The domain for which this cookie is valid."
                 },
                 "expires": {
-                    "type": "string",
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "number"
+                        }
+                    ],
                     "description": "When the cookie expires."
                 },
                 "maxAge": {
@@ -784,7 +851,7 @@
             "$schema": "http://json-schema.org/draft-04/schema#",
             "id": "#/definitions/event",
             "title": "Event",
-            "description": "An Event",
+            "description": "Defines a script associated with an associated event name",
             "type": "object",
             "properties": {
                 "listen": {
@@ -796,12 +863,22 @@
                 },
                 "disabled": {
                     "type": "boolean",
+                    "default": false,
                     "description": "Indicates whether the event is disabled. If absent, the event is assumed to be enabled."
                 }
             },
             "required": [
                 "listen"
             ]
+        },
+        "header-list": {
+            "id": "#/definitions/header-list",
+            "title": "Header List",
+            "description": "A representation for a list of headers",
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/header"
+            }
         },
         "header": {
             "type": "object",
@@ -817,9 +894,13 @@
                     "type": "string",
                     "description": "The value (or the RHS) of the Header is stored in this field."
                 },
+                "disabled": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "If set to true, the current header will not be sent with requests."
+                },
                 "description": {
-                    "description": "An optional field that can be used to elaborate on the use of this particular header.",
-                    "type": "string"
+                    "$ref": "#/definitions/description"
                 }
             },
             "required": [
@@ -847,41 +928,7 @@
                     "$ref": "#/definitions/description"
                 },
                 "version": {
-                    "oneOf": [
-                        {
-                            "type": "object",
-                            "title": "Version",
-                            "description": "Postman allows you to version your collections as they grow, and this field holds the version number. While optional, it is recommended that you use this field to its fullest extent!",
-                            "properties": {
-                                "major": {
-                                    "description": "Increment this number if you make changes to the collection that changes its behaviour. E.g: Removing or adding new test scripts. (partly or completely).",
-                                    "type": "integer"
-                                },
-                                "minor": {
-                                    "description": "You should increment this number if you make changes that will not break anything that uses the collection. E.g: removing a folder.",
-                                    "type": "integer"
-                                },
-                                "patch": {
-                                    "description": "Ideally, minor changes to a collection should result in the increment of this number.",
-                                    "type": "integer"
-                                },
-                                "identifier": {
-                                    "description": "A human friendly identifier to make sense of the version numbers. E.g: 'beta-3'",
-                                    "type": "string",
-                                    "maxLength": 10
-                                },
-                                "meta": {}
-                            },
-                            "required": [
-                                "major",
-                                "minor",
-                                "patch"
-                            ]
-                        },
-                        {
-                            "type": "string"
-                        }
-                    ]
+                    "$ref": "#/definitions/version"
                 },
                 "schema": {
                     "description": "This should ideally hold a link to the Postman schema that is used to validate this collection. E.g: https://schema.getpostman.com/collection/v1",
@@ -904,8 +951,7 @@
                     "description": "A folder's friendly name is defined by this field. You would want to set this field to a value that would allow you to easily identify this folder."
                 },
                 "description": {
-                    "type": "string",
-                    "description": "Essays about the folder go into this field!"
+                    "$ref": "#/definitions/description"
                 },
                 "item": {
                     "description": "Items are entities which contain an actual HTTP request, and sample responses attached to it. Folders may contain many items.",
@@ -941,8 +987,11 @@
                     "description": "A unique ID that is used to identify collections internally"
                 },
                 "name": {
-                    "description": "A friendly name can be attached to each Item.",
-                    "type": "string"
+                    "type": "string",
+                    "description": "A human readable identifier for the current item."
+                },
+                "description": {
+                    "$ref": "#/definitions/description"
                 },
                 "event": {
                     "description": "Postman allows you to configure scripts to run when specific events occur. These scripts are stored here, and can be referenced in the collection by their ID.",
@@ -966,6 +1015,39 @@
                 "request"
             ]
         },
+        "proxy-config": {
+            "id": "#/definitions/proxy-config",
+            "title": "Proxy Config",
+            "description": "Using the Proxy, you can configure your custom proxy into the postman for particular url match",
+            "type": "object",
+            "properties": {
+                "match": {
+                    "default": "http+https://*/*",
+                    "description": "The Url match for which the proxy config is defined",
+                    "type": "string"
+                },
+                "host": {
+                    "type": "string",
+                    "description": "The proxy server host"
+                },
+                "port": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "default": 8080,
+                    "description": "The proxy server port"
+                },
+                "tunnel": {
+                    "description": "The tunneling details for the proxy config",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "When set to true, ignores this proxy configuration entity"
+                }
+            }
+        },
         "request": {
             "$schema": "http://json-schema.org/draft-04/schema#",
             "id": "#/definitions/request",
@@ -981,6 +1063,12 @@
                         },
                         "auth": {
                             "$ref": "#/definitions/auth"
+                        },
+                        "proxy": {
+                            "$ref": "#/definitions/proxy-config"
+                        },
+                        "certificate": {
+                            "$ref": "#/definitions/certificate"
                         },
                         "method": {
                             "description": "The HTTP method associated with this request.",
@@ -1003,28 +1091,20 @@
                                 "VIEW"
                             ]
                         },
+                        "description": {
+                            "$ref": "#/definitions/description"
+                        },
                         "header": {
                             "oneOf": [
                                 {
-                                    "type": "array",
-                                    "description": "No HTTP request is complete without its headers, and the same is true for a Postman request. This field is an array containing all the headers.",
-                                    "items": {
-                                        "oneOf": [
-                                            {
-                                                "$ref": "#/definitions/header"
-                                            },
-                                            {
-                                                "type": "string"
-                                            }
-                                        ]
-                                    }
+                                    "$ref": "#/definitions/header-list"
                                 },
                                 {
                                     "type": "string"
                                 }
                             ]
                         },
-                        "data": {
+                        "body": {
                             "type": "object",
                             "description": "This field contains the data usually contained in the request body.",
                             "properties": {
@@ -1033,7 +1113,8 @@
                                     "enum": [
                                         "raw",
                                         "urlencoded",
-                                        "formdata"
+                                        "formdata",
+                                        "file"
                                     ]
                                 },
                                 "raw": {
@@ -1051,10 +1132,17 @@
                                             "value": {
                                                 "type": "string"
                                             },
-                                            "enabled": {
-                                                "type": "boolean"
+                                            "disabled": {
+                                                "type": "boolean",
+                                                "default": false
+                                            },
+                                            "description": {
+                                                "$ref": "#/definitions/description"
                                             }
-                                        }
+                                        },
+                                        "required": [
+                                            "key"
+                                        ]
                                     }
                                 },
                                 "formdata": {
@@ -1062,16 +1150,73 @@
                                     "items": {
                                         "type": "object",
                                         "title": "FormParameter",
-                                        "properties": {
-                                            "key": {
-                                                "type": "string"
+                                        "oneOf": [
+                                            {
+                                                "properties": {
+                                                    "key": {
+                                                        "type": "string"
+                                                    },
+                                                    "value": {
+                                                        "type": "string"
+                                                    },
+                                                    "disabled": {
+                                                        "type": "boolean",
+                                                        "default": false,
+                                                        "description": "When set to true, prevents this form data entity from being sent."
+                                                    },
+                                                    "type": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "text"
+                                                        ]
+                                                    },
+                                                    "description": {
+                                                        "$ref": "#/definitions/description"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "key"
+                                                ]
                                             },
-                                            "value": {
-                                                "type": "string"
-                                            },
-                                            "enabled": {
-                                                "type": "boolean"
+                                            {
+                                                "properties": {
+                                                    "key": {
+                                                        "type": "string"
+                                                    },
+                                                    "src": {
+                                                        "type": "string"
+                                                    },
+                                                    "disabled": {
+                                                        "type": "boolean",
+                                                        "default": false,
+                                                        "description": "When set to true, prevents this form data entity from being sent."
+                                                    },
+                                                    "type": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "file"
+                                                        ]
+                                                    },
+                                                    "description": {
+                                                        "$ref": "#/definitions/description"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "key"
+                                                ]
                                             }
+                                        ]
+                                    }
+                                },
+                                "file": {
+                                    "type": "object",
+                                    "properties": {
+                                        "src": {
+                                            "type": "string",
+                                            "description": "Contains the name of the file to upload. _Not the path_."
+                                        },
+                                        "content": {
+                                            "type": "string"
                                         }
                                     }
                                 }
@@ -1090,6 +1235,10 @@
             "title": "Response",
             "description": "A response represents an HTTP response.",
             "properties": {
+                "id": {
+                    "description": "A unique, user defined identifier that can  be used to refer to this response from requests.",
+                    "type": "string"
+                },
                 "originalRequest": {
                     "$ref": "#/definitions/request"
                 },
@@ -1103,12 +1252,14 @@
                             "type": "number"
                         }
                     ],
-                    "description": "The time taken by the request to complete."
+                    "description": "The time taken by the request to complete. If a number, the unit is milliseconds."
                 },
                 "header": {
+                    "title": "Headers",
                     "oneOf": [
                         {
                             "type": "array",
+                            "title": "Header",
                             "description": "No HTTP request is complete without its headers, and the same is true for a Postman request. This field is an array containing all the headers.",
                             "items": {
                                 "oneOf": [
@@ -1116,6 +1267,7 @@
                                         "$ref": "#/definitions/header"
                                     },
                                     {
+                                        "title": "Header",
                                         "type": "string"
                                     }
                                 ]
@@ -1132,7 +1284,7 @@
                         "$ref": "#/definitions/cookie"
                     }
                 },
-                "data": {
+                "body": {
                     "type": "string",
                     "description": "The raw text of the response."
                 },
@@ -1192,13 +1344,17 @@
                 {
                     "type": "object",
                     "properties": {
+                        "raw": {
+                            "type": "string",
+                            "description": "The string representation of the request URL, including the protocol, host, path, hash, query parameter(s) and path variable(s)."
+                        },
                         "protocol": {
                             "type": "string",
                             "description": "The protocol associated with the request, E.g: 'http'"
                         },
-                        "domain": {
-                            "title": "Domain",
-                            "description": "The domain for the URL, E.g: api.yourdomain.com. Can be stored as a string or as an array of strings.",
+                        "host": {
+                            "title": "Host",
+                            "description": "The host for the URL, E.g: api.yourdomain.com. Can be stored as a string or as an array of strings.",
                             "oneOf": [
                                 {
                                     "type": "string"
@@ -1208,7 +1364,7 @@
                                     "items": {
                                         "type": "string"
                                     },
-                                    "description": "The domain, split into subdomain strings."
+                                    "description": "The host, split into subdomain strings."
                                 }
                             ]
                         },
@@ -1253,13 +1409,32 @@
                                 "title": "QueryParam",
                                 "properties": {
                                     "key": {
-                                        "type": "string"
+                                        "oneOf": [
+                                            {
+                                                "type": "string"
+                                            },
+                                            {
+                                                "type": "null"
+                                            }
+                                        ]
                                     },
                                     "value": {
-                                        "type": "string"
+                                        "oneOf": [
+                                            {
+                                                "type": "string"
+                                            },
+                                            {
+                                                "type": "null"
+                                            }
+                                        ]
+                                    },
+                                    "disabled": {
+                                        "type": "boolean",
+                                        "default": false,
+                                        "description": "If set to true, the current query parameter will not be sent with the request."
                                     },
                                     "description": {
-                                        "type": "string"
+                                        "$ref": "#/definitions/description"
                                     }
                                 }
                             }
@@ -1288,13 +1463,12 @@
             "description": "Using variables in your Postman requests eliminates the need to duplicate requests, which can save a lot of time. Variables can be defined, and referenced to from any part of a request.",
             "type": "object",
             "properties": {
-                "id": {
-                    "description": "A variable ID is a unique user-defined value that identifies the variable within a collection. In traditional terms, this would be a variable name.",
+                "key": {
+                    "description": "A variable key is a unique user-defined value that identifies the variable within a collection. In traditional terms, this would be a variable name.",
                     "type": "string"
                 },
                 "value": {
-                    "description": "The value that a variable holds in this collection. Ultimately, the variables will be replaced by this value, when say running a set of requests from a collection",
-                    "type": "string"
+                    "description": "The value that a variable holds in this collection. Ultimately, the variables will be replaced by this value, when say running a set of requests from a collection"
                 },
                 "type": {
                     "description": "A variable may have multiple types. This field specifies the type of the variable.",
@@ -1303,8 +1477,53 @@
                 "name": {
                     "type": "string",
                     "description": "Variable name"
+                },
+                "description": {
+                    "$ref": "#/definitions/description"
                 }
             }
+        },
+        "version": {
+            "$schema": "http://json-schema.org/draft-04/schema#",
+            "id": "#/definitions/version",
+            "title": "Collection Version",
+            "description": "Postman allows you to version your collections as they grow, and this field holds the version number. While optional, it is recommended that you use this field to its fullest extent!",
+            "oneOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "major": {
+                            "description": "Increment this number if you make changes to the collection that changes its behaviour. E.g: Removing or adding new test scripts. (partly or completely).",
+                            "minimum": 0,
+                            "type": "integer"
+                        },
+                        "minor": {
+                            "description": "You should increment this number if you make changes that will not break anything that uses the collection. E.g: removing a folder.",
+                            "minimum": 0,
+                            "type": "integer"
+                        },
+                        "patch": {
+                            "description": "Ideally, minor changes to a collection should result in the increment of this number.",
+                            "minimum": 0,
+                            "type": "integer"
+                        },
+                        "identifier": {
+                            "description": "A human friendly identifier to make sense of the version numbers. E.g: 'beta-3'",
+                            "type": "string",
+                            "maxLength": 10
+                        },
+                        "meta": {}
+                    },
+                    "required": [
+                        "major",
+                        "minor",
+                        "patch"
+                    ]
+                },
+                {
+                    "type": "string"
+                }
+            ]
         }
     }
 }

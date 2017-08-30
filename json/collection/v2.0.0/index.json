@@ -310,7 +310,7 @@
                     "type": "boolean",
                     "description": "Indicates if this cookie is HTTP Only. (if True, the cookie is inaccessible to client-side scripts)"
                 },
-                "key": {
+                "name": {
                     "type": "string",
                     "description": "This is the name of the Cookie."
                 },
@@ -822,47 +822,39 @@
             "$schema": "http://json-schema.org/draft-04/schema#",
             "id": "#/definitions/script",
             "title": "Script",
+            "type": "object",
             "description": "A script is a snippet of Javascript code that can be used to to perform setup or teardown operations on a particular response.",
-            "oneOf": [
-                {
-                    "title": "Script",
-                    "type": "object",
-                    "properties": {
-                        "id": {
-                            "description": "A unique, user defined identifier that can  be used to refer to this script from requests.",
-                            "type": "string"
-                        },
-                        "type": {
-                            "description": "Type of the script. E.g: 'text/javascript'",
-                            "type": "string"
-                        },
-                        "exec": {
-                            "oneOf": [
-                                {
-                                    "type": "array",
-                                    "description": "This is an array of strings, where each line represents a single line of code. Having lines separate makes it possible to easily track changes made to scripts.",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                },
-                                {
-                                    "type": "string"
-                                }
-                            ]
-                        },
-                        "src": {
-                            "$ref": "#/definitions/url"
-                        },
-                        "name": {
-                            "type": "string",
-                            "description": "Script name"
-                        }
-                    }
-                },
-                {
+            "properties": {
+                "id": {
+                    "description": "A unique, user defined identifier that can  be used to refer to this script from requests.",
                     "type": "string"
+                },
+                "type": {
+                    "description": "Type of the script. E.g: 'text/javascript'",
+                    "type": "string"
+                },
+                "exec": {
+                    "oneOf": [
+                        {
+                            "type": "array",
+                            "description": "This is an array of strings, where each line represents a single line of code. Having lines separate makes it possible to easily track changes made to scripts.",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "src": {
+                    "$ref": "#/definitions/url"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Script name"
                 }
-            ]
+            }
         },
         "url": {
             "description": "If object, contains the complete broken-down URL for this request. If string, contains the literal request URL.",
