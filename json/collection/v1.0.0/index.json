@@ -30,6 +30,14 @@
             "uniqueItems": true,
             "description": "The order array ensures that your requests and folders don't randomly get shuffled up. It holds a sequence of [UUIDs](https://en.wikipedia.org/wiki/Universally_unique_identifier) corresponding to folders and requests.\n *Note that if a folder ID or a request ID (if the request is not already part of a folder) is not included in the order array, the request or the folder will not show up in the collection.*"
         },
+        "folders_order": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "uniqueItems": true,
+            "description": "The folders order array ensures that your requests and folders don't randomly get shuffled up. It holds a sequence of [UUIDs](https://en.wikipedia.org/wiki/Universally_unique_identifier) corresponding to folders and requests.\n *Note that if a folder ID or a request ID (if the request is not already part of a folder) is not included in the order array, the request or the folder will not show up in the collection.*"
+        },
         "folders": {
             "type": "array",
             "items": {
@@ -82,6 +90,14 @@
                     },
                     "uniqueItems": true,
                     "description": "Postman preserves the order of your requests within each folder. This field holds a sequence of [UUIDs](https://en.wikipedia.org/wiki/Globally_unique_identifier), where each ID corresponds to a particular Postman request."
+                },
+                "folders_order": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "uniqueItems": true,
+                    "description": "Postman preserves the order of your folders within each folder. This field holds a sequence of [UUIDs](https://en.wikipedia.org/wiki/Globally_unique_identifier), where each ID corresponds to a particular collection folder."
                 },
                 "collection_id": {
                     "type": "string",
