@@ -77,6 +77,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             },
@@ -91,6 +97,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             },
@@ -105,6 +117,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             },
@@ -119,6 +137,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             }
@@ -140,6 +164,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             },
@@ -154,6 +184,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             }
@@ -175,6 +211,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             },
@@ -189,6 +231,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             },
@@ -203,6 +251,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             },
@@ -217,6 +271,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             },
@@ -231,6 +291,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             },
@@ -245,6 +311,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             },
@@ -259,6 +331,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             },
@@ -273,6 +351,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             },
@@ -287,6 +371,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             }
@@ -308,6 +398,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             },
@@ -322,6 +418,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             },
@@ -336,6 +438,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             },
@@ -350,6 +458,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             },
@@ -364,6 +478,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             },
@@ -378,6 +498,15 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string",
+                                            "number",
+                                            "boolean",
+                                            "any"
+                                        ]
                                     }
                                 }
                             },
@@ -392,6 +521,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             },
@@ -406,6 +541,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             },
@@ -420,6 +561,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             }
@@ -442,6 +589,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             },
@@ -456,6 +609,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             },
@@ -470,6 +629,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             },
@@ -484,6 +649,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             },
@@ -498,6 +669,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             },
@@ -512,6 +689,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             },
@@ -526,6 +709,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             },
@@ -540,6 +729,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             },
@@ -554,6 +749,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             },
@@ -567,7 +768,13 @@
                                         ]
                                     },
                                     "value": {
-                                        "type": "string"
+                                        "type": "boolean"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "boolean"
+                                        ]
                                     }
                                 }
                             }
@@ -589,6 +796,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             },
@@ -603,6 +816,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             },
@@ -617,6 +836,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             },
@@ -631,6 +856,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             },
@@ -645,6 +876,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             },
@@ -659,6 +896,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             },
@@ -673,6 +916,12 @@
                                     },
                                     "value": {
                                         "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
                                     }
                                 }
                             },
@@ -686,7 +935,13 @@
                                         ]
                                     },
                                     "value": {
-                                        "type": "string"
+                                        "type": "boolean"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "boolean"
+                                        ]
                                     }
                                 }
                             }
@@ -1472,7 +1727,13 @@
                 },
                 "type": {
                     "description": "A variable may have multiple types. This field specifies the type of the variable.",
-                    "type": "string"
+                    "type": "string",
+                    "enum": [
+                        "string",
+                        "boolean",
+                        "any",
+                        "number"
+                    ]
                 },
                 "name": {
                     "type": "string",

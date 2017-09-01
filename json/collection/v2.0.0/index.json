@@ -996,7 +996,13 @@
                 },
                 "type": {
                     "description": "A variable may have multiple types. This field specifies the type of the variable.",
-                    "type": "string"
+                    "type": "string",
+                    "enum": [
+                        "string",
+                        "boolean",
+                        "any",
+                        "number"
+                    ]
                 },
                 "name": {
                     "type": "string",
