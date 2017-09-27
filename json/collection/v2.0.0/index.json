@@ -64,152 +64,212 @@
                 },
                 "awsv4": {
                     "type": "object",
+                    "title": "AWS Signature v4",
+                    "description": "This helper attributes for [AWS Auth](http://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html)",
                     "properties": {
                         "accessKey": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "AWS Signature V4 calculation requires the AWS Access Key of the AWS IAM user being used. This key is stored in this field.\n *Note: Do not use your AWS root credentials here.*"
                         },
                         "secretKey": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "The AWS Secret key associated with the Access Key is stored in this field.\n *Note: Do not use your AWS root credentials here.*"
                         },
                         "region": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "The AWS region code, must be one of the ones mentioned in the [AWS Documentation](http://docs.aws.amazon.com/general/latest/gr/rande.html)"
                         },
                         "service": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "The AWS Service endpoint. Refer to the [AWS Documentation](http://docs.aws.amazon.com/general/latest/gr/rande.html) for possible values."
                         }
                     }
                 },
                 "basic": {
                     "type": "object",
+                    "title": "Basic Authentication",
+                    "description": "The helper attributes for [Basic Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication)",
                     "properties": {
                         "username": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "The username to be used for Basic Authentication is stored in this field."
                         },
                         "password": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "The password to be used for Basic Authentication is stored in this field."
                         }
                     }
                 },
                 "digest": {
                     "type": "object",
+                    "title": "Digest Authentication",
+                    "description": "The helper attributes for [Digest Authentication](https://en.wikipedia.org/wiki/Digest_access_authentication).",
                     "properties": {
                         "username": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "The username to be used for digest Authentication is stored in this field."
                         },
                         "realm": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "The authentication 'realm' is stored in this field. Refer to [RFC 2617](https://tools.ietf.org/html/rfc2617) for details."
                         },
                         "password": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "The password to be used for digest Authentication is stored in this field."
                         },
                         "nonce": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "The Digest server challenges clients. A nonce is a part of that challenge, stored in this field."
                         },
                         "nonceCount": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "The nonceCount is the hexadecimal count of the number of requests (including the current request) that the client has sent with the nonce value in this request."
                         },
                         "algorithm": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "The algorithm to be used to sign the request."
                         },
                         "qop": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "Indicates the 'quality of protection' applied by the client to the message."
+                        },
+                        "opaque": {
+                            "type": "string",
+                            "description": "A string of data, specified by the server, which should be returned by the client unchanged."
                         },
                         "clientNonce": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "A client nonce enhances the security of HTTP Digest Authentication, and it is stored in this field."
                         }
                     }
                 },
                 "hawk": {
                     "type": "object",
+                    "title": "Hawk Authentication",
+                    "description": "Helper attributes for [Hawk Authentication](https://github.com/hueniverse/hawk)",
                     "properties": {
                         "authId": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "Hawk Authentication requires a client identifier to be passed to the server. This field contains that identifier."
                         },
                         "authKey": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "The secret that's shared by the server and the client. It is recommended to use an environment variable here, and set the value in your environment."
                         },
                         "algorithm": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "The hashing algorithm used in this Hawk authentication request is stored in this field."
                         },
                         "user": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "One can optionally send their username (if available) to the Hawk protected endpoint. This field holds the value, if given."
                         },
                         "nonce": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "The Hawk server challenges clients. A nonce is a part of that challenge, stored in this field."
                         },
                         "extraData": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "This field stores metadata for the current authentication request."
                         },
                         "appId": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "Serves to identify the backend app in case multiple ones are supported. This field is optional."
                         },
                         "delegation": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "This field is used when Hawk auth is used as a part of a larger protocol and serves as a place for handling complex scenarios such as access delegation."
+                        },
+                        "timestamp": {
+                            "type": "string",
+                            "description": "The timestamp for the current Hawk authentication request."
                         }
                     }
                 },
                 "noauth": {},
                 "oauth1": {
                     "type": "object",
+                    "title": "OAuth1",
+                    "description": "Helper attributes for [OAuth2](https://oauth.net/1/)",
                     "properties": {
                         "consumerKey": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "The oAuth1 Consumer Secret, along with the Consumer Key authenticates the client. This field holds the oAuth1 Consumer Key."
                         },
                         "consumerSecret": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "The oAuth1 Consumer Secret, along with the Consumer Key authenticates the client. The consumer secret is stored in this field."
                         },
                         "token": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "The request token is a temporary credential, and is stored by Postman in this field."
                         },
                         "tokenSecret": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "Like the token, the request token secret is a temporary credential stored for the current authentication request."
                         },
                         "signatureMethod": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "The name of the signature method used by the client to sign the request."
                         },
                         "timestamp": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "The timestamp associated with the current authentication request is stored in this field."
                         },
                         "nonce": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "A nonce is a random string, uniquely generated by the client to allow the server to verify that a request has never been made before and helps prevent replay attacks when requests are made over a non-secure channel."
                         },
                         "version": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "The oAuth version, usually, this is ``1.0`` for OAuth-1. For OAuth 2, use the dedicated OAuth 2.0 authentication helper instead."
                         },
                         "realm": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "The realm directive is required for all authentication schemes that issue a challenge. Refer to [RFC 2617](http://tools.ietf.org/html/rfc2617#section-1.2) for more details."
                         },
                         "encodeOAuthSign": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "This indicates whether or not to encode the request signature."
                         }
                     }
                 },
                 "oauth2": {
                     "type": "object",
+                    "title": "OAuth2",
+                    "description": "Helper attributes for [OAuth2](https://oauth.net/2/)",
                     "properties": {
                         "addTokenTo": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "The specifier for token handling behaviour is stored in this field."
                         },
                         "callBackUrl": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "This field contains the URL that has to be hit when the authentication process has completed."
                         },
                         "authUrl": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "The OAuth2 providers URL is stored in this field."
                         },
                         "accessTokenUrl": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "The URL to fetch access tokens is stored in this field."
                         },
                         "clientId": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "The unique client ID associated with the authentication request is stored in this field."
                         },
                         "clientSecret": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "The client secret associated with the current authentication request is stored in this field."
                         },
                         "scope": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "This field is used to specify the access privileges requested from the OAuth provider by the authentication request."
                         },
                         "requestAccessTokenLocally": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "Indicates whether the access token has to be fetched locally or remotely."
                         }
                     }
                 }
