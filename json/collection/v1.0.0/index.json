@@ -55,6 +55,12 @@
             "items": {
                 "$ref": "#/definitions/request"
             }
+        },
+        "currentHelper": {
+            "$ref": "#/definitions/current-helper"
+        },
+        "helperAttributes": {
+            "$ref": "#/definitions/helper-attributes"
         }
     },
     "required": [
@@ -64,6 +70,19 @@
         "requests"
     ],
     "definitions": {
+        "current-helper": {
+            "id": "#/definitions/current-helper",
+            "title": "Current auth helper",
+            "oneOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "description": "Postman can associate helpers with a request, which help with activities such as OAuth, Basic Authentication, etc. The type of helper associated with this request is stored in this field."
+        },
         "folder": {
             "$schema": "http://json-schema.org/draft-04/schema#",
             "id": "#/definitions/folder",
@@ -106,6 +125,12 @@
                 "collection": {
                     "type": "string",
                     "description": "Postman folders are always a part of a collection. That collection's unique ID (which is a [UUID](https://en.wikipedia.org/wiki/Globally_unique_identifier)) is stored in this field."
+                },
+                "currentHelper": {
+                    "$ref": "#/definitions/current-helper"
+                },
+                "helperAttributes": {
+                    "$ref": "#/definitions/helper-attributes"
                 }
             },
             "required": [
@@ -114,6 +139,252 @@
                 "description",
                 "order"
             ]
+        },
+        "helper-attributes": {
+            "id": "#/definitions/helper-attributes",
+            "oneOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "object",
+                    "title": "AWS-SignatureV4",
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "enum": [
+                                "awsSigV4"
+                            ],
+                            "description": "This field contains the type of the helper. In this case, it is ``awsSigV4``"
+                        },
+                        "accessKey": {
+                            "type": "string",
+                            "description": "AWS Signature V4 calculation requires the AWS Access Key of the AWS IAM user being used. This key is stored in this field.\n *Note: Do not use your AWS root credentials here.*"
+                        },
+                        "secretKey": {
+                            "type": "string",
+                            "description": "The AWS Secret key associated with the Access Key is stored in this field.\n *Note: Do not use your AWS root credentials here.*"
+                        },
+                        "region": {
+                            "type": "string",
+                            "description": "The AWS region code, must be one of the ones mentioned in the [AWS Documentation](http://docs.aws.amazon.com/general/latest/gr/rande.html)"
+                        },
+                        "service": {
+                            "type": "string",
+                            "description": "The AWS Service endpoint. Refer to the [AWS Documentation](http://docs.aws.amazon.com/general/latest/gr/rande.html) for possible values."
+                        }
+                    },
+                    "additionalProperties": true,
+                    "required": [
+                        "id"
+                    ]
+                },
+                {
+                    "type": "object",
+                    "title": "DigestAuth",
+                    "description": "Helper attributes for Digest Authentication",
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "enum": [
+                                "digest"
+                            ],
+                            "description": "This field contains the type of the helper. In this case, it is ``digest``"
+                        },
+                        "algorithm": {
+                            "type": "string",
+                            "description": "The hashing algorithm used in this Digest authenticated request is stored in this field."
+                        },
+                        "username": {
+                            "type": "string",
+                            "description": "The username to be used for digest Authentication is stored in this field."
+                        },
+                        "realm": {
+                            "type": "string",
+                            "description": "The authentication 'realm' is stored in this field. Refer to [RFC 2617](https://tools.ietf.org/html/rfc2617) for details."
+                        },
+                        "password": {
+                            "type": "string",
+                            "description": "The password to be used for digest Authentication is stored in this field."
+                        },
+                        "nonce": {
+                            "type": "string",
+                            "description": "The Digest server challenges clients. A nonce is a part of that challenge, stored in this field."
+                        },
+                        "qop": {
+                            "type": "string",
+                            "description": "Indicates what \"quality of protection\" the client has applied to the message."
+                        },
+                        "nonceCount": {
+                            "type": "string",
+                            "description": "The nonceCount is the hexadecimal count of the number of requests (including the current request) that the client has sent with the nonce value in this request."
+                        },
+                        "clientNonce": {
+                            "type": "string",
+                            "description": "A client nonce enhances the security of HTTP Digest Authentication, and it is stored in this field."
+                        },
+                        "opaque": {
+                            "type": "string",
+                            "description": "A string of data, specified by the server, which should be returned by the client unchanged."
+                        }
+                    },
+                    "additionalProperties": true,
+                    "required": [
+                        "id"
+                    ]
+                },
+                {
+                    "type": "object",
+                    "title": "HawkAuth",
+                    "description": "Helper attributes for Hawk Authentication",
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "enum": [
+                                "hawk"
+                            ],
+                            "description": "This field contains the type of the Postman helper. In this case, it is ``hawk``"
+                        },
+                        "hawk_id": {
+                            "type": "string",
+                            "description": "Hawk Authentication requires a client identifier to be passed to the server. This field contains that identifier."
+                        },
+                        "hawk_key": {
+                            "type": "string",
+                            "description": "The secret that's shared by the server and the client. It is recommended to use an environment variable here, and set the value in your environment."
+                        },
+                        "algorithm": {
+                            "type": "string",
+                            "description": "The hashing algorithm used in this Digest authenticated request is stored in this field."
+                        },
+                        "user": {
+                            "type": "string",
+                            "description": "One can optionally send their username (if available) to the Hawk protected endpoint. This field holds the value, if given."
+                        },
+                        "nonce": {
+                            "type": "string",
+                            "description": "The Digest server challenges clients. A nonce is a part of that challenge, stored in this field."
+                        },
+                        "ext": {
+                            "type": "string",
+                            "description": "Extra data sent to the app."
+                        },
+                        "dlg": {
+                            "type": "string",
+                            "description": "This field is used when Hawk auth is used as a part of a larger protocol and serves as a place for handling complex scenarios such as access delegation."
+                        },
+                        "app": {
+                            "type": "string",
+                            "description": "Serves to identify the backend app in case multiple ones are supported. This field is optional."
+                        },
+                        "timestamp": {
+                            "type": "string",
+                            "description": "Contains the timestamp used when signing the request."
+                        }
+                    },
+                    "additionalProperties": true,
+                    "required": [
+                        "id"
+                    ]
+                },
+                {
+                    "type": "object",
+                    "title": "BasicAuth",
+                    "description": "Helper attributes for Basic Authentication",
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "enum": [
+                                "basic"
+                            ],
+                            "description": "This field contains the type of the helper. In this case, it is ``basic``"
+                        },
+                        "username": {
+                            "type": "string",
+                            "description": "The username to be used for Basic Authentication is stored in this field."
+                        },
+                        "password": {
+                            "type": "string",
+                            "description": "The password to be used for digest Authentication is stored in this field."
+                        }
+                    },
+                    "additionalProperties": true,
+                    "required": [
+                        "id"
+                    ]
+                },
+                {
+                    "type": "object",
+                    "title": "OAuth1",
+                    "description": "Helper attributes for OAuth-1 Authentication",
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "enum": [
+                                "oAuth1"
+                            ],
+                            "description": "This field contains the type of the helper. In this case, it is ``oAuth1``"
+                        },
+                        "consumerKey": {
+                            "type": "string",
+                            "description": "The oAuth1 Consumer Secret, along with the Consumer Key authenticates the client. This field holds the oAuth1 Consumer Key"
+                        },
+                        "consumerSecret": {
+                            "type": "string",
+                            "description": "The oAuth1 Consumer Secret, along with the Consumer Key authenticates the client. The consumer secret is stored in this field."
+                        },
+                        "token": {
+                            "type": "string",
+                            "description": "The request token is a temporary credential, and is stored by Postman in this field."
+                        },
+                        "tokenSecret": {
+                            "type": "string",
+                            "description": "The request token secret is a temporary credential."
+                        },
+                        "signatureMethod": {
+                            "type": "string",
+                            "description": "The name of the signature method used by the client to sign the request."
+                        },
+                        "nonce": {
+                            "type": "string",
+                            "description": "A nonce is a random string, uniquely generated by the client to allow the server to verify that a request has never been made before and helps prevent replay attacks when requests are made over a non-secure channel."
+                        },
+                        "version": {
+                            "type": "string",
+                            "description": "The oAuth version, usually, this is ``1.0`` for OAuth-1"
+                        },
+                        "realm": {
+                            "type": "string",
+                            "description": "The realm directive is required for all authentication schemes that issue a challenge. Refer to [RFC 2617](http://tools.ietf.org/html/rfc2617#section-1.2) for more details."
+                        },
+                        "header": {
+                            "type": "boolean",
+                            "description": "Set this parameter to 'true' if you want Postman to add the OAuth parameters to the request headers. If false, the query string is used instead."
+                        },
+                        "auto": {
+                            "type": "boolean",
+                            "description": "This field controls whether OAuth1 parameters are automatically added to the request."
+                        },
+                        "includeEmpty": {
+                            "type": "boolean",
+                            "description": "If you would like to include empty parameters in the request, set this to 'true', else set it to 'false'"
+                        }
+                    },
+                    "additionalProperties": true,
+                    "required": [
+                        "id"
+                    ]
+                },
+                {
+                    "type": "null"
+                },
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {}
+                }
+            ],
+            "description": "A helper may require a number of parameters to actually be helpful. The parameters used by the helper can be stored in this field, as an object. E.g when using Basic Authentication, the username and password will be stored here."
         },
         "request": {
             "$schema": "http://json-schema.org/draft-04/schema#",
@@ -230,255 +501,10 @@
                     "description": "The HTTP method associated with this request."
                 },
                 "currentHelper": {
-                    "oneOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "Postman can associate helpers with a request, which help with activities such as OAuth, Basic Authentication, etc. The type of helper associated with this request is stored in this field."
+                    "$ref": "#/definitions/current-helper"
                 },
                 "helperAttributes": {
-                    "oneOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "object",
-                            "title": "AWS-SignatureV4",
-                            "properties": {
-                                "id": {
-                                    "type": "string",
-                                    "enum": [
-                                        "awsSigV4"
-                                    ],
-                                    "description": "This field contains the type of the helper. In this case, it is ``awsSigV4``"
-                                },
-                                "accessKey": {
-                                    "type": "string",
-                                    "description": "AWS Signature V4 calculation requires the AWS Access Key of the AWS IAM user being used. This key is stored in this field.\n *Note: Do not use your AWS root credentials here.*"
-                                },
-                                "secretKey": {
-                                    "type": "string",
-                                    "description": "The AWS Secret key associated with the Access Key is stored in this field.\n *Note: Do not use your AWS root credentials here.*"
-                                },
-                                "region": {
-                                    "type": "string",
-                                    "description": "The AWS region code, must be one of the ones mentioned in the [AWS Documentation](http://docs.aws.amazon.com/general/latest/gr/rande.html)"
-                                },
-                                "service": {
-                                    "type": "string",
-                                    "description": "The AWS Service endpoint. Refer to the [AWS Documentation](http://docs.aws.amazon.com/general/latest/gr/rande.html) for possible values."
-                                }
-                            },
-                            "required": [
-                                "id"
-                            ]
-                        },
-                        {
-                            "type": "object",
-                            "title": "DigestAuth",
-                            "description": "Helper attributes for Digest Authentication",
-                            "properties": {
-                                "id": {
-                                    "type": "string",
-                                    "enum": [
-                                        "digest"
-                                    ],
-                                    "description": "This field contains the type of the helper. In this case, it is ``digest``"
-                                },
-                                "algorithm": {
-                                    "type": "string",
-                                    "description": "The hashing algorithm used in this Digest authenticated request is stored in this field."
-                                },
-                                "username": {
-                                    "type": "string",
-                                    "description": "The username to be used for digest Authentication is stored in this field."
-                                },
-                                "realm": {
-                                    "type": "string",
-                                    "description": "The authentication 'realm' is stored in this field. Refer to [RFC 2617](https://tools.ietf.org/html/rfc2617) for details."
-                                },
-                                "password": {
-                                    "type": "string",
-                                    "description": "The password to be used for digest Authentication is stored in this field."
-                                },
-                                "nonce": {
-                                    "type": "string",
-                                    "description": "The Digest server challenges clients. A nonce is a part of that challenge, stored in this field."
-                                },
-                                "qop": {
-                                    "type": "string",
-                                    "description": "Indicates what \"quality of protection\" the client has applied to the message."
-                                },
-                                "nonceCount": {
-                                    "type": "string",
-                                    "description": "The nonceCount is the hexadecimal count of the number of requests (including the current request) that the client has sent with the nonce value in this request."
-                                },
-                                "clientNonce": {
-                                    "type": "string",
-                                    "description": "A client nonce enhances the security of HTTP Digest Authentication, and it is stored in this field."
-                                },
-                                "opaque": {
-                                    "type": "string",
-                                    "description": "A string of data, specified by the server, which should be returned by the client unchanged."
-                                }
-                            },
-                            "required": [
-                                "id"
-                            ]
-                        },
-                        {
-                            "type": "object",
-                            "title": "HawkAuth",
-                            "description": "Helper attributes for Hawk Authentication",
-                            "properties": {
-                                "id": {
-                                    "type": "string",
-                                    "enum": [
-                                        "hawk"
-                                    ],
-                                    "description": "This field contains the type of the Postman helper. In this case, it is ``hawk``"
-                                },
-                                "hawk_id": {
-                                    "type": "string",
-                                    "description": "Hawk Authentication requires a client identifier to be passed to the server. This field contains that identifier."
-                                },
-                                "hawk_key": {
-                                    "type": "string",
-                                    "description": "The secret that's shared by the server and the client. It is recommended to use an environment variable here, and set the value in your environment."
-                                },
-                                "algorithm": {
-                                    "type": "string",
-                                    "description": "The hashing algorithm used in this Digest authenticated request is stored in this field."
-                                },
-                                "user": {
-                                    "type": "string",
-                                    "description": "One can optionally send their username (if available) to the Hawk protected endpoint. This field holds the value, if given."
-                                },
-                                "nonce": {
-                                    "type": "string",
-                                    "description": "The Digest server challenges clients. A nonce is a part of that challenge, stored in this field."
-                                },
-                                "ext": {
-                                    "type": "string",
-                                    "description": "Extra data sent to the app."
-                                },
-                                "dlg": {
-                                    "type": "string",
-                                    "description": "This field is used when Hawk auth is used as a part of a larger protocol and serves as a place for handling complex scenarios such as access delegation."
-                                },
-                                "app": {
-                                    "type": "string",
-                                    "description": "Serves to identify the backend app in case multiple ones are supported. This field is optional."
-                                },
-                                "timestamp": {
-                                    "type": "string",
-                                    "description": "Contains the timestamp used when signing the request."
-                                }
-                            },
-                            "required": [
-                                "id"
-                            ]
-                        },
-                        {
-                            "type": "object",
-                            "title": "BasicAuth",
-                            "description": "Helper attributes for Basic Authentication",
-                            "properties": {
-                                "id": {
-                                    "type": "string",
-                                    "enum": [
-                                        "basic"
-                                    ],
-                                    "description": "This field contains the type of the helper. In this case, it is ``basic``"
-                                },
-                                "username": {
-                                    "type": "string",
-                                    "description": "The username to be used for Basic Authentication is stored in this field."
-                                },
-                                "password": {
-                                    "type": "string",
-                                    "description": "The password to be used for digest Authentication is stored in this field."
-                                }
-                            },
-                            "required": [
-                                "id"
-                            ]
-                        },
-                        {
-                            "type": "object",
-                            "title": "OAuth1",
-                            "description": "Helper attributes for OAuth-1 Authentication",
-                            "properties": {
-                                "id": {
-                                    "type": "string",
-                                    "enum": [
-                                        "oAuth1"
-                                    ],
-                                    "description": "This field contains the type of the helper. In this case, it is ``oAuth1``"
-                                },
-                                "consumerKey": {
-                                    "type": "string",
-                                    "description": "The oAuth1 Consumer Secret, along with the Consumer Key authenticates the client. This field holds the oAuth1 Consumer Key"
-                                },
-                                "consumerSecret": {
-                                    "type": "string",
-                                    "description": "The oAuth1 Consumer Secret, along with the Consumer Key authenticates the client. The consumer secret is stored in this field."
-                                },
-                                "token": {
-                                    "type": "string",
-                                    "description": "The request token is a temporary credential, and is stored by Postman in this field."
-                                },
-                                "tokenSecret": {
-                                    "type": "string",
-                                    "description": "The request token secret is a temporary credential."
-                                },
-                                "signatureMethod": {
-                                    "type": "string",
-                                    "description": "The name of the signature method used by the client to sign the request."
-                                },
-                                "nonce": {
-                                    "type": "string",
-                                    "description": "A nonce is a random string, uniquely generated by the client to allow the server to verify that a request has never been made before and helps prevent replay attacks when requests are made over a non-secure channel."
-                                },
-                                "version": {
-                                    "type": "string",
-                                    "description": "The oAuth version, usually, this is ``1.0`` for OAuth-1"
-                                },
-                                "realm": {
-                                    "type": "string",
-                                    "description": "The realm directive is required for all authentication schemes that issue a challenge. Refer to [RFC 2617](http://tools.ietf.org/html/rfc2617#section-1.2) for more details."
-                                },
-                                "header": {
-                                    "type": "boolean",
-                                    "description": "Set this parameter to 'true' if you want Postman to add the OAuth parameters to the request headers. If false, the query string is used instead."
-                                },
-                                "auto": {
-                                    "type": "boolean",
-                                    "description": "This field controls whether OAuth1 parameters are automatically added to the request."
-                                },
-                                "includeEmpty": {
-                                    "type": "boolean",
-                                    "description": "If you would like to include empty parameters in the request, set this to 'true', else set it to 'false'"
-                                }
-                            },
-                            "required": [
-                                "id"
-                            ]
-                        },
-                        {
-                            "type": "null"
-                        },
-                        {
-                            "type": "object",
-                            "additionalProperties": false,
-                            "properties": {}
-                        }
-                    ],
-                    "description": "A helper may require a number of parameters to actually be helpful. The parameters used by the helper can be stored in this field, as an object. E.g when using Basic Authentication, the username and password will be stored here."
+                    "$ref": "#/definitions/helper-attributes"
                 },
                 "pathVariables": {
                     "oneOf": [
