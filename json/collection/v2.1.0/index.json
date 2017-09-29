@@ -55,6 +55,7 @@
                     "enum": [
                         "awsv4",
                         "basic",
+                        "bearer",
                         "digest",
                         "hawk",
                         "noauth",
@@ -191,6 +192,36 @@
                                         "type": "string",
                                         "enum": [
                                             "password"
+                                        ]
+                                    },
+                                    "value": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                },
+                "bearer": {
+                    "type": "array",
+                    "title": "Bearer Token Authentication",
+                    "description": "The helper attributes for [Bearer Token Authentication](https://tools.ietf.org/html/rfc6750)",
+                    "items": {
+                        "oneOf": [
+                            {
+                                "type": "object",
+                                "description": "The token to be used for Bearer Authentication is stored in this field.",
+                                "properties": {
+                                    "key": {
+                                        "type": "string",
+                                        "enum": [
+                                            "token"
                                         ]
                                     },
                                     "value": {
@@ -398,6 +429,28 @@
                                         "type": "string",
                                         "enum": [
                                             "string"
+                                        ]
+                                    }
+                                }
+                            },
+                            {
+                                "type": "object",
+                                "description": "When set to true, disables interactive replay mode for the parent request.",
+                                "properties": {
+                                    "key": {
+                                        "type": "string",
+                                        "enum": [
+                                            "disableRetryRequest"
+                                        ]
+                                    },
+                                    "value": {
+                                        "type": "boolean",
+                                        "default": false
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "boolean"
                                         ]
                                     }
                                 }
@@ -609,7 +662,7 @@
                 "ntlm": {
                     "type": "array",
                     "title": "NTLM Authentication",
-                    "description": "Helper attributes for [Hawk Authentication](https://github.com/hueniverse/hawk)",
+                    "description": "Helper attributes for [NTLM Authentication](https://msdn.microsoft.com/en-us/library/cc237488.aspx)",
                     "items": {
                         "oneOf": [
                             {

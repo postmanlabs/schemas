@@ -226,6 +226,11 @@
                         "opaque": {
                             "type": "string",
                             "description": "A string of data, specified by the server, which should be returned by the client unchanged."
+                        },
+                        "disableRetryRequest": {
+                            "type": "boolean",
+                            "default": false,
+                            "description": "When set to true, disables interactive replay mode for the parent request."
                         }
                     },
                     "additionalProperties": true,
@@ -290,7 +295,7 @@
                 {
                     "type": "object",
                     "title": "NTLMAuth",
-                    "description": "Helper attributes for NTLM Authentication",
+                    "description": "Helper attributes for [NTLM Authentication](https://msdn.microsoft.com/en-us/library/cc237488.aspx)",
                     "properties": {
                         "id": {
                             "type": "string",
@@ -344,6 +349,28 @@
                         "password": {
                             "type": "string",
                             "description": "The password to be used for digest Authentication is stored in this field."
+                        }
+                    },
+                    "additionalProperties": true,
+                    "required": [
+                        "id"
+                    ]
+                },
+                {
+                    "type": "object",
+                    "title": "BearerAuth",
+                    "description": "The helper attributes for [Bearer Token Authentication](https://tools.ietf.org/html/rfc6750)",
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "enum": [
+                                "bearer"
+                            ],
+                            "description": "This field contains the type of the helper. In this case, it is ``bearer``"
+                        },
+                        "token": {
+                            "type": "string",
+                            "description": "The token to be used for Bearer Authentication is stored in this field."
                         }
                     },
                     "additionalProperties": true,

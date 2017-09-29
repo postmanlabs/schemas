@@ -55,6 +55,7 @@
                     "enum": [
                         "awsv4",
                         "basic",
+                        "bearer",
                         "digest",
                         "hawk",
                         "ntlm",
@@ -101,6 +102,17 @@
                         }
                     }
                 },
+                "bearer": {
+                    "type": "object",
+                    "title": "Bearer Token Authentication",
+                    "description": "The helper attributes for [Bearer Token Authentication](https://tools.ietf.org/html/rfc6750)",
+                    "properties": {
+                        "token": {
+                            "type": "string",
+                            "description": "The token to be used for Bearer Authentication is stored in this field."
+                        }
+                    }
+                },
                 "digest": {
                     "type": "object",
                     "title": "Digest Authentication",
@@ -141,6 +153,11 @@
                         "clientNonce": {
                             "type": "string",
                             "description": "A client nonce enhances the security of HTTP Digest Authentication, and it is stored in this field."
+                        },
+                        "disableRetryRequest": {
+                            "type": "boolean",
+                            "default": false,
+                            "description": "When set to true, disables interactive replay mode for the parent request."
                         }
                     }
                 },
@@ -190,6 +207,8 @@
                 "noauth": {},
                 "ntlm": {
                     "type": "object",
+                    "title": "NTLM Authentication",
+                    "description": "Helper attributes for [NTLM Authentication](https://msdn.microsoft.com/en-us/library/cc237488.aspx)",
                     "properties": {
                         "username": {
                             "type": "string",
