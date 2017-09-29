@@ -59,7 +59,8 @@
                         "hawk",
                         "noauth",
                         "oauth1",
-                        "oauth2"
+                        "oauth2",
+                        "ntlm"
                     ]
                 },
                 "awsv4": {
@@ -598,6 +599,121 @@
                                         "type": "string",
                                         "enum": [
                                             "string"
+                                        ]
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                },
+                "ntlm": {
+                    "type": "array",
+                    "title": "NTLM Authentication",
+                    "description": "Helper attributes for [Hawk Authentication](https://github.com/hueniverse/hawk)",
+                    "items": {
+                        "oneOf": [
+                            {
+                                "type": "object",
+                                "description": "The username to be used for NTLM Authentication is stored in this field.",
+                                "properties": {
+                                    "key": {
+                                        "type": "string",
+                                        "enum": [
+                                            "username"
+                                        ]
+                                    },
+                                    "value": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
+                                    }
+                                }
+                            },
+                            {
+                                "type": "object",
+                                "description": "The password to be used for NTLM Authentication is stored in this field.",
+                                "properties": {
+                                    "key": {
+                                        "type": "string",
+                                        "enum": [
+                                            "password"
+                                        ]
+                                    },
+                                    "value": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
+                                    }
+                                }
+                            },
+                            {
+                                "type": "object",
+                                "description": "The domain to be used for NTLM Authentication is stored in this field.",
+                                "properties": {
+                                    "key": {
+                                        "type": "string",
+                                        "enum": [
+                                            "domain"
+                                        ]
+                                    },
+                                    "value": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
+                                    }
+                                }
+                            },
+                            {
+                                "type": "object",
+                                "description": "The workstation to be used for NTLM Authentication is stored in this field.",
+                                "properties": {
+                                    "key": {
+                                        "type": "string",
+                                        "enum": [
+                                            "workstation"
+                                        ]
+                                    },
+                                    "value": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
+                                    }
+                                }
+                            },
+                            {
+                                "type": "object",
+                                "description": "When set to true, disables interactive replay mode for the parent request.",
+                                "properties": {
+                                    "key": {
+                                        "type": "string",
+                                        "enum": [
+                                            "disableRetryRequest"
+                                        ]
+                                    },
+                                    "value": {
+                                        "type": "boolean",
+                                        "default": false
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "boolean"
                                         ]
                                     }
                                 }

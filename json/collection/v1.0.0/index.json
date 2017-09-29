@@ -289,6 +289,44 @@
                 },
                 {
                     "type": "object",
+                    "title": "NTLMAuth",
+                    "description": "Helper attributes for NTLM Authentication",
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "enum": [
+                                "ntlm"
+                            ],
+                            "description": "This field contains the type of the helper. In this case, it is ``ntlm``"
+                        },
+                        "username": {
+                            "type": "string",
+                            "description": "The username to be used for NTLM Authentication is stored in this field."
+                        },
+                        "password": {
+                            "type": "string",
+                            "description": "The password to be used for NTLM Authentication is stored in this field."
+                        },
+                        "domain": {
+                            "type": "string",
+                            "description": "The domain to be used for NTLM Authentication is stored in this field."
+                        },
+                        "workstation": {
+                            "type": "string",
+                            "description": "The workstation to be used for NTLM Authentication is stored in this field."
+                        },
+                        "disableRetryRequest": {
+                            "type": "boolean",
+                            "default": false,
+                            "description": "When set to true, disables interactive replay mode for the parent request."
+                        }
+                    },
+                    "required": [
+                        "id"
+                    ]
+                },
+                {
+                    "type": "object",
                     "title": "BasicAuth",
                     "description": "Helper attributes for Basic Authentication",
                     "properties": {
