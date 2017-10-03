@@ -6,7 +6,7 @@ Repository of all schemas for JSON structures compatible with Postman (such as t
 
 ## Usage
 
-All the schemas in this repository are valid JSON Schemas, compliant with the [JSON-Schema, Draft 4](http://json-schema.org/documentation.html). As such, they can be used with a [number of tools]() to validate arbitrary JSON blobs. 
+All the schemas in this repository are valid JSON Schemas, compliant with the [JSON-Schema, Draft 4](http://json-schema.org/documentation.html). As such, they can be used with a number of tools to validate arbitrary JSON blobs, as show below: 
 
 ### Examples: JavaScript
 
