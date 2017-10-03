@@ -286,6 +286,10 @@
                     "properties": {
                         "addTokenTo": {
                             "type": "string",
+                            "enum": [
+                                "header",
+                                "queryParams"
+                            ],
                             "description": "The specifier for token handling behaviour is stored in this field."
                         },
                         "callBackUrl": {
@@ -308,13 +312,39 @@
                             "type": "string",
                             "description": "The client secret associated with the current authentication request is stored in this field."
                         },
+                        "clientAuth": {
+                            "type": "string",
+                            "enum": [
+                                "body",
+                                "header"
+                            ],
+                            "description": "The client authentication associated with the current request request is stored in this field."
+                        },
+                        "grantType": {
+                            "type": "string",
+                            "enum": [
+                                "authorization_code",
+                                "implicit",
+                                "password_credentials",
+                                "client_credentials"
+                            ],
+                            "description": "The grant type associated with the current authentication request is stored in this field."
+                        },
                         "scope": {
                             "type": "string",
                             "description": "This field is used to specify the access privileges requested from the OAuth provider by the authentication request."
                         },
-                        "requestAccessTokenLocally": {
+                        "username": {
                             "type": "string",
-                            "description": "Indicates whether the access token has to be fetched locally or remotely."
+                            "description": "This field is used to specify the OAuth2 provider username for the current request."
+                        },
+                        "password": {
+                            "type": "string",
+                            "description": "This field is used to specify the OAuth2 provider password for the current request."
+                        },
+                        "redirectUri": {
+                            "type": "string",
+                            "description": "This field is used to specify the redirection URL for OAuth2 authentication."
                         }
                     }
                 }

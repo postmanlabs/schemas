@@ -1011,7 +1011,11 @@
                                         ]
                                     },
                                     "value": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "enum": [
+                                            "header",
+                                            "queryParams"
+                                        ]
                                     },
                                     "type": {
                                         "type": "string",
@@ -1128,6 +1132,58 @@
                             },
                             {
                                 "type": "object",
+                                "description": "The client authentication associated with the current authentication request is stored in this field.",
+                                "properties": {
+                                    "key": {
+                                        "type": "string",
+                                        "enum": [
+                                            "clientAuth"
+                                        ]
+                                    },
+                                    "value": {
+                                        "type": "string",
+                                        "enum": [
+                                            "body",
+                                            "header"
+                                        ]
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
+                                    }
+                                }
+                            },
+                            {
+                                "type": "object",
+                                "description": "The grant type associated with the current authentication request is stored in this field.",
+                                "properties": {
+                                    "key": {
+                                        "type": "string",
+                                        "enum": [
+                                            "grantType"
+                                        ]
+                                    },
+                                    "value": {
+                                        "type": "string",
+                                        "enum": [
+                                            "authorization_code",
+                                            "implicit",
+                                            "password_credentials",
+                                            "client_credentials"
+                                        ]
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
+                                    }
+                                }
+                            },
+                            {
+                                "type": "object",
                                 "description": "This field is used to specify the access privileges requested from the OAuth provider by the authentication request.",
                                 "properties": {
                                     "key": {
@@ -1149,21 +1205,63 @@
                             },
                             {
                                 "type": "object",
-                                "description": "Indicates whether the access token has to be fetched locally or remotely.",
+                                "description": "This field is used to specify the OAuth2 provider username for the current request.",
                                 "properties": {
                                     "key": {
                                         "type": "string",
                                         "enum": [
-                                            "requestAccessTokenLocally"
+                                            "username"
                                         ]
                                     },
                                     "value": {
-                                        "type": "boolean"
+                                        "type": "string"
                                     },
                                     "type": {
                                         "type": "string",
                                         "enum": [
-                                            "boolean"
+                                            "string"
+                                        ]
+                                    }
+                                }
+                            },
+                            {
+                                "type": "object",
+                                "description": "This field is used to specify the OAuth2 provider password for the current request.",
+                                "properties": {
+                                    "key": {
+                                        "type": "string",
+                                        "enum": [
+                                            "password"
+                                        ]
+                                    },
+                                    "value": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
+                                    }
+                                }
+                            },
+                            {
+                                "type": "object",
+                                "description": "This field is used to specify the redirection URL for OAuth2 authentication.",
+                                "properties": {
+                                    "key": {
+                                        "type": "string",
+                                        "enum": [
+                                            "redirectUri"
+                                        ]
+                                    },
+                                    "value": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
                                         ]
                                     }
                                 }

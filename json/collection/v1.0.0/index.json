@@ -441,6 +441,82 @@
                     ]
                 },
                 {
+                    "type": "object",
+                    "title": "OAuth2",
+                    "description": "Helper attributes for [OAuth2](https://oauth.net/2/)",
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "enum": [
+                                "oAuth2"
+                            ],
+                            "description": "This field contains the type of the helper. In this case, it is ``oAuth2``"
+                        },
+                        "addTokenTo": {
+                            "type": "string",
+                            "enum": [
+                                "header",
+                                "queryParams"
+                            ],
+                            "description": "The specifier for token handling behaviour is stored in this field."
+                        },
+                        "callBackUrl": {
+                            "type": "string",
+                            "description": "This field contains the URL that has to be hit when the authentication process has completed."
+                        },
+                        "authUrl": {
+                            "type": "string",
+                            "description": "The OAuth2 providers URL is stored in this field."
+                        },
+                        "accessTokenUrl": {
+                            "type": "string",
+                            "description": "The URL to fetch access tokens is stored in this field."
+                        },
+                        "clientId": {
+                            "type": "string",
+                            "description": "The unique client ID associated with the authentication request is stored in this field."
+                        },
+                        "clientSecret": {
+                            "type": "string",
+                            "description": "The client secret associated with the current authentication request is stored in this field."
+                        },
+                        "clientAuth": {
+                            "type": "string",
+                            "enum": [
+                                "body",
+                                "header"
+                            ],
+                            "description": "The client authentication associated with the current request request is stored in this field."
+                        },
+                        "grantType": {
+                            "type": "string",
+                            "enum": [
+                                "authorization_code",
+                                "implicit",
+                                "password_credentials",
+                                "client_credentials"
+                            ],
+                            "description": "The grant type associated with the current authentication request is stored in this field."
+                        },
+                        "scope": {
+                            "type": "string",
+                            "description": "This field is used to specify the access privileges requested from the OAuth provider by the authentication request."
+                        },
+                        "username": {
+                            "type": "string",
+                            "description": "This field is used to specify the OAuth2 provider username for the current request."
+                        },
+                        "password": {
+                            "type": "string",
+                            "description": "This field is used to specify the OAuth2 provider password for the current request."
+                        },
+                        "redirectUri": {
+                            "type": "string",
+                            "description": "This field is used to specify the redirection URL for OAuth2 authentication."
+                        }
+                    }
+                },
+                {
                     "type": "null"
                 },
                 {
