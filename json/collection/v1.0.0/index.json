@@ -514,7 +514,11 @@
                             "type": "string",
                             "description": "This field is used to specify the redirection URL for OAuth2 authentication."
                         }
-                    }
+                    },
+                    "additionalProperties": true,
+                    "required": [
+                        "id"
+                    ]
                 },
                 {
                     "type": "null"
