@@ -1002,6 +1002,27 @@
                         "oneOf": [
                             {
                                 "type": "object",
+                                "description": "The access token for the current request is stored in this field.",
+                                "properties": {
+                                    "key": {
+                                        "type": "string",
+                                        "enum": [
+                                            "accessToken"
+                                        ]
+                                    },
+                                    "value": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
+                                    }
+                                }
+                            },
+                            {
+                                "type": "object",
                                 "description": "The specifier for token handling behaviour is stored in this field.",
                                 "properties": {
                                     "key": {
@@ -1247,12 +1268,54 @@
                             },
                             {
                                 "type": "object",
+                                "description": "This field is used to specify the OAuth2 token type for the current request.",
+                                "properties": {
+                                    "key": {
+                                        "type": "string",
+                                        "enum": [
+                                            "tokenType"
+                                        ]
+                                    },
+                                    "value": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
+                                    }
+                                }
+                            },
+                            {
+                                "type": "object",
                                 "description": "This field is used to specify the redirection URL for OAuth2 authentication.",
                                 "properties": {
                                     "key": {
                                         "type": "string",
                                         "enum": [
                                             "redirectUri"
+                                        ]
+                                    },
+                                    "value": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "string"
+                                        ]
+                                    }
+                                }
+                            },
+                            {
+                                "type": "object",
+                                "description": "This field is used to specify the refresh token for OAuth2 authentication.",
+                                "properties": {
+                                    "key": {
+                                        "type": "string",
+                                        "enum": [
+                                            "refreshToken"
                                         ]
                                     },
                                     "value": {
