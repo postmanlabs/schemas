@@ -22,18 +22,10 @@
             }
         },
         "event": {
-            "description": "Postman allows you to configure scripts to run when specific events occur. These scripts are stored here, and can be referenced in the collection by their ID.",
-            "type": "array",
-            "items": {
-                "$ref": "#/definitions/event"
-            }
+            "$ref": "#/definitions/event-list"
         },
         "variable": {
-            "description": "Collection variables allow you to define a set of variables, that are a *part of the collection*, as opposed to environments, which are separate entities.\n*Note: Collection variables must not contain any sensitive information.*",
-            "type": "array",
-            "items": {
-                "$ref": "#/definitions/variable"
-            }
+            "$ref": "#/definitions/variable-list"
         },
         "auth": {
             "$ref": "#/definitions/auth"
@@ -514,6 +506,16 @@
                 }
             ]
         },
+        "event-list": {
+            "id": "#/definitions/event-list",
+            "title": "Event List",
+            "type": "array",
+            "$schema": "http://json-schema.org/draft-04/schema#",
+            "description": "Postman allows you to configure scripts to run when specific events occur. These scripts are stored here, and can be referenced in the collection by their ID.",
+            "items": {
+                "$ref": "#/definitions/event"
+            }
+        },
         "event": {
             "$schema": "http://json-schema.org/draft-04/schema#",
             "id": "#/definitions/event",
@@ -620,6 +622,9 @@
                 "description": {
                     "$ref": "#/definitions/description"
                 },
+                "variable": {
+                    "$ref": "#/definitions/variable-list"
+                },
                 "item": {
                     "description": "Items are entities which contain an actual HTTP request, and sample responses attached to it. Folders may contain many items.",
                     "type": "array",
@@ -634,6 +639,9 @@
                             }
                         ]
                     }
+                },
+                "event": {
+                    "$ref": "#/definitions/event-list"
                 },
                 "auth": {
                     "$ref": "#/definitions/auth"
@@ -660,12 +668,11 @@
                 "description": {
                     "$ref": "#/definitions/description"
                 },
+                "variable": {
+                    "$ref": "#/definitions/variable-list"
+                },
                 "event": {
-                    "description": "Postman allows you to configure scripts to run when specific events occur. These scripts are stored here, and can be referenced in the collection by their ID.",
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/event"
-                    }
+                    "$ref": "#/definitions/event-list"
                 },
                 "request": {
                     "$ref": "#/definitions/request"
@@ -1124,6 +1131,15 @@
                 }
             ]
         },
+        "variable-list": {
+            "id": "#/definitions/variable-list",
+            "title": "Variable List",
+            "description": "Collection variables allow you to define a set of variables, that are a *part of the collection*, as opposed to environments, which are separate entities.\n*Note: Collection variables must not contain any sensitive information.*",
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/variable"
+            }
+        },
         "variable": {
             "id": "#/definitions/variable",
             "title": "Variable",
@@ -1157,6 +1173,15 @@
                 },
                 "description": {
                     "$ref": "#/definitions/description"
+                },
+                "system": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "When set to true, indicates that this variable has been set by Postman"
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "default": false
                 }
             },
             "oneOf": [
