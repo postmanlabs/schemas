@@ -1019,6 +1019,50 @@
                                         ]
                                     }
                                 }
+                            },
+                            {
+                                "type": "object",
+                                "description": "This indicates whether or not to add the authorization params to the Authorization header.",
+                                "properties": {
+                                    "key": {
+                                        "type": "string",
+                                        "enum": [
+                                            "addParamsToHeader"
+                                        ]
+                                    },
+                                    "value": {
+                                        "type": "boolean",
+                                        "default": false
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "boolean"
+                                        ]
+                                    }
+                                }
+                            },
+                            {
+                                "type": "object",
+                                "description": "This indicates whether or not to include empty valued parameters in the request signature.",
+                                "properties": {
+                                    "key": {
+                                        "type": "string",
+                                        "enum": [
+                                            "addEmptyParamsToSign"
+                                        ]
+                                    },
+                                    "value": {
+                                        "type": "boolean",
+                                        "default": false
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "boolean"
+                                        ]
+                                    }
+                                }
                             }
                         ]
                     }
