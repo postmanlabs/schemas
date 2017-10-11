@@ -1161,7 +1161,7 @@
                     "type": "string"
                 },
                 "key": {
-                    "description": "A variable ID is a unique user-defined value that identifies the variable within a collection. In traditional terms, this would be a variable name.",
+                    "description": "A variable key is a human friendly value that identifies the variable within a collection. In traditional terms, this would be a variable name.",
                     "type": "string"
                 },
                 "value": {
@@ -1194,17 +1194,8 @@
                     "default": false
                 }
             },
-            "oneOf": [
-                {
-                    "required": [
-                        "id"
-                    ]
-                },
-                {
-                    "required": [
-                        "key"
-                    ]
-                }
+            "required": [
+                "key"
             ]
         },
         "version": {
