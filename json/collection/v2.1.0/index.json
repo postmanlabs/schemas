@@ -2200,8 +2200,23 @@
                     "default": false
                 }
             },
-            "required": [
-                "key"
+            "anyOf": [
+                {
+                    "required": [
+                        "id"
+                    ]
+                },
+                {
+                    "required": [
+                        "key"
+                    ]
+                },
+                {
+                    "required": [
+                        "id",
+                        "key"
+                    ]
+                }
             ]
         },
         "version": {
