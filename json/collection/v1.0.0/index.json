@@ -63,7 +63,14 @@
             "$ref": "#/definitions/event-list"
         },
         "auth": {
-            "$ref": "#/definitions/auth"
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "$ref": "#/definitions/auth"
+                }
+            ]
         }
     },
     "required": [
@@ -1534,7 +1541,14 @@
                     "$ref": "#/definitions/event-list"
                 },
                 "auth": {
-                    "$ref": "#/definitions/auth"
+                    "oneOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "$ref": "#/definitions/auth"
+                        }
+                    ]
                 }
             },
             "required": [
@@ -2074,7 +2088,14 @@
                     "description": "The HTTP method associated with this request."
                 },
                 "auth": {
-                    "$ref": "#/definitions/auth"
+                    "oneOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "$ref": "#/definitions/auth"
+                        }
+                    ]
                 },
                 "currentHelper": {
                     "$ref": "#/definitions/current-helper"

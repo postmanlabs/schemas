@@ -28,7 +28,14 @@
             "$ref": "#/definitions/variable-list"
         },
         "auth": {
-            "$ref": "#/definitions/auth"
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "$ref": "#/definitions/auth"
+                }
+            ]
         }
     },
     "required": [
@@ -654,7 +661,14 @@
                     "$ref": "#/definitions/event-list"
                 },
                 "auth": {
-                    "$ref": "#/definitions/auth"
+                    "oneOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "$ref": "#/definitions/auth"
+                        }
+                    ]
                 }
             },
             "required": [
@@ -746,7 +760,14 @@
                             "$ref": "#/definitions/url"
                         },
                         "auth": {
-                            "$ref": "#/definitions/auth"
+                            "oneOf": [
+                                {
+                                    "type": "null"
+                                },
+                                {
+                                    "$ref": "#/definitions/auth"
+                                }
+                            ]
                         },
                         "proxy": {
                             "$ref": "#/definitions/proxy-config"
