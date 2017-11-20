@@ -1546,6 +1546,10 @@
             "description": "Defines a script associated with an associated event name",
             "type": "object",
             "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "A unique identifier for the enclosing event."
+                },
                 "listen": {
                     "type": "string",
                     "description": "Can be set to `test` or `prerequest` for test scripts or pre-request scripts respectively."
