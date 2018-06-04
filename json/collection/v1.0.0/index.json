@@ -80,6 +80,24 @@
         "requests"
     ],
     "definitions": {
+        "auth-attribute": {
+            "type": "object",
+            "title": "Auth",
+            "id": "#/definitions/auth-attribute",
+            "description": "Represents an attribute for any authorization method provided by Postman. For example `username` and `password` are set as auth attributes for Basic Authentication method.",
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "value": {},
+                "type": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "key"
+            ]
+        },
         "auth": {
             "type": "object",
             "title": "Auth",
@@ -100,148 +118,21 @@
                         "ntlm"
                     ]
                 },
+                "noauth": {},
                 "awsv4": {
                     "type": "array",
                     "title": "AWS Signature v4",
-                    "description": "This helper attributes for [AWS Auth](http://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html)",
+                    "description": "The attributes for [AWS Auth](http://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html).",
                     "items": {
-                        "oneOf": [
-                            {
-                                "type": "object",
-                                "description": "AWS Signature V4 calculation requires the AWS Access Key of the AWS IAM user being used. This key is stored in this field.\n *Note: Do not use your AWS root credentials here.*",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "accessKey"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "The AWS Secret key associated with the Access Key is stored in this field.\n *Note: Do not use your AWS root credentials here.*",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "secretKey"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "The AWS region code, must be one of the ones mentioned in the [AWS Documentation](http://docs.aws.amazon.com/general/latest/gr/rande.html)",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "region"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "The AWS Service endpoint. Refer to the [AWS Documentation](http://docs.aws.amazon.com/general/latest/gr/rande.html) for possible values.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "service"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            }
-                        ]
+                        "$ref": "#/definitions/auth-attribute"
                     }
                 },
                 "basic": {
                     "type": "array",
                     "title": "Basic Authentication",
-                    "description": "The helper attributes for [Basic Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication)",
+                    "description": "The attributes for [Basic Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication).",
                     "items": {
-                        "oneOf": [
-                            {
-                                "type": "object",
-                                "description": "The username to be used for Basic Authentication is stored in this field.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "username"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "The password to be used for Basic Authentication is stored in this field.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "password"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            }
-                        ]
+                        "$ref": "#/definitions/auth-attribute"
                     }
                 },
                 "bearer": {
@@ -249,829 +140,39 @@
                     "title": "Bearer Token Authentication",
                     "description": "The helper attributes for [Bearer Token Authentication](https://tools.ietf.org/html/rfc6750)",
                     "items": {
-                        "oneOf": [
-                            {
-                                "type": "object",
-                                "description": "The token to be used for Bearer Authentication is stored in this field.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "token"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            }
-                        ]
+                        "$ref": "#/definitions/auth-attribute"
                     }
                 },
                 "digest": {
                     "type": "array",
                     "title": "Digest Authentication",
-                    "description": "The helper attributes for [Digest Authentication](https://en.wikipedia.org/wiki/Digest_access_authentication).",
+                    "description": "The attributes for [Digest Authentication](https://en.wikipedia.org/wiki/Digest_access_authentication).",
                     "items": {
-                        "oneOf": [
-                            {
-                                "type": "object",
-                                "description": "The username to be used for digest Authentication is stored in this field.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "username"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "The authentication 'realm' is stored in this field. Refer to [RFC 2617](https://tools.ietf.org/html/rfc2617) for details.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "realm"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "The password to be used for digest Authentication is stored in this field.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "password"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "The Digest server challenges clients. A nonce is a part of that challenge, stored in this field.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "nonce"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "The nonceCount is the hexadecimal count of the number of requests (including the current request) that the client has sent with the nonce value in this request.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "nonceCount"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "The algorithm to be used to sign the request.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "algorithm"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "Indicates the 'quality of protection' applied by the client to the message.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "qop"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "A string of data, specified by the server, which should be returned by the client unchanged.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "opaque"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "A client nonce enhances the security of HTTP Digest Authentication, and it is stored in this field.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "clientNonce"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "When set to true, disables interactive replay mode for the parent request.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "disableRetryRequest"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "boolean",
-                                        "default": false
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "boolean"
-                                        ]
-                                    }
-                                }
-                            }
-                        ]
+                        "$ref": "#/definitions/auth-attribute"
                     }
                 },
                 "hawk": {
                     "type": "array",
                     "title": "Hawk Authentication",
-                    "description": "Helper attributes for [Hawk Authentication](https://github.com/hueniverse/hawk)",
+                    "description": "The attributes for [Hawk Authentication](https://github.com/hueniverse/hawk)",
                     "items": {
-                        "oneOf": [
-                            {
-                                "type": "object",
-                                "description": "Hawk Authentication requires a client identifier to be passed to the server. This field contains that identifier.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "authId"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "The secret that's shared by the server and the client. It is recommended to use an environment variable here, and set the value in your environment.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "authKey"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "The hashing algorithm used in the Hawk authenticated request is stored in this field.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "algorithm"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "One can optionally send their username (if available) to the Hawk protected endpoint. This field holds the value, if given.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "user"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "The Hawk Auth server challenges clients. A nonce is a part of that challenge, stored in this field.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "nonce"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "This field stores metadata for authentication current request.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "extraData"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string",
-                                            "number",
-                                            "boolean",
-                                            "any"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "Serves to identify the backend app in case multiple ones are supported. This field is optional.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "appId"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "This field is used when Hawk auth is used as a part of a larger protocol and serves as a place for handling complex scenarios such as access delegation.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "delegation"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "The timestamp for the current Hawk Authentication request is stored in this field.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "timestamp"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            }
-                        ]
+                        "$ref": "#/definitions/auth-attribute"
                     }
                 },
                 "ntlm": {
                     "type": "array",
                     "title": "NTLM Authentication",
-                    "description": "Helper attributes for [NTLM Authentication](https://msdn.microsoft.com/en-us/library/cc237488.aspx)",
+                    "description": "The attributes for [NTLM Authentication](https://msdn.microsoft.com/en-us/library/cc237488.aspx)",
                     "items": {
-                        "oneOf": [
-                            {
-                                "type": "object",
-                                "description": "The username to be used for NTLM Authentication is stored in this field.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "username"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "The password to be used for NTLM Authentication is stored in this field.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "password"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "The domain to be used for NTLM Authentication is stored in this field.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "domain"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "The workstation to be used for NTLM Authentication is stored in this field.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "workstation"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "When set to true, disables interactive replay mode for the parent request.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "disableRetryRequest"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "boolean",
-                                        "default": false
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "boolean"
-                                        ]
-                                    }
-                                }
-                            }
-                        ]
+                        "$ref": "#/definitions/auth-attribute"
                     }
                 },
-                "noauth": {},
                 "oauth1": {
                     "type": "array",
                     "title": "OAuth1",
-                    "description": "Helper attributes for [OAuth2](https://oauth.net/1/)",
+                    "description": "The attributes for [OAuth2](https://oauth.net/1/)",
                     "items": {
-                        "oneOf": [
-                            {
-                                "type": "object",
-                                "description": "The oAuth1 Consumer Secret, along with the Consumer Key authenticates the client. This field holds the oAuth1 Consumer Key.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "consumerKey"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "The oAuth1 Consumer Secret, along with the Consumer Key authenticates the client. The consumer secret is stored in this field.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "consumerSecret"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "The request token is a temporary credential, and is stored by Postman in this field.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "token"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "Like the token, the request token secret is a temporary credential stored for the current authentication request.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "tokenSecret"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "The name of the signature method used by the client to sign the request is stored in this field.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "signatureMethod"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "The timestamp associated with the current authentication request is stored in this field.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "timestamp"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "A nonce is a random string, uniquely generated by the client to allow the server to verify that a request has never been made before and helps prevent replay attacks when requests are made over a non-secure channel.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "nonce"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "The oAuth version, usually, this is ``1.0`` for OAuth-1. For OAuth 2, use the dedicated OAuth 2.0 authentication helper instead.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "version"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "The realm directive is required for all authentication schemes that issue a challenge. Refer to [RFC 2617](http://tools.ietf.org/html/rfc2617#section-1.2) for more details.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "realm"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "This indicates whether or not to encode the request signature.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "encodeOAuthSign"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "boolean"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "boolean"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "This indicates whether or not to add the authorization params to the Authorization header.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "addParamsToHeader"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "boolean",
-                                        "default": false
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "boolean"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "This indicates whether or not to include empty valued parameters in the request signature.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "addEmptyParamsToSign"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "boolean",
-                                        "default": false
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "boolean"
-                                        ]
-                                    }
-                                }
-                            }
-                        ]
+                        "$ref": "#/definitions/auth-attribute"
                     }
                 },
                 "oauth2": {
@@ -1079,337 +180,7 @@
                     "title": "OAuth2",
                     "description": "Helper attributes for [OAuth2](https://oauth.net/2/)",
                     "items": {
-                        "oneOf": [
-                            {
-                                "type": "object",
-                                "description": "The access token for the current request is stored in this field.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "accessToken"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "The specifier for token handling behaviour is stored in this field.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "addTokenTo"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string",
-                                        "enum": [
-                                            "header",
-                                            "queryParams"
-                                        ]
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "This field contains the URL that has to be hit when the authentication process has completed.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "callBackUrl"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "The OAuth2 providers URL is stored in this field.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "authUrl"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "The URL to fetch access tokens is stored in this field.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "accessTokenUrl"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "The unique client ID associated with the authentication request is stored in this field.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "clientId"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "The client secret associated with the current authentication request is stored in this field.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "clientSecret"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "The client authentication associated with the current authentication request is stored in this field.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "clientAuth"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string",
-                                        "enum": [
-                                            "body",
-                                            "header"
-                                        ]
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "The grant type associated with the current authentication request is stored in this field.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "grantType"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string",
-                                        "enum": [
-                                            "authorization_code",
-                                            "implicit",
-                                            "password_credentials",
-                                            "client_credentials"
-                                        ]
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "This field is used to specify the access privileges requested from the OAuth provider by the authentication request.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "scope"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "This field is used to specify the OAuth2 provider username for the current request.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "username"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "This field is used to specify the OAuth2 provider password for the current request.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "password"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "This field is used to specify the OAuth2 token type for the current request.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "tokenType"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "This field is used to specify the redirection URL for OAuth2 authentication.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "redirectUri"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "This field is used to specify the refresh token for OAuth2 authentication.",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "enum": [
-                                            "refreshToken"
-                                        ]
-                                    },
-                                    "value": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "string"
-                                        ]
-                                    }
-                                }
-                            }
-                        ]
+                        "$ref": "#/definitions/auth-attribute"
                     }
                 }
             },
@@ -1567,13 +338,23 @@
         },
         "helper-attributes": {
             "id": "#/definitions/helper-attributes",
+            "description": "A helper may require a number of parameters to actually be helpful. The parameters used by the helper can be stored in this field, as an object. E.g when using Basic Authentication, the username and password will be stored here.",
             "oneOf": [
+                {
+                    "type": "null"
+                },
                 {
                     "type": "string"
                 },
                 {
                     "type": "object",
-                    "title": "AWS-SignatureV4",
+                    "additionalProperties": false,
+                    "properties": {}
+                },
+                {
+                    "type": "object",
+                    "title": "AWS Signature v4",
+                    "description": "The attributes for [AWS Auth](http://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html). e.g. accessKey, secretKey, region, service.",
                     "properties": {
                         "id": {
                             "type": "string",
@@ -1581,22 +362,6 @@
                                 "awsSigV4"
                             ],
                             "description": "This field contains the type of the helper. In this case, it is ``awsSigV4``"
-                        },
-                        "accessKey": {
-                            "type": "string",
-                            "description": "AWS Signature V4 calculation requires the AWS Access Key of the AWS IAM user being used. This key is stored in this field.\n *Note: Do not use your AWS root credentials here.*"
-                        },
-                        "secretKey": {
-                            "type": "string",
-                            "description": "The AWS Secret key associated with the Access Key is stored in this field.\n *Note: Do not use your AWS root credentials here.*"
-                        },
-                        "region": {
-                            "type": "string",
-                            "description": "The AWS region code, must be one of the ones mentioned in the [AWS Documentation](http://docs.aws.amazon.com/general/latest/gr/rande.html)"
-                        },
-                        "service": {
-                            "type": "string",
-                            "description": "The AWS Service endpoint. Refer to the [AWS Documentation](http://docs.aws.amazon.com/general/latest/gr/rande.html) for possible values."
                         }
                     },
                     "additionalProperties": true,
@@ -1606,8 +371,8 @@
                 },
                 {
                     "type": "object",
-                    "title": "DigestAuth",
-                    "description": "Helper attributes for Digest Authentication",
+                    "title": "Digest Authentication",
+                    "description": "The attributes for [Digest Authentication](https://en.wikipedia.org/wiki/Digest_access_authentication). e.g. username, password, realm, nonce, nonceCount, algorithm, qop, opaque, clientNonce.",
                     "properties": {
                         "id": {
                             "type": "string",
@@ -1615,47 +380,6 @@
                                 "digest"
                             ],
                             "description": "This field contains the type of the helper. In this case, it is ``digest``"
-                        },
-                        "algorithm": {
-                            "type": "string",
-                            "description": "The hashing algorithm used in this Digest authenticated request is stored in this field."
-                        },
-                        "username": {
-                            "type": "string",
-                            "description": "The username to be used for digest Authentication is stored in this field."
-                        },
-                        "realm": {
-                            "type": "string",
-                            "description": "The authentication 'realm' is stored in this field. Refer to [RFC 2617](https://tools.ietf.org/html/rfc2617) for details."
-                        },
-                        "password": {
-                            "type": "string",
-                            "description": "The password to be used for digest Authentication is stored in this field."
-                        },
-                        "nonce": {
-                            "type": "string",
-                            "description": "The Digest server challenges clients. A nonce is a part of that challenge, stored in this field."
-                        },
-                        "qop": {
-                            "type": "string",
-                            "description": "Indicates what \"quality of protection\" the client has applied to the message."
-                        },
-                        "nonceCount": {
-                            "type": "string",
-                            "description": "The nonceCount is the hexadecimal count of the number of requests (including the current request) that the client has sent with the nonce value in this request."
-                        },
-                        "clientNonce": {
-                            "type": "string",
-                            "description": "A client nonce enhances the security of HTTP Digest Authentication, and it is stored in this field."
-                        },
-                        "opaque": {
-                            "type": "string",
-                            "description": "A string of data, specified by the server, which should be returned by the client unchanged."
-                        },
-                        "disableRetryRequest": {
-                            "type": "boolean",
-                            "default": false,
-                            "description": "When set to true, disables interactive replay mode for the parent request."
                         }
                     },
                     "additionalProperties": true,
@@ -1665,8 +389,8 @@
                 },
                 {
                     "type": "object",
-                    "title": "HawkAuth",
-                    "description": "Helper attributes for Hawk Authentication",
+                    "title": "Hawk Authentication",
+                    "description": "The attributes for [Hawk Authentication](https://github.com/hueniverse/hawk). e.g. authId, authKey, algorith, user, nonce, extraData, appId, delegation, timestamp.",
                     "properties": {
                         "id": {
                             "type": "string",
@@ -1674,42 +398,6 @@
                                 "hawk"
                             ],
                             "description": "This field contains the type of the Postman helper. In this case, it is ``hawk``"
-                        },
-                        "hawk_id": {
-                            "type": "string",
-                            "description": "Hawk Authentication requires a client identifier to be passed to the server. This field contains that identifier."
-                        },
-                        "hawk_key": {
-                            "type": "string",
-                            "description": "The secret that's shared by the server and the client. It is recommended to use an environment variable here, and set the value in your environment."
-                        },
-                        "algorithm": {
-                            "type": "string",
-                            "description": "The hashing algorithm used in this Digest authenticated request is stored in this field."
-                        },
-                        "user": {
-                            "type": "string",
-                            "description": "One can optionally send their username (if available) to the Hawk protected endpoint. This field holds the value, if given."
-                        },
-                        "nonce": {
-                            "type": "string",
-                            "description": "The Digest server challenges clients. A nonce is a part of that challenge, stored in this field."
-                        },
-                        "ext": {
-                            "type": "string",
-                            "description": "Extra data sent to the app."
-                        },
-                        "dlg": {
-                            "type": "string",
-                            "description": "This field is used when Hawk auth is used as a part of a larger protocol and serves as a place for handling complex scenarios such as access delegation."
-                        },
-                        "app": {
-                            "type": "string",
-                            "description": "Serves to identify the backend app in case multiple ones are supported. This field is optional."
-                        },
-                        "timestamp": {
-                            "type": "string",
-                            "description": "Contains the timestamp used when signing the request."
                         }
                     },
                     "additionalProperties": true,
@@ -1719,8 +407,8 @@
                 },
                 {
                     "type": "object",
-                    "title": "NTLMAuth",
-                    "description": "Helper attributes for [NTLM Authentication](https://msdn.microsoft.com/en-us/library/cc237488.aspx)",
+                    "title": "NTLM Authentication",
+                    "description": "The attributes for [NTLM Authentication](https://msdn.microsoft.com/en-us/library/cc237488.aspx). e.g. username, password, domain, workstation.",
                     "properties": {
                         "id": {
                             "type": "string",
@@ -1728,27 +416,6 @@
                                 "ntlm"
                             ],
                             "description": "This field contains the type of the helper. In this case, it is ``ntlm``"
-                        },
-                        "username": {
-                            "type": "string",
-                            "description": "The username to be used for NTLM Authentication is stored in this field."
-                        },
-                        "password": {
-                            "type": "string",
-                            "description": "The password to be used for NTLM Authentication is stored in this field."
-                        },
-                        "domain": {
-                            "type": "string",
-                            "description": "The domain to be used for NTLM Authentication is stored in this field."
-                        },
-                        "workstation": {
-                            "type": "string",
-                            "description": "The workstation to be used for NTLM Authentication is stored in this field."
-                        },
-                        "disableRetryRequest": {
-                            "type": "boolean",
-                            "default": false,
-                            "description": "When set to true, disables interactive replay mode for the parent request."
                         }
                     },
                     "required": [
@@ -1757,8 +424,8 @@
                 },
                 {
                     "type": "object",
-                    "title": "BasicAuth",
-                    "description": "Helper attributes for Basic Authentication",
+                    "title": "Basic Authentication",
+                    "description": "The attributes for [Basic Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication). e.g. username, password.",
                     "properties": {
                         "id": {
                             "type": "string",
@@ -1766,14 +433,6 @@
                                 "basic"
                             ],
                             "description": "This field contains the type of the helper. In this case, it is ``basic``"
-                        },
-                        "username": {
-                            "type": "string",
-                            "description": "The username to be used for Basic Authentication is stored in this field."
-                        },
-                        "password": {
-                            "type": "string",
-                            "description": "The password to be used for digest Authentication is stored in this field."
                         }
                     },
                     "additionalProperties": true,
@@ -1783,8 +442,8 @@
                 },
                 {
                     "type": "object",
-                    "title": "BearerAuth",
-                    "description": "The helper attributes for [Bearer Token Authentication](https://tools.ietf.org/html/rfc6750)",
+                    "title": "Bearer Token Authentication",
+                    "description": "The attributes for [Bearer Token Authentication](https://tools.ietf.org/html/rfc6750). e.g. token.",
                     "properties": {
                         "id": {
                             "type": "string",
@@ -1792,10 +451,6 @@
                                 "bearer"
                             ],
                             "description": "This field contains the type of the helper. In this case, it is ``bearer``"
-                        },
-                        "token": {
-                            "type": "string",
-                            "description": "The token to be used for Bearer Authentication is stored in this field."
                         }
                     },
                     "additionalProperties": true,
@@ -1806,7 +461,7 @@
                 {
                     "type": "object",
                     "title": "OAuth1",
-                    "description": "Helper attributes for OAuth-1 Authentication",
+                    "description": "The attributes for [OAuth1](https://oauth.net/1/). e.g. consumerKey, consumerSecret, token, tokenSecret, signatureMethod, timestamp, nonce, version, realm, encodeOAuthSign.",
                     "properties": {
                         "id": {
                             "type": "string",
@@ -1814,50 +469,6 @@
                                 "oAuth1"
                             ],
                             "description": "This field contains the type of the helper. In this case, it is ``oAuth1``"
-                        },
-                        "consumerKey": {
-                            "type": "string",
-                            "description": "The oAuth1 Consumer Secret, along with the Consumer Key authenticates the client. This field holds the oAuth1 Consumer Key"
-                        },
-                        "consumerSecret": {
-                            "type": "string",
-                            "description": "The oAuth1 Consumer Secret, along with the Consumer Key authenticates the client. The consumer secret is stored in this field."
-                        },
-                        "token": {
-                            "type": "string",
-                            "description": "The request token is a temporary credential, and is stored by Postman in this field."
-                        },
-                        "tokenSecret": {
-                            "type": "string",
-                            "description": "The request token secret is a temporary credential."
-                        },
-                        "signatureMethod": {
-                            "type": "string",
-                            "description": "The name of the signature method used by the client to sign the request."
-                        },
-                        "nonce": {
-                            "type": "string",
-                            "description": "A nonce is a random string, uniquely generated by the client to allow the server to verify that a request has never been made before and helps prevent replay attacks when requests are made over a non-secure channel."
-                        },
-                        "version": {
-                            "type": "string",
-                            "description": "The oAuth version, usually, this is ``1.0`` for OAuth-1"
-                        },
-                        "realm": {
-                            "type": "string",
-                            "description": "The realm directive is required for all authentication schemes that issue a challenge. Refer to [RFC 2617](http://tools.ietf.org/html/rfc2617#section-1.2) for more details."
-                        },
-                        "header": {
-                            "type": "boolean",
-                            "description": "Set this parameter to 'true' if you want Postman to add the OAuth parameters to the request headers. If false, the query string is used instead."
-                        },
-                        "auto": {
-                            "type": "boolean",
-                            "description": "This field controls whether OAuth1 parameters are automatically added to the request."
-                        },
-                        "includeEmpty": {
-                            "type": "boolean",
-                            "description": "If you would like to include empty parameters in the request, set this to 'true', else set it to 'false'"
                         }
                     },
                     "additionalProperties": true,
@@ -1868,7 +479,7 @@
                 {
                     "type": "object",
                     "title": "OAuth2",
-                    "description": "Helper attributes for [OAuth2](https://oauth.net/2/)",
+                    "description": "The attributes for [OAuth2](https://oauth.net/2/). e.g. accessToken, addTokenTo.",
                     "properties": {
                         "id": {
                             "type": "string",
@@ -1876,97 +487,14 @@
                                 "oAuth2"
                             ],
                             "description": "This field contains the type of the helper. In this case, it is ``oAuth2``"
-                        },
-                        "accessToken": {
-                            "type": "string",
-                            "description": "The access token for the current request is stored in this field."
-                        },
-                        "addTokenTo": {
-                            "type": "string",
-                            "enum": [
-                                "header",
-                                "queryParams"
-                            ],
-                            "description": "The specifier for token handling behaviour is stored in this field."
-                        },
-                        "callBackUrl": {
-                            "type": "string",
-                            "description": "This field contains the URL that has to be hit when the authentication process has completed."
-                        },
-                        "authUrl": {
-                            "type": "string",
-                            "description": "The OAuth2 providers URL is stored in this field."
-                        },
-                        "accessTokenUrl": {
-                            "type": "string",
-                            "description": "The URL to fetch access tokens is stored in this field."
-                        },
-                        "clientId": {
-                            "type": "string",
-                            "description": "The unique client ID associated with the authentication request is stored in this field."
-                        },
-                        "clientSecret": {
-                            "type": "string",
-                            "description": "The client secret associated with the current authentication request is stored in this field."
-                        },
-                        "clientAuth": {
-                            "type": "string",
-                            "enum": [
-                                "body",
-                                "header"
-                            ],
-                            "description": "The client authentication associated with the current request request is stored in this field."
-                        },
-                        "grantType": {
-                            "type": "string",
-                            "enum": [
-                                "authorization_code",
-                                "implicit",
-                                "password_credentials",
-                                "client_credentials"
-                            ],
-                            "description": "The grant type associated with the current authentication request is stored in this field."
-                        },
-                        "scope": {
-                            "type": "string",
-                            "description": "This field is used to specify the access privileges requested from the OAuth provider by the authentication request."
-                        },
-                        "username": {
-                            "type": "string",
-                            "description": "This field is used to specify the OAuth2 provider username for the current request."
-                        },
-                        "password": {
-                            "type": "string",
-                            "description": "This field is used to specify the OAuth2 provider password for the current request."
-                        },
-                        "tokenType": {
-                            "type": "string",
-                            "description": "This field is used to specify the OAuth2 token type for the current request."
-                        },
-                        "redirectUri": {
-                            "type": "string",
-                            "description": "This field is used to specify the redirection URL for OAuth2 authentication."
-                        },
-                        "refreshToken": {
-                            "type": "string",
-                            "description": "This field is used to specify the refresh token for OAuth2 authentication."
                         }
                     },
                     "additionalProperties": true,
                     "required": [
                         "id"
                     ]
-                },
-                {
-                    "type": "null"
-                },
-                {
-                    "type": "object",
-                    "additionalProperties": false,
-                    "properties": {}
                 }
-            ],
-            "description": "A helper may require a number of parameters to actually be helpful. The parameters used by the helper can be stored in this field, as an object. E.g when using Basic Authentication, the username and password will be stored here."
+            ]
         },
         "preRequestScript": {
             "id": "#/definitions/preRequestScript",
@@ -2205,13 +733,16 @@
                             "time": {
                                 "oneOf": [
                                     {
+                                        "type": "null"
+                                    },
+                                    {
                                         "type": "string"
                                     },
                                     {
                                         "type": "number"
                                     }
                                 ],
-                                "description": "The time taken by this particular HTTP transaction to complete is stored in this field."
+                                "description": "The time taken by this particular HTTP transaction to complete is stored in this field. For manually created responses, this field can be set to ``null``."
                             },
                             "headers": {
                                 "type": "array",
