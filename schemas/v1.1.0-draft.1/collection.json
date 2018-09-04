@@ -1,0 +1,80 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://schema.getpostman.com/json/collection/v1.1.0-draft.1/",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "Every collection is identified by the unique value of this field. The value of this field is usually easiest to generate using a [UID](https://tools.ietf.org/html/rfc4122#section-4.4%29) generator function. If you already have a collection, it is recommended that you maintain the same id since changing the id usually implies that this is a different collection than it was originally."
+        },
+        "name": {
+            "type": "string",
+            "description": "A collection's friendly name is defined by this field. You would want to set this field to a value that would allow you to easily identify this collection among a bunch of other collections, as such outlining its usage or content."
+        },
+        "description": {
+            "oneOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "description": "Provide a long description of this collection using this field. This field supports markdown syntax to better format the description."
+        },
+        "order": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "uniqueItems": true,
+            "description": "The order array ensures that your requests and folders don't randomly get shuffled up. It holds a sequence of [UUIDs](https://en.wikipedia.org/wiki/Universally_unique_identifier) corresponding to folders and requests.\n *Note that if a folder ID or a request ID (if the request is not already part of a folder) is not included in the order array, the request or the folder will not show up in the collection.*"
+        },
+        "folders": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/folder"
+            },
+            "description": "Folders are the way to go if you want to group your requests and to keep things organised. Folders can also be useful in sequentially requesting a part of the entire collection by using [Postman Collection Runner](https://www.getpostman.com/docs/jetpacks_running_collections) or [Newman](https://github.com/postmanlabs/newman) on a particular folder."
+        },
+        "timestamp": {
+            "type": "number",
+            "multipleOf": 1
+        },
+        "requests": {
+            "type": "array",
+            "description": "",
+            "items": {
+                "$ref": "#/definitions/request"
+            }
+        },
+        "variables": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "title": "Variable",
+                "properties": {
+                    "key": {
+                        "type": "string",
+                        "description": "The ``key`` property contains the variable name."
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "Contains the value of the variable."
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "This field contains the type of the variable."
+                    }
+                }
+            },
+            "description": "Postman now supports adding collection level variables, in addition to environments. While it is recommended that environments be used for sensitive information, you can use collection variables to hold values that are tied to a collection, so that sharing collections is easier."
+        }
+    },
+    "required": [
+        "id",
+        "name",
+        "order",
+        "requests"
+    ]
+}

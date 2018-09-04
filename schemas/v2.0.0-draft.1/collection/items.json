@@ -1,0 +1,22 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "#/definitions/items",
+    "title": "Array of Items",
+    "description": "Items are entities which contain an actual HTTP request, and sample responses attached to it. This field can contain individual Items, or an array of items.",
+    "type": "array",
+    "items": {
+        "description": "",
+        "oneOf": [
+            {
+                "$ref": "#/definitions/item"
+            },
+            {
+                "type": "array",
+                "title": "Array of Items",
+                "items": {
+                    "$ref": "#/definitions/item"
+                }
+            }
+        ]
+    }
+}

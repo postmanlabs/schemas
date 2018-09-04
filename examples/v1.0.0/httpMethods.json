@@ -1,0 +1,52 @@
+{
+	"id": "5adbd3b7-80cb-43cc-bf1e-8578ab3c9b15",
+	"name": "HTTP Methods",
+	"description": null,
+	"auth": null,
+	"events": [],
+	"variables": [],
+	"order": [
+		"844470c1-2017-4a08-b322-bc9a037d8cb5",
+		"a9a29206-af40-4787-b962-80acbca575eb"
+	],
+	"folders_order": [],
+	"folders": [],
+	"requests": [
+		{
+			"id": "844470c1-2017-4a08-b322-bc9a037d8cb5",
+			"name": "Standard HTTP Method",
+			"url": "https://postman-echo.com/get",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {},
+			"collectionId": "5adbd3b7-80cb-43cc-bf1e-8578ab3c9b15"
+		},
+		{
+			"id": "a9a29206-af40-4787-b962-80acbca575eb",
+			"name": "Custom HTTP Method",
+			"url": "https://postman-echo.com/postman",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "POSTMAN",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {},
+			"collectionId": "5adbd3b7-80cb-43cc-bf1e-8578ab3c9b15"
+		}
+	]
+}
