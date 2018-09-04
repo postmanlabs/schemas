@@ -1,0 +1,6337 @@
+{
+	"id": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+	"name": "Sync API",
+	"description": "This is the Sync API",
+	"order": [
+		"1971e023-e809-6787-a5d8-6f4b81da864a",
+		"d6c27b73-b87f-2288-3932-48fc540445cc",
+		"c4124bd1-efbf-52ed-b1cb-fe0a1535e0aa"
+	],
+	"folders": [
+		{
+			"owner": "4",
+			"lastUpdatedBy": "4",
+			"lastRevision": 221087,
+			"collection": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"id": "9d84e344-6a8d-951c-d758-c0d554c43945",
+			"name": "Collection Run",
+			"description": "",
+			"order": [
+				"90f82a51-7cb0-bf44-e985-e9c44a768304",
+				"78340263-399c-69b0-9979-2511bd876434",
+				"7a7ca4d9-4cf0-dc7a-2d96-d71c229201ea",
+				"d80ff0f8-9600-b64b-ff7e-6e4ae616ffcb",
+				"aa862ff3-3b54-8349-6fb0-41be525e2a7a"
+			],
+			"createdAt": "2015-03-02T15:00:26.000Z",
+			"updatedAt": "2015-06-03T07:13:54.000Z",
+			"write": false,
+			"collection_name": "Sync API",
+			"collection_owner": "4",
+			"collection_id": "a14bf334-bfac-97fb-688c-9b6cf5120527"
+		},
+		{
+			"owner": "4",
+			"lastUpdatedBy": "4",
+			"lastRevision": 221084,
+			"collection": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"id": "9c4b4632-a286-d258-48a8-5a4eedd0e4fd",
+			"name": "Collection",
+			"description": "",
+			"order": [
+				"92cb9b79-0c60-bc06-71fb-cf94c8f30385",
+				"ccadc423-3f54-8184-c0ac-d94882007e95",
+				"8d00730c-12dc-4970-e8b2-9deb43ec5c74",
+				"843158d4-4776-1124-4921-76e5c884616d",
+				"25f415dd-9e52-c12a-030e-402af6c4ee27",
+				"4c5896f1-1d9a-1770-f9b1-b9990797f4f7",
+				"82416e52-af63-0845-760c-10daf9842bb6",
+				"0d1b38bd-12d1-4b6a-68b9-aa3df1051cfb",
+				"212ad64b-9f59-0932-cb53-12316efe2a25",
+				"fb633df7-6f4b-6546-c6b2-28589c7aa385",
+				"e5e463e6-1013-35a6-75c0-27420ac16fbb",
+				"c3768087-59c8-674c-435b-ef855badf43b",
+				"af9283b6-8c81-c9aa-49b3-d465f5acd256"
+			],
+			"createdAt": "2015-03-02T15:00:26.000Z",
+			"updatedAt": "2015-06-18T11:51:37.000Z",
+			"write": false,
+			"collection_name": "Sync API",
+			"collection_owner": "4",
+			"collection_id": "a14bf334-bfac-97fb-688c-9b6cf5120527"
+		},
+		{
+			"owner": "4",
+			"lastUpdatedBy": "4",
+			"lastRevision": 221088,
+			"collection": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"id": "cf5e10cd-7f23-37a9-4398-aaa023586ec1",
+			"name": "Encryption",
+			"description": "",
+			"order": [
+				"07a43174-f9f2-9f96-db37-67892f2dafd2",
+				"3dd5061f-2c55-4c35-48f8-3f874a15a480"
+			],
+			"createdAt": "2015-03-27T05:24:03.000Z",
+			"updatedAt": "2015-06-03T07:13:06.000Z",
+			"write": false,
+			"collection_name": "Sync API",
+			"collection_owner": "4",
+			"collection_id": "a14bf334-bfac-97fb-688c-9b6cf5120527"
+		},
+		{
+			"owner": "4",
+			"lastUpdatedBy": "4",
+			"lastRevision": 221091,
+			"collection": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"id": "6c1e76ef-77b4-685d-779d-fa96ae2f4ead",
+			"name": "Environment",
+			"description": "",
+			"order": [
+				"cd5f3faf-e392-ca13-15a6-763e0587aa1f",
+				"4627f198-729c-297f-ae1a-f6962859f015",
+				"096d04cc-67ed-1d23-dc3d-663c9e240425",
+				"c4742a6d-3ee2-dcc8-9f3c-1085a2f507d1",
+				"24e447a0-8de9-7841-bf32-7179c32829cb",
+				"fa15b3e6-39e0-4009-d28c-ace687da1fcf",
+				"8af05b53-c630-81a6-6128-0c4e66a5aaf3"
+			],
+			"createdAt": "2015-03-02T15:00:26.000Z",
+			"updatedAt": "2015-06-03T11:38:36.000Z",
+			"write": false,
+			"collection_name": "Sync API",
+			"collection_owner": "4",
+			"collection_id": "a14bf334-bfac-97fb-688c-9b6cf5120527"
+		},
+		{
+			"owner": "4",
+			"lastUpdatedBy": "4",
+			"lastRevision": 221093,
+			"collection": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"id": "312bce24-2559-0f33-f1bd-07d96ba029d0",
+			"name": "Folder",
+			"description": "",
+			"order": [
+				"8b86296e-5b95-1202-7a4b-28708489422f",
+				"24bf0b81-2d20-fc55-3bc9-ac840aafc569",
+				"ace0c1f4-59a7-7f5b-977a-5ebc3378e2e2",
+				"1cfbbb30-4544-4ef5-f125-b80836449f14",
+				"0d30518e-4c7b-2e58-0cab-46b78fdf7036"
+			],
+			"createdAt": "2015-03-02T15:00:27.000Z",
+			"updatedAt": "2015-06-03T07:13:47.000Z",
+			"write": false,
+			"collection_name": "Sync API",
+			"collection_owner": "4",
+			"collection_id": "a14bf334-bfac-97fb-688c-9b6cf5120527"
+		},
+		{
+			"owner": "4",
+			"lastUpdatedBy": "4",
+			"lastRevision": 221096,
+			"collection": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"id": "fe3d4d12-78b5-0512-0b7a-30a4ed571c86",
+			"name": "HeaderPreset",
+			"description": "",
+			"order": [
+				"3af3c307-e716-dfb6-7e64-de4437015c5a",
+				"03707730-7a25-ac40-264e-5595cb23c51f",
+				"8262cc18-2172-831a-ec2d-1c9ace3495ad",
+				"eb0b45e6-87af-05cc-ec21-a11ea0344ca0",
+				"954b73c8-8068-9fb0-757d-5be3e6c52d43"
+			],
+			"createdAt": "2015-03-02T15:00:27.000Z",
+			"updatedAt": "2015-06-03T07:13:58.000Z",
+			"write": false,
+			"collection_name": "Sync API",
+			"collection_owner": "4",
+			"collection_id": "a14bf334-bfac-97fb-688c-9b6cf5120527"
+		},
+		{
+			"owner": "4",
+			"lastUpdatedBy": "4",
+			"lastRevision": 221098,
+			"collection": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"id": "a5d21e3a-b836-cee3-8c5f-c2ae2d1100b9",
+			"name": "Request",
+			"description": "",
+			"order": [
+				"d568fba3-c943-1d8c-3e2a-3c27ad1c6c61",
+				"0e32766e-65a3-d8c8-b81e-51cf9bc5bf74",
+				"997d0bdc-ad28-b776-6dfd-0b04672f24e1",
+				"88b3a5c2-c29f-0576-01fa-17408fcd5e28",
+				"653d82de-4458-71d5-47c3-65a0f5a21cb7",
+				"5ff2a39c-0f6d-9bd9-517c-16288b9b64b2",
+				"facb749d-4e75-d45b-36af-939eb0ef894e"
+			],
+			"createdAt": "2015-03-02T15:00:27.000Z",
+			"updatedAt": "2015-06-18T11:30:11.000Z",
+			"write": false,
+			"collection_name": "Sync API",
+			"collection_owner": "4",
+			"collection_id": "a14bf334-bfac-97fb-688c-9b6cf5120527"
+		},
+		{
+			"owner": "4",
+			"lastUpdatedBy": "4",
+			"lastRevision": 221101,
+			"collection": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"id": "a1aa679d-fa90-fd73-336f-8cbaf6d1a36d",
+			"name": "Response",
+			"description": "",
+			"order": [
+				"0d1b9f13-8eda-c2f4-b248-bba37f78c8c9",
+				"43446147-9fa8-31c7-39eb-2cec8992aad8",
+				"2107aee1-b376-ea78-5181-ea41e05a396a",
+				"65cc3913-0195-fc5f-f96f-926cb478d24b",
+				"ac898e2d-8a28-98cc-9fd1-afcb157a2a3e"
+			],
+			"createdAt": "2015-03-02T15:00:28.000Z",
+			"updatedAt": "2015-06-03T07:13:46.000Z",
+			"write": false,
+			"collection_name": "Sync API",
+			"collection_owner": "4",
+			"collection_id": "a14bf334-bfac-97fb-688c-9b6cf5120527"
+		},
+		{
+			"owner": "4",
+			"lastUpdatedBy": "4",
+			"lastRevision": 221103,
+			"collection": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"id": "07b62216-ab93-f48a-fe7f-57d814d40343",
+			"name": "Team",
+			"description": "",
+			"order": [
+				"380581b0-e909-bb8b-d7d6-758c0589f735",
+				"84bf78b9-9a03-2080-215f-59c3ecf8bb41",
+				"799e8719-0433-e515-2e2d-645c543cb564",
+				"7d1f70d6-2260-244b-23af-392e2f953fc1",
+				"700f415f-2fa6-ef50-c17b-06b034db99f1",
+				"8e69ea78-b6bd-73b7-f4e8-cb851486ad92",
+				"753d52f9-dd3f-61e5-eb44-ca26810d3933"
+			],
+			"createdAt": "2015-03-02T15:00:28.000Z",
+			"updatedAt": "2015-06-04T11:00:02.000Z",
+			"write": false,
+			"collection_name": "Sync API",
+			"collection_owner": "4",
+			"collection_id": "a14bf334-bfac-97fb-688c-9b6cf5120527"
+		},
+		{
+			"owner": "4",
+			"lastUpdatedBy": "4",
+			"lastRevision": 241006,
+			"collection": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"id": "dd531619-8c2f-2cf8-f90e-4cd703e8e855",
+			"name": "User",
+			"description": "",
+			"order": [
+				"e1618e13-590a-aa67-3ada-f21dd86544c6",
+				"e6137f42-c628-50a3-fa03-a69e3993c428",
+				"50bfc35c-a05f-5377-cdce-345311d5e34c",
+				"b1f9cbfa-3262-aa3a-0ec8-38c546b77c40",
+				"411715a7-976d-a156-25ce-a20a36540f02",
+				"2ba8e5b5-3dc8-7b22-459b-6c7a0b920294",
+				"2723a550-f324-7ef2-fae0-2f2c91ed8ed0",
+				"3d78adc1-6e44-d436-8134-9bdf0c85ccdb",
+				"d9f07478-1785-9931-3f86-19b9b4f899a3"
+			],
+			"createdAt": "2015-03-02T15:00:28.000Z",
+			"updatedAt": "2015-06-18T11:28:34.000Z",
+			"write": false,
+			"collection_name": "Sync API",
+			"collection_owner": "4",
+			"collection_id": "a14bf334-bfac-97fb-688c-9b6cf5120527"
+		}
+	],
+	"timestamp": 0,
+	"owner": "4",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"folder": "fe3d4d12-78b5-0512-0b7a-30a4ed571c86",
+			"id": "03707730-7a25-ac40-264e-5595cb23c51f",
+			"name": "Update HeaderPreset",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "Hp1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": null,
+			"description": "",
+			"headers": "",
+			"method": "PUT",
+			"pathVariables": {},
+			"url": "{{url}}/api/headerpreset/h1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221110,
+					"request": "03707730-7a25-ac40-264e-5595cb23c51f",
+					"id": "4123921f-08e8-e0a6-2b61-956462fc8f23",
+					"name": "test",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "84",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "111",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 19:54:54 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\n  \"data\": {\n    \"id\": \"h1\",\n    \"name\": \"Hp1\",\n    \"headers\": null,\n    \"owner\": \"U1\"\n  },\n  \"revision\": 33\n}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"03707730-7a25-ac40-264e-5595cb23c51f\"",
+					"createdAt": "2015-03-02T15:01:21.000Z",
+					"updatedAt": "2015-06-03T07:12:15.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"folder": "cf5e10cd-7f23-37a9-4398-aaa023586ec1",
+			"id": "07a43174-f9f2-9f96-db37-67892f2dafd2",
+			"name": "Delete env from Revisions",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "server_secret",
+					"value": "zeppelin",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "",
+			"headers": "",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url}}/api/encrypt/delEnv",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527"
+		},
+		{
+			"folder": "6c1e76ef-77b4-685d-779d-fa96ae2f4ead",
+			"id": "096d04cc-67ed-1d23-dc3d-663c9e240425",
+			"name": "Update Environment",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "Env1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "",
+			"headers": "",
+			"method": "PUT",
+			"pathVariables": {},
+			"url": "{{url}}/api/environment/e1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221117,
+					"request": "096d04cc-67ed-1d23-dc3d-663c9e240425",
+					"id": "10001d52-de88-11b4-df40-5c2f350e1602",
+					"name": "test",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "84",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "111",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 19:48:56 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\n  \"data\": {\n    \"id\": \"e1\",\n    \"name\": \"Env1\",\n    \"values\": null,\n    \"owner\": \"U1\"\n  },\n  \"revision\": 28\n}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"096d04cc-67ed-1d23-dc3d-663c9e240425\"",
+					"createdAt": "2015-03-02T15:01:21.000Z",
+					"updatedAt": "2015-06-03T07:12:21.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"folder": "9c4b4632-a286-d258-48a8-5a4eedd0e4fd",
+			"id": "0d1b38bd-12d1-4b6a-68b9-aa3df1051cfb",
+			"name": "Share Collection",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "team",
+					"value": "T1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "write",
+					"value": "false",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "Access: user himself",
+			"headers": "",
+			"method": "PUT",
+			"pathVariables": {},
+			"url": "{{url}}/api/collection/share/c1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221122,
+					"request": "0d1b38bd-12d1-4b6a-68b9-aa3df1051cfb",
+					"id": "ff078c33-7613-14bc-7144-48ecfc91405d",
+					"name": "readonly",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "36",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "358",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Thu, 22 Jan 2015 09:59:08 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\n  \"data\": {\n    \"id\": \"c1\",\n    \"name\": \"Collection1\",\n    \"description\": null,\n    \"order\": [],\n    \"shared\": true,\n    \"write\": false,\n    \"createdAt\": \"2015-01-22T09:58:55.000Z\",\n    \"updatedAt\": \"2015-01-22T09:59:08.000Z\",\n    \"owner\": \"U1\",\n    \"lastUpdatedBy\": {\n      \"id\": \"U1\",\n      \"username\": null\n    },\n    \"team\": \"T1\"\n  },\n  \"revision\": 2\n}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"0d1b38bd-12d1-4b6a-68b9-aa3df1051cfb\"",
+					"createdAt": "2015-03-02T15:01:22.000Z",
+					"updatedAt": "2015-06-03T07:12:25.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"folder": "a1aa679d-fa90-fd73-336f-8cbaf6d1a36d",
+			"id": "0d1b9f13-8eda-c2f4-b248-bba37f78c8c9",
+			"name": "Create Response",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "id",
+					"value": "p1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "request",
+					"value": "r1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "Response1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "",
+			"headers": "",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url}}/api/response",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221127,
+					"request": "0d1b9f13-8eda-c2f4-b248-bba37f78c8c9",
+					"id": "3ea47688-b2ff-acab-0bb3-43f88c3b924e",
+					"name": "test",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "41",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "117",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 19:43:45 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\n  \"data\": {\n    \"request\": \"r1\",\n    \"name\": \"Response2\",\n    \"owner\": \"U1\",\n    \"id\": \"p2\"\n  },\n  \"revision\": 23\n}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"0d1b9f13-8eda-c2f4-b248-bba37f78c8c9\"",
+					"createdAt": "2015-03-02T15:01:22.000Z",
+					"updatedAt": "2015-06-03T07:12:27.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"folder": "312bce24-2559-0f33-f1bd-07d96ba029d0",
+			"id": "0d30518e-4c7b-2e58-0cab-46b78fdf7036",
+			"name": "Delete Folder",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "Access: User himself",
+			"headers": "",
+			"method": "DELETE",
+			"pathVariables": {},
+			"url": "{{url}}/api/folder/f1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221133,
+					"request": "0d30518e-4c7b-2e58-0cab-46b78fdf7036",
+					"id": "7173e876-ee57-b0c7-6edb-ef45eb0deda3",
+					"name": "test",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "70",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "52",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 19:34:30 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\n  \"data\": {\n    \"id\": \"f2\"\n  },\n  \"revision\": 17\n}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"0d30518e-4c7b-2e58-0cab-46b78fdf7036\"",
+					"createdAt": "2015-03-02T15:01:22.000Z",
+					"updatedAt": "2015-06-03T07:12:31.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"folder": "a5d21e3a-b836-cee3-8c5f-c2ae2d1100b9",
+			"id": "0e32766e-65a3-d8c8-b81e-51cf9bc5bf74",
+			"name": "Update Request",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text"
+				},
+				{
+					"key": "name",
+					"value": "Req1",
+					"type": "text"
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "Access: User himself",
+			"headers": "",
+			"method": "PUT",
+			"pathVariables": {},
+			"url": "{{url}}/api/request/r1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221136,
+					"request": "0e32766e-65a3-d8c8-b81e-51cf9bc5bf74",
+					"id": "04569b8a-367f-0a7d-b38f-b51b4e4ba9ea",
+					"name": "test",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "87",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "513",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 19:37:03 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\n  \"data\": {\n    \"id\": \"r1\",\n    \"name\": \"Req1\",\n    \"dataMode\": \"mode\",\n    \"data\": null,\n    \"rawModeData\": null,\n    \"descriptionFormat\": null,\n    \"description\": null,\n    \"headers\": null,\n    \"method\": \"PUT\",\n    \"pathVariables\": null,\n    \"url\": null,\n    \"preRequestScript\": null,\n    \"tests\": null,\n    \"version\": null,\n    \"currentHelper\": null,\n    \"helperAttributes\": null,\n    \"owner\": \"U1\",\n    \"folder\": \"\",\n    \"collection\": \"c1\",\n    \"subscribers\": [],\n    \"responses\": []\n  },\n  \"revision\": 20\n}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"0e32766e-65a3-d8c8-b81e-51cf9bc5bf74\"",
+					"createdAt": "2015-03-02T15:01:23.000Z",
+					"updatedAt": "2015-06-03T07:12:33.000Z",
+					"write": false
+				},
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221137,
+					"request": "0e32766e-65a3-d8c8-b81e-51cf9bc5bf74",
+					"id": "ece54738-c645-5700-2e48-998a80315460",
+					"name": "test2",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "47",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "515",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 19:37:20 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\n  \"data\": {\n    \"id\": \"r2\",\n    \"name\": \"Req2\",\n    \"dataMode\": \"mode\",\n    \"data\": null,\n    \"rawModeData\": null,\n    \"descriptionFormat\": null,\n    \"description\": null,\n    \"headers\": null,\n    \"method\": \"PUT\",\n    \"pathVariables\": null,\n    \"url\": null,\n    \"preRequestScript\": null,\n    \"tests\": null,\n    \"version\": null,\n    \"currentHelper\": null,\n    \"helperAttributes\": null,\n    \"owner\": \"U1\",\n    \"folder\": \"f1\",\n    \"collection\": \"c1\",\n    \"subscribers\": [],\n    \"responses\": []\n  },\n  \"revision\": 21\n}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"0e32766e-65a3-d8c8-b81e-51cf9bc5bf74\"",
+					"createdAt": "2015-03-02T15:01:23.000Z",
+					"updatedAt": "2015-06-03T07:12:34.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"folder": null,
+			"id": "1971e023-e809-6787-a5d8-6f4b81da864a",
+			"name": "Tweets_Bootstrap",
+			"dataMode": "urlencoded",
+			"data": [
+				{
+					"key": "sherlock_user_id",
+					"value": "1",
+					"type": "text"
+				},
+				{
+					"key": "spreadsheetId",
+					"value": "0AmC_QWdtbgbfdFh5ems2OFZTUTgzaFFuREp3RU1OZXc",
+					"type": "text"
+				},
+				{
+					"key": "sheetName",
+					"value": "Archive",
+					"type": "text"
+				},
+				{
+					"key": "meta",
+					"value": "gs_import",
+					"type": "text"
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": null,
+			"description": "",
+			"headers": "",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url}}/gs",
+			"preRequestScript": null,
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527"
+		},
+		{
+			"folder": "312bce24-2559-0f33-f1bd-07d96ba029d0",
+			"id": "1cfbbb30-4544-4ef5-f125-b80836449f14",
+			"name": "Get Folder",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "",
+			"headers": "",
+			"method": "GET",
+			"pathVariables": {},
+			"url": "{{url}}/api/folder/f1?user_id=U1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221142,
+					"request": "1cfbbb30-4544-4ef5-f125-b80836449f14",
+					"id": "d7b673c0-57e5-f10b-7aac-72615ff56eb9",
+					"name": "test",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "44",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "111",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 19:35:38 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\n  \"owner\": \"U1\",\n  \"collection\": \"c1\",\n  \"id\": \"f1\",\n  \"name\": \"Fol1\",\n  \"description\": null,\n  \"order\": []\n}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"1cfbbb30-4544-4ef5-f125-b80836449f14\"",
+					"createdAt": "2015-03-02T15:01:23.000Z",
+					"updatedAt": "2015-06-03T07:12:40.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"folder": "a1aa679d-fa90-fd73-336f-8cbaf6d1a36d",
+			"id": "2107aee1-b376-ea78-5181-ea41e05a396a",
+			"name": "Get Responses",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "Resp1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "",
+			"headers": "",
+			"method": "GET",
+			"pathVariables": {},
+			"url": "{{url}}/api/response?user_id=U1&request=r1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221146,
+					"request": "2107aee1-b376-ea78-5181-ea41e05a396a",
+					"id": "0334c0a8-988c-d6c3-9f6b-506c995f8c6b",
+					"name": "test",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "45",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "404",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 20:43:41 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "[\n  {\n    \"owner\": \"U1\",\n    \"request\": \"r1\",\n    \"id\": \"p1\",\n    \"name\": \"Resp1\",\n    \"status\": null,\n    \"responseCode\": null,\n    \"time\": null,\n    \"headers\": null,\n    \"cookies\": null,\n    \"mime\": null,\n    \"text\": null,\n    \"language\": null,\n    \"rawDataType\": null,\n    \"state\": null,\n    \"previewType\": null,\n    \"searchResultScrolledTo\": null,\n    \"version\": null,\n    \"requestObject\": null\n  }\n]",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"2107aee1-b376-ea78-5181-ea41e05a396a\"",
+					"createdAt": "2015-03-02T15:01:24.000Z",
+					"updatedAt": "2015-06-03T07:12:44.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"folder": "9c4b4632-a286-d258-48a8-5a4eedd0e4fd",
+			"id": "212ad64b-9f59-0932-cb53-12316efe2a25",
+			"name": "Create Collection",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "id",
+					"value": "c1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "Collection1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "",
+			"headers": "",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url}}/api/collection",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 391814,
+					"request": "212ad64b-9f59-0932-cb53-12316efe2a25",
+					"id": "5ad3d392-edb8-af44-289e-d81c8f34fbcc",
+					"name": "200",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "85",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "427",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Sun, 26 Apr 2015 18:59:59 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\n  \"model_id\": \"c15\",\n  \"meta\": {\n    \"model\": \"collection\",\n    \"action\": \"create\"\n  },\n  \"data\": {\n    \"name\": \"Collection15\",\n    \"id\": \"c15\",\n    \"owner\": \"U1\",\n    \"lastUpdatedBy\": {\n      \"id\": \"U1\",\n      \"username\": null\n    },\n    \"remote_id\": \"0\",\n    \"order\": [],\n    \"shared\": false,\n    \"write\": true,\n    \"createdAt\": \"2015-04-26T18:59:59.688Z\",\n    \"updatedAt\": \"2015-04-26T18:59:59.688Z\"\n  },\n  \"revision\": 6\n}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "parsed",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "{\"url\":\"{{url}}/api/collection\",\"pathVariables\":{},\"data\":[{\"key\":\"id\",\"value\":\"c15\",\"type\":\"text\",\"enabled\":true},{\"key\":\"user_id\",\"value\":\"U1\",\"type\":\"text\",\"enabled\":true},{\"key\":\"name\",\"value\":\"Collection15\",\"type\":\"text\",\"enabled\":true}],\"headers\":\"\",\"dataMode\":\"params\",\"method\":\"POST\",\"tests\":\"\",\"version\":2}",
+					"createdAt": "2015-04-29T12:17:34.000Z",
+					"updatedAt": "2015-06-18T11:02:07.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"folder": "312bce24-2559-0f33-f1bd-07d96ba029d0",
+			"id": "24bf0b81-2d20-fc55-3bc9-ac840aafc569",
+			"name": "Update Folder",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "Fol1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": null,
+			"description": "",
+			"headers": "",
+			"method": "PUT",
+			"pathVariables": {},
+			"url": "{{url}}/api/folder/f1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221150,
+					"request": "24bf0b81-2d20-fc55-3bc9-ac840aafc569",
+					"id": "541191ac-fd9c-84b9-dfcf-5b70f3d71ef5",
+					"name": "test",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "93",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "157",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 19:33:37 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\n  \"data\": {\n    \"id\": \"f1\",\n    \"name\": \"Fol1\",\n    \"description\": null,\n    \"order\": [],\n    \"owner\": \"U1\",\n    \"collection\": \"c1\"\n  },\n  \"revision\": 15\n}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"24bf0b81-2d20-fc55-3bc9-ac840aafc569\"",
+					"createdAt": "2015-03-02T15:01:24.000Z",
+					"updatedAt": "2015-06-03T07:12:49.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"folder": "6c1e76ef-77b4-685d-779d-fa96ae2f4ead",
+			"id": "24e447a0-8de9-7841-bf32-7179c32829cb",
+			"name": "Get Environment",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "id",
+					"value": "e2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "Environment2",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "",
+			"headers": "",
+			"method": "GET",
+			"pathVariables": {},
+			"url": "{{url}}/api/environment/e1?user_id=U1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221153,
+					"request": "24e447a0-8de9-7841-bf32-7179c32829cb",
+					"id": "41dd6717-8314-5352-749e-191991fd82dc",
+					"name": "test",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "46",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "69",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 20:34:42 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\n  \"owner\": \"U1\",\n  \"id\": \"e1\",\n  \"name\": \"Env1\",\n  \"values\": null\n}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"24e447a0-8de9-7841-bf32-7179c32829cb\"",
+					"createdAt": "2015-03-02T15:01:25.000Z",
+					"updatedAt": "2015-06-03T07:12:53.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"folder": "9c4b4632-a286-d258-48a8-5a4eedd0e4fd",
+			"id": "25f415dd-9e52-c12a-030e-402af6c4ee27",
+			"name": "Subscribe to Collection",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "user_id",
+					"value": "U2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "owner",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": null,
+			"description": "Access: user himself",
+			"headers": "",
+			"method": "PUT",
+			"pathVariables": {},
+			"url": "{{url}}/api/collection/subscribe/c1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527"
+		},
+		{
+			"folder": "dd531619-8c2f-2cf8-f90e-4cd703e8e855",
+			"id": "2723a550-f324-7ef2-fae0-2f2c91ed8ed0",
+			"name": "Create User",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "name",
+					"value": "pqr",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "server_secret",
+					"value": "zeppelin",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "access_token",
+					"value": "xyz",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "Access: admin or the user himself\n",
+			"headers": "",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url}}/api/user",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527"
+		},
+		{
+			"folder": "dd531619-8c2f-2cf8-f90e-4cd703e8e855",
+			"id": "2ba8e5b5-3dc8-7b22-459b-6c7a0b920294",
+			"name": "Update User JSON",
+			"dataMode": "raw",
+			"data": [],
+			"descriptionFormat": "html",
+			"description": "",
+			"headers": "",
+			"method": "PUT",
+			"pathVariables": {},
+			"url": "{{url}}/api/user/U1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"rawModeData": "{\n    \"name\": \"xyz\",\n    \"user_id\": \"U1\",\n    \"globals\": [{\"key\":\"url\",\"value\":\"http://192.168.200.111\",\"type\":\"text\",\"name\":\"url\",\"enabled\":true},{\"key\":\"bonus\",\"type\":\"text\",\"value\":\"53\"},{\"key\":\"name\",\"type\":\"text\",\"value\":\"Bonus QA558\"},{\"key\":\"id\",\"type\":\"text\",\"value\":\"29\"},{\"key\":\"game_id\",\"type\":\"text\",\"value\":\"53\"},{\"key\":\"ref\",\"type\":\"text\",\"value\":\"929\"}]\n}"
+		},
+		{
+			"folder": "07b62216-ab93-f48a-fe7f-57d814d40343",
+			"id": "380581b0-e909-bb8b-d7d6-758c0589f735",
+			"name": "Delete Team",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "server_secret",
+					"value": "zeppelin",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "access_token",
+					"value": "xyz",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": null,
+			"description": "Access: Admin or the user himself\n",
+			"headers": "",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url}}/api/team/T1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527"
+		},
+		{
+			"folder": "fe3d4d12-78b5-0512-0b7a-30a4ed571c86",
+			"id": "3af3c307-e716-dfb6-7e64-de4437015c5a",
+			"name": "Create HeaderPreset",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "id",
+					"value": "h1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "HeaderPreset1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": null,
+			"description": "",
+			"headers": "",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url}}/api/headerpreset",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221160,
+					"request": "3af3c307-e716-dfb6-7e64-de4437015c5a",
+					"id": "1f317184-a7b6-259c-b2df-a9fb36fa5a1f",
+					"name": "test",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "110",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "100",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 19:54:02 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\n  \"data\": {\n    \"name\": \"HeaderPreset1\",\n    \"owner\": \"U1\",\n    \"id\": \"h1\"\n  },\n  \"revision\": 31\n}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"3af3c307-e716-dfb6-7e64-de4437015c5a\"",
+					"createdAt": "2015-03-02T15:01:26.000Z",
+					"updatedAt": "2015-06-03T07:13:04.000Z",
+					"write": false
+				},
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221161,
+					"request": "3af3c307-e716-dfb6-7e64-de4437015c5a",
+					"id": "4dc69024-af53-9ba3-5ea5-caeae30ddb80",
+					"name": "test2",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "128",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "100",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 19:54:21 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\n  \"data\": {\n    \"name\": \"HeaderPreset2\",\n    \"owner\": \"U1\",\n    \"id\": \"h2\"\n  },\n  \"revision\": 32\n}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"3af3c307-e716-dfb6-7e64-de4437015c5a\"",
+					"createdAt": "2015-03-02T15:01:26.000Z",
+					"updatedAt": "2015-06-03T07:13:04.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"folder": "dd531619-8c2f-2cf8-f90e-4cd703e8e855",
+			"id": "3d78adc1-6e44-d436-8134-9bdf0c85ccdb",
+			"name": "Get Users",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "auth_token",
+					"value": "xyz",
+					"type": "text"
+				},
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text"
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "Access: admin only\n",
+			"headers": "",
+			"method": "GET",
+			"pathVariables": {},
+			"url": "{{url}}/api/user",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221163,
+					"request": "3d78adc1-6e44-d436-8134-9bdf0c85ccdb",
+					"id": "34eb3ac2-2043-dec5-14a3-44e03ea17535",
+					"name": "test",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "46",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "512",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 18:29:50 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "[\n  {\n    \"id\": \"U1\",\n    \"name\": null,\n    \"title\": null,\n    \"email\": null,\n    \"online\": false,\n    \"admin\": true,\n    \"globals\": null,\n    \"requests_subscribe\": [],\n    \"collections_subscribe\": [],\n    \"collections_own\": [],\n    \"environments\": []\n  },\n  {\n    \"id\": \"U2\",\n    \"name\": null,\n    \"title\": null,\n    \"email\": null,\n    \"online\": false,\n    \"admin\": true,\n    \"globals\": null,\n    \"requests_subscribe\": [],\n    \"collections_subscribe\": [],\n    \"collections_own\": [],\n    \"environments\": []\n  }\n]",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"3d78adc1-6e44-d436-8134-9bdf0c85ccdb\"",
+					"createdAt": "2015-03-02T15:01:27.000Z",
+					"updatedAt": "2015-06-03T07:13:06.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"folder": "cf5e10cd-7f23-37a9-4398-aaa023586ec1",
+			"id": "3dd5061f-2c55-4c35-48f8-3f874a15a480",
+			"name": "Encrypt Environments",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "server_secret",
+					"value": "zeppelin",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "",
+			"headers": "",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url}}/api/encrypt/environments",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527"
+		},
+		{
+			"folder": "dd531619-8c2f-2cf8-f90e-4cd703e8e855",
+			"id": "411715a7-976d-a156-25ce-a20a36540f02",
+			"name": "Get User",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "auth_token",
+					"value": "abc",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "user_id",
+					"value": "U2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "server_secret",
+					"value": "zeppelin",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": null,
+			"description": "Access: admin or the user himself",
+			"headers": "",
+			"method": "GET",
+			"pathVariables": {},
+			"url": "{{url}}/api/user/U1?user_id=U1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221166,
+					"request": "411715a7-976d-a156-25ce-a20a36540f02",
+					"id": "d1dde7c2-d905-de83-e125-d00f3d75f658",
+					"name": "test",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "11",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "227",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 18:30:12 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\n  \"id\": \"U1\",\n  \"name\": null,\n  \"title\": null,\n  \"email\": null,\n  \"online\": false,\n  \"admin\": true,\n  \"globals\": null,\n  \"requests_subscribe\": [],\n  \"collections_subscribe\": [],\n  \"collections_own\": [],\n  \"environments\": []\n}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"411715a7-976d-a156-25ce-a20a36540f02\"",
+					"createdAt": "2015-03-02T15:01:27.000Z",
+					"updatedAt": "2015-06-03T07:13:07.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"folder": "a1aa679d-fa90-fd73-336f-8cbaf6d1a36d",
+			"id": "43446147-9fa8-31c7-39eb-2cec8992aad8",
+			"name": "Update Response",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "Resp1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "",
+			"headers": "",
+			"method": "PUT",
+			"pathVariables": {},
+			"url": "{{url}}/api/response/p1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221168,
+					"request": "43446147-9fa8-31c7-39eb-2cec8992aad8",
+					"id": "42509361-d13e-a395-88cc-96e8ac0cae9f",
+					"name": "test",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "95",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "430",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 19:44:35 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\n  \"data\": {\n    \"id\": \"p1\",\n    \"name\": \"Resp1\",\n    \"status\": null,\n    \"responseCode\": null,\n    \"time\": null,\n    \"headers\": null,\n    \"cookies\": null,\n    \"mime\": null,\n    \"text\": null,\n    \"language\": null,\n    \"rawDataType\": null,\n    \"state\": null,\n    \"previewType\": null,\n    \"searchResultScrolledTo\": null,\n    \"version\": null,\n    \"requestObject\": null,\n    \"owner\": \"U1\",\n    \"request\": \"r1\"\n  },\n  \"revision\": 25\n}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"43446147-9fa8-31c7-39eb-2cec8992aad8\"",
+					"createdAt": "2015-03-02T15:01:27.000Z",
+					"updatedAt": "2015-06-03T07:13:08.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"folder": "6c1e76ef-77b4-685d-779d-fa96ae2f4ead",
+			"id": "4627f198-729c-297f-ae1a-f6962859f015",
+			"name": "Create Env Json",
+			"dataMode": "raw",
+			"data": [],
+			"descriptionFormat": "html",
+			"description": "",
+			"headers": "Content-Type: application/json\n",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url}}/api/environment",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"rawModeData": "{\n    \"id\": \"e1\",\n    \"user_id\": \"U1\",\n    \"name\": \"Environment1\",\n    \"values\": [{\"key\":\"url\",\"value\":\"http://192.168.200.111\",\"type\":\"text\",\"name\":\"url\",\"enabled\":true},{\"key\":\"bonus\",\"type\":\"text\",\"value\":\"53\"},{\"key\":\"name\",\"type\":\"text\",\"value\":\"Bonus QA558\"},{\"key\":\"id\",\"type\":\"text\",\"value\":\"29\"},{\"key\":\"game_id\",\"type\":\"text\",\"value\":\"53\"},{\"key\":\"ref\",\"type\":\"text\",\"value\":\"929\"}]\n}"
+		},
+		{
+			"folder": "9c4b4632-a286-d258-48a8-5a4eedd0e4fd",
+			"id": "4c5896f1-1d9a-1770-f9b1-b9990797f4f7",
+			"name": "Delete Collection",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text"
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "Access: User himself",
+			"headers": "",
+			"method": "DELETE",
+			"pathVariables": {},
+			"url": "{{url}}/api/collection/c1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221171,
+					"request": "4c5896f1-1d9a-1770-f9b1-b9990797f4f7",
+					"id": "42375c73-ff09-3b2f-bceb-d28b885704ab",
+					"name": "test",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "71",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "51",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 19:03:37 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\n  \"data\": {\n    \"id\": \"c2\"\n  },\n  \"revision\": 8\n}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"4c5896f1-1d9a-1770-f9b1-b9990797f4f7\"",
+					"createdAt": "2015-03-02T15:01:28.000Z",
+					"updatedAt": "2015-06-03T07:13:10.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"folder": "dd531619-8c2f-2cf8-f90e-4cd703e8e855",
+			"id": "50bfc35c-a05f-5377-cdce-345311d5e34c",
+			"name": "Add history",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "id",
+					"value": "h1",
+					"type": "text"
+				},
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text"
+				},
+				{
+					"key": "name",
+					"value": "History1",
+					"type": "text"
+				},
+				{
+					"key": "dataMode",
+					"value": "abc",
+					"type": "text"
+				},
+				{
+					"key": "method",
+					"value": "PUT",
+					"type": "text"
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "Access: user himself",
+			"headers": "",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url}}/api/user/history",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221173,
+					"request": "50bfc35c-a05f-5377-cdce-345311d5e34c",
+					"id": "7f4ee169-ab47-d5c0-6d81-807aa2c29d54",
+					"name": "test",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "53",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "163",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 18:50:24 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\n  \"data\": {\n    \"name\": \"History1\",\n    \"dataMode\": \"abc\",\n    \"method\": \"PUT\",\n    \"id\": \"h1\",\n    \"subscribers\": [],\n    \"responses\": []\n  },\n  \"revision\": 3\n}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"50bfc35c-a05f-5377-cdce-345311d5e34c\"",
+					"createdAt": "2015-03-02T15:01:28.000Z",
+					"updatedAt": "2015-06-03T07:13:12.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"folder": "a5d21e3a-b836-cee3-8c5f-c2ae2d1100b9",
+			"id": "5ff2a39c-0f6d-9bd9-517c-16288b9b64b2",
+			"name": "Transfer Request",
+			"dataMode": "raw",
+			"data": [],
+			"descriptionFormat": null,
+			"description": "Access: User himself",
+			"headers": "Content-Type: application/json\n",
+			"method": "PUT",
+			"pathVariables": {},
+			"url": "{{url}}/api/request/transfer/r1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"rawModeData": "{\n  \"user_id\": \"U2\",\n  \"owner\": \"U1\",\n  \"to\": {\n    \"model\": \"collection\",\n    \"model_id\": \"c2\",\n    \"owner\": \"U2\"\n  } \n}"
+		},
+		{
+			"folder": "a5d21e3a-b836-cee3-8c5f-c2ae2d1100b9",
+			"id": "653d82de-4458-71d5-47c3-65a0f5a21cb7",
+			"name": "Get Requests",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "",
+			"headers": "",
+			"method": "GET",
+			"pathVariables": {},
+			"url": "{{url}}/api/request?user_id=U1&collection=c1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221176,
+					"request": "653d82de-4458-71d5-47c3-65a0f5a21cb7",
+					"id": "0dfabef3-c2f8-dd35-ba71-397eeeba1a81",
+					"name": "test2",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "59",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "489",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 20:43:22 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "[\n  {\n    \"owner\": \"U1\",\n    \"folder\": \"f1\",\n    \"collection\": \"c1\",\n    \"id\": \"r2\",\n    \"name\": \"Req2\",\n    \"dataMode\": \"mode\",\n    \"data\": null,\n    \"rawModeData\": null,\n    \"descriptionFormat\": null,\n    \"description\": null,\n    \"headers\": null,\n    \"method\": \"PUT\",\n    \"pathVariables\": null,\n    \"url\": null,\n    \"preRequestScript\": null,\n    \"tests\": null,\n    \"version\": null,\n    \"currentHelper\": null,\n    \"helperAttributes\": null,\n    \"subscribers\": [],\n    \"responses\": []\n  }\n]",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"653d82de-4458-71d5-47c3-65a0f5a21cb7\"",
+					"createdAt": "2015-03-02T15:01:29.000Z",
+					"updatedAt": "2015-06-03T07:13:17.000Z",
+					"write": false
+				},
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221177,
+					"request": "653d82de-4458-71d5-47c3-65a0f5a21cb7",
+					"id": "a25bcbb8-65fc-c149-9818-7efc2be400cc",
+					"name": "test",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "52",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "974",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 20:42:01 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "[\n  {\n    \"owner\": \"U1\",\n    \"folder\": \"\",\n    \"collection\": \"c1\",\n    \"id\": \"r1\",\n    \"name\": \"Req1\",\n    \"dataMode\": \"mode\",\n    \"data\": null,\n    \"rawModeData\": null,\n    \"descriptionFormat\": null,\n    \"description\": null,\n    \"headers\": null,\n    \"method\": \"PUT\",\n    \"pathVariables\": null,\n    \"url\": null,\n    \"preRequestScript\": null,\n    \"tests\": null,\n    \"version\": null,\n    \"currentHelper\": null,\n    \"helperAttributes\": null,\n    \"subscribers\": [],\n    \"responses\": []\n  },\n  {\n    \"owner\": \"U1\",\n    \"folder\": \"f1\",\n    \"collection\": \"c1\",\n    \"id\": \"r2\",\n    \"name\": \"Req2\",\n    \"dataMode\": \"mode\",\n    \"data\": null,\n    \"rawModeData\": null,\n    \"descriptionFormat\": null,\n    \"description\": null,\n    \"headers\": null,\n    \"method\": \"PUT\",\n    \"pathVariables\": null,\n    \"url\": null,\n    \"preRequestScript\": null,\n    \"tests\": null,\n    \"version\": null,\n    \"currentHelper\": null,\n    \"helperAttributes\": null,\n    \"subscribers\": [],\n    \"responses\": []\n  }\n]",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"653d82de-4458-71d5-47c3-65a0f5a21cb7\"",
+					"createdAt": "2015-03-02T15:01:29.000Z",
+					"updatedAt": "2015-06-03T07:13:18.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"folder": "a1aa679d-fa90-fd73-336f-8cbaf6d1a36d",
+			"id": "65cc3913-0195-fc5f-f96f-926cb478d24b",
+			"name": "Get Response",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "Resp1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "",
+			"headers": "",
+			"method": "GET",
+			"pathVariables": {},
+			"url": "{{url}}/api/response/p1?user_id=U1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221179,
+					"request": "65cc3913-0195-fc5f-f96f-926cb478d24b",
+					"id": "0bef122f-f023-b754-05c8-dbe61dc251d2",
+					"name": "test",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "44",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "360",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 19:45:40 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\n  \"owner\": \"U1\",\n  \"request\": \"r1\",\n  \"id\": \"p1\",\n  \"name\": \"Resp1\",\n  \"status\": null,\n  \"responseCode\": null,\n  \"time\": null,\n  \"headers\": null,\n  \"cookies\": null,\n  \"mime\": null,\n  \"text\": null,\n  \"language\": null,\n  \"rawDataType\": null,\n  \"state\": null,\n  \"previewType\": null,\n  \"searchResultScrolledTo\": null,\n  \"version\": null,\n  \"requestObject\": null\n}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"65cc3913-0195-fc5f-f96f-926cb478d24b\"",
+					"createdAt": "2015-03-02T15:01:29.000Z",
+					"updatedAt": "2015-06-03T07:13:21.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"folder": "07b62216-ab93-f48a-fe7f-57d814d40343",
+			"id": "700f415f-2fa6-ef50-c17b-06b034db99f1",
+			"name": "Create Team",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "id",
+					"value": "T1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "Team1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "access_token",
+					"value": "xyz",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "server_secret",
+					"value": "zeppelin",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": null,
+			"description": "",
+			"headers": "",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url}}/api/team",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527"
+		},
+		{
+			"folder": "07b62216-ab93-f48a-fe7f-57d814d40343",
+			"id": "753d52f9-dd3f-61e5-eb44-ca26810d3933",
+			"name": "Fix Owners",
+			"dataMode": "params",
+			"data": [],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "",
+			"headers": "",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url}}/api/user/fixOwners",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527"
+		},
+		{
+			"folder": "9d84e344-6a8d-951c-d758-c0d554c43945",
+			"id": "78340263-399c-69b0-9979-2511bd876434",
+			"name": "Update CollectionRun",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "CR1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "",
+			"headers": "",
+			"method": "PUT",
+			"pathVariables": {},
+			"url": "{{url}}/api/collectionrun/cr1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527"
+		},
+		{
+			"folder": "07b62216-ab93-f48a-fe7f-57d814d40343",
+			"id": "799e8719-0433-e515-2e2d-645c543cb564",
+			"name": "Add Member",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "id",
+					"value": "T1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "access_token",
+					"value": "xyz",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "server_secret",
+					"value": "zeppelin",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "member_id",
+					"value": "U2",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": null,
+			"description": "",
+			"headers": "",
+			"method": "PUT",
+			"pathVariables": {},
+			"url": "{{url}}/api/team/add_member/T1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527"
+		},
+		{
+			"folder": "9d84e344-6a8d-951c-d758-c0d554c43945",
+			"id": "7a7ca4d9-4cf0-dc7a-2d96-d71c229201ea",
+			"name": "Get CollectionRun",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "CR1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "",
+			"headers": "",
+			"method": "GET",
+			"pathVariables": {},
+			"url": "{{url}}/api/collectionrun/cr1?user_id=U1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527"
+		},
+		{
+			"folder": "07b62216-ab93-f48a-fe7f-57d814d40343",
+			"id": "7d1f70d6-2260-244b-23af-392e2f953fc1",
+			"name": "Update Team",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "name",
+					"value": "TEAM1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "server_secret",
+					"value": "zeppelin",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "access_token",
+					"value": "xyz",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": null,
+			"description": "Access: admin or the user himself\n",
+			"headers": "",
+			"method": "PUT",
+			"pathVariables": {},
+			"url": "{{url}}/api/team/T1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527"
+		},
+		{
+			"folder": "9c4b4632-a286-d258-48a8-5a4eedd0e4fd",
+			"id": "82416e52-af63-0845-760c-10daf9842bb6",
+			"name": "Unsubscribe from Collection",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "user_id",
+					"value": "U2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "owner",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "Access: user himself",
+			"headers": "",
+			"method": "PUT",
+			"pathVariables": {},
+			"url": "{{url}}/api/collection/unsubscribe/c1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527"
+		},
+		{
+			"folder": "fe3d4d12-78b5-0512-0b7a-30a4ed571c86",
+			"id": "8262cc18-2172-831a-ec2d-1c9ace3495ad",
+			"name": "Get HeaderPresets",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "Hp1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": null,
+			"description": "Access: User himself, loggedIn",
+			"headers": "",
+			"method": "GET",
+			"pathVariables": {},
+			"url": "{{url}}/api/headerpreset?user_id=U1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221189,
+					"request": "8262cc18-2172-831a-ec2d-1c9ace3495ad",
+					"id": "931069a7-8248-72bd-08f0-12ee30ac2a73",
+					"name": "test",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "58",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "178",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 19:55:15 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "[\n  {\n    \"owner\": \"U1\",\n    \"id\": \"h1\",\n    \"name\": \"Hp1\",\n    \"headers\": null\n  },\n  {\n    \"owner\": \"U1\",\n    \"id\": \"h2\",\n    \"name\": \"HeaderPreset2\",\n    \"headers\": null\n  }\n]",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"8262cc18-2172-831a-ec2d-1c9ace3495ad\"",
+					"createdAt": "2015-03-02T15:01:31.000Z",
+					"updatedAt": "2015-06-03T07:13:34.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"folder": "9c4b4632-a286-d258-48a8-5a4eedd0e4fd",
+			"id": "843158d4-4776-1124-4921-76e5c884616d",
+			"name": "Update Collection",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "name",
+					"value": "Col1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": null,
+			"description": "Access: user himself",
+			"headers": "",
+			"method": "PUT",
+			"pathVariables": {},
+			"url": "{{url}}/api/collection/c1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221191,
+					"request": "843158d4-4776-1124-4921-76e5c884616d",
+					"id": "c731407f-e0a9-1104-cd28-d8e63259ff33",
+					"name": "test",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "6454",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "194",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 19:02:54 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\n  \"data\": {\n    \"id\": \"c1\",\n    \"name\": \"Col1\",\n    \"description\": null,\n    \"order\": [],\n    \"owner\": \"U1\",\n    \"requests\": [],\n    \"subscribers\": [],\n    \"folders\": []\n  },\n  \"revision\": 7\n}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"843158d4-4776-1124-4921-76e5c884616d\"",
+					"createdAt": "2015-03-02T15:01:31.000Z",
+					"updatedAt": "2015-06-03T07:13:35.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"folder": "07b62216-ab93-f48a-fe7f-57d814d40343",
+			"id": "84bf78b9-9a03-2080-215f-59c3ecf8bb41",
+			"name": "Get Team",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "user_id",
+					"value": "U2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "team",
+					"value": "T1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": null,
+			"description": "Access: admin or the user himself",
+			"headers": "",
+			"method": "GET",
+			"pathVariables": {},
+			"url": "{{url}}/api/team/T1?user_id=U1&access_token=xyz",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527"
+		},
+		{
+			"folder": "a5d21e3a-b836-cee3-8c5f-c2ae2d1100b9",
+			"id": "88b3a5c2-c29f-0576-01fa-17408fcd5e28",
+			"name": "Get Request",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "id",
+					"value": "e2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "Environment2",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": null,
+			"description": "",
+			"headers": "",
+			"method": "GET",
+			"pathVariables": {},
+			"url": "{{url}}/api/request/r1?user_id=U1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221194,
+					"request": "88b3a5c2-c29f-0576-01fa-17408fcd5e28",
+					"id": "11583a79-bbaf-b69c-a970-765afd588757",
+					"name": "test2",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "26",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "439",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 19:40:00 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\n  \"owner\": \"U1\",\n  \"folder\": \"f1\",\n  \"collection\": \"c1\",\n  \"id\": \"r2\",\n  \"name\": \"Req2\",\n  \"dataMode\": \"mode\",\n  \"data\": null,\n  \"rawModeData\": null,\n  \"descriptionFormat\": null,\n  \"description\": null,\n  \"headers\": null,\n  \"method\": \"PUT\",\n  \"pathVariables\": null,\n  \"url\": null,\n  \"preRequestScript\": null,\n  \"tests\": null,\n  \"version\": null,\n  \"currentHelper\": null,\n  \"helperAttributes\": null,\n  \"subscribers\": [],\n  \"responses\": []\n}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"88b3a5c2-c29f-0576-01fa-17408fcd5e28\"",
+					"createdAt": "2015-03-02T15:01:32.000Z",
+					"updatedAt": "2015-06-03T07:13:36.000Z",
+					"write": false
+				},
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221195,
+					"request": "88b3a5c2-c29f-0576-01fa-17408fcd5e28",
+					"id": "cc394a06-ef37-f97a-9fec-51fbd9b2f14d",
+					"name": "test",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "48",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "437",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 19:39:48 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\n  \"owner\": \"U1\",\n  \"folder\": \"\",\n  \"collection\": \"c1\",\n  \"id\": \"r1\",\n  \"name\": \"Req1\",\n  \"dataMode\": \"mode\",\n  \"data\": null,\n  \"rawModeData\": null,\n  \"descriptionFormat\": null,\n  \"description\": null,\n  \"headers\": null,\n  \"method\": \"PUT\",\n  \"pathVariables\": null,\n  \"url\": null,\n  \"preRequestScript\": null,\n  \"tests\": null,\n  \"version\": null,\n  \"currentHelper\": null,\n  \"helperAttributes\": null,\n  \"subscribers\": [],\n  \"responses\": []\n}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"88b3a5c2-c29f-0576-01fa-17408fcd5e28\"",
+					"createdAt": "2015-03-02T15:01:32.000Z",
+					"updatedAt": "2015-06-03T07:13:37.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"folder": "6c1e76ef-77b4-685d-779d-fa96ae2f4ead",
+			"id": "8af05b53-c630-81a6-6128-0c4e66a5aaf3",
+			"name": "Delete Environment",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "",
+			"headers": "",
+			"method": "DELETE",
+			"pathVariables": {},
+			"url": "{{url}}/api/environment/e1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221197,
+					"request": "8af05b53-c630-81a6-6128-0c4e66a5aaf3",
+					"id": "28e52cbd-6a04-53fd-1b6c-6f57589cf627",
+					"name": "test",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "72",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "52",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 19:52:17 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\n  \"data\": {\n    \"id\": \"e2\"\n  },\n  \"revision\": 30\n}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"8af05b53-c630-81a6-6128-0c4e66a5aaf3\"",
+					"createdAt": "2015-03-02T15:01:32.000Z",
+					"updatedAt": "2015-06-03T07:13:38.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"folder": "312bce24-2559-0f33-f1bd-07d96ba029d0",
+			"id": "8b86296e-5b95-1202-7a4b-28708489422f",
+			"name": "Create Folder",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "id",
+					"value": "f1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "collection",
+					"value": "c1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "Folder1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "",
+			"headers": "",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url}}/api/folder",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221199,
+					"request": "8b86296e-5b95-1202-7a4b-28708489422f",
+					"id": "7e5decfc-df0b-19ec-e8c5-e9c71d8bf40b",
+					"name": "杨志兵",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "118",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "135",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 19:33:15 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\n  \"data\": {\n    \"collection\": \"c1\",\n    \"name\": \"Folder1\",\n    \"owner\": \"U1\",\n    \"id\": \"f1\",\n    \"order\": []\n  },\n  \"revision\": 14\n}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "{\"url\":\"\",\"pathVariables\":{},\"data\":[{\"key\":\"id\",\"value\":\"f1\",\"type\":\"text\",\"enabled\":true},{\"key\":\"collection\",\"value\":\"c1\",\"type\":\"text\",\"enabled\":true},{\"key\":\"user_id\",\"value\":\"U1\",\"type\":\"text\",\"enabled\":true},{\"key\":\"name\",\"value\":\"Folder1\",\"type\":\"text\",\"enabled\":true}],\"headers\":\"\",\"dataMode\":\"params\",\"tests\":\"\",\"version\":2}",
+					"createdAt": "2015-04-09T11:28:26.000Z",
+					"updatedAt": "2015-06-03T07:13:39.000Z",
+					"write": false
+				},
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221200,
+					"request": "8b86296e-5b95-1202-7a4b-28708489422f",
+					"id": "de946ef4-f483-1992-727f-a2405a2c8be9",
+					"name": "test",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "118",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "135",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 19:33:15 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\n  \"data\": {\n    \"collection\": \"c1\",\n    \"name\": \"Folder1\",\n    \"owner\": \"U1\",\n    \"id\": \"f1\",\n    \"order\": []\n  },\n  \"revision\": 14\n}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"8b86296e-5b95-1202-7a4b-28708489422f\"",
+					"createdAt": "2015-03-02T15:01:33.000Z",
+					"updatedAt": "2015-06-03T07:13:40.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"folder": "9c4b4632-a286-d258-48a8-5a4eedd0e4fd",
+			"id": "8d00730c-12dc-4970-e8b2-9deb43ec5c74",
+			"name": "Get Collection",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "id",
+					"value": "T1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "access_token",
+					"value": "xyz",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "server_secret",
+					"value": "zeppelin",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "member_id",
+					"value": "U2",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": null,
+			"description": "Access: User himself, loggedIn",
+			"headers": "",
+			"method": "GET",
+			"pathVariables": {},
+			"url": "{{url}}/api/collection/c1?user_id=U1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221202,
+					"request": "8d00730c-12dc-4970-e8b2-9deb43ec5c74",
+					"id": "9ec0a782-b285-b619-203f-e3a50d826bbb",
+					"name": "test",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "81",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "145",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 19:03:28 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\n  \"owner\": \"U1\",\n  \"id\": \"c1\",\n  \"name\": \"Col1\",\n  \"description\": null,\n  \"order\": [],\n  \"requests\": [],\n  \"subscribers\": [],\n  \"folders\": []\n}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"8d00730c-12dc-4970-e8b2-9deb43ec5c74\"",
+					"createdAt": "2015-03-02T15:01:33.000Z",
+					"updatedAt": "2015-06-03T07:13:41.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"folder": "07b62216-ab93-f48a-fe7f-57d814d40343",
+			"id": "8e69ea78-b6bd-73b7-f4e8-cb851486ad92",
+			"name": "Team Analytics",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "id",
+					"value": "f1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "collection",
+					"value": "c1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "Folder1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": null,
+			"description": "Access: admin or the user himself",
+			"headers": "",
+			"method": "GET",
+			"pathVariables": {},
+			"url": "{{url}}/api/team/analytics?server_secret=zeppelin",
+			"preRequestScript": "",
+			"tests": "var data = JSON.parse(responseBody);\nvar team;\nvar totalTeams = 0;\nvar totalCollections = 0;\nfor(var i = 0; i < data.teams.length; i++) {\n    team = data.teams[i];\n    if (team.num_members > 1) {\n        totalTeams++;\n        totalCollections = totalCollections + team.num_collections;\n    }\n}\n\ntests[\"Total teams = \" + totalTeams] = true;\ntests[\"Total collections = \" + totalCollections] = true;",
+			"version": 2,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527"
+		},
+		{
+			"folder": "9d84e344-6a8d-951c-d758-c0d554c43945",
+			"id": "90f82a51-7cb0-bf44-e985-e9c44a768304",
+			"name": "Create CollectionRun",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "id",
+					"value": "cr1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "CR1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "collection",
+					"value": "c1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "environment",
+					"value": "e1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "target_type",
+					"value": "collection",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "count",
+					"value": "10",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": null,
+			"description": "",
+			"headers": "",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url}}/api/collectionrun",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 602614,
+					"request": {
+						"name": "Create CollectionRun",
+						"description": "",
+						"url": "https://sync.getpostman.com/api/collectionrun",
+						"pathVariables": {},
+						"data": [
+							{
+								"key": "id",
+								"value": "cr1",
+								"type": "text",
+								"enabled": true
+							},
+							{
+								"key": "user_id",
+								"value": "U1",
+								"type": "text",
+								"enabled": true
+							},
+							{
+								"key": "name",
+								"value": "CR1",
+								"type": "text",
+								"enabled": true
+							},
+							{
+								"key": "collection",
+								"value": "c1",
+								"type": "text",
+								"enabled": true
+							},
+							{
+								"key": "environment",
+								"value": "e1",
+								"type": "text",
+								"enabled": true
+							},
+							{
+								"key": "target_type",
+								"value": "collection",
+								"type": "text",
+								"enabled": true
+							},
+							{
+								"key": "count",
+								"value": "10",
+								"type": "text",
+								"enabled": true
+							}
+						],
+						"headers": "",
+						"dataMode": "params",
+						"method": "POST",
+						"tests": "",
+						"isFromCollection": true,
+						"write": true,
+						"version": 2
+					},
+					"id": "b9930961-c0bc-3b5c-de8e-8558990aa2fb",
+					"name": "404",
+					"status": "",
+					"responseCode": {
+						"code": 404,
+						"name": "Not Found"
+					},
+					"time": "3049",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Thu, 02 Jul 2015 09:14:55 GMT",
+							"description": ""
+						},
+						{
+							"name": "Server",
+							"key": "Server",
+							"value": "nginx/1.6.2",
+							"description": ""
+						},
+						{
+							"name": "Transfer-Encoding",
+							"key": "Transfer-Encoding",
+							"value": "chunked",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "",
+					"language": "html",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "{\"name\":\"Create CollectionRun\",\"description\":\"\",\"url\":\"https://sync.getpostman.com/api/collectionrun\",\"pathVariables\":{},\"data\":[{\"key\":\"id\",\"value\":\"cr1\",\"type\":\"text\",\"enabled\":true},{\"key\":\"user_id\",\"value\":\"U1\",\"type\":\"text\",\"enabled\":true},{\"key\":\"name\",\"value\":\"CR1\",\"type\":\"text\",\"enabled\":true},{\"key\":\"collection\",\"value\":\"c1\",\"type\":\"text\",\"enabled\":true},{\"key\":\"environment\",\"value\":\"e1\",\"type\":\"text\",\"enabled\":true},{\"key\":\"target_type\",\"value\":\"collection\",\"type\":\"text\",\"enabled\":true},{\"key\":\"count\",\"value\":\"10\",\"type\":\"text\",\"enabled\":true}],\"headers\":\"\",\"dataMode\":\"params\",\"method\":\"POST\",\"tests\":\"\",\"isFromCollection\":true,\"write\":true,\"version\":2}",
+					"createdAt": "2015-07-02T09:15:08.000Z",
+					"updatedAt": "2015-07-02T09:15:08.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"id": "92cb9b79-0c60-bc06-71fb-cf94c8f30385",
+			"folder": "9c4b4632-a286-d258-48a8-5a4eedd0e4fd",
+			"name": "Import Collection",
+			"dataMode": "raw",
+			"data": [],
+			"descriptionFormat": "html",
+			"description": "Access: user himself\n\n1. id: <Integer>\n2. name: <String>\n3. order: <Integer>, This defines an order",
+			"headers": "Content-Type: application/json\n",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url}}/api/collection/import?user_id=U1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"rawModeData": "{\n  \"id\": \"c1\",\n  \"name\": \"Collection1\",\n  \"description\": \"desc1collection\",\n  \"order\": [\"r1\"],\n  \"folders\": [\n    {\n      \"id\": \"f1\",\n      \"name\": \"Folder1\",\n      \"description\": \"desc1folder\",\n      \"order\": [\n        \"r2\",\n        \"r3\"\n      ],\n      \"owner\": \"U1\"\n    },\n    {\n      \"id\": \"f2\",\n      \"name\": \"Folder2\",\n      \"description\": \"desc2folder\",\n      \"order\": [],\n      \"collection\": \"c1\",\n      \"owner\": \"4\"\n    }\n  ],\n  \"timestamp\": 1418324929697,\n  \"synced\": false,\n  \"owner\": \"U1\",\n  \"sharedWithTeam\": true,\n  \"subscribed\": false,\n  \"remoteLink\": \"http://sync-staging.getpostman.com/collections/70bd089fae46259949f2\",\n  \"public\": false,\n  \"requests\": [\n    {\n      \"id\": \"r1\",\n      \"name\": \"Request1\",\n      \"description\": \"Desc1Request\",\n      \"headers\": \"\",\n      \"url\": \"{{url}}/v1/request\",\n      \"preRequestScript\": \"\",\n      \"pathVariables\": {},\n      \"method\": \"POST\",\n      \"data\": [\n        {\n          \"key\": \"id\",\n          \"value\": \"R{{u}}_{{R}}-{{cid}}\",\n          \"type\": \"text\",\n          \"enabled\": true\n        },\n        {\n          \"key\": \"collection\",\n          \"value\": \"C{{u}}\",\n          \"type\": \"text\",\n          \"enabled\": true\n        }\n      ],\n      \"dataMode\": \"params\",\n      \"version\": 2,\n      \"tests\": \"var data = JSON.parse(responseBody);\",\n      \"currentHelper\": \"normal\",\n      \"helperAttributes\": \"\",\n      \"time\": 1419268222383,\n      \"responses\": [\n        {\n          \"status\": \"\",\n          \"responseCode\": {\n            \"code\": 200,\n            \"name\": \"OK\",\n            \"detail\": \"Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action.\"\n          },\n          \"time\": 61,\n          \"headers\": [\n            {\n              \"name\": \"Access-Control-Allow-Credentials\",\n              \"key\": \"Access-Control-Allow-Credentials\",\n              \"value\": \"\",\n              \"description\": \"Indicates whether or not the response to the request can be exposed when the credentials flag is true. When used as part of a response to a preflight request, this indicates whether or not the actual request can be made using credentials.\"\n            },\n            {\n              \"name\": \"Access-Control-Allow-Headers\",\n              \"key\": \"Access-Control-Allow-Headers\",\n              \"value\": \"\",\n              \"description\": \"Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request.\"\n            }\n          ],\n          \"cookies\": [],\n          \"mime\": \"\",\n          \"text\": \"\",\n          \"language\": \"html\",\n          \"rawDataType\": \"text\",\n          \"state\": {\n            \"size\": \"normal\"\n          },\n          \"previewType\": \"html\",\n          \"searchResultScrolledTo\": -1,\n          \"forceRaw\": false,\n          \"id\": \"p1\",\n          \"name\": \"Response1\",\n          \"request\": {\n            \"url\": \"{{url}}/api/user/U{{u}}/token\",\n            \"pathVariables\": {},\n            \"data\": [\n              {\n                \"key\": \"access_token\",\n                \"value\": \"token{{u}}\",\n                \"type\": \"text\",\n                \"enabled\": true\n              }\n            ],\n            \"headers\": \"\",\n            \"dataMode\": \"params\",\n            \"method\": \"POST\",\n            \"tests\": \"tests[\\\"Status code is 200\\\"] = responseCode.code === 200;\",\n            \"version\": 2\n          }\n        },\n        {\n          \"status\": \"\",\n          \"responseCode\": {\n            \"code\": 200,\n            \"name\": \"OK\",\n            \"detail\": \"Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action.\"\n          },\n          \"time\": 61,\n          \"headers\": [\n            {\n              \"name\": \"Access-Control-Allow-Credentials\",\n              \"key\": \"Access-Control-Allow-Credentials\",\n              \"value\": \"\",\n              \"description\": \"Indicates whether or not the response to the request can be exposed when the credentials flag is true. When used as part of a response to a preflight request, this indicates whether or not the actual request can be made using credentials.\"\n            },\n            {\n              \"name\": \"Access-Control-Allow-Headers\",\n              \"key\": \"Access-Control-Allow-Headers\",\n              \"value\": \"\",\n              \"description\": \"Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request.\"\n            }\n          ],\n          \"cookies\": [],\n          \"mime\": \"\",\n          \"text\": \"\",\n          \"language\": \"html\",\n          \"rawDataType\": \"text\",\n          \"state\": {\n            \"size\": \"normal\"\n          },\n          \"previewType\": \"html\",\n          \"searchResultScrolledTo\": -1,\n          \"forceRaw\": false,\n          \"id\": \"p2\",\n          \"name\": \"Response2\",\n          \"request\": {\n            \"url\": \"{{url}}/api/user/U{{u}}/token\",\n            \"pathVariables\": {},\n            \"data\": [\n              {\n                \"key\": \"access_token\",\n                \"value\": \"token{{u}}\",\n                \"type\": \"text\",\n                \"enabled\": true\n              }\n            ],\n            \"headers\": \"\",\n            \"dataMode\": \"params\",\n            \"method\": \"POST\",\n            \"tests\": \"tests[\\\"Status code is 200\\\"] = responseCode.code === 200;\",\n            \"version\": 2\n          }\n        }\n      ],\n      \"synced\": false\n    },\n    {\n      \"id\": \"r2\",\n      \"name\": \"Request2\",\n      \"description\": \"Desc2Request\",\n      \"headers\": \"\",\n      \"url\": \"{{url}}/v1/request\",\n      \"preRequestScript\": \"\",\n      \"pathVariables\": {},\n      \"method\": \"POST\",\n      \"data\": [\n        {\n          \"key\": \"id\",\n          \"value\": \"R{{u}}_{{R}}-{{cid}}\",\n          \"type\": \"text\",\n          \"enabled\": true\n        },\n        {\n          \"key\": \"collection\",\n          \"value\": \"C{{u}}\",\n          \"type\": \"text\",\n          \"enabled\": true\n        }\n      ],\n      \"dataMode\": \"params\",\n      \"version\": 2,\n      \"tests\": \"var data = JSON.parse(responseBody);\",\n      \"currentHelper\": \"normal\",\n      \"helperAttributes\": \"\",\n      \"time\": 1419268222383,\n      \"responses\": [],\n      \"synced\": false\n    },\n    {\n      \"id\": \"r3\",\n      \"name\": \"Request3\",\n      \"description\": \"Desc3Request\",\n      \"headers\": \"\",\n      \"url\": \"{{url}}/v1/request\",\n      \"preRequestScript\": \"\",\n      \"pathVariables\": {},\n      \"method\": \"POST\",\n      \"data\": [\n        {\n          \"key\": \"id\",\n          \"value\": \"R{{u}}_{{R}}-{{cid}}\",\n          \"type\": \"text\",\n          \"enabled\": true\n        },\n        {\n          \"key\": \"collection\",\n          \"value\": \"C{{u}}\",\n          \"type\": \"text\",\n          \"enabled\": true\n        }\n      ],\n      \"dataMode\": \"params\",\n      \"version\": 2,\n      \"tests\": \"var data = JSON.parse(responseBody);\",\n      \"currentHelper\": \"normal\",\n      \"helperAttributes\": \"\",\n      \"time\": 1419268222383,\n      \"responses\": [\n        {\n          \"status\": \"\",\n          \"responseCode\": {\n            \"code\": 200,\n            \"name\": \"OK\",\n            \"detail\": \"Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action.\"\n          },\n          \"time\": 61,\n          \"headers\": [\n            {\n              \"name\": \"Access-Control-Allow-Credentials\",\n              \"key\": \"Access-Control-Allow-Credentials\",\n              \"value\": \"\",\n              \"description\": \"Indicates whether or not the response to the request can be exposed when the credentials flag is true. When used as part of a response to a preflight request, this indicates whether or not the actual request can be made using credentials.\"\n            },\n            {\n              \"name\": \"Access-Control-Allow-Headers\",\n              \"key\": \"Access-Control-Allow-Headers\",\n              \"value\": \"\",\n              \"description\": \"Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request.\"\n            }\n          ],\n          \"cookies\": [],\n          \"mime\": \"\",\n          \"text\": \"\",\n          \"language\": \"html\",\n          \"rawDataType\": \"text\",\n          \"state\": {\n            \"size\": \"normal\"\n          },\n          \"previewType\": \"html\",\n          \"searchResultScrolledTo\": -1,\n          \"forceRaw\": false,\n          \"id\": \"p3\",\n          \"name\": \"Response3\",\n          \"request\": {\n            \"url\": \"{{url}}/api/user/U{{u}}/token\",\n            \"pathVariables\": {},\n            \"data\": [\n              {\n                \"key\": \"access_token\",\n                \"value\": \"token{{u}}\",\n                \"type\": \"text\",\n                \"enabled\": true\n              }\n            ],\n            \"headers\": \"\",\n            \"dataMode\": \"params\",\n            \"method\": \"POST\",\n            \"tests\": \"tests[\\\"Status code is 200\\\"] = responseCode.code === 200;\",\n            \"version\": 2\n          }\n        }\n      ],\n      \"synced\": false\n    }\n  ]\n}\n"
+		},
+		{
+			"folder": "fe3d4d12-78b5-0512-0b7a-30a4ed571c86",
+			"id": "954b73c8-8068-9fb0-757d-5be3e6c52d43",
+			"name": "Delete HeaderPreset",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": null,
+			"description": "",
+			"headers": "",
+			"method": "DELETE",
+			"pathVariables": {},
+			"url": "{{url}}/api/headerpreset/h1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221207,
+					"request": "954b73c8-8068-9fb0-757d-5be3e6c52d43",
+					"id": "cec80be2-684a-0d5a-222e-b927024eb52e",
+					"name": "test",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "91",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "52",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 19:56:04 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\n  \"data\": {\n    \"id\": \"h1\"\n  },\n  \"revision\": 34\n}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"954b73c8-8068-9fb0-757d-5be3e6c52d43\"",
+					"createdAt": "2015-03-02T15:01:33.000Z",
+					"updatedAt": "2015-06-03T07:13:44.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"folder": "a5d21e3a-b836-cee3-8c5f-c2ae2d1100b9",
+			"id": "997d0bdc-ad28-b776-6dfd-0b04672f24e1",
+			"name": "Delete Request",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "Access: User himself",
+			"headers": "",
+			"method": "DELETE",
+			"pathVariables": {},
+			"url": "{{url}}/api/request/r1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527"
+		},
+		{
+			"folder": "9d84e344-6a8d-951c-d758-c0d554c43945",
+			"id": "aa862ff3-3b54-8349-6fb0-41be525e2a7a",
+			"name": "Delete CollectionRun",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "",
+			"headers": "",
+			"method": "DELETE",
+			"pathVariables": {},
+			"url": "{{url}}/api/collectionrun/cr1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527"
+		},
+		{
+			"folder": "a1aa679d-fa90-fd73-336f-8cbaf6d1a36d",
+			"id": "ac898e2d-8a28-98cc-9fd1-afcb157a2a3e",
+			"name": "Delete Response",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "Access: User himself",
+			"headers": "",
+			"method": "DELETE",
+			"pathVariables": {},
+			"url": "{{url}}/api/response/p2",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221211,
+					"request": "ac898e2d-8a28-98cc-9fd1-afcb157a2a3e",
+					"id": "dbca8b4a-8a52-4de8-0379-f5928b494a21",
+					"name": "test",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "68",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "52",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 19:47:15 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\n  \"data\": {\n    \"id\": \"p2\"\n  },\n  \"revision\": 26\n}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"ac898e2d-8a28-98cc-9fd1-afcb157a2a3e\"",
+					"createdAt": "2015-03-02T15:01:34.000Z",
+					"updatedAt": "2015-06-03T07:13:47.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"folder": "312bce24-2559-0f33-f1bd-07d96ba029d0",
+			"id": "ace0c1f4-59a7-7f5b-977a-5ebc3378e2e2",
+			"name": "Get Folders",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "name",
+					"value": "Col1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "Access: User himself, loggedIn",
+			"headers": "",
+			"method": "GET",
+			"pathVariables": {},
+			"url": "{{url}}/api/folder?user_id=U1&collection=c1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221213,
+					"request": "ace0c1f4-59a7-7f5b-977a-5ebc3378e2e2",
+					"id": "d6735669-1894-742c-3f86-5c2aa3a07952",
+					"name": "test",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "49",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "147",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 20:42:51 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "[\n  {\n    \"owner\": \"U1\",\n    \"collection\": \"c1\",\n    \"id\": \"f1\",\n    \"name\": \"Fol1\",\n    \"description\": null,\n    \"order\": [\n      \"r2\"\n    ]\n  }\n]",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"ace0c1f4-59a7-7f5b-977a-5ebc3378e2e2\"",
+					"createdAt": "2015-03-02T15:01:34.000Z",
+					"updatedAt": "2015-06-03T07:13:48.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"folder": "9c4b4632-a286-d258-48a8-5a4eedd0e4fd",
+			"id": "af9283b6-8c81-c9aa-49b3-d465f5acd256",
+			"name": "Get revisions",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "id",
+					"value": "T1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "access_token",
+					"value": "xyz",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "server_secret",
+					"value": "zeppelin",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "member_id",
+					"value": "U2",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "Get the revision history for a specific collection",
+			"headers": "",
+			"method": "GET",
+			"pathVariables": {},
+			"url": "{{url}}/api/collection/c1/revision/history?since_id=0&zoom=0&user_id=U1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527"
+		},
+		{
+			"folder": "dd531619-8c2f-2cf8-f90e-4cd703e8e855",
+			"id": "b1f9cbfa-3262-aa3a-0ec8-38c546b77c40",
+			"name": "Add Token",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "access_token",
+					"value": "xyz",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "server_secret",
+					"value": "zeppelin",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": null,
+			"description": "",
+			"headers": "",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url}}/api/user",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221215,
+					"request": "b1f9cbfa-3262-aa3a-0ec8-38c546b77c40",
+					"id": "42241d22-8a53-7692-91e3-5d126a7fad12",
+					"name": "test",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "92",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 18:25:18 GMT",
+							"description": ""
+						},
+						{
+							"name": "Transfer-Encoding",
+							"key": "Transfer-Encoding",
+							"value": "chunked",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "",
+					"language": "html",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"b1f9cbfa-3262-aa3a-0ec8-38c546b77c40\"",
+					"createdAt": "2015-03-02T15:01:30.000Z",
+					"updatedAt": "2015-06-03T07:13:49.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"id": "c3768087-59c8-674c-435b-ef855badf43b",
+			"folder": "9c4b4632-a286-d258-48a8-5a4eedd0e4fd",
+			"name": "Publish Collection",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "user_id",
+					"value": "4",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": null,
+			"description": "Access: user himself",
+			"headers": "",
+			"method": "PUT",
+			"pathVariables": {},
+			"url": "{{url}}/api/collection/publish/a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": "null",
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527"
+		},
+		{
+			"folder": null,
+			"id": "c4124bd1-efbf-52ed-b1cb-fe0a1535e0aa",
+			"name": "Get CSRF",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "access_token",
+					"value": "abc",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "user_id",
+					"value": "U2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "server_secret",
+					"value": "zeppelin",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "",
+			"headers": "",
+			"method": "GET",
+			"pathVariables": {},
+			"url": "{{url}}/csrfToken",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527"
+		},
+		{
+			"folder": "6c1e76ef-77b4-685d-779d-fa96ae2f4ead",
+			"id": "c4742a6d-3ee2-dcc8-9f3c-1085a2f507d1",
+			"name": "Update Env Json",
+			"dataMode": "raw",
+			"data": [],
+			"descriptionFormat": "html",
+			"description": "",
+			"headers": "Content-Type: application/json\n",
+			"method": "PUT",
+			"pathVariables": {},
+			"url": "{{url}}/api/environment/e1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"rawModeData": "{\n    \"id\": \"e1\",\n    \"user_id\": \"U1\",\n    \"name\": \"Environment1\",\n    \"values\": [{\"key\":\"url\",\"value\":\"http://192.168.00.111\",\"type\":\"text\",\"name\":\"url\",\"enabled\":true},{\"key\":\"bonus\",\"type\":\"text\",\"value\":\"53\"},{\"key\":\"name\",\"type\":\"text\",\"value\":\"Bonus QA558\"},{\"key\":\"id\",\"type\":\"text\",\"value\":\"29\"},{\"key\":\"game_id\",\"type\":\"text\",\"value\":\"53\"},{\"key\":\"ref\",\"type\":\"text\",\"value\":\"929\"}]\n}"
+		},
+		{
+			"folder": "9c4b4632-a286-d258-48a8-5a4eedd0e4fd",
+			"id": "ccadc423-3f54-8184-c0ac-d94882007e95",
+			"name": "Get Collections",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "Fol1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": null,
+			"description": "Access: User himself, loggedIn",
+			"headers": "",
+			"method": "GET",
+			"pathVariables": {},
+			"url": "{{url}}/api/collection?user_id=U1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221218,
+					"request": "ccadc423-3f54-8184-c0ac-d94882007e95",
+					"id": "388efa28-f0ec-032b-6378-f95a8cd5b53b",
+					"name": "test",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "48",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "343",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 19:03:10 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "[\n  {\n    \"owner\": \"U1\",\n    \"id\": \"c1\",\n    \"name\": \"Col1\",\n    \"description\": null,\n    \"order\": [],\n    \"requests\": [],\n    \"subscribers\": [],\n    \"folders\": []\n  },\n  {\n    \"owner\": \"U1\",\n    \"id\": \"c2\",\n    \"name\": \"Collection2\",\n    \"description\": null,\n    \"order\": [],\n    \"requests\": [],\n    \"subscribers\": [],\n    \"folders\": []\n  }\n]",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"ccadc423-3f54-8184-c0ac-d94882007e95\"",
+					"createdAt": "2015-03-02T15:01:35.000Z",
+					"updatedAt": "2015-06-03T07:13:50.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"folder": "6c1e76ef-77b4-685d-779d-fa96ae2f4ead",
+			"id": "cd5f3faf-e392-ca13-15a6-763e0587aa1f",
+			"name": "Create Environment",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "id",
+					"value": "e1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "Environment1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": null,
+			"description": "",
+			"headers": "",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url}}/api/environment",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221220,
+					"request": "cd5f3faf-e392-ca13-15a6-763e0587aa1f",
+					"id": "04be86e6-e878-8314-7765-64d14b7bd2b7",
+					"name": "test",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "91",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "99",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 19:48:23 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\n  \"data\": {\n    \"name\": \"Environment1\",\n    \"owner\": \"U1\",\n    \"id\": \"e1\"\n  },\n  \"revision\": 27\n}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"cd5f3faf-e392-ca13-15a6-763e0587aa1f\"",
+					"createdAt": "2015-03-02T15:01:35.000Z",
+					"updatedAt": "2015-06-03T07:13:52.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"folder": "a5d21e3a-b836-cee3-8c5f-c2ae2d1100b9",
+			"id": "d568fba3-c943-1d8c-3e2a-3c27ad1c6c61",
+			"name": "Create Request",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "id",
+					"value": "r1",
+					"type": "text"
+				},
+				{
+					"key": "collection",
+					"value": "c1",
+					"type": "text"
+				},
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text"
+				},
+				{
+					"key": "name",
+					"value": "Request1",
+					"type": "text"
+				},
+				{
+					"key": "dataMode",
+					"value": "mode",
+					"type": "text"
+				},
+				{
+					"key": "method",
+					"value": "PUT",
+					"type": "text"
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "",
+			"headers": "",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url}}/api/request",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221222,
+					"request": "d568fba3-c943-1d8c-3e2a-3c27ad1c6c61",
+					"id": "8e9f2f08-31cc-7f69-73ab-645199f14749",
+					"name": "test2",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "39",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "228",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 19:36:36 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\n  \"data\": {\n    \"collection\": \"c1\",\n    \"name\": \"Request2\",\n    \"dataMode\": \"mode\",\n    \"method\": \"PUT\",\n    \"folder\": \"f1\",\n    \"owner\": \"U1\",\n    \"id\": \"r2\",\n    \"subscribers\": [],\n    \"responses\": []\n  },\n  \"revision\": 19\n}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"d568fba3-c943-1d8c-3e2a-3c27ad1c6c61\"",
+					"createdAt": "2015-03-02T15:01:36.000Z",
+					"updatedAt": "2015-06-03T07:13:53.000Z",
+					"write": false
+				},
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221223,
+					"request": "d568fba3-c943-1d8c-3e2a-3c27ad1c6c61",
+					"id": "d3b029d1-0a37-2b80-fe59-1ad9a2247320",
+					"name": "test",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "121",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "208",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 19:36:20 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\n  \"data\": {\n    \"collection\": \"c1\",\n    \"name\": \"Request1\",\n    \"dataMode\": \"mode\",\n    \"method\": \"PUT\",\n    \"owner\": \"U1\",\n    \"id\": \"r1\",\n    \"subscribers\": [],\n    \"responses\": []\n  },\n  \"revision\": 18\n}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"d568fba3-c943-1d8c-3e2a-3c27ad1c6c61\"",
+					"createdAt": "2015-03-02T15:01:35.000Z",
+					"updatedAt": "2015-06-03T07:13:53.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"folder": null,
+			"id": "d6c27b73-b87f-2288-3932-48fc540445cc",
+			"name": "Sync Analytics",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "id",
+					"value": "f1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "collection",
+					"value": "c1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "Folder1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": null,
+			"description": "Access: admin or the user himself",
+			"headers": "",
+			"method": "GET",
+			"pathVariables": {},
+			"url": "{{url}}/api/team/analytics?server_secret=zeppelin",
+			"preRequestScript": "",
+			"tests": "var data = JSON.parse(responseBody);\nvar team;\nvar totalTeams = 0;\nvar totalCollections = 0;\nfor(var i = 0; i < data.teams.length; i++) {\n    team = data.teams[i];\n    if (team.num_members > 1) {\n        totalTeams++;\n        totalCollections = totalCollections + team.num_collections;\n    }\n}\n\ntests[\"Total teams = \" + totalTeams] = true;\ntests[\"Total collections = \" + totalCollections] = true;",
+			"version": 2,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527"
+		},
+		{
+			"folder": "9d84e344-6a8d-951c-d758-c0d554c43945",
+			"id": "d80ff0f8-9600-b64b-ff7e-6e4ae616ffcb",
+			"name": "Get CollectionRuns",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "CR1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "Access: User himself, loggedIn",
+			"headers": "",
+			"method": "GET",
+			"pathVariables": {},
+			"url": "{{url}}/api/collectionrun?user_id=U1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527"
+		},
+		{
+			"id": "d9f07478-1785-9931-3f86-19b9b4f899a3",
+			"folder": "dd531619-8c2f-2cf8-f90e-4cd703e8e855",
+			"name": "Session Sync",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "since_id",
+					"value": "0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "user_id",
+					"value": "4",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "",
+			"headers": "",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url}}/v1/session/sync",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527"
+		},
+		{
+			"folder": "dd531619-8c2f-2cf8-f90e-4cd703e8e855",
+			"id": "e1618e13-590a-aa67-3ada-f21dd86544c6",
+			"name": "Delete User 2",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "user_id",
+					"value": "U2",
+					"type": "text"
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "Access: Admin or the user himself\n",
+			"headers": "",
+			"method": "DELETE",
+			"pathVariables": {},
+			"url": "{{url}}/api/user/U2",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221227,
+					"request": "e1618e13-590a-aa67-3ada-f21dd86544c6",
+					"id": "cb25698a-7bee-149b-ee49-8e67c8771dcb",
+					"name": "test",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "88",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "51",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 18:31:00 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\n  \"data\": {\n    \"id\": \"U2\"\n  },\n  \"revision\": 2\n}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"e1618e13-590a-aa67-3ada-f21dd86544c6\"",
+					"createdAt": "2015-03-02T15:01:25.000Z",
+					"updatedAt": "2015-06-03T07:13:57.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"folder": "9c4b4632-a286-d258-48a8-5a4eedd0e4fd",
+			"id": "e5e463e6-1013-35a6-75c0-27420ac16fbb",
+			"name": "Import Collection",
+			"dataMode": "raw",
+			"data": [],
+			"descriptionFormat": null,
+			"description": "Access: user himself\n\n1. id: <Integer>\n2. name: <String>\n3. order: <Integer>, This defines an order",
+			"headers": "Content-Type: application/json\n",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url}}/api/collection/import?user_id=U1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"rawModeData": "{\n  \"id\": \"C3\",\n  \"name\": \"Collection3\",\n  \"description\": \"\",\n  \"order\": [\"R1\"],\n  \"folders\": [\n    {\n      \"id\": \"F1\",\n      \"name\": \"Bootstrap\",\n      \"description\": \"\",\n      \"order\": [\n        \"R1.1\",\n        \"R1.2\"\n      ],\n      \"collection_name\": \"LoadTest\",\n      \"collection_id\": \"C3\",\n      \"collection_owner\": \"4\"\n    },\n    {\n      \"id\": \"F2\",\n      \"name\": \"Client_API\",\n      \"description\": \"\",\n      \"order\": [\n        \"R2.1\"\n      ],\n      \"collection_name\": \"LoadTest\",\n      \"collection_owner\": \"4\",\n      \"collection_id\": \"C3\",\n      \"collection\": \"C3\",\n      \"collectionId\": \"C3\"\n    },\n    {\n      \"id\": \"F3\",\n      \"name\": \"Client\",\n      \"description\": \"\",\n      \"order\": [],\n      \"collection_name\": \"LoadTest\",\n      \"collection_owner\": \"4\",\n      \"collection_id\": \"C3\",\n      \"collection\": \"C3\"\n    }\n  ],\n  \"timestamp\": 1418324929697,\n  \"synced\": false,\n  \"sharedWithTeam\": true,\n  \"subscribed\": false,\n  \"remoteLink\": \"http://sync-staging.getpostman.com/collections/70bd089fae46259949f2\",\n  \"public\": false,\n  \"requests\": [\n    {\n      \"id\": \"R1\",\n      \"headers\": \"\",\n      \"url\": \"{{url}}/v1/request\",\n      \"preRequestScript\": \"\",\n      \"pathVariables\": {},\n      \"method\": \"POST\",\n      \"data\": [\n        {\n          \"key\": \"id\",\n          \"value\": \"R{{u}}_{{R}}-{{cid}}\",\n          \"type\": \"text\",\n          \"enabled\": true\n        },\n        {\n          \"key\": \"collection\",\n          \"value\": \"C{{u}}\",\n          \"type\": \"text\",\n          \"enabled\": true\n        },\n        {\n          \"key\": \"name\",\n          \"value\": \"Request{{u}}_{{R}}-{{cid}}\",\n          \"type\": \"text\",\n          \"enabled\": true\n        },\n        {\n          \"key\": \"dataMode\",\n          \"value\": \"mode\",\n          \"type\": \"text\",\n          \"enabled\": true\n        },\n        {\n          \"key\": \"method\",\n          \"value\": \"PUT\",\n          \"type\": \"text\",\n          \"enabled\": true\n        }\n      ],\n      \"dataMode\": \"params\",\n      \"version\": 2,\n      \"tests\": \"var data = JSON.parse(responseBody);\\n\\npostman.setEnvironmentVariable(\\\"R\\\", _.parseInt(environment.R) + 1);\\npostman.setEnvironmentVariable(\\\"S\\\", _.parseInt(data.revision));\\n\\nvar c = _.parseInt(environment.c) + 1;\\npostman.setEnvironmentVariable(\\\"c\\\", c);\\n\\nif (c != _.parseInt(environment.C)) {\\n    switch (_.random(1,3)) {\\n      case 1:\\n        postman.setNextRequest(\\\"Create Request\\\");\\n        break;\\n        \\n      case 2:\\n        postman.setNextRequest(\\\"Update Request\\\");\\n        break;\\n\\n\\t  case 3:\\n        postman.setNextRequest(\\\"Session Sync\\\");\\n        break;\\n\\t }\\n}\\n\\ntests[\\\"Status code is 200\\\"] = responseCode.code === 200;\",\n      \"currentHelper\": \"normal\",\n      \"time\": 1419268222383,\n      \"name\": \"Create Request\",\n      \"description\": \"\",\n      \"collectionId\": \"C3\",\n      \"responses\": [],\n      \"synced\": false\n    },\n    {\n      \"id\": \"R1.1\",\n      \"headers\": \"\",\n      \"url\": \"{{url}}/v1/session/sync\",\n      \"preRequestScript\": \"postman.setEnvironmentVariable(\\\"s\\\", _.random(1, _.parseInt(environment.S)));\\t\",\n      \"pathVariables\": {},\n      \"method\": \"POST\",\n      \"data\": [\n        {\n          \"key\": \"since_id\",\n          \"value\": \"{{s}}\",\n          \"type\": \"text\",\n          \"enabled\": true\n        }\n      ],\n      \"dataMode\": \"params\",\n      \"version\": 2,\n      \"tests\": \"var data = JSON.parse(responseBody);\\n\\nvar c = _.parseInt(environment.c) + 1;\\npostman.setEnvironmentVariable(\\\"c\\\", c);\\n\\nvar sinceIds = [_.parseInt(data.own.last_since_id), _.parseInt(data.subscribe.last_since_id)];\\npostman.setEnvironmentVariable(\\\"S\\\", _.max(sinceIds));\\n\\nif (c != _.parseInt(environment.C)) {\\n\\tswitch (_.random(1,3)) {\\n      case 1:\\n        postman.setNextRequest(\\\"Create Request\\\");\\n        break;\\n        \\n      case 2:\\n        postman.setNextRequest(\\\"Update Request\\\");\\n        break;\\n\\n\\t  case 3:\\n        postman.setNextRequest(\\\"Session Sync\\\");\\n        break;\\n\\t }\\n}\\n\\ntests[\\\"Status code is 200\\\"] = responseCode.code === 200;\",\n      \"currentHelper\": \"normal\",\n      \"time\": 1418983397435,\n      \"name\": \"Session Sync\",\n      \"description\": \"\",\n      \"collectionId\": \"C3\",\n      \"responses\": [],\n      \"synced\": false\n    },\n    {\n      \"id\": \"R1.2\",\n      \"headers\": \"\",\n      \"url\": \"{{url}}/api/sync\",\n      \"preRequestScript\": \"postman.setEnvironmentVariable(\\\"s\\\", _.random(1, _.parseInt(environment.S)-1));\",\n      \"pathVariables\": {},\n      \"method\": \"POST\",\n      \"data\": [\n        {\n          \"key\": \"since_id\",\n          \"value\": \"{{s}}\",\n          \"type\": \"text\",\n          \"enabled\": true\n        },\n        {\n          \"key\": \"user_id\",\n          \"value\": \"U1\",\n          \"type\": \"text\",\n          \"enabled\": true\n        }\n      ],\n      \"dataMode\": \"params\",\n      \"version\": 2,\n      \"tests\": \"var data = JSON.parse(responseBody);\\n\\nvar c = _.parseInt(environment.c) + 1;\\npostman.setEnvironmentVariable(\\\"c\\\", c);\\n\\nvar sinceIds = [_.parseInt(data.own.last_since_id), _.parseInt(data.subscribe.last_since_id)];\\npostman.setEnvironmentVariable(\\\"S\\\", _.max(sinceIds));\\n\\nif (c != _.parseInt(environment.C)) {\\n    switch (_.random(1,3)) {\\n      case 1:\\n        postman.setNextRequest(\\\"Create Request\\\");\\n        break;\\n        \\n      case 2:\\n        postman.setNextRequest(\\\"Update Request\\\");\\n        break;\\n\\n\\t  case 3:\\n        postman.setNextRequest(\\\"Session Sync\\\");\\n        break;\\n\\t }\\n}\\n\\ntests[\\\"Status code is 200\\\"] = responseCode.code === 200;\",\n      \"currentHelper\": \"normal\",\n      \"time\": 1418997520514,\n      \"name\": \"Session Sync\",\n      \"description\": \"\",\n      \"collectionId\": \"C3\",\n      \"responses\": [],\n      \"synced\": false\n    },\n    {\n      \"id\": \"R2.1\",\n      \"headers\": \"\",\n      \"url\": \"{{url}}/api/user/U{{u}}/token\",\n      \"preRequestScript\": \"postman.setEnvironmentVariable(\\\"u\\\", _.parseInt(environment.u) + 1);\",\n      \"pathVariables\": {},\n      \"method\": \"POST\",\n      \"data\": [\n        {\n          \"key\": \"access_token\",\n          \"value\": \"token{{u}}\",\n          \"type\": \"text\",\n          \"enabled\": true\n        },\n        {\n          \"key\": \"user_id\",\n          \"value\": \"U{{u}}\",\n          \"type\": \"text\",\n          \"enabled\": true\n        },\n        {\n          \"key\": \"server_secret\",\n          \"value\": \"zeppelin\",\n          \"type\": \"text\",\n          \"enabled\": true\n        }\n      ],\n      \"dataMode\": \"params\",\n      \"version\": 2,\n      \"tests\": \"tests[\\\"Status code is 200\\\"] = responseCode.code === 200;\\n\\npostman.setNextRequest(\\\"Create Collection\\\");\",\n      \"currentHelper\": \"normal\",\n      \"time\": 1418981746736,\n      \"name\": \"Add Token\",\n      \"description\": \"\",\n      \"collectionId\": \"C3\",\n      \"responses\": [\n        {\n          \"status\": \"\",\n          \"responseCode\": {\n            \"code\": 200,\n            \"name\": \"OK\",\n            \"detail\": \"Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action.\"\n          },\n          \"time\": 61,\n          \"headers\": [\n            {\n              \"name\": \"Access-Control-Allow-Credentials\",\n              \"key\": \"Access-Control-Allow-Credentials\",\n              \"value\": \"\",\n              \"description\": \"Indicates whether or not the response to the request can be exposed when the credentials flag is true. When used as part of a response to a preflight request, this indicates whether or not the actual request can be made using credentials.\"\n            },\n            {\n              \"name\": \"Access-Control-Allow-Headers\",\n              \"key\": \"Access-Control-Allow-Headers\",\n              \"value\": \"\",\n              \"description\": \"Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request.\"\n            },\n            {\n              \"name\": \"Access-Control-Allow-Methods\",\n              \"key\": \"Access-Control-Allow-Methods\",\n              \"value\": \"\",\n              \"description\": \"Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request.\"\n            },\n            {\n              \"name\": \"Access-Control-Allow-Origin\",\n              \"key\": \"Access-Control-Allow-Origin\",\n              \"value\": \"\",\n              \"description\": \"Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource.\"\n            },\n            {\n              \"name\": \"Connection\",\n              \"key\": \"Connection\",\n              \"value\": \"keep-alive\",\n              \"description\": \"Options that are desired for the connection\"\n            },\n            {\n              \"name\": \"Date\",\n              \"key\": \"Date\",\n              \"value\": \"Wed, 07 Jan 2015 09:57:52 GMT\",\n              \"description\": \"The date and time that the message was sent\"\n            },\n            {\n              \"name\": \"Transfer-Encoding\",\n              \"key\": \"Transfer-Encoding\",\n              \"value\": \"chunked\",\n              \"description\": \"The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity.\"\n            },\n            {\n              \"name\": \"X-Powered-By\",\n              \"key\": \"X-Powered-By\",\n              \"value\": \"Sails <sailsjs.org>\",\n              \"description\": \"Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)\"\n            }\n          ],\n          \"cookies\": [],\n          \"mime\": \"\",\n          \"text\": \"\",\n          \"language\": \"html\",\n          \"rawDataType\": \"text\",\n          \"state\": {\n            \"size\": \"normal\"\n          },\n          \"previewType\": \"html\",\n          \"searchResultScrolledTo\": -1,\n          \"forceRaw\": false,\n          \"id\": \"p3.1\",\n          \"name\": \"200\"\n        }\n      ],\n      \"synced\": false\n    }\n  ]\n}\n"
+		},
+		{
+			"folder": "dd531619-8c2f-2cf8-f90e-4cd703e8e855",
+			"id": "e6137f42-c628-50a3-fa03-a69e3993c428",
+			"name": "Update User 2",
+			"dataMode": "raw",
+			"data": [],
+			"descriptionFormat": null,
+			"description": "Access: admin or the user himself\n",
+			"headers": "Content-Type: application/json\n",
+			"method": "PUT",
+			"pathVariables": {},
+			"url": "{{url}}/api/user/U1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221229,
+					"request": "e6137f42-c628-50a3-fa03-a69e3993c428",
+					"id": "bb8376d2-77da-00bb-4546-a9baf8ca79dc",
+					"name": "test",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "108",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "283",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 18:30:46 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\n  \"data\": {\n    \"id\": \"U1\",\n    \"name\": \"pqr\",\n    \"title\": null,\n    \"email\": null,\n    \"online\": false,\n    \"admin\": true,\n    \"globals\": null,\n    \"requests_subscribe\": [],\n    \"collections_subscribe\": [],\n    \"collections_own\": [],\n    \"environments\": []\n  },\n  \"revision\": 1\n}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"e6137f42-c628-50a3-fa03-a69e3993c428\"",
+					"createdAt": "2015-03-02T15:01:30.000Z",
+					"updatedAt": "2015-06-03T07:13:58.000Z",
+					"write": false
+				}
+			],
+			"rawModeData": "{\n    \"id\": \"U1\",\n    \"username\": null,\n    \"name\": \"pqr\",\n    \"title\": null,\n    \"email\": null,\n    \"online\": false,\n    \"admin\": true,\n    \"globals\": [{\"a\": 1},{\"b\": 2}],\n    \"hint\": null,\n    \"createdAt\": \"2015-06-03T11:56:52.000Z\",\n    \"updatedAt\": \"2015-06-03T11:56:56.000Z\",\n    \"lastRevision\": null,\n    \"user_id\": \"U1\"\n  }"
+		},
+		{
+			"folder": "fe3d4d12-78b5-0512-0b7a-30a4ed571c86",
+			"id": "eb0b45e6-87af-05cc-ec21-a11ea0344ca0",
+			"name": "Get HeaderPreset",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "Hp1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": null,
+			"description": "",
+			"headers": "",
+			"method": "GET",
+			"pathVariables": {},
+			"url": "{{url}}/api/headerpreset/h2?user_id=U1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221231,
+					"request": "eb0b45e6-87af-05cc-ec21-a11ea0344ca0",
+					"id": "ab84c647-01b9-2d62-609d-332477946956",
+					"name": "test",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "45",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "79",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 20:34:29 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\n  \"owner\": \"U1\",\n  \"id\": \"h2\",\n  \"name\": \"HeaderPreset2\",\n  \"headers\": null\n}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"eb0b45e6-87af-05cc-ec21-a11ea0344ca0\"",
+					"createdAt": "2015-03-02T15:01:36.000Z",
+					"updatedAt": "2015-06-03T07:13:59.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"folder": "6c1e76ef-77b4-685d-779d-fa96ae2f4ead",
+			"id": "fa15b3e6-39e0-4009-d28c-ace687da1fcf",
+			"name": "Get Environments",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "id",
+					"value": "e2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "Environment2",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "Access: User himself, loggedIn",
+			"headers": "",
+			"method": "GET",
+			"pathVariables": {},
+			"url": "{{url}}/api/environment?user_id=U1",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527",
+			"responses": [
+				{
+					"owner": "4",
+					"lastUpdatedBy": "4",
+					"lastRevision": 221233,
+					"request": "fa15b3e6-39e0-4009-d28c-ace687da1fcf",
+					"id": "a999cd2d-6856-9bcb-7202-ec327cbb61b6",
+					"name": "test",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "10",
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"key": "Access-Control-Allow-Origin",
+							"value": "",
+							"description": ""
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "176",
+							"description": ""
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 05 Nov 2014 19:49:39 GMT",
+							"description": ""
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "Sails <sailsjs.org>",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "[\n  {\n    \"owner\": \"U1\",\n    \"id\": \"e1\",\n    \"name\": \"Env1\",\n    \"values\": null\n  },\n  {\n    \"owner\": \"U1\",\n    \"id\": \"e2\",\n    \"name\": \"Environment2\",\n    \"values\": null\n  }\n]",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": "-1",
+					"version": null,
+					"requestObject": "\"fa15b3e6-39e0-4009-d28c-ace687da1fcf\"",
+					"createdAt": "2015-03-02T15:01:36.000Z",
+					"updatedAt": "2015-06-03T07:14:00.000Z",
+					"write": false
+				}
+			]
+		},
+		{
+			"folder": "a5d21e3a-b836-cee3-8c5f-c2ae2d1100b9",
+			"id": "facb749d-4e75-d45b-36af-939eb0ef894e",
+			"name": "Create Collection",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "id",
+					"value": "c1",
+					"type": "text"
+				},
+				{
+					"key": "user_id",
+					"value": "U1",
+					"type": "text"
+				},
+				{
+					"key": "name",
+					"value": "Collection1",
+					"type": "text"
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "Access: user himself",
+			"headers": "",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url}}/api/collection",
+			"preRequestScript": "",
+			"tests": "",
+			"version": 2,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "a14bf334-bfac-97fb-688c-9b6cf5120527"
+		}
+	]
+}

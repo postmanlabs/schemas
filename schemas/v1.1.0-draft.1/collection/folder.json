@@ -1,0 +1,39 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "#/definitions/folder",
+    "title": "Folder",
+    "description": "One of the primary goals of Postman is to organize the development of APIs. To this end, it is necessary to be able to group requests together. This can be achived using 'Folders'. A folder just is an ordered set of requests.",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "In order to be able to uniquely identify different folders within a collection, Postman assigns each folder a unique ID (a [UUID](https://en.wikipedia.org/wiki/Globally_unique_identifier)). This field contains that value."
+        },
+        "name": {
+            "type": "string",
+            "description": "A folder's friendly name is defined by this field. You would want to set this field to a value that would allow you to easily identify this folder."
+        },
+        "description": {
+            "type": "string",
+            "description": "Essays about the folder go into this field!"
+        },
+        "order": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "uniqueItems": true,
+            "description": "Postman preserves the order of your requests within each folder. This field holds a sequence of [UUIDs](https://en.wikipedia.org/wiki/Globally_unique_identifier), where each ID corresponds to a particular Postman request."
+        },
+        "collection_id": {
+            "type": "string",
+            "description": "Postman folders are always a part of a collection. That collection's unique ID (which is a [UUID](https://en.wikipedia.org/wiki/Globally_unique_identifier)) is stored in this field."
+        }
+    },
+    "required": [
+        "id",
+        "name",
+        "description",
+        "order"
+    ]
+}
