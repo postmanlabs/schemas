@@ -3,27 +3,26 @@
 .docson .property-name,
 .docson .type-enum,
 .docson .type-default,
-.docson .signature-type-null{
-    font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
+.docson .signature-type-null {
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
 }
 
-
 .docson .signature-button {
-    /*font-family: 'Titillium Web', sans-serif;*/
+  /*font-family: 'Titillium Web', sans-serif;*/
 }
 
 /* Color overrides */
 .docson .title {
-    color: #f15a24;
+  color: #f15a24;
 }
 
 .docson .signature-type-number,
 .docson .signature-type-string,
 .docson .signature-type-boolean,
 .docson .signature-type-null {
-    color: green;
-    font-weight: normal;
+  color: green;
+  font-weight: normal;
 }
 
 .docson .box-1,
@@ -34,86 +33,86 @@
 .docson .box-6,
 .docson .box-7,
 .docson .box-8 {
-    background: whitesmoke !important;
+  background: whitesmoke !important;
 }
 
 .docson .signature {
-    clear: left;
-    padding: 15px 0;
+  clear: left;
+  padding: 15px 0;
 }
 
 .docson .signature:not(:last-child) {
-    border-bottom: solid thin rgba(0, 0, 0, 0.1);
+  border-bottom: solid thin rgba(0, 0, 0, 0.1);
 }
 
 .docson .signature-type-ref {
-    color: inherit;
+  color: inherit;
 }
 
 /* Spacing overrides */
 .docson .box {
-    width: 100%;
-    box-shadow: none;
-    border-radius: 2px;
+  width: 100%;
+  box-shadow: none;
+  border-radius: 2px;
 }
 .docson .signature-button {
-    padding: 2px 4px;
-    border-radius: 2px;
-    margin-left: 0;
-    word-break: none;
-    overflow: show;
+  padding: 2px 4px;
+  border-radius: 2px;
+  margin-left: 0;
+  word-break: none;
+  overflow: show;
 }
 
 .docson .box-header {
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
 }
 
 .docson .box-body {
-    padding: 10px 20px;
+  padding: 10px 20px;
 }
 
 .docson .signature-type-expanded {
-    box-shadow: none;
-    vertical-align: 0;
+  box-shadow: none;
+  vertical-align: 0;
 }
 
 .docson .signature-type {
-    min-width: 160px;
-    max-width: 160px;
+  min-width: 160px;
+  max-width: 160px;
 }
 
 .signature-box-container .box-description p {
-    margin-top: 8px;
+  margin-top: 8px;
 }
 
 .docson .box-container {
-    float: none;
-    padding-top: 15px;
-    padding-left: 0;
-    display: none;
+  float: none;
+  padding-top: 15px;
+  padding-left: 0;
+  display: none;
 }
 
 .color-enum {
-    color: purple;
+  color: purple;
 }
 
 .color-type {
-    color: green;
+  color: green;
 }
 
 .legend {
-    font-size: 75%;
+  font-size: 75%;
 }
 
 /* Font-style overrides */
 .docson .required {
-    font-weight: normal;
+  font-weight: normal;
 }
 
 .required:after {
-  content: '*';
-  color: #F00;
+  content: "*";
+  color: #f00;
   vertical-align: super;
 }
 
@@ -124,37 +123,37 @@
 }
 
 .signature-type-string {
-    color: green;
+  color: green;
 }
 
 .type-enum {
-    color: purple;
-    font-family: "Lucida Console", Monaco, monospace;
-    font-size: 90%;
-    padding-left: 2px;
+  color: purple;
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 90%;
+  padding-left: 2px;
 }
 
 .open-sans {
-    font-family: "Open Sans",sans-serif
+  font-family: "Open Sans", sans-serif;
 }
 
 .margin-left-20 {
-    margin-left: 20px !important;
+  margin-left: 20px !important;
 }
 
 .background-dark {
-    background-color: #1d282c; 
+  background-color: #1d282c;
 }
 
 .margin-top-5 {
-    margin-top: 5px !important; 
+  margin-top: 5px !important;
 }
 
 .navigation-container ul li a {
-    color:white !important;
-    text-transform: uppercase;
+  color: white !important;
+  text-transform: uppercase;
 }
 
 .navigation-container ul li a:hover {
-    color:#ff6c37 !important;
+  color: #ff6c37 !important;
 }
