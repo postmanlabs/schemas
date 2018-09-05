@@ -7,6 +7,6 @@ jobs:
   include:
     if: branch = develop
     script:
-      - pip install awscli==1.16.7
+      - pip install --user awscli
       - npm run build-docs
     after_success: aws s3 sync ./webout s3://pm-schemas/ --delete --follow-symlinks
