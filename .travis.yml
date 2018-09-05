@@ -1,0 +1,12 @@
+language: node_js
+node_js: stable
+
+script: npm test
+
+jobs:
+  include:
+    if: branch = develop
+    script:
+      - pip install awscli==1.16.7
+      - npm run build-docs
+    after_success: aws s3 sync ./webout s3://pm-schemas/ --delete --follow-symlinks
