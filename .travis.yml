@@ -10,7 +10,7 @@ jobs:
     - stage: test
       script: npm test
     - stage: deploy
-      if: branch = develop
+      if: branch = develop AND type = push
       before_script: pip install --user awscli
       script: npm run build-docs
       after_success: aws s3 sync ./webout s3://pm-schemas/ --delete --follow-symlinks
