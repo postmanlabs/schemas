@@ -8,7 +8,7 @@
       "type": "git",
       "url": "git://github.com/postmanlabs/schemas.git"
   },
-  "author": "Postman Labs <help@getpostman.com>",
+  "author": "Postman Labs <help@getpostman.com> (=)",
   "license": "Apache-2.0",
   "keywords": [
     "postman",
@@ -30,15 +30,24 @@
     "tv4": "1.3.0"
   },
   "scripts": {
-    "build-docs": "node scripts/build-docs.js",
-    "build-schemas": "scripts/build-schemas.sh",
-    "test": "mocha --recursive --exit"
+      "build-docs": "node scripts/build-docs.js",
+      "build-schemas": "scripts/build-schemas.sh",
+      "test": "node npm/test.js",
+      "test-system": "node npm/test-system.js",
+      "test-lint": "node npm/test-lint.js",
+      "test-integration": "node npm/test-integration.js"
   },
   "devDependencies": {
+    "async": "2.6.1",
     "chai": "4.1.2",
-    "jscs": "3.0.7",
-    "jshint": "2.9.6",
-    "mocha": "5.2.0"
+    "colors": "1.3.2",
+    "editorconfig": "0.15.0",
+    "mocha": "5.2.0",
+    "packity": "0.3.2",
+    "parse-gitignore": "1.0.1",
+    "pretty-ms": "3.2.0",
+    "recursive-readdir": "2.2.2",
+    "shelljs": "0.8.2"
   },
   "engines": {
     "node": "8"
