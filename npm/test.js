@@ -7,7 +7,7 @@ var prettyms = require('pretty-ms'),
     startedAt = Date.now();
 
 require('async').series([
-    // require('./test-lint'), // @todo fix linting errors
+    require('./test-lint'),
     require('./test-system'),
     require('./test-integration')
 ], function (code) {
