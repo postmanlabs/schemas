@@ -1,41 +1,33 @@
 #!/usr/bin/env node
 
-var fs = require('fs'),
-    args = require('commander'),
+const fs = require('fs'),
+    program = require('commander'),
 
-    tools = require('..');
+    schema = require('..');
 
-function parseArguments() {
-    args.option('--output [output]', 'Path to the output JSON file')
-        .option('--schema [schema]', 'Path to the JSON file containing the schema to validate against')
-        .option('--schema-dir [schemaDir]', 'Path to the directory containing all the schemas')
-        .parse(process.argv);
+program
+    .option('--output <output>', 'Path to the output JSON file')
+    .option('--schema <schema>', 'Path to the JSON file containing the schema to validate against')
+    .option('--schema-dir <schemaDir>', 'Path to the directory containing all the schemas')
+    .parse(process.argv);
+
+if (!program.output) {
+    console.error('\n  error: "--output" option is required');
+    process.exit(1);
 }
 
-function main() {
-    var schema,
-        result;
-
-    parseArguments();
-
-    if (!args.output) {
-        console.log('"--output" parameter is required');
-        process.exit(1);
-    }
-    if (!args.schema) {
-        console.log('"--schema" parameter is required');
-        process.exit(1);
-    }
-    if (!args.schemaDir) {
-        console.log('"--schema-dir" parameter is required');
-        process.exit(1);
-    }
-    result = tools.compile(args.schema, args.schemaDir);
-
-    fs.writeFileSync(args.output, JSON.stringify(result, null, 4));
-    console.log('Output written to file: ', args.output);
+if (!program.schema) {
+    console.error('\n  error: "--schema" option is required');
+    process.exit(1);
 }
 
-if (require.main == module) {
-    main();
+if (!program.schemaDir) {
+    console.error('\n  error: "--schema-dir" option is required');
+    process.exit(1);
 }
+
+let result = schema.compile(program.schema, program.schemaDir);
+
+fs.writeFileSync(program.output, JSON.stringify(result, null, 4));
+
+console.info('Output written to file: ', program.output);
