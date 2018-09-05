@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 var path = require('path'),
 
 	_ = require('lodash'),
@@ -6,7 +7,7 @@ var path = require('path'),
 	semver = require('semver'),
     mustache = require('mustache'),
 
-    tools = require('../index'),
+    tools = require('..'),
 
     SCHEMA_DIR = path.join(__dirname, '..', 'schemas'),
     BASE_ASSET_DIR = path.join(__dirname, '..', 'dist'),
