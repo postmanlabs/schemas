@@ -1,12 +1,16 @@
 language: node_js
 node_js: stable
 
-script: npm test
+cache:
+  directories:
+    - node_modules
 
 jobs:
   include:
-    if: branch = develop
-    script:
-      - pip install --user awscli
-      - npm run build-docs
-    after_success: aws s3 sync ./webout s3://pm-schemas/ --delete --follow-symlinks
+    - stage: test
+      script: npm test
+    - stage: deploy
+      if: branch = develop
+      before_script: pip install --user awscli
+      script: npm run build-docs
+      after_success: aws s3 sync ./webout s3://pm-schemas/ --delete --follow-symlinks
