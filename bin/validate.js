@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 var args = require('commander'),
+
     tools = require('..');
 
 function parseArguments() {

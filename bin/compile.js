@@ -2,6 +2,7 @@
 
 var fs = require('fs'),
     args = require('commander'),
+
     tools = require('..');
 
 function parseArguments() {
