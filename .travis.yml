@@ -13,7 +13,7 @@ jobs:
       if: branch = develop AND type = push
       before_script: pip install --user awscli
       script: npm run build-docs
-      after_success: aws s3 sync ./webout s3://pm-schemas/ --delete --follow-symlinks
+      after_success: aws s3 sync ./webout s3://$S3_BUCKET/ --delete --follow-symlinks
 
 notifications:
   slack:
