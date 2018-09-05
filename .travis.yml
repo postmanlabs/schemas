@@ -11,9 +11,11 @@ jobs:
       script: npm test
     - stage: deploy
       if: branch = develop AND type = push
-      before_script: pip install --user awscli
-      script: npm run build-docs
-      after_success: aws s3 sync ./webout s3://$S3_BUCKET/ --delete --follow-symlinks
+      before_script: '[[ "$S3_BUCKET" ]] && [[ "$AWS_ACCESS_KEY_ID" ]] && [[ "$AWS_SECRET_ACCESS_KEY" ]]'
+      script:
+        - npm run build-docs
+        - pip install --user awscli
+        - aws s3 sync ./webout s3://$S3_BUCKET/ --delete --follow-symlinks
 
 notifications:
   slack:
