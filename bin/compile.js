@@ -1,7 +1,8 @@
+#!/usr/bin/env node
+
 var fs = require('fs'),
     args = require('commander'),
-
-    tools = require('../index');
+    tools = require('..');
 
 function parseArguments() {
     args.option('--output [output]', 'Path to the output JSON file')

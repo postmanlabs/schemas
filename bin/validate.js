@@ -1,5 +1,7 @@
+#!/usr/bin/env node
+
 var args = require('commander'),
-    tools = require('../index');
+    tools = require('..');
 
 function parseArguments() {
     args.option('--input [input]', 'Path to the JSON file containing the data to be validated')
