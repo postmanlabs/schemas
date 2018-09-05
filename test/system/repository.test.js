@@ -5,7 +5,7 @@
 var fs = require('fs'),
     path = require('path'),
     _ = require('lodash'),
-    // yml = require('js-yaml'),
+    yml = require('js-yaml'),
     parseIgnore = require('parse-gitignore');
 
 /* global describe, it, expect */
@@ -214,7 +214,7 @@ describe('project repository', function () {
         });
 
         it('should have readable content', function () {
-            // expect(yml.safeLoad(fs.readFileSync('./CHANGELOG.yaml')), 'not a valid yaml').to.be.ok;
+            expect(yml.safeLoad(fs.readFileSync('./CHANGELOG.yaml')), 'not a valid yaml').to.be.ok;
         });
     });
 });
