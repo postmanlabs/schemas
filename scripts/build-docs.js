@@ -62,7 +62,7 @@ function buildLatest (version) {
  */
 function getStableVersions (versions) {
     return versions.filter((val) => {
-        return (/v[0-9]+\.[0-9]+\.[0-9]+$/i).test(val);
+        return (/v\d+\.\d+\.\d+$/i).test(val);
     });
 }
 
@@ -130,12 +130,8 @@ function buildToc (versions) {
             status,
             bootstrapClass;
 
-        if (_.isArray(semVersion.prerelease) && semVersion.prerelease.length) {
-            status = _.isArray(semVersion.prerelease) ? semVersion.prerelease[0] : semVersion.prerelease;
-        }
-        else {
-            status = 'stable';
-        }
+        status = Array.isArray(semVersion.prerelease) && semVersion.prerelease.length ?
+            semVersion.prerelease[0] : 'stable';
 
         bootstrapClass = STATUS_MAP_BOOTSTRAP[status];
 
