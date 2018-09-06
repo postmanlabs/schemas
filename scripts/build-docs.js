@@ -130,7 +130,7 @@ function buildToc (versions) {
             status,
             bootstrapClass;
 
-        status = Array.isArray(semVersion.prerelease) && semVersion.prerelease.length ?
+        status = _.isArray(semVersion.prerelease) && semVersion.prerelease.length ?
             semVersion.prerelease[0] : 'stable';
 
         bootstrapClass = STATUS_MAP_BOOTSTRAP[status];
