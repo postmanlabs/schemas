@@ -23,7 +23,8 @@
 							"key": "file",
 							"type": "file"
 						}
-					]
+          ],
+          "disabled": true
 				},
 				"url": {
 					"raw": "https://postman-echo.com/post",
@@ -65,7 +66,8 @@
 							"contentType": "text/csv",
 							"type": "text"
 						}
-					]
+          ],
+          "disabled": false
 				},
 				"url": {
 					"raw": "https://postman-echo.com/post",
