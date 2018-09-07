@@ -157,3 +157,89 @@
 .navigation-container ul li a:hover {
   color: #ff6c37 !important;
 }
+
+/* Postman Styles */
+.header-container .navigation-container {
+  float: right;
+  margin-top: 20px;
+}
+
+.hero-header-container .navigation-container ul li,
+#header .navigation-container ul li {
+  float: left;
+  list-style: none;
+}
+
+.header-container .logo-container {
+  float: left;
+  width: 160px;
+  height: 60px;
+  margin-top: 0;
+  display: block;
+  background: url(https://static.getpostman.com/assets/pm-logo-alt-1.svg) left center/150px no-repeat;
+}
+
+.header-container .navigation-container .pm-btn-transparent:hover {
+  color: #ff6c37;
+}
+
+.header-container {
+  height: 70px;
+}
+
+.hero-header-container {
+  border: 0;
+  top: 50px;
+  position: relative;
+  padding: 0 120px;
+}
+
+@media (max-width: 1300px) {
+  .hero-header-container {
+    padding: 0 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-header-container {
+    padding: 0 20px;
+    top: 30px;
+  }
+}
+
+.hero-header-container .navigation-container ul li a {
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+  margin: 0 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+@media (max-width: 1230px) {
+  .hero-header-container .navigation-container ul li a {
+    margin: 0;
+  }
+}
+
+#header {
+  top: 0;
+}
+
+#header .navigation-container ul li a:hover {
+  color: #ff6c37;
+}
+
+.footer-container {
+  padding: 20px;
+  width: 100%;
+  text-align: center;
+  font-size: 10px;
+  color: #1c272b;
+}
+
+.footer-container span {
+  display: inline;
+  margin-right: 30px;
+  vertical-align: middle;
+}
