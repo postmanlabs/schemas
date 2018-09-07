@@ -28,7 +28,7 @@ function buildVersion (version) {
         outputSchemaFile = path.join(OUTPUT_DIR, version, 'collection.json'),
         schemaFile = path.join(SCHEMA_DIR, version, 'collection.json'),
         versionSchemaDir = path.join(SCHEMA_DIR, version),
-        templateFile = path.join(BASE_ASSET_DIR, 'index.html.mustache'),
+        templateFile = path.join(BASE_ASSET_DIR, 'index.mustache'),
         compiledSchema = tools.compile(schemaFile, versionSchemaDir),
         templateContent = fse.readFileSync(templateFile),
         renderedTemplate;
@@ -116,7 +116,7 @@ function buildSymlinks (versions) {
  * @param {String[]} versions - Schema Versions
  */
 function buildToc (versions) {
-    const templateFile = path.join(BASE_ASSET_DIR, 'table_of_contents.html.mustache'),
+    const templateFile = path.join(BASE_ASSET_DIR, 'table_of_contents.mustache'),
         templateContent = fse.readFileSync(templateFile);
 
     let renderedTemplate,
@@ -178,8 +178,8 @@ function main () {
     versions.forEach(buildVersion);
 
     // Remove templates from output directory.
-    fse.remove(path.join(OUTPUT_DIR, 'index.html.mustache'));
-    fse.remove(path.join(OUTPUT_DIR, 'table_of_contents.html.mustache'));
+    fse.remove(path.join(OUTPUT_DIR, 'index.mustache'));
+    fse.remove(path.join(OUTPUT_DIR, 'table_of_contents.mustache'));
 
 
     // Construct the docs for the latest stable version.
