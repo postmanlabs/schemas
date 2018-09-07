@@ -1,109 +1,106 @@
 <!DOCTYPE html>
 <html>
+  <head>
+      <title>Postman Schemas</title>
+      <meta charset="utf-8">
+      <link rel="shortcut icon" href="https://www.getpostman.com/favicon.ico">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+      <link rel="stylesheet" type="text/css" href="json/collection/css/styles.css">
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" />
+      <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>
 
-<head>
-    <title>Postman Schemas</title>
-    <meta charset="utf-8">
-    <link rel="shortcut icon" href="https://www.getpostman.com/favicon.ico">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <link rel="stylesheet" type="text/css" href="json/collection/css/styles.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" />
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
-
-<body>
-    <div id="header" class="header-container clearfix hero-header-container background-dark open-sans">
-        <a href="https://www.getpostman.com/" class="logo-container margin-top-5"></a>
-        <div class="navigation-container">
-            <ul>
-                <li><a href="https://www.getpostman.com" class="btn pm-btn-transparent">Get Postman</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="page-wrap">
-        <div id="content" class="container">
-            <div>
-                <div class="version-header">
-                    <h2>Documentation for the various versions of Postman Schemas</h2>
-                </div>
-                <div>
-                    <h3>Collections</h3>
-                    <table class="table table-striped table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th>Version</th>
-                                <th>Status</th>
-                                <th>Documentation</th>
-                                <th>Raw Schema</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {{#versions}}
-                            <tr>
-                                <td>{{raw}}</td>
-                                <td><span class="label label-{{bootstrapClass}}">{{status}}</span></td>
-                                <td><a href="./json/collection/{{raw}}/docs/index.html" target="_blank">View
-                                        Documentation</a></td>
-                                <td><a href="./json/collection/{{raw}}/collection.json" target="_blank">JSON Schema</a></td>
-                            </tr>
-                            {{/versions}}
-                        </tbody>
-                    </table>
-                </div>
-                <div>
-                    <h3>Legend</h3>
-                    <table class="table table-striped table-bordered table-hover">
-                        <tbody>
-                            <tr>
-                                <td><span class="label label-warning">draft</span></td>
-                                <td>Draft - unstable and liable to be changed anytime</td>
-                            </tr>
-                            <tr>
-                                <td><span class="label label-primary">rc</span></td>
-                                <td>Release Candidate - Only minor changes possible in the future</td>
-                            </tr>
-                            <tr>
-                                <td><span class="label label-success">stable</span></td>
-                                <td>Stable - No changes likely. In exceptional cases, changes may occur, but they will
-                                    be backwards compatible</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="footer-container open-sans">
-      <span>&copy;
-        <script type="text/JavaScript">document.write(new Date().getFullYear());</script>
-        Postdot Technologies, Inc.
-      </span>
-      <span>All Rights Reserved</span>
-    </div>
-    <script type="text/javascript">
-        if (document.location.hostname.search("localhost") !== 'localhost') {
-            (function (i, s, o, g, r, a, m) {
-                i['GoogleAnalyticsObject'] = r;
-                i[r] = i[r] || function () {
-                    (i[r].q = i[r].q || []).push(arguments)
-                }, i[r].l = 1 * new Date();
-                a = s.createElement(o),
-                    m = s.getElementsByTagName(o)[0];
-                a.async = 1;
-                a.src = g;
-                m.parentNode.insertBefore(a, m)
-            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-            ga('create', 'UA-43979731-4', 'auto');
-            ga('send', 'pageview');
-        }
-    </script>
-</body>
-
+      <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+      <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+  </head>
+  <body>
+      <div id="header" class="header-container clearfix hero-header-container background-dark open-sans">
+          <a href="https://www.getpostman.com/" class="logo-container margin-top-5"></a>
+          <div class="navigation-container">
+              <ul>
+                  <li><a href="https://www.getpostman.com" class="btn pm-btn-transparent">Get Postman</a></li>
+              </ul>
+          </div>
+      </div>
+      <div class="page-wrap">
+          <div id="content" class="container">
+              <div>
+                  <div class="version-header">
+                      <h2>Documentation for the various versions of Postman Schemas</h2>
+                  </div>
+                  <div>
+                      <h3>Collections</h3>
+                      <table class="table table-striped table-bordered table-hover">
+                          <thead>
+                              <tr>
+                                  <th>Version</th>
+                                  <th>Status</th>
+                                  <th>Documentation</th>
+                                  <th>Raw Schema</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              {{#versions}}
+                              <tr>
+                                  <td>{{raw}}</td>
+                                  <td><span class="label label-{{bootstrapClass}}">{{status}}</span></td>
+                                  <td><a href="./json/collection/{{raw}}/docs/index.html" target="_blank">View
+                                          Documentation</a></td>
+                                  <td><a href="./json/collection/{{raw}}/collection.json" target="_blank">JSON Schema</a></td>
+                              </tr>
+                              {{/versions}}
+                          </tbody>
+                      </table>
+                  </div>
+                  <div>
+                      <h3>Legend</h3>
+                      <table class="table table-striped table-bordered table-hover">
+                          <tbody>
+                              <tr>
+                                  <td><span class="label label-warning">draft</span></td>
+                                  <td>Draft - unstable and liable to be changed anytime</td>
+                              </tr>
+                              <tr>
+                                  <td><span class="label label-primary">rc</span></td>
+                                  <td>Release Candidate - Only minor changes possible in the future</td>
+                              </tr>
+                              <tr>
+                                  <td><span class="label label-success">stable</span></td>
+                                  <td>Stable - No changes likely. In exceptional cases, changes may occur, but they will
+                                      be backwards compatible</td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="footer-container open-sans">
+        <span>&copy;
+          <script type="text/JavaScript">document.write(new Date().getFullYear());</script>
+          Postdot Technologies, Inc.
+        </span>
+        <span>All Rights Reserved</span>
+      </div>
+      <script type="text/javascript">
+          if (document.location.hostname.search("localhost") !== 'localhost') {
+              (function (i, s, o, g, r, a, m) {
+                  i['GoogleAnalyticsObject'] = r;
+                  i[r] = i[r] || function () {
+                      (i[r].q = i[r].q || []).push(arguments)
+                  }, i[r].l = 1 * new Date();
+                  a = s.createElement(o),
+                      m = s.getElementsByTagName(o)[0];
+                  a.async = 1;
+                  a.src = g;
+                  m.parentNode.insertBefore(a, m)
+              })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+              ga('create', 'UA-43979731-4', 'auto');
+              ga('send', 'pageview');
+          }
+      </script>
+  </body>
 </html>
