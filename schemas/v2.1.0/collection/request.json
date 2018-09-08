@@ -193,6 +193,11 @@
                                     "type": "string"
                                 }
                             }
+                        },
+                        "disabled": {
+                          "type": "boolean",
+                          "default": false,
+                          "description": "When set to true, prevents request body from being sent."
                         }
                     }
                 }

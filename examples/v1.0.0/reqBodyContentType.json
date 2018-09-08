@@ -33,7 +33,8 @@
 					"enabled": true
 				}
 			],
-			"dataMode": "params",
+      "dataMode": "params",
+      "dataDisabled": true,
 			"headerData": [],
 			"method": "POST",
 			"pathVariableData": [],
@@ -75,7 +76,8 @@
 					"enabled": true
 				}
 			],
-			"dataMode": "params",
+      "dataMode": "params",
+      "dataDisabled": false,
 			"headerData": [],
 			"method": "POST",
 			"pathVariableData": [],
