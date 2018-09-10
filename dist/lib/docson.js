@@ -307,10 +307,10 @@ define(["./jquery", "./handlebars", "./highlight", "./jsonpointer", "./marked", 
     });
 
     function init() {
-        $.when( $.get(docson.templateBaseUrl+"/box.html").done(function(content) {
+        $.when( $.get(docson.templateBaseUrl+"/box.mustache").done(function(content) {
             source = content
             boxTemplate = Handlebars.compile(source);
-        }), $.get(docson.templateBaseUrl+"/signature.html").done(function(content) {
+        }), $.get(docson.templateBaseUrl+"/signature.mustache").done(function(content) {
             source = content
             signatureTemplate = Handlebars.compile(source);
         })).always(function() {
