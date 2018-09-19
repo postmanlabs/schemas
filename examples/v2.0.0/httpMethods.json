@@ -1,28 +1,48 @@
 {
-	"info": {
-		"_postman_id": "5adbd3b7-80cb-43cc-bf1e-8578ab3c9b15",
-		"name": "HTTP Methods",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
-	},
-	"item": [
-		{
-			"_postman_id": "0610e24a-d225-41d5-aadc-e933613dc496",
-			"name": "Standard HTTP Method",
-			"request": {
-				"method": "GET",
-				"url": "https://postman-echo.com/get"
-			},
-			"response": []
-		},
-		{
-			"_postman_id": "1085ed1c-0db0-4f71-990a-10b019693435",
-			"name": "Custom HTTP Method",
-			"request": {
-				"method": "POSTMAN",
-				"url": "https://postman-echo.com/postman"
-			},
-			"response": []
-		}
-	],
-	"event": []
+  "info": {
+    "_postman_id": "5adbd3b7-80cb-43cc-bf1e-8578ab3c9b15",
+    "name": "HTTP Methods",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [{
+      "_postman_id": "0610e24a-d225-41d5-aadc-e933613dc496",
+      "name": "Standard HTTP Method",
+      "request": {
+        "method": "GET",
+        "url": "https://postman-echo.com/get"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "6fd141b6-1ef7-ea36-6fb8-917f5d4e938b",
+      "name": "GET Method With Body",
+      "request": {
+        "method": "GET",
+        "body": {
+          "mode": "formdata",
+          "formdata": [{
+            "key": "foo",
+            "value": "bar",
+            "type": "text",
+            "enabled": true
+          }]
+        },
+        "url": "https://postman-echo.com/get"
+      },
+      "response": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "_postman_id": "1085ed1c-0db0-4f71-990a-10b019693435",
+      "name": "Custom HTTP Method",
+      "request": {
+        "method": "POSTMAN",
+        "url": "https://postman-echo.com/postman"
+      },
+      "response": []
+    }
+  ],
+  "event": []
 }
