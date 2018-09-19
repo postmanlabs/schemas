@@ -30,6 +30,18 @@
             "items": {
                 "$ref": "#/definitions/response"
             }
+        },
+        "protocolProfileBehavior": {
+          "type": "object",
+          "title": "Protocol Profile Behavior",
+          "description": "Set of configurations used to alter the usual behavior of sending the request",
+          "properties": {
+            "disableBodyPruning": {
+              "type": "boolean",
+              "default": false,
+              "description": "Disable body pruning for GET, COPY, HEAD, PURGE and UNLOCK request methods."
+            }
+          }
         }
     },
     "required": [
