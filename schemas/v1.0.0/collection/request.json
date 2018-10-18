@@ -25,14 +25,21 @@
             "description": "Sometimes, you just need to call your request 'Bob'. Postman will let you do that, and store the name you give in this field."
         },
         "dataMode": {
-            "type": "string",
-            "enum": ["raw", "urlencoded", "params", "binary"],
-            "description": "A request can have a specific data mode, and Postman supports these."
+            "oneOf": [
+                {
+                    "type": "string",
+                    "enum": ["raw", "urlencoded", "params", "binary"],
+                    "description": "A request can have a specific data mode, and Postman supports these."
+                },
+                {
+                    "type": "null"
+                }
+            ]
         },
         "dataDisabled": {
-          "type": "boolean",
-          "default": false,
-          "description": "When set to true, prevents request body from being sent."
+            "type": "boolean",
+            "default": false,
+            "description": "When set to true, prevents request body from being sent."
         },
         "data": {
             "oneOf": [
