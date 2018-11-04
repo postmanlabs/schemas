@@ -30,8 +30,8 @@
     "strip-json-comments": "2.0.1"
   },
   "scripts": {
-    "build-docs": "node scripts/build-docs.js",
-    "build-schemas": "scripts/build-schemas.sh",
+    "build-docs": "node npm/build-docs.js",
+    "build-schemas": "npm/build-schemas.sh",
     "test": "node npm/test.js",
     "test-system": "node npm/test-system.js",
     "test-lint": "node npm/test-lint.js",
