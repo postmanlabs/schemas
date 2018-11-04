@@ -4,7 +4,7 @@
         "name": "Sync API",
         "_postman_id": "a14bf334-bfac-97fb-688c-9b6cf5120527",
         "description": "This is the Sync API",
-        "schema": "http://schema.getpostman.com/collection/v2/collection.json"
+        "schema": "http://schema.getpostman.com/json/collection/v2.1.0/collection.json"
     },
     "item": [
         {
