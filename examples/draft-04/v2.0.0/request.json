@@ -8,7 +8,7 @@
             "minor": 0,
             "patch": 0
         },
-        "schema": "http://schema.getpostman.com/collection/v2/collection.json"
+        "schema": "http://schema.getpostman.com/json/collection/v2.0.0/collection.json"
     },
     "item": [
         {
