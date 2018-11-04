@@ -1,0 +1,77 @@
+{
+  "info": {
+    "_postman_id": "5adbd3b7-80cb-43cc-bf1e-8578ab3c9b15",
+    "name": "HTTP Methods",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [{
+      "_postman_id": "6412986b-9e91-4f03-9cf9-baaccc762da4",
+      "name": "Standard HTTP Method",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "https://postman-echo.com/get",
+          "protocol": "https",
+          "host": [
+            "postman-echo",
+            "com"
+          ],
+          "path": [
+            "get"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "6fd141b6-1ef7-ea36-6fb8-917f5d4e938b",
+      "name": "GET Method With Body",
+      "request": {
+        "method": "GET",
+        "body": {
+          "mode": "formdata",
+          "formdata": [{
+            "key": "foo",
+            "value": "bar",
+            "type": "text"
+          }]
+        },
+        "url": {
+          "raw": "https://postman-echo.com/get",
+          "protocol": "https",
+          "host": [
+            "postman-echo",
+            "com"
+          ],
+          "path": [
+            "get"
+          ]
+        }
+      },
+      "response": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "_postman_id": "19487711-9256-420b-8688-21be384ca8dd",
+      "name": "Custom HTTP Method",
+      "request": {
+        "method": "POSTMAN",
+        "url": {
+          "raw": "https://postman-echo.com/postman",
+          "protocol": "https",
+          "host": [
+            "postman-echo",
+            "com"
+          ],
+          "path": [
+            "postman"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": []
+}
