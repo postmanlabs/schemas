@@ -16,7 +16,6 @@ var async = require('async'),
         './lib',
         './test',
         './npm/*.js',
-        './scripts/*.js',
         './index.js'
     ];
 

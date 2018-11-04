@@ -7,12 +7,12 @@ const path = require('path'),
     semver = require('semver'),
     mustache = require('mustache'),
 
-    tools = require('..'),
+    tools = require('../index'),
 
     SCHEMA_DIR = path.join(__dirname, '..', 'schemas'),
     BASE_ASSET_DIR = path.join(__dirname, '..', 'dist'),
     BASE_OUTPUT_DIR = path.join(__dirname, '..', 'webout'),
-    OUTPUT_DIR = path.join(BASE_OUTPUT_DIR, 'json', 'collection'),
+    OUTPUT_DIR = path.join(BASE_OUTPUT_DIR, 'json'),
     STATUS_MAP_BOOTSTRAP = {
         draft: 'warning',
         stable: 'success',
@@ -22,14 +22,16 @@ const path = require('path'),
 /**
  *
  * @param {String} version - Schema Version
+ * @param {String} draft - The JSON draft version to build for.
  */
-function buildVersion (version) {
-    let versionDir = path.join(OUTPUT_DIR, version, 'docs'),
-        outputSchemaFile = path.join(OUTPUT_DIR, version, 'collection.json'),
-        schemaFile = path.join(SCHEMA_DIR, version, 'collection.json'),
-        versionSchemaDir = path.join(SCHEMA_DIR, version),
+function buildVersion (version, draft) {
+    let draftSubDir = draft === 'draft-04' ? '' : draft,
+        versionDir = path.join(OUTPUT_DIR, draftSubDir, 'collection', version, 'docs'),
+        outputSchemaFile = path.join(OUTPUT_DIR, draftSubDir, 'collection', version, 'collection.json'),
+        schemaFile = path.join(SCHEMA_DIR, draft, version, 'collection.json'),
+        versionSchemaDir = path.join(SCHEMA_DIR, draft, version),
         templateFile = path.join(BASE_ASSET_DIR, 'index.mustache'),
-        compiledSchema = tools.compile(schemaFile, versionSchemaDir),
+        compiledSchema = tools.compile(schemaFile, versionSchemaDir, draft),
         templateContent = fse.readFileSync(templateFile),
         renderedTemplate;
 
@@ -47,10 +49,11 @@ function buildVersion (version) {
 /**
  *
  * @param {String} version - Schema Version
+ * @param {String} draft - The JSON draft version to build for
  */
-function buildLatest (version) {
-    const versionDocsDir = path.join(OUTPUT_DIR, version),
-        latestDocsDir = path.join(OUTPUT_DIR, 'latest');
+function buildLatest (version, draft) {
+    const versionDocsDir = path.join(OUTPUT_DIR, draft === 'draft-04' ? '' : draft, 'collection', version),
+        latestDocsDir = path.join(OUTPUT_DIR, draft === 'draft-04' ? '' : draft, 'collection', 'latest');
 
     fse.copySync(versionDocsDir, latestDocsDir);
     console.info('Copied %s as the latest version', version);
@@ -79,8 +82,9 @@ function getLatestStable (versions) {
 /**
  *
  * @param {String[]} versions - Schema Versions
+ * @param {String} draft - The JSON draft version to build for
  */
-function buildSymlinks (versions) {
+function buildSymlinks (versions, draft) {
     const stableVersions = getStableVersions(versions),
 
         // groups versions by major: { "1": ["1.0.1", "1.2.0"], "2": ["2.0.0", "2.1.0"]
@@ -104,8 +108,8 @@ function buildSymlinks (versions) {
     mapping = _.zipObject(_.map(mapping, 'major'), _.map(mapping, 'latest'));
 
     _.forEach(mapping, (latest, major) => {
-        const src = path.relative(OUTPUT_DIR, path.join(OUTPUT_DIR, latest)),
-            dest = path.join(OUTPUT_DIR, 'v' + major.toString());
+        const src = path.relative(OUTPUT_DIR, path.join(OUTPUT_DIR, 'collection', latest)),
+            dest = path.join(OUTPUT_DIR, draft === 'draft-04' ? '' : draft, 'collection', 'v' + major.toString());
 
         fse.symlinkSync(src, dest);
     });
@@ -154,41 +158,46 @@ function buildToc (versions) {
  * Main handler
  */
 function main () {
-    const versions = fse.readdirSync(SCHEMA_DIR);
+    fse.readdirSync(SCHEMA_DIR).forEach((draft) => {
+        const outDir = path.join(OUTPUT_DIR, draft === 'draft-04' ? '' : draft, 'collection'),
+            versions = fse.readdirSync(path.join(SCHEMA_DIR, draft));
 
-    // Ensures that versions are displayed in the descending order in the ToC
-    versions.sort(semver.rcompare);
-    console.info('Output directory is: %s', OUTPUT_DIR);
+        // Ensures that versions are displayed in the descending order in the ToC
+        versions.sort(semver.rcompare);
+        console.info('Output directory is: %s', outDir);
 
-    // Check if output directory exists, and remove it if it's there
-    if (fse.existsSync(OUTPUT_DIR)) {
-        console.info('Output directory exists! Removing the existing one.');
-        fse.removeSync(OUTPUT_DIR);
-    }
+        // Check if output directory exists, and remove it if it's there
+        if (fse.existsSync(outDir)) {
+            console.info('Output directory exists! Removing the existing one.');
+            fse.removeSync(outDir);
+        }
 
-    // Create output directory
-    fse.mkdirpSync(OUTPUT_DIR);
+        // Create output directory
+        fse.mkdirpSync(outDir);
 
-    // Copy statics assets (js, css, etc)
-    fse.copySync(BASE_ASSET_DIR, OUTPUT_DIR);
+        // Copy statics assets (js, css, etc)
+        fse.copySync(BASE_ASSET_DIR, outDir);
 
-    // Create the table of contents
-    buildToc(versions);
+        // Create the table of contents
+        buildToc(versions);
 
-    versions.forEach(buildVersion);
+        versions.forEach((version) => {
+            buildVersion(version, draft);
+        });
 
-    // Remove templates from output directory.
-    fse.remove(path.join(OUTPUT_DIR, 'index.mustache'));
-    fse.remove(path.join(OUTPUT_DIR, 'table_of_contents.mustache'));
+        // Remove templates from output directory.
+        fse.remove(path.join(outDir, 'index.mustache'));
+        fse.remove(path.join(outDir, 'table_of_contents.mustache'));
 
 
-    // Construct the docs for the latest stable version.
-    console.info('Building docs for the latest...');
-    buildLatest(getLatestStable(versions));
+        // Construct the docs for the latest stable version.
+        console.info('Building docs for the latest...');
+        buildLatest(getLatestStable(versions), draft);
 
-    // Create symlinks for stable versions.. v1 => v1.0.0, etc.
-    console.info('Creating symlinks from major versions to the latest...');
-    buildSymlinks(versions);
+        // Create symlinks for stable versions.. v1 => v1.0.0, etc.
+        console.info('Creating symlinks from major versions to the latest...');
+        buildSymlinks(versions, draft);
+    });
 }
 
 main();
