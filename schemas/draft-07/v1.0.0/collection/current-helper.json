@@ -1,0 +1,13 @@
+{
+    "$id": "#/definitions/current-helper",
+    "title": "Current auth helper",
+    "oneOf": [
+        {
+            "type": "string"
+        },
+        {
+            "type": "null"
+        }
+    ],
+    "description": "Postman can associate helpers with a request, which help with activities such as OAuth, Basic Authentication, etc. The type of helper associated with this request is stored in this field."
+}
