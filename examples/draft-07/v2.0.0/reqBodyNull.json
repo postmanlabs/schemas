@@ -1,0 +1,21 @@
+{
+	"info": {
+		"_postman_id": "5adbd3b7-80cb-43cc-bf1e-8578ab3c9b15",
+		"name": "request with null body",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"_postman_id": "0610e24a-d225-41d5-aadc-e933613dc496",
+			"name": "default",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": null,
+				"url": "https://postman-echo.com/post"
+			},
+			"response": []
+		}
+	],
+	"event": []
+}
