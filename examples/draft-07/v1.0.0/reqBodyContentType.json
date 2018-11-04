@@ -1,0 +1,128 @@
+{
+	"id": "5adbd3b7-80cb-43cc-bf1e-8578ab3c9b15",
+	"name": "content-type",
+	"description": null,
+	"auth": null,
+	"events": [],
+	"variables": [],
+	"order": [
+		"844470c1-2017-4a08-b322-bc9a037d8cb5",
+		"a9a29206-af40-4787-b962-80acbca575eb",
+		"f1832cc4-7187-452b-befb-6803218dc188"
+	],
+	"folders_order": [],
+	"folders": [],
+	"requests": [
+		{
+			"id": "844470c1-2017-4a08-b322-bc9a037d8cb5",
+			"name": "default",
+			"url": "https://postman-echo.com/post",
+			"description": "",
+			"data": [
+				{
+					"key": "text",
+					"value": "textValue",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "file",
+					"description": "",
+					"type": "file",
+					"enabled": true
+				}
+			],
+      "dataMode": "params",
+      "dataDisabled": true,
+			"headerData": [],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {},
+			"collectionId": "5adbd3b7-80cb-43cc-bf1e-8578ab3c9b15"
+		},
+		{
+			"id": "a9a29206-af40-4787-b962-80acbca575eb",
+			"name": "text",
+			"url": "https://postman-echo.com/post",
+			"description": "",
+			"data": [
+				{
+					"key": "plainText",
+					"value": "plainValue",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "json",
+					"value": "{\"key\": \"value\"}",
+					"contentType": "application/json",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "csv",
+					"value": "key,value\n1,a\n2,b",
+					"contentType": "text/csv",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+      "dataMode": "params",
+      "dataDisabled": false,
+			"headerData": [],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {},
+			"collectionId": "5adbd3b7-80cb-43cc-bf1e-8578ab3c9b15"
+		},
+		{
+			"id": "f1832cc4-7187-452b-befb-6803218dc188",
+			"name": "file",
+			"url": "https://postman-echo.com/post",
+			"description": "",
+			"data": [
+				{
+					"key": "json",
+					"value": "",
+					"description": "",
+					"contentType": "application/json",
+					"type": "file",
+					"enabled": true
+				},
+				{
+					"key": "csv",
+					"value": "",
+					"description": "",
+					"contentType": "text/csv",
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"headerData": [],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {},
+			"collectionId": "5adbd3b7-80cb-43cc-bf1e-8578ab3c9b15"
+		}
+	]
+}
