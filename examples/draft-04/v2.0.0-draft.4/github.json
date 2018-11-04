@@ -4,7 +4,7 @@
         "name": "Github",
         "_postman_id": "b6241b6a-fbf3-e3b7-4f96-0154e3056843",
         "description": "",
-        "schema": "http://schema.getpostman.com/collection/v2/collection.json"
+        "schema": "http://schema.getpostman.com/json/collection/v2.0.0-draft.4/collection.json"
     },
     "item": [
         {

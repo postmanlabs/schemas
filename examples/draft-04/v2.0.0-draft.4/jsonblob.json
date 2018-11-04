@@ -4,7 +4,7 @@
         "name": "JSONBlob Core API",
         "_postman_id": "6fd141b6-1ef7-ea36-6fb8-917f5d4e938b",
         "description": "JSON Blob was created to help parallelize client/server development. Mock JSON responses can be defined using the online editor and then clients can use the JSON Blob API to retrieve and update the mock responses.\n\nBlobs that are not accessed in 75 DAYS will be removed.\n\nCredit for the JSON editor and formatter goes to JSON Editor Online.",
-        "schema": "http://schema.getpostman.com/collection/v2/collection.json"
+        "schema": "http://schema.getpostman.com/json/collection/v2.0.0-draft.4/collection.json"
     },
     "item": [
         {
