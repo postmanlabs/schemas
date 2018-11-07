@@ -1,40 +1,40 @@
 {
-	"id": "d497d10e-e280-8c83-709a-a4d4ea12ad14",
-	"name": "ntlmAuthTest",
-	"description": "",
-	"order": [
-		"951fc3e8-c6b6-5c19-9f69-4e7499b3127f"
-	],
-	"folders": [],
-	"timestamp": 1448876955917,
-	"owner": 0,
-	"remoteLink": "",
-	"public": false,
-	"requests": [
-		{
-			"id": "951fc3e8-c6b6-5c19-9f69-4e7499b3127f",
-			"headers": "Authorization: NTLM TlRMTVNTUAADAAAAGAAYAFYAAAAYABgAbgAAAAAAAABIAAAADgAOAEgAAAAAAAAAVgAAAAAAAACGAAAABYKIogUBKAoAAAAPcABvAHMAdABtAGEAbgCDJfCgEQC+3wAAAAAAAAAAAAAAAAAAAAB6O2T1blvWpb/pqHtSdqcZ/A34nPBZe20=",
-			"url": "http://echo.getpostman.com/auth/ntlm",
-			"preRequestScript": "",
-			"pathVariables": {},
-			"method": "GET",
-			"data": [],
-			"dataMode": "params",
-			"version": 2,
-			"currentHelper": "ntlmAuth",
-			"helperAttributes": {
-				"id": "ntlm",
-				"username": "foo",
-				"password": "password",
-				"domain": "domain",
-				"workstation": "workstation",
-				"disableRetryRequest": false
-			},
-			"time": 1448888108375,
-			"name": "test NTLM auth success",
-			"description": "",
-			"collectionId": "d497d10e-e280-8c83-709a-a4d4ea12ad14",
-			"responses": []
-		}
-	]
+  "id": "d497d10e-e280-8c83-709a-a4d4ea12ad14",
+  "name": "ntlmAuthTest",
+  "description": "",
+  "order": [
+    "951fc3e8-c6b6-5c19-9f69-4e7499b3127f"
+  ],
+  "folders": [],
+  "timestamp": 1448876955917,
+  "owner": 0,
+  "remoteLink": "",
+  "public": false,
+  "requests": [
+    {
+      "id": "951fc3e8-c6b6-5c19-9f69-4e7499b3127f",
+      "headers": "Authorization: NTLM TlRMTVNTUAADAAAAGAAYAFYAAAAYABgAbgAAAAAAAABIAAAADgAOAEgAAAAAAAAAVgAAAAAAAACGAAAABYKIogUBKAoAAAAPcABvAHMAdABtAGEAbgCDJfCgEQC+3wAAAAAAAAAAAAAAAAAAAAB6O2T1blvWpb/pqHtSdqcZ/A34nPBZe20=",
+      "url": "http://echo.getpostman.com/auth/ntlm",
+      "preRequestScript": "",
+      "pathVariables": {},
+      "method": "GET",
+      "data": [],
+      "dataMode": "params",
+      "version": 2,
+      "currentHelper": "ntlmAuth",
+      "helperAttributes": {
+        "id": "ntlm",
+        "username": "foo",
+        "password": "password",
+        "domain": "domain",
+        "workstation": "workstation",
+        "disableRetryRequest": false
+      },
+      "time": 1448888108375,
+      "name": "test NTLM auth success",
+      "description": "",
+      "collectionId": "d497d10e-e280-8c83-709a-a4d4ea12ad14",
+      "responses": []
+    }
+  ]
 }
