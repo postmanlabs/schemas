@@ -1,4 +1,5 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
     "description": "If object, contains the complete broken-down URL for this request. If string, contains the literal request URL.",
     "id": "#/definitions/url",
     "title": "Url",
