@@ -1,10 +1,10 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "#/definitions/cookie-list",
-    "title": "Certificate List",
-    "description": "A representation of a list of cookies",
-    "type": "array",
-    "items": {
-        "$ref": "#/definitions/cookie"
-    }
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "#/definitions/cookie-list",
+  "title": "Certificate List",
+  "description": "A representation of a list of cookies",
+  "type": "array",
+  "items": {
+    "$ref": "#/definitions/cookie"
+  }
 }
