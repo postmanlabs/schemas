@@ -9,14 +9,7 @@
             "description": "The domain for which this cookie is valid."
         },
         "expires": {
-            "oneOf": [
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "number"
-                }
-            ],
+            "type": ["string", "null"],
             "description": "When the cookie expires."
         },
         "maxAge": {
