@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://schema.getpostman.com/json/collection/v1.1.0-draft.1/",
+  "id": "https://schema.getpostman.com/json/draft-04/collection/v1.1.0-draft.1/",
   "type": "object",
   "properties": {
     "id": {
