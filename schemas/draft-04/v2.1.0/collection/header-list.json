@@ -1,10 +1,10 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "#/definitions/header-list",
-    "title": "Header List",
-    "description": "A representation for a list of headers",
-    "type": "array",
-    "items": {
-        "$ref": "#/definitions/header"
-    }
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "#/definitions/header-list",
+  "title": "Header List",
+  "description": "A representation for a list of headers",
+  "type": "array",
+  "items": {
+    "$ref": "#/definitions/header"
+  }
 }

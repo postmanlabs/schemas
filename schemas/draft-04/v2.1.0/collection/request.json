@@ -1,217 +1,231 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "#/definitions/request",
-    "title": "Request",
-    "description": "A request represents an HTTP request. If a string, the string is assumed to be the request URL and the method is assumed to be 'GET'.",
-    "oneOf": [
-        {
-            "type": "object",
-            "title": "Request",
-            "properties": {
-                "url": {
-                    "$ref": "#/definitions/url"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "#/definitions/request",
+  "title": "Request",
+  "description": "A request represents an HTTP request. If a string, the string is assumed to be the request URL and the method is assumed to be 'GET'.",
+  "oneOf": [
+    {
+      "type": "object",
+      "title": "Request",
+      "properties": {
+        "url": {
+          "$ref": "#/definitions/url"
+        },
+        "auth": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/auth"
+            }
+          ]
+        },
+        "proxy": {
+          "$ref": "#/definitions/proxy-config"
+        },
+        "certificate": {
+          "$ref": "#/definitions/certificate"
+        },
+        "method": {
+          "anyOf": [
+            {
+              "description": "The Standard HTTP method associated with this request.",
+              "type": "string",
+              "enum": [
+                "GET",
+                "PUT",
+                "POST",
+                "PATCH",
+                "DELETE",
+                "COPY",
+                "HEAD",
+                "OPTIONS",
+                "LINK",
+                "UNLINK",
+                "PURGE",
+                "LOCK",
+                "UNLOCK",
+                "PROPFIND",
+                "VIEW"
+              ]
+            },
+            {
+              "description": "The Custom HTTP method associated with this request.",
+              "type": "string"
+            }
+          ]
+        },
+        "description": {
+          "$ref": "#/definitions/description"
+        },
+        "header": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/header-list"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "body": {
+          "oneOf": [
+            {
+              "type": "object",
+              "description": "This field contains the data usually contained in the request body.",
+              "properties": {
+                "mode": {
+                  "description": "Postman stores the type of data associated with this request in this field.",
+                  "enum": [
+                    "raw",
+                    "urlencoded",
+                    "formdata",
+                    "file"
+                  ]
                 },
-                "auth": {
-                    "oneOf": [
-                        { "type": "null" },
-                        { "$ref": "#/definitions/auth" }
+                "raw": {
+                  "type": "string"
+                },
+                "urlencoded": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "title": "UrlEncodedParameter",
+                    "properties": {
+                      "key": {
+                        "type": "string"
+                      },
+                      "value": {
+                        "type": "string"
+                      },
+                      "disabled": {
+                        "type": "boolean",
+                        "default": false
+                      },
+                      "description": {
+                        "$ref": "#/definitions/description"
+                      }
+                    },
+                    "required": [
+                      "key"
                     ]
+                  }
                 },
-                "proxy": {
-                    "$ref": "#/definitions/proxy-config"
-                },
-                "certificate": {
-                    "$ref": "#/definitions/certificate"
-                },
-                "method": {
-                    "anyOf": [
-                        {
-                            "description": "The Standard HTTP method associated with this request.",
+                "formdata": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "title": "FormParameter",
+                    "oneOf": [
+                      {
+                        "properties": {
+                          "key": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "type": "string"
+                          },
+                          "disabled": {
+                            "type": "boolean",
+                            "default": false,
+                            "description": "When set to true, prevents this form data entity from being sent."
+                          },
+                          "type": {
                             "type": "string",
                             "enum": [
-                                "GET",
-                                "PUT",
-                                "POST",
-                                "PATCH",
-                                "DELETE",
-                                "COPY",
-                                "HEAD",
-                                "OPTIONS",
-                                "LINK",
-                                "UNLINK",
-                                "PURGE",
-                                "LOCK",
-                                "UNLOCK",
-                                "PROPFIND",
-                                "VIEW"
+                              "text"
                             ]
+                          },
+                          "contentType": {
+                            "type": "string",
+                            "description": "Override Content-Type header of this form data entity."
+                          },
+                          "description": {
+                            "$ref": "#/definitions/description"
+                          }
                         },
-                        {
-                            "description": "The Custom HTTP method associated with this request.",
+                        "required": [
+                          "key"
+                        ]
+                      },
+                      {
+                        "properties": {
+                          "key": {
                             "type": "string"
-                        }
+                          },
+                          "src": {
+                            "oneOf": [
+                              {
+                                "type": "string"
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ]
+                          },
+                          "disabled": {
+                            "type": "boolean",
+                            "default": false,
+                            "description": "When set to true, prevents this form data entity from being sent."
+                          },
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "file"
+                            ]
+                          },
+                          "contentType": {
+                            "type": "string",
+                            "description": "Override Content-Type header of this form data entity."
+                          },
+                          "description": {
+                            "$ref": "#/definitions/description"
+                          }
+                        },
+                        "required": [
+                          "key"
+                        ]
+                      }
                     ]
+                  }
                 },
-                "description": {
-                    "$ref": "#/definitions/description"
-                },
-                "header": {
-                    "oneOf": [
+                "file": {
+                  "type": "object",
+                  "properties": {
+                    "src": {
+                      "oneOf": [
                         {
-                            "$ref": "#/definitions/header-list"
+                          "type": "string",
+                          "description": "Contains the name of the file to upload. _Not the path_."
                         },
                         {
-                            "type": "string"
+                          "type": "null",
+                          "description": "A null src indicates that no file has been selected as a part of the request body"
                         }
-                    ]
+                      ]
+                    },
+                    "content": {
+                      "type": "string"
+                    }
+                  }
                 },
-                "body": {
-                    "oneOf": [
-                        {
-                            "type": "object",
-                            "description": "This field contains the data usually contained in the request body.",
-                            "properties": {
-                                "mode": {
-                                    "description": "Postman stores the type of data associated with this request in this field.",
-                                    "enum": [
-                                        "raw",
-                                        "urlencoded",
-                                        "formdata",
-                                        "file"
-                                    ]
-                                },
-                                "raw": {
-                                    "type": "string"
-                                },
-                                "urlencoded": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "title": "UrlEncodedParameter",
-                                        "properties": {
-                                            "key": {
-                                                "type": "string"
-                                            },
-                                            "value": {
-                                                "type": "string"
-                                            },
-                                            "disabled": {
-                                                "type": "boolean",
-                                                "default": false
-                                            },
-                                            "description": {
-                                                "$ref": "#/definitions/description"
-                                            }
-                                        },
-                                        "required": ["key"]
-                                    }
-                                },
-                                "formdata": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "title": "FormParameter",
-                                        "oneOf": [
-                                            {
-                                                "properties": {
-                                                    "key": {
-                                                        "type": "string"
-                                                    },
-                                                    "value": {
-                                                        "type": "string"
-                                                    },
-                                                    "disabled": {
-                                                        "type": "boolean",
-                                                        "default": false,
-                                                        "description": "When set to true, prevents this form data entity from being sent."
-                                                    },
-                                                    "type": {
-                                                        "type": "string",
-                                                        "enum": ["text"]
-                                                    },
-                                                    "contentType": {
-                                                        "type": "string",
-                                                        "description": "Override Content-Type header of this form data entity."
-                                                    },
-                                                    "description": {
-                                                        "$ref": "#/definitions/description"
-                                                    }
-                                                },
-                                                "required": ["key"]
-                                            },
-                                            {
-                                                "properties": {
-                                                    "key": {
-                                                        "type": "string"
-                                                    },
-                                                    "src": {
-                                                        "oneOf": [
-                                                            {
-                                                                "type": "string"
-                                                            },
-                                                            {
-                                                                "type": "null"
-                                                            }
-                                                        ]
-                                                    },
-                                                    "disabled": {
-                                                        "type": "boolean",
-                                                        "default": false,
-                                                        "description": "When set to true, prevents this form data entity from being sent."
-                                                    },
-                                                    "type": {
-                                                        "type": "string",
-                                                        "enum": ["file"]
-                                                    },
-                                                    "contentType": {
-                                                        "type": "string",
-                                                        "description": "Override Content-Type header of this form data entity."
-                                                    },
-                                                    "description": {
-                                                        "$ref": "#/definitions/description"
-                                                    }
-                                                },
-                                                "required": ["key"]
-                                            }
-                                        ]
-                                    }
-                                },
-                                "file": {
-                                    "type": "object",
-                                    "properties": {
-                                        "src": {
-                                            "oneOf": [
-                                                {
-                                                    "type": "string",
-                                                    "description": "Contains the name of the file to upload. _Not the path_."
-                                                },
-                                                {
-                                                    "type": "null",
-                                                    "description": "A null src indicates that no file has been selected as a part of the request body"
-                                                }
-                                            ]
-                                        },
-                                        "content": {
-                                            "type": "string"
-                                        }
-                                    }
-                                },
-                                "disabled": {
-                                    "type": "boolean",
-                                    "default": false,
-                                    "description": "When set to true, prevents request body from being sent."
-                                }
-                            }
-                        },
-                        {
-                          "type": "null"
-                        }
-                    ]
+                "disabled": {
+                  "type": "boolean",
+                  "default": false,
+                  "description": "When set to true, prevents request body from being sent."
                 }
+              }
+            },
+            {
+              "type": "null"
             }
-        },
-        {
-            "type": "string"
+          ]
         }
-    ]
+      }
+    },
+    {
+      "type": "string"
+    }
+  ]
 }
