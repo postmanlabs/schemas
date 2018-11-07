@@ -1,40 +1,46 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "http://schema.getpostman.com/json/collection/v2.0.0-draft.2/",
-    "type": "object",
-    "properties": {
-        "info": { "$ref": "#/definitions/info" },
-        "items": { "$ref": "#/definitions/items" },
-        "scripts": {
-            "description": "Postman allows you to configure scripts to run when specific events occur. These scripts are stored here, and can be referenced in the collection by their ID.",
-            "type": "array",
-            "items": { "$ref": "#/definitions/script" }
-        },
-        "variables": {
-            "description": "Using variables in your Postman requests eliminates the need to duplicate requests, which can save a lot of time. Variables can be defined, and referenced to from any part of a request.",
-            "type": "array",
-            "items": {
-                "title": "Variable",
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "description": "A variable ID is a unique user-defined value that identifies the variable within a collection. In traditional terms, this would be a variable name.",
-                        "type": "string"
-                    },
-                    "value": {
-                        "description": "The value that a variable holds in this collection. Ultimately, the variables will be replaced by this value, when say running a set of requests from a collection",
-                        "type": "string"
-                    },
-                    "type": {
-                        "description": "A variable may have multiple types. This field specifies the type of the variable.",
-                        "type": "string"
-                    }
-                }
-            }
-        }
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://schema.getpostman.com/json/collection/v2.0.0-draft.2/",
+  "type": "object",
+  "properties": {
+    "info": {
+      "$ref": "#/definitions/info"
     },
-    "required": [
-        "info",
-        "items"
-    ]
+    "items": {
+      "$ref": "#/definitions/items"
+    },
+    "scripts": {
+      "description": "Postman allows you to configure scripts to run when specific events occur. These scripts are stored here, and can be referenced in the collection by their ID.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/script"
+      }
+    },
+    "variables": {
+      "description": "Using variables in your Postman requests eliminates the need to duplicate requests, which can save a lot of time. Variables can be defined, and referenced to from any part of a request.",
+      "type": "array",
+      "items": {
+        "title": "Variable",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "A variable ID is a unique user-defined value that identifies the variable within a collection. In traditional terms, this would be a variable name.",
+            "type": "string"
+          },
+          "value": {
+            "description": "The value that a variable holds in this collection. Ultimately, the variables will be replaced by this value, when say running a set of requests from a collection",
+            "type": "string"
+          },
+          "type": {
+            "description": "A variable may have multiple types. This field specifies the type of the variable.",
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "info",
+    "items"
+  ]
 }
