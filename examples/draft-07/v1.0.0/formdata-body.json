@@ -1,38 +1,38 @@
 {
-	"id": "5adbd3b7-80cb-43cc-bf1e-8578ab3c9b15",
-	"name": "formdata-body",
-	"order": [
-		"844470c1-2017-4a08-b322-bc9a037d8cb5"
-	],
-	"folders_order": [],
-	"folders": [],
-	"requests": [
-		{
-			"id": "844470c1-2017-4a08-b322-bc9a037d8cb5",
-			"name": "R1",
-			"url": "https://postman-echo.com/post",
-			"data": [
-				{
-					"key": "text",
-					"value": "textValue",
-					"description": "",
-					"type": "text"
-				},
-				{
-					"key": "file",
-					"type": "file",
-					"value": null
-				},
-				{
-					"key": "file",
-					"type": "file",
-					"value": ""
-				}
-			],
-			"headers": "",
-			"dataMode": "params",
-			"method": "POST",
-			"collectionId": "5adbd3b7-80cb-43cc-bf1e-8578ab3c9b15"
-		}
-	]
+  "id": "5adbd3b7-80cb-43cc-bf1e-8578ab3c9b15",
+  "name": "formdata-body",
+  "order": [
+    "844470c1-2017-4a08-b322-bc9a037d8cb5"
+  ],
+  "folders_order": [],
+  "folders": [],
+  "requests": [
+    {
+      "id": "844470c1-2017-4a08-b322-bc9a037d8cb5",
+      "name": "R1",
+      "url": "https://postman-echo.com/post",
+      "data": [
+        {
+          "key": "text",
+          "value": "textValue",
+          "description": "",
+          "type": "text"
+        },
+        {
+          "key": "file",
+          "type": "file",
+          "value": null
+        },
+        {
+          "key": "file",
+          "type": "file",
+          "value": ""
+        }
+      ],
+      "headers": "",
+      "dataMode": "params",
+      "method": "POST",
+      "collectionId": "5adbd3b7-80cb-43cc-bf1e-8578ab3c9b15"
+    }
+  ]
 }

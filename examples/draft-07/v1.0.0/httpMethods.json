@@ -12,7 +12,8 @@
   ],
   "folders_order": [],
   "folders": [],
-  "requests": [{
+  "requests": [
+    {
       "id": "844470c1-2017-4a08-b322-bc9a037d8cb5",
       "name": "Standard HTTP Method",
       "url": "https://postman-echo.com/get",
@@ -36,12 +37,14 @@
       "url": "https://postman-echo.com/get",
       "description": "",
       "dataMode": "params",
-      "data": [{
-        "key": "foo",
-        "value": "bar",
-        "type": "text",
-        "enabled": true
-      }],
+      "data": [
+        {
+          "key": "foo",
+          "value": "bar",
+          "type": "text",
+          "enabled": true
+        }
+      ],
       "headerData": [],
       "method": "GET",
       "pathVariableData": [],
