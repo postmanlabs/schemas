@@ -1,33 +1,33 @@
 {
-	"id": "87b77b25-aeee-4cc7-9e24-3596de1ae1e6",
-	"name": "Collection with file request body src as null",
-	"description": null,
-	"auth": null,
-	"events": null,
-	"variables": null,
-	"order": [
-		"644b3d17-1622-4301-aea3-8de4ca9f6463"
-	],
-	"folders_order": [],
-	"folders": [],
-	"requests": [
-		{
-			"collectionId": "87b77b25-aeee-4cc7-9e24-3596de1ae1e6",
-			"id": "644b3d17-1622-4301-aea3-8de4ca9f6463",
-			"name": "",
-			"url": "https://postman-echo.com/post",
-			"description": null,
-			"data": [],
-			"dataMode": "binary",
-			"headerData": [],
-			"method": "POST",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": null,
-			"events": null,
-			"folder": null,
-			"headers": "",
-			"pathVariables": {}
-		}
-	]
+  "id": "87b77b25-aeee-4cc7-9e24-3596de1ae1e6",
+  "name": "Collection with file request body src as null",
+  "description": null,
+  "auth": null,
+  "events": null,
+  "variables": null,
+  "order": [
+    "644b3d17-1622-4301-aea3-8de4ca9f6463"
+  ],
+  "folders_order": [],
+  "folders": [],
+  "requests": [
+    {
+      "collectionId": "87b77b25-aeee-4cc7-9e24-3596de1ae1e6",
+      "id": "644b3d17-1622-4301-aea3-8de4ca9f6463",
+      "name": "",
+      "url": "https://postman-echo.com/post",
+      "description": null,
+      "data": [],
+      "dataMode": "binary",
+      "headerData": [],
+      "method": "POST",
+      "pathVariableData": [],
+      "queryParams": [],
+      "auth": null,
+      "events": null,
+      "folder": null,
+      "headers": "",
+      "pathVariables": {}
+    }
+  ]
 }
