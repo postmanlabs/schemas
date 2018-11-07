@@ -1,0 +1,31 @@
+{
+    "info": {
+        "_postman_id": "78e4f398-8679-d90c-b235-889e259bfbe2",
+        "name": "Collection with file request body src as null",
+        "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+    },
+    "item": [
+        {
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "file",
+                    "file": {
+                        "src": null
+                    }
+                },
+                "url": {
+                    "raw": "https://postman-echo.com/post",
+                    "protocol": "https",
+                    "host": [
+                        "postman-echo",
+                        "com"
+                    ],
+                    "path": [
+                        "post"
+                    ]
+                }
+            }
+        }
+    ]
+}

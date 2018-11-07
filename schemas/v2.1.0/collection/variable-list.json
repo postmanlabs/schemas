@@ -1,9 +1,0 @@
-{
-    "id": "#/definitions/variable-list",
-    "title": "Variable List",
-    "description": "Collection variables allow you to define a set of variables, that are a *part of the collection*, as opposed to environments, which are separate entities.\n*Note: Collection variables must not contain any sensitive information.*",
-    "type": "array",
-    "items": {
-        "$ref": "#/definitions/variable"
-    }
-}

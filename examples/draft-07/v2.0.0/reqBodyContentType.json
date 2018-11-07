@@ -1,0 +1,95 @@
+{
+	"info": {
+		"_postman_id": "5adbd3b7-80cb-43cc-bf1e-8578ab3c9b15",
+		"name": "content-type",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"_postman_id": "0610e24a-d225-41d5-aadc-e933613dc496",
+			"name": "default",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "text",
+							"value": "textValue",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file"
+						}
+          ],
+          "disabled": true
+				},
+				"url": "https://postman-echo.com/post"
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "1085ed1c-0db0-4f71-990a-10b019693435",
+			"name": "text",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "plainText",
+							"value": "plainValue",
+							"type": "text"
+						},
+						{
+							"key": "json",
+							"value": "{\"key\": \"value\"}",
+							"contentType": "application/json",
+							"type": "text"
+						},
+						{
+							"key": "csv",
+							"value": "key,value\n1,a\n2,b",
+							"contentType": "text/csv",
+							"type": "text"
+						}
+          ],
+          "disabled": false
+				},
+				"url": "https://postman-echo.com/post"
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "96e6046f-c36c-4522-81d5-7aeb61292558",
+			"name": "file",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "json",
+							"src": "path/to/file.json",
+							"contentType": "application/json",
+							"type": "file"
+						},
+						{
+							"key": "csv",
+							"src": "path/to/randomFile",
+							"contentType": "text/csv",
+							"type": "file"
+						}
+					]
+				},
+				"url": "https://postman-echo.com/post"
+			},
+			"response": []
+		}
+	],
+	"event": []
+}

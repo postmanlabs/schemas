@@ -1,0 +1,260 @@
+{
+	"info": {
+		"name": "auth-v2.1",
+		"_postman_id": "46da69ac-9035-50c4-fcab-44d9167e06f4",
+		"description": "A simple V2.1 collection to elucidate nested auth helpers, variables, and scripts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+    "variable": [{
+        "id": "uuid like identifier",
+        "key": "key",
+        "name": "name",
+        "value": "value",
+        "type": "string",
+        "system": false,
+        "disabled": false,
+        "description": ""
+    }],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "username",
+				"value": "{{username}}",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"console.log('Collection level test script');"
+				]
+			}
+		},
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"console.log('Collection level pre request script');"
+				]
+			}
+		}
+	],
+	"item": [
+		{
+			"name": "F1",
+			"description": "",
+			"variable": [{
+                "id": "uuid like identifier",
+                "key": "key",
+                "name": "name",
+                "value": "value",
+                "system": false,
+                "disabled": false,
+                "description": ""
+            }],
+			"auth": {
+				"type": "basic",
+				"basic": [
+					{
+						"key": "username",
+						"value": "{{username}}",
+						"type": "string"
+					},
+					{
+						"key": "password",
+						"value": "{{token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"console.log('Folder level test script');"
+						]
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"console.log('Folder level pre request script');"
+						]
+					}
+				}
+			],
+			"item": [
+				{
+					"name": "Basic",
+					"variables": [{
+                        "id": "uuid like identifier",
+                        "key": "key",
+                        "name": "name",
+                        "value": "value",
+                        "system": false,
+                        "disabled": false,
+                        "description": ""
+                    }],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"console.log('Request level test script');"
+								]
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"console.log('Request level pre request script');"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": "https://postman-echo.com/get",
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OAuth1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"console.log('Request level test script');"
+						]
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"console.log('Request level pre request script');"
+						]
+					}
+				}
+			],
+            "variable": [{
+                "id": "uuid like identifier",
+                "key": "key",
+                "name": "name",
+                "value": "value",
+                "system": false,
+                "disabled": false,
+                "description": ""
+            }],
+			"request": {
+				"auth": {
+					"type": "oauth1",
+					"oauth1": [
+						{
+							"key": "consumerKey",
+							"value": "RKCGzna7bv9YD57c",
+							"type": "string"
+						},
+						{
+							"key": "consumerSecret",
+							"value": "D+EdQ-gs$-%@2Nu7",
+							"type": "string"
+						},
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "tokenSecret",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "signatureMethod",
+							"value": "HMAC-SHA1",
+							"type": "string"
+						},
+						{
+							"key": "timestamp",
+							"value": "1500452534",
+							"type": "string"
+						},
+						{
+							"key": "nonce",
+							"value": "S0kXloMHurS",
+							"type": "string"
+						},
+						{
+							"key": "version",
+							"value": "1.0",
+							"type": "string"
+						},
+						{
+							"key": "realm",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "addParamsToHeader",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "addEmptyParamsToSign",
+							"value": true,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "https://postman-echo.com/get",
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
