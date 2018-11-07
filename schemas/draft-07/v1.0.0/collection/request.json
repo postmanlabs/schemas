@@ -98,15 +98,8 @@
             ]
         },
         "descriptionFormat": {
-            "oneOf": [
-                {
-                    "type": "string",
-                    "enum": ["html", "markdown"]
-                },
-                {
-                    "type": "null"
-                }
-            ],
+            "type": ["string", "null"],
+            "enum": ["html", "markdown", null],
             "description": "A request can have an associated description text. Since description is meant to be long, it can be in either ``html`` or ``markdown`` formats. This field specifies that format."
         },
         "description": {
