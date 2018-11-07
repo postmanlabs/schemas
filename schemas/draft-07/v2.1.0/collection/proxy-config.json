@@ -1,4 +1,5 @@
 {
+    "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "#/definitions/proxy-config",
     "title": "Proxy Config",
     "description": "Using the Proxy, you can configure your custom proxy into the postman for particular url match",
