@@ -4,7 +4,8 @@
     "name": "HTTP Methods",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
   },
-  "item": [{
+  "item": [
+    {
       "_postman_id": "0610e24a-d225-41d5-aadc-e933613dc496",
       "name": "Standard HTTP Method",
       "request": {
@@ -20,12 +21,14 @@
         "method": "GET",
         "body": {
           "mode": "formdata",
-          "formdata": [{
-            "key": "foo",
-            "value": "bar",
-            "type": "text",
-            "enabled": true
-          }]
+          "formdata": [
+            {
+              "key": "foo",
+              "value": "bar",
+              "type": "text",
+              "enabled": true
+            }
+          ]
         },
         "url": "https://postman-echo.com/get"
       },
