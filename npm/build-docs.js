@@ -9,6 +9,7 @@ const path = require('path'),
 
     tools = require('../index'),
 
+    LATEST_DRAFT = 'draft-07',
     SCHEMA_DIR = path.join(__dirname, '..', 'schemas'),
     BASE_ASSET_DIR = path.join(__dirname, '..', 'dist'),
     BASE_OUTPUT_DIR = path.join(__dirname, '..', 'webout'),
@@ -25,7 +26,7 @@ const path = require('path'),
  * @param {String} draft - The JSON draft version to build for.
  */
 function buildVersion (version, draft) {
-    let draftSubDir = draft === 'draft-04' ? '' : draft,
+    let draftSubDir = draft === LATEST_DRAFT ? '' : draft,
         versionDir = path.join(OUTPUT_DIR, draftSubDir, 'collection', version, 'docs'),
         outputSchemaFile = path.join(OUTPUT_DIR, draftSubDir, 'collection', version, 'collection.json'),
         schemaFile = path.join(SCHEMA_DIR, draft, version, 'collection.json'),
@@ -52,8 +53,8 @@ function buildVersion (version, draft) {
  * @param {String} draft - The JSON draft version to build for
  */
 function buildLatest (version, draft) {
-    const versionDocsDir = path.join(OUTPUT_DIR, draft === 'draft-04' ? '' : draft, 'collection', version),
-        latestDocsDir = path.join(OUTPUT_DIR, draft === 'draft-04' ? '' : draft, 'collection', 'latest');
+    const versionDocsDir = path.join(OUTPUT_DIR, draft === LATEST_DRAFT ? '' : draft, 'collection', version),
+        latestDocsDir = path.join(OUTPUT_DIR, draft === LATEST_DRAFT ? '' : draft, 'collection', 'latest');
 
     fse.copySync(versionDocsDir, latestDocsDir);
     console.info('Copied %s as the latest version', version);
@@ -109,7 +110,7 @@ function buildSymlinks (versions, draft) {
 
     _.forEach(mapping, (latest, major) => {
         const src = path.relative(OUTPUT_DIR, path.join(OUTPUT_DIR, 'collection', latest)),
-            dest = path.join(OUTPUT_DIR, draft === 'draft-04' ? '' : draft, 'collection', 'v' + major.toString());
+            dest = path.join(OUTPUT_DIR, draft === LATEST_DRAFT ? '' : draft, 'collection', 'v' + major.toString());
 
         fse.symlinkSync(src, dest);
     });
@@ -159,7 +160,7 @@ function buildToc (versions) {
  */
 function main () {
     fse.readdirSync(SCHEMA_DIR).forEach((draft) => {
-        const outDir = path.join(OUTPUT_DIR, draft === 'draft-04' ? '' : draft, 'collection'),
+        const outDir = path.join(OUTPUT_DIR, draft === LATEST_DRAFT ? '' : draft, 'collection'),
             versions = fse.readdirSync(path.join(SCHEMA_DIR, draft));
 
         // Ensures that versions are displayed in the descending order in the ToC
