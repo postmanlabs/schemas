@@ -5,8 +5,8 @@
       <meta charset="utf-8">
       <link rel="shortcut icon" href="https://www.getpostman.com/favicon.ico">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-      <link rel="stylesheet" href="../../css/docson.css">
-      <link rel="stylesheet" type="text/css" href="../../css/styles.css">
+      <link rel="stylesheet" href="{{{root}}}/css/docson.css">
+      <link rel="stylesheet" type="text/css" href="{{{root}}}/css/styles.css">
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" />
       <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>
 
@@ -17,7 +17,7 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
       <![endif]-->
 
-      <script src="../../lib/require.js"></script>
+      <script src="{{{root}}}/lib/require.js"></script>
       <script type="text/javascript">
           if (document.location.hostname.search("localhost") !== 'localhost') {
               (function (i, s, o, g, r, a, m) {
@@ -58,19 +58,19 @@
                       <div id="doc"></div>
                   </div>
                   <script charset="utf-8">
-                      require(["../../lib/docson", "../../lib/main", "../../lib/jquery"], function (docson, main) {
+                      require(["{{{root}}}/lib/docson", "{{{root}}}/lib/main", "{{{root}}}/lib/jquery"], function (docson, main) {
                           $(function () {
                               var schema;
                               $.get('../collection.json', function (response) {
                                   schema = response;
-                                  docson.templateBaseUrl = "../../templates";
+                                  docson.templateBaseUrl = "{{{root}}}/templates";
                                   docson.doc("doc", schema);
                               });
 
                               $('#show-internal-check').change(function () {
                                   var unchecked = !this.checked;
                                   $.get('../collection.json', function (schema) {
-                                      docson.templateBaseUrl = "../../templates";
+                                      docson.templateBaseUrl = "{{{root}}}/templates";
                                       if (unchecked) {
                                           main.removePrivate(schema);
                                       }
@@ -105,8 +105,8 @@
               <div>
                   <p>
                       The raw schema is located at
-                      <a href="http://schema.getpostman.com/json/collection/{{ version }}/collection.json" target=“_blank”>
-                          http://schema.getpostman.com/json/collection/{{ version }}/collection.json
+                      <a href="http://schema.getpostman.com/collection/json/{{ version }}/{{ draft }}/collection.json" target=“_blank”>
+                          http://schema.getpostman.com/collection/json/{{ version }}/{{ draft }}/collection.json
                       </a>
                   </p>
               </div>
