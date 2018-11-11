@@ -51,13 +51,13 @@ function buildVersion (version, draft) {
 
     // Compile the mustache template
     renderedTemplate = mustache.render(templateContent.toString(), {
-        draft,
-        version,
+        draft: draft,
+        version: version,
         root: '../../../../..'
     });
     legacyRenderedTemplate = mustache.render(templateContent.toString(), {
-        draft,
-        version,
+        draft: draft,
+        version: version,
         root: `../../../..${isLatestDraft ? '' : '/..'}`
     });
 
@@ -133,7 +133,7 @@ function buildSymlinks (versions, draft) {
         const src = path.relative(NEW_OUTPUT_DIR, path.join(NEW_OUTPUT_DIR, 'collection', 'json', latest)),
             dest = path.join(NEW_OUTPUT_DIR, 'v' + major.toString()),
             legacySrc = path.relative(OUTPUT_DIR, path.join(OUTPUT_DIR, 'collection', latest)),
-            legacyDest = path.join(OUTPUT_DIR, draft === DEFAULT_DRAFT ? '' : draft, 'collection', 'v' + major.toString());
+            legacyDest = path.join(OUTPUT_DIR, draft === DEFAULT_DRAFT ? '' : draft, 'collection', 'v' + major);
 
         (draft === DEFAULT_DRAFT) && fse.symlinkSync(src, dest);
         fse.symlinkSync(legacySrc, legacyDest);
