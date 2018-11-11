@@ -9,7 +9,7 @@ const path = require('path'),
 
     tools = require('../index'),
 
-    LATEST_DRAFT = 'draft-07',
+    LATEST_DRAFT = 'draft-04',
     SCHEMA_DIR = path.join(__dirname, '..', 'schemas'),
     BASE_ASSET_DIR = path.join(__dirname, '..', 'dist'),
     BASE_OUTPUT_DIR = path.join(__dirname, '..', 'webout'),
