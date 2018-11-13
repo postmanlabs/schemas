@@ -18,7 +18,7 @@ for draftVersionDir in schemas/*; do
         echo "----- Compiling Version [${version}] -----"
         CURRENT_SCHEMA_DIR=${ALL_SCHEMA_DIR}/${draftVersion}/${version}
 
-        if [[ ${draftVersion} == "draft-04" ]]; then
+        if [[ ${draftVersion} == "draft-07" ]]; then
             OUTPUT_DIR=${COMPILED_SCHEMA_DIR}/collection/${version}
         else
             OUTPUT_DIR=${COMPILED_SCHEMA_DIR}/${draftVersion}/collection/${version}

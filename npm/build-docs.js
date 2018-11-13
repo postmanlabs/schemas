@@ -9,10 +9,12 @@ const path = require('path'),
 
     tools = require('../index'),
 
+    DEFAULT_DRAFT = 'draft-04',
     SCHEMA_DIR = path.join(__dirname, '..', 'schemas'),
     BASE_ASSET_DIR = path.join(__dirname, '..', 'dist'),
     BASE_OUTPUT_DIR = path.join(__dirname, '..', 'webout'),
     OUTPUT_DIR = path.join(BASE_OUTPUT_DIR, 'json'),
+    NEW_OUTPUT_DIR = path.join(BASE_OUTPUT_DIR, 'collection', 'json'),
     STATUS_MAP_BOOTSTRAP = {
         draft: 'warning',
         stable: 'success',
@@ -25,25 +27,42 @@ const path = require('path'),
  * @param {String} draft - The JSON draft version to build for.
  */
 function buildVersion (version, draft) {
-    let draftSubDir = draft === 'draft-04' ? '' : draft,
-        versionDir = path.join(OUTPUT_DIR, draftSubDir, 'collection', version, 'docs'),
-        outputSchemaFile = path.join(OUTPUT_DIR, draftSubDir, 'collection', version, 'collection.json'),
+    let isLatestDraft = draft === DEFAULT_DRAFT,
+        draftSubDir = isLatestDraft ? '' : draft,
+        versionDir = path.join(NEW_OUTPUT_DIR, version, draft, 'docs'),
+        outSchemaFile = path.join(NEW_OUTPUT_DIR, version, draft, 'collection.json'),
+        legacyVersionDir = path.join(OUTPUT_DIR, draftSubDir, 'collection', version, 'docs'),
+        legacyOutSchemaFile = path.join(OUTPUT_DIR, draftSubDir, 'collection', version, 'collection.json'),
         schemaFile = path.join(SCHEMA_DIR, draft, version, 'collection.json'),
         versionSchemaDir = path.join(SCHEMA_DIR, draft, version),
         templateFile = path.join(BASE_ASSET_DIR, 'index.mustache'),
         compiledSchema = tools.compile(schemaFile, versionSchemaDir, draft),
         templateContent = fse.readFileSync(templateFile),
-        renderedTemplate;
+        renderedTemplate,
+        legacyRenderedTemplate;
 
     console.info('Building docs for %s ...', version);
     fse.mkdirpSync(versionDir);
+    fse.mkdirpSync(legacyVersionDir);
 
-    console.info('Created directory %s', versionDir);
-    fse.writeFileSync(outputSchemaFile, JSON.stringify(compiledSchema, null, 4));
+    console.info('Created directory %s', legacyVersionDir);
+    fse.writeFileSync(outSchemaFile, JSON.stringify(compiledSchema, null, 4));
+    fse.writeFileSync(legacyOutSchemaFile, JSON.stringify(compiledSchema, null, 4));
 
     // Compile the mustache template
-    renderedTemplate = mustache.render(templateContent.toString(), { version });
+    renderedTemplate = mustache.render(templateContent.toString(), {
+        draft: draft,
+        version: version,
+        root: '../../../../..'
+    });
+    legacyRenderedTemplate = mustache.render(templateContent.toString(), {
+        draft: draft,
+        version: version,
+        root: `../../../..${isLatestDraft ? '' : '/..'}`
+    });
+
     fse.writeFileSync(path.join(versionDir, 'index.html'), renderedTemplate);
+    fse.writeFileSync(path.join(legacyVersionDir, 'index.html'), legacyRenderedTemplate);
 }
 
 /**
@@ -52,10 +71,13 @@ function buildVersion (version, draft) {
  * @param {String} draft - The JSON draft version to build for
  */
 function buildLatest (version, draft) {
-    const versionDocsDir = path.join(OUTPUT_DIR, draft === 'draft-04' ? '' : draft, 'collection', version),
-        latestDocsDir = path.join(OUTPUT_DIR, draft === 'draft-04' ? '' : draft, 'collection', 'latest');
+    const versionDocsDir = path.join(NEW_OUTPUT_DIR, version, draft),
+        latestDocsDir = path.join(NEW_OUTPUT_DIR, 'latest', draft),
+        legacyVersionDocsDir = path.join(OUTPUT_DIR, draft === DEFAULT_DRAFT ? '' : draft, 'collection', version),
+        legacyLatestDocsDir = path.join(OUTPUT_DIR, draft === DEFAULT_DRAFT ? '' : draft, 'collection', 'latest');
 
     fse.copySync(versionDocsDir, latestDocsDir);
+    fse.copySync(legacyVersionDocsDir, legacyLatestDocsDir);
     console.info('Copied %s as the latest version', version);
 }
 
@@ -108,10 +130,13 @@ function buildSymlinks (versions, draft) {
     mapping = _.zipObject(_.map(mapping, 'major'), _.map(mapping, 'latest'));
 
     _.forEach(mapping, (latest, major) => {
-        const src = path.relative(OUTPUT_DIR, path.join(OUTPUT_DIR, 'collection', latest)),
-            dest = path.join(OUTPUT_DIR, draft === 'draft-04' ? '' : draft, 'collection', 'v' + major.toString());
+        const src = path.relative(NEW_OUTPUT_DIR, path.join(NEW_OUTPUT_DIR, 'collection', 'json', latest)),
+            dest = path.join(NEW_OUTPUT_DIR, 'v' + major.toString()),
+            legacySrc = path.relative(OUTPUT_DIR, path.join(OUTPUT_DIR, 'collection', latest)),
+            legacyDest = path.join(OUTPUT_DIR, draft === DEFAULT_DRAFT ? '' : draft, 'collection', 'v' + major);
 
-        fse.symlinkSync(src, dest);
+        (draft === DEFAULT_DRAFT) && fse.symlinkSync(src, dest);
+        fse.symlinkSync(legacySrc, legacyDest);
     });
 }
 
@@ -158,8 +183,19 @@ function buildToc (versions) {
  * Main handler
  */
 function main () {
+    // Check if output directory exists, and remove it if it's there
+    if (fse.existsSync(NEW_OUTPUT_DIR)) {
+        console.info('Output directory exists! Removing the existing one.');
+        fse.removeSync(NEW_OUTPUT_DIR);
+    }
+
+    fse.mkdirpSync(NEW_OUTPUT_DIR);
+
+    // Copy statics assets (js, css, etc)
+    fse.copySync(BASE_ASSET_DIR, BASE_OUTPUT_DIR);
+
     fse.readdirSync(SCHEMA_DIR).forEach((draft) => {
-        const outDir = path.join(OUTPUT_DIR, draft === 'draft-04' ? '' : draft, 'collection'),
+        const outDir = path.join(OUTPUT_DIR, draft === DEFAULT_DRAFT ? '' : draft, 'collection'),
             versions = fse.readdirSync(path.join(SCHEMA_DIR, draft));
 
         // Ensures that versions are displayed in the descending order in the ToC
@@ -174,9 +210,6 @@ function main () {
 
         // Create output directory
         fse.mkdirpSync(outDir);
-
-        // Copy statics assets (js, css, etc)
-        fse.copySync(BASE_ASSET_DIR, outDir);
 
         // Create the table of contents
         buildToc(versions);

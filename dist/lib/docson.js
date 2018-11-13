@@ -30,7 +30,7 @@ define(["./jquery", "./handlebars", "./highlight", "./jsonpointer", "./marked", 
     Handlebars.registerHelper('scope', function(schema, options) {
         var result;
         boxes.push([]);
-        if(schema && (schema.id || schema.root)) {
+        if(schema && (schema.$id || schema.id || schema.root)) {
             stack.push( schema );
             result = options.fn(this);
             stack.pop();
@@ -128,7 +128,7 @@ define(["./jquery", "./handlebars", "./highlight", "./jsonpointer", "./marked", 
     });
 
     var simpleSchema = function(schema) {
-        var result = schema.description===undefined && schema.title===undefined && schema.id===undefined;
+        var result = schema.description===undefined && schema.title===undefined && (schema.id || schema.$id)===undefined;
         result &= schema.properties===undefined;
         return result;
     };
@@ -236,7 +236,8 @@ define(["./jquery", "./handlebars", "./highlight", "./jsonpointer", "./marked", 
             return "<error>";
         }
         var name = schema.title;
-        name = !name && schema.id ? schema.id: name;
+        var id = schema.$id || schema.id;
+        name = !name && id ? id: name;
         name = !name ? schema.__name: name;
         return name;
     }
