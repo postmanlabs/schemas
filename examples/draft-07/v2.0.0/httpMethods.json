@@ -47,5 +47,8 @@
       "response": []
     }
   ],
-  "event": []
+  "event": [],
+  "protocolProfileBehavior": {
+    "disableBodyPruning": 0
+  }
 }
