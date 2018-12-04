@@ -56,7 +56,9 @@
       "pathVariables": {},
       "collectionId": "5adbd3b7-80cb-43cc-bf1e-8578ab3c9b15",
       "protocolProfileBehavior": {
-        "disableBodyPruning": true
+        "disableBodyPruning": true,
+        "followRedirects": false,
+        "strictSSL": true
       }
     },
     {
@@ -79,6 +81,7 @@
     }
   ],
   "protocolProfileBehavior": {
-    "disableBodyPruning": false
+    "disableBodyPruning": false,
+    "followRedirects": true
   }
 }
