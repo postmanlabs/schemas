@@ -53,7 +53,9 @@
       },
       "response": [],
       "protocolProfileBehavior": {
-        "disableBodyPruning": true
+        "disableBodyPruning": true,
+        "followRedirects": false,
+        "strictSSL": true
       }
     },
     {
@@ -76,5 +78,9 @@
       "response": []
     }
   ],
-  "event": []
+  "event": [],
+  "protocolProfileBehavior": {
+    "disableBodyPruning": false,
+    "followRedirects": true
+  }
 }

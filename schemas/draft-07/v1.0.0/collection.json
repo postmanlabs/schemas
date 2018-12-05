@@ -74,6 +74,9 @@
           "$ref": "#/definitions/auth"
         }
       ]
+    },
+    "protocolProfileBehavior": {
+      "$ref": "#/definitions/protocol-profile-behavior"
     }
   },
   "required": [
