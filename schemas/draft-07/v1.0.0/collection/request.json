@@ -366,7 +366,10 @@
             "description": "Mimetype of the response."
           },
           "text": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "description": "The raw text of the response."
           },
           "language": {
