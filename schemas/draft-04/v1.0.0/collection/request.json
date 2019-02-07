@@ -307,7 +307,7 @@
             "oneOf": [
               {
                 "title": "Response Timings",
-                "description": "Set of timings related to different request events",
+                "description": "Set of timing information related to request and response in milliseconds",
                 "type": "object"
               },
               {
