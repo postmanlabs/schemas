@@ -184,6 +184,14 @@
               ],
               "cookie": [],
               "responseTime": "3049",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": ""
             }
           ]
@@ -438,6 +446,14 @@
               ],
               "cookie": [],
               "responseTime": "48",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "[\n  {\n    \"owner\": \"U1\",\n    \"id\": \"c1\",\n    \"name\": \"Col1\",\n    \"description\": null,\n    \"order\": [],\n    \"requests\": [],\n    \"subscribers\": [],\n    \"folders\": []\n  },\n  {\n    \"owner\": \"U1\",\n    \"id\": \"c2\",\n    \"name\": \"Collection2\",\n    \"description\": null,\n    \"order\": [],\n    \"requests\": [],\n    \"subscribers\": [],\n    \"folders\": []\n  }\n]"
             }
           ]
@@ -598,6 +614,14 @@
               ],
               "cookie": [],
               "responseTime": "81",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "{\n  \"owner\": \"U1\",\n  \"id\": \"c1\",\n  \"name\": \"Col1\",\n  \"description\": null,\n  \"order\": [],\n  \"requests\": [],\n  \"subscribers\": [],\n  \"folders\": []\n}"
             }
           ]
@@ -714,6 +738,14 @@
               ],
               "cookie": [],
               "responseTime": "6454",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "{\n  \"data\": {\n    \"id\": \"c1\",\n    \"name\": \"Col1\",\n    \"description\": null,\n    \"order\": [],\n    \"owner\": \"U1\",\n    \"requests\": [],\n    \"subscribers\": [],\n    \"folders\": []\n  },\n  \"revision\": 7\n}"
             }
           ]
@@ -848,6 +880,14 @@
               ],
               "cookie": [],
               "responseTime": "71",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "{\n  \"data\": {\n    \"id\": \"c2\"\n  },\n  \"revision\": 8\n}"
             }
           ]
@@ -1012,6 +1052,14 @@
               ],
               "cookie": [],
               "responseTime": "36",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "{\n  \"data\": {\n    \"id\": \"c1\",\n    \"name\": \"Collection1\",\n    \"description\": null,\n    \"order\": [],\n    \"shared\": true,\n    \"write\": false,\n    \"createdAt\": \"2015-01-22T09:58:55.000Z\",\n    \"updatedAt\": \"2015-01-22T09:59:08.000Z\",\n    \"owner\": \"U1\",\n    \"lastUpdatedBy\": {\n      \"id\": \"U1\",\n      \"username\": null\n    },\n    \"team\": \"T1\"\n  },\n  \"revision\": 2\n}"
             }
           ]
@@ -1148,6 +1196,14 @@
               ],
               "cookie": [],
               "responseTime": "85",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "{\n  \"model_id\": \"c15\",\n  \"meta\": {\n    \"model\": \"collection\",\n    \"action\": \"create\"\n  },\n  \"data\": {\n    \"name\": \"Collection15\",\n    \"id\": \"c15\",\n    \"owner\": \"U1\",\n    \"lastUpdatedBy\": {\n      \"id\": \"U1\",\n      \"username\": null\n    },\n    \"remote_id\": \"0\",\n    \"order\": [],\n    \"shared\": false,\n    \"write\": true,\n    \"createdAt\": \"2015-04-26T18:59:59.688Z\",\n    \"updatedAt\": \"2015-04-26T18:59:59.688Z\"\n  },\n  \"revision\": 6\n}"
             }
           ]
@@ -1439,6 +1495,14 @@
               ],
               "cookie": [],
               "responseTime": "91",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "{\n  \"data\": {\n    \"name\": \"Environment1\",\n    \"owner\": \"U1\",\n    \"id\": \"e1\"\n  },\n  \"revision\": 27\n}"
             }
           ]
@@ -1580,6 +1644,14 @@
               ],
               "cookie": [],
               "responseTime": "84",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "{\n  \"data\": {\n    \"id\": \"e1\",\n    \"name\": \"Env1\",\n    \"values\": null,\n    \"owner\": \"U1\"\n  },\n  \"revision\": 28\n}"
             }
           ]
@@ -1733,6 +1805,14 @@
               ],
               "cookie": [],
               "responseTime": "46",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "{\n  \"owner\": \"U1\",\n  \"id\": \"e1\",\n  \"name\": \"Env1\",\n  \"values\": null\n}"
             }
           ]
@@ -1861,6 +1941,14 @@
               ],
               "cookie": [],
               "responseTime": "10",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "[\n  {\n    \"owner\": \"U1\",\n    \"id\": \"e1\",\n    \"name\": \"Env1\",\n    \"values\": null\n  },\n  {\n    \"owner\": \"U1\",\n    \"id\": \"e2\",\n    \"name\": \"Environment2\",\n    \"values\": null\n  }\n]"
             }
           ]
@@ -1965,6 +2053,14 @@
               ],
               "cookie": [],
               "responseTime": "72",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "{\n  \"data\": {\n    \"id\": \"e2\"\n  },\n  \"revision\": 30\n}"
             }
           ]
@@ -2112,6 +2208,14 @@
               ],
               "cookie": [],
               "responseTime": "118",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "{\n  \"data\": {\n    \"collection\": \"c1\",\n    \"name\": \"Folder1\",\n    \"owner\": \"U1\",\n    \"id\": \"f1\",\n    \"order\": []\n  },\n  \"revision\": 14\n}"
             },
             {
@@ -2211,6 +2315,14 @@
               ],
               "cookie": [],
               "responseTime": "118",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "{\n  \"data\": {\n    \"collection\": \"c1\",\n    \"name\": \"Folder1\",\n    \"owner\": \"U1\",\n    \"id\": \"f1\",\n    \"order\": []\n  },\n  \"revision\": 14\n}"
             }
           ]
@@ -2327,6 +2439,14 @@
               ],
               "cookie": [],
               "responseTime": "93",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "{\n  \"data\": {\n    \"id\": \"f1\",\n    \"name\": \"Fol1\",\n    \"description\": null,\n    \"order\": [],\n    \"owner\": \"U1\",\n    \"collection\": \"c1\"\n  },\n  \"revision\": 15\n}"
             }
           ]
@@ -2443,6 +2563,14 @@
               ],
               "cookie": [],
               "responseTime": "49",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "[\n  {\n    \"owner\": \"U1\",\n    \"collection\": \"c1\",\n    \"id\": \"f1\",\n    \"name\": \"Fol1\",\n    \"description\": null,\n    \"order\": [\n      \"r2\"\n    ]\n  }\n]"
             }
           ]
@@ -2547,6 +2675,14 @@
               ],
               "cookie": [],
               "responseTime": "44",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "{\n  \"owner\": \"U1\",\n  \"collection\": \"c1\",\n  \"id\": \"f1\",\n  \"name\": \"Fol1\",\n  \"description\": null,\n  \"order\": []\n}"
             }
           ]
@@ -2651,6 +2787,14 @@
               ],
               "cookie": [],
               "responseTime": "70",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "{\n  \"data\": {\n    \"id\": \"f2\"\n  },\n  \"revision\": 17\n}"
             }
           ]
@@ -2786,6 +2930,14 @@
               ],
               "cookie": [],
               "responseTime": "110",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "{\n  \"data\": {\n    \"name\": \"HeaderPreset1\",\n    \"owner\": \"U1\",\n    \"id\": \"h1\"\n  },\n  \"revision\": 31\n}"
             },
             {
@@ -2879,6 +3031,14 @@
               ],
               "cookie": [],
               "responseTime": "128",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "{\n  \"data\": {\n    \"name\": \"HeaderPreset2\",\n    \"owner\": \"U1\",\n    \"id\": \"h2\"\n  },\n  \"revision\": 32\n}"
             }
           ]
@@ -2995,6 +3155,14 @@
               ],
               "cookie": [],
               "responseTime": "84",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "{\n  \"data\": {\n    \"id\": \"h1\",\n    \"name\": \"Hp1\",\n    \"headers\": null,\n    \"owner\": \"U1\"\n  },\n  \"revision\": 33\n}"
             }
           ]
@@ -3111,6 +3279,14 @@
               ],
               "cookie": [],
               "responseTime": "58",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "[\n  {\n    \"owner\": \"U1\",\n    \"id\": \"h1\",\n    \"name\": \"Hp1\",\n    \"headers\": null\n  },\n  {\n    \"owner\": \"U1\",\n    \"id\": \"h2\",\n    \"name\": \"HeaderPreset2\",\n    \"headers\": null\n  }\n]"
             }
           ]
@@ -3227,6 +3403,14 @@
               ],
               "cookie": [],
               "responseTime": "45",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "{\n  \"owner\": \"U1\",\n  \"id\": \"h2\",\n  \"name\": \"HeaderPreset2\",\n  \"headers\": null\n}"
             }
           ]
@@ -3331,6 +3515,14 @@
               ],
               "cookie": [],
               "responseTime": "91",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "{\n  \"data\": {\n    \"id\": \"h1\"\n  },\n  \"revision\": 34\n}"
             }
           ]
@@ -3490,6 +3682,14 @@
               ],
               "cookie": [],
               "responseTime": "39",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "{\n  \"data\": {\n    \"collection\": \"c1\",\n    \"name\": \"Request2\",\n    \"dataMode\": \"mode\",\n    \"method\": \"PUT\",\n    \"folder\": \"f1\",\n    \"owner\": \"U1\",\n    \"id\": \"r2\",\n    \"subscribers\": [],\n    \"responses\": []\n  },\n  \"revision\": 19\n}"
             },
             {
@@ -3595,6 +3795,14 @@
               ],
               "cookie": [],
               "responseTime": "121",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "{\n  \"data\": {\n    \"collection\": \"c1\",\n    \"name\": \"Request1\",\n    \"dataMode\": \"mode\",\n    \"method\": \"PUT\",\n    \"owner\": \"U1\",\n    \"id\": \"r1\",\n    \"subscribers\": [],\n    \"responses\": []\n  },\n  \"revision\": 18\n}"
             }
           ]
@@ -3707,6 +3915,14 @@
               ],
               "cookie": [],
               "responseTime": "87",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "{\n  \"data\": {\n    \"id\": \"r1\",\n    \"name\": \"Req1\",\n    \"dataMode\": \"mode\",\n    \"data\": null,\n    \"rawModeData\": null,\n    \"descriptionFormat\": null,\n    \"description\": null,\n    \"headers\": null,\n    \"method\": \"PUT\",\n    \"pathVariables\": null,\n    \"url\": null,\n    \"preRequestScript\": null,\n    \"tests\": null,\n    \"version\": null,\n    \"currentHelper\": null,\n    \"helperAttributes\": null,\n    \"owner\": \"U1\",\n    \"folder\": \"\",\n    \"collection\": \"c1\",\n    \"subscribers\": [],\n    \"responses\": []\n  },\n  \"revision\": 20\n}"
             },
             {
@@ -3792,6 +4008,14 @@
               ],
               "cookie": [],
               "responseTime": "47",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "{\n  \"data\": {\n    \"id\": \"r2\",\n    \"name\": \"Req2\",\n    \"dataMode\": \"mode\",\n    \"data\": null,\n    \"rawModeData\": null,\n    \"descriptionFormat\": null,\n    \"description\": null,\n    \"headers\": null,\n    \"method\": \"PUT\",\n    \"pathVariables\": null,\n    \"url\": null,\n    \"preRequestScript\": null,\n    \"tests\": null,\n    \"version\": null,\n    \"currentHelper\": null,\n    \"helperAttributes\": null,\n    \"owner\": \"U1\",\n    \"folder\": \"f1\",\n    \"collection\": \"c1\",\n    \"subscribers\": [],\n    \"responses\": []\n  },\n  \"revision\": 21\n}"
             }
           ]
@@ -3942,6 +4166,14 @@
               ],
               "cookie": [],
               "responseTime": "26",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "{\n  \"owner\": \"U1\",\n  \"folder\": \"f1\",\n  \"collection\": \"c1\",\n  \"id\": \"r2\",\n  \"name\": \"Req2\",\n  \"dataMode\": \"mode\",\n  \"data\": null,\n  \"rawModeData\": null,\n  \"descriptionFormat\": null,\n  \"description\": null,\n  \"headers\": null,\n  \"method\": \"PUT\",\n  \"pathVariables\": null,\n  \"url\": null,\n  \"preRequestScript\": null,\n  \"tests\": null,\n  \"version\": null,\n  \"currentHelper\": null,\n  \"helperAttributes\": null,\n  \"subscribers\": [],\n  \"responses\": []\n}"
             },
             {
@@ -4035,6 +4267,14 @@
               ],
               "cookie": [],
               "responseTime": "48",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "{\n  \"owner\": \"U1\",\n  \"folder\": \"\",\n  \"collection\": \"c1\",\n  \"id\": \"r1\",\n  \"name\": \"Req1\",\n  \"dataMode\": \"mode\",\n  \"data\": null,\n  \"rawModeData\": null,\n  \"descriptionFormat\": null,\n  \"description\": null,\n  \"headers\": null,\n  \"method\": \"PUT\",\n  \"pathVariables\": null,\n  \"url\": null,\n  \"preRequestScript\": null,\n  \"tests\": null,\n  \"version\": null,\n  \"currentHelper\": null,\n  \"helperAttributes\": null,\n  \"subscribers\": [],\n  \"responses\": []\n}"
             }
           ]
@@ -4139,6 +4379,14 @@
               ],
               "cookie": [],
               "responseTime": "59",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "[\n  {\n    \"owner\": \"U1\",\n    \"folder\": \"f1\",\n    \"collection\": \"c1\",\n    \"id\": \"r2\",\n    \"name\": \"Req2\",\n    \"dataMode\": \"mode\",\n    \"data\": null,\n    \"rawModeData\": null,\n    \"descriptionFormat\": null,\n    \"description\": null,\n    \"headers\": null,\n    \"method\": \"PUT\",\n    \"pathVariables\": null,\n    \"url\": null,\n    \"preRequestScript\": null,\n    \"tests\": null,\n    \"version\": null,\n    \"currentHelper\": null,\n    \"helperAttributes\": null,\n    \"subscribers\": [],\n    \"responses\": []\n  }\n]"
             },
             {
@@ -4220,6 +4468,14 @@
               ],
               "cookie": [],
               "responseTime": "52",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "[\n  {\n    \"owner\": \"U1\",\n    \"folder\": \"\",\n    \"collection\": \"c1\",\n    \"id\": \"r1\",\n    \"name\": \"Req1\",\n    \"dataMode\": \"mode\",\n    \"data\": null,\n    \"rawModeData\": null,\n    \"descriptionFormat\": null,\n    \"description\": null,\n    \"headers\": null,\n    \"method\": \"PUT\",\n    \"pathVariables\": null,\n    \"url\": null,\n    \"preRequestScript\": null,\n    \"tests\": null,\n    \"version\": null,\n    \"currentHelper\": null,\n    \"helperAttributes\": null,\n    \"subscribers\": [],\n    \"responses\": []\n  },\n  {\n    \"owner\": \"U1\",\n    \"folder\": \"f1\",\n    \"collection\": \"c1\",\n    \"id\": \"r2\",\n    \"name\": \"Req2\",\n    \"dataMode\": \"mode\",\n    \"data\": null,\n    \"rawModeData\": null,\n    \"descriptionFormat\": null,\n    \"description\": null,\n    \"headers\": null,\n    \"method\": \"PUT\",\n    \"pathVariables\": null,\n    \"url\": null,\n    \"preRequestScript\": null,\n    \"tests\": null,\n    \"version\": null,\n    \"currentHelper\": null,\n    \"helperAttributes\": null,\n    \"subscribers\": [],\n    \"responses\": []\n  }\n]"
             }
           ]
@@ -4423,6 +4679,14 @@
               ],
               "cookie": [],
               "responseTime": "41",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "{\n  \"data\": {\n    \"request\": \"r1\",\n    \"name\": \"Response2\",\n    \"owner\": \"U1\",\n    \"id\": \"p2\"\n  },\n  \"revision\": 23\n}"
             }
           ]
@@ -4539,6 +4803,14 @@
               ],
               "cookie": [],
               "responseTime": "95",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "{\n  \"data\": {\n    \"id\": \"p1\",\n    \"name\": \"Resp1\",\n    \"status\": null,\n    \"responseCode\": null,\n    \"time\": null,\n    \"headers\": null,\n    \"cookies\": null,\n    \"mime\": null,\n    \"text\": null,\n    \"language\": null,\n    \"rawDataType\": null,\n    \"state\": null,\n    \"previewType\": null,\n    \"searchResultScrolledTo\": null,\n    \"version\": null,\n    \"requestObject\": null,\n    \"owner\": \"U1\",\n    \"request\": \"r1\"\n  },\n  \"revision\": 25\n}"
             }
           ]
@@ -4655,6 +4927,14 @@
               ],
               "cookie": [],
               "responseTime": "45",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "[\n  {\n    \"owner\": \"U1\",\n    \"request\": \"r1\",\n    \"id\": \"p1\",\n    \"name\": \"Resp1\",\n    \"status\": null,\n    \"responseCode\": null,\n    \"time\": null,\n    \"headers\": null,\n    \"cookies\": null,\n    \"mime\": null,\n    \"text\": null,\n    \"language\": null,\n    \"rawDataType\": null,\n    \"state\": null,\n    \"previewType\": null,\n    \"searchResultScrolledTo\": null,\n    \"version\": null,\n    \"requestObject\": null\n  }\n]"
             }
           ]
@@ -4771,6 +5051,14 @@
               ],
               "cookie": [],
               "responseTime": "44",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "{\n  \"owner\": \"U1\",\n  \"request\": \"r1\",\n  \"id\": \"p1\",\n  \"name\": \"Resp1\",\n  \"status\": null,\n  \"responseCode\": null,\n  \"time\": null,\n  \"headers\": null,\n  \"cookies\": null,\n  \"mime\": null,\n  \"text\": null,\n  \"language\": null,\n  \"rawDataType\": null,\n  \"state\": null,\n  \"previewType\": null,\n  \"searchResultScrolledTo\": null,\n  \"version\": null,\n  \"requestObject\": null\n}"
             }
           ]
@@ -4875,6 +5163,14 @@
               ],
               "cookie": [],
               "responseTime": "68",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "{\n  \"data\": {\n    \"id\": \"p2\"\n  },\n  \"revision\": 26\n}"
             }
           ]
@@ -5273,6 +5569,14 @@
               ],
               "cookie": [],
               "responseTime": "88",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "{\n  \"data\": {\n    \"id\": \"U2\"\n  },\n  \"revision\": 2\n}"
             }
           ]
@@ -5383,6 +5687,14 @@
               ],
               "cookie": [],
               "responseTime": "108",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "{\n  \"data\": {\n    \"id\": \"U1\",\n    \"name\": \"pqr\",\n    \"title\": null,\n    \"email\": null,\n    \"online\": false,\n    \"admin\": true,\n    \"globals\": null,\n    \"requests_subscribe\": [],\n    \"collections_subscribe\": [],\n    \"collections_own\": [],\n    \"environments\": []\n  },\n  \"revision\": 1\n}"
             }
           ]
@@ -5525,6 +5837,14 @@
               ],
               "cookie": [],
               "responseTime": "53",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "{\n  \"data\": {\n    \"name\": \"History1\",\n    \"dataMode\": \"abc\",\n    \"method\": \"PUT\",\n    \"id\": \"h1\",\n    \"subscribers\": [],\n    \"responses\": []\n  },\n  \"revision\": 3\n}"
             }
           ]
@@ -5655,6 +5975,14 @@
               ],
               "cookie": [],
               "responseTime": "92",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": ""
             }
           ]
@@ -5783,6 +6111,14 @@
               ],
               "cookie": [],
               "responseTime": "11",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "{\n  \"id\": \"U1\",\n  \"name\": null,\n  \"title\": null,\n  \"email\": null,\n  \"online\": false,\n  \"admin\": true,\n  \"globals\": null,\n  \"requests_subscribe\": [],\n  \"collections_subscribe\": [],\n  \"collections_own\": [],\n  \"environments\": []\n}"
             }
           ]
@@ -5958,6 +6294,14 @@
               ],
               "cookie": [],
               "responseTime": "46",
+              "timings": {
+                "start": 1549521843038,
+                "socket": 1.4010989999997037,
+                "lookup": 1.6057000000000698,
+                "connect": 44.453799999999774,
+                "response": 269.9753989999999,
+                "end": 277.628099
+              },
               "data": "[\n  {\n    \"id\": \"U1\",\n    \"name\": null,\n    \"title\": null,\n    \"email\": null,\n    \"online\": false,\n    \"admin\": true,\n    \"globals\": null,\n    \"requests_subscribe\": [],\n    \"collections_subscribe\": [],\n    \"collections_own\": [],\n    \"environments\": []\n  },\n  {\n    \"id\": \"U2\",\n    \"name\": null,\n    \"title\": null,\n    \"email\": null,\n    \"online\": false,\n    \"admin\": true,\n    \"globals\": null,\n    \"requests_subscribe\": [],\n    \"collections_subscribe\": [],\n    \"collections_own\": [],\n    \"environments\": []\n  }\n]"
             }
           ]

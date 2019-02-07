@@ -26,6 +26,18 @@
         }
       ]
     },
+    "timings": {
+      "oneOf": [
+        {
+          "title": "Response Timings",
+          "description": "Set of timing information related to request and response in milliseconds",
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
     "header": {
       "title": "Headers",
       "oneOf": [
