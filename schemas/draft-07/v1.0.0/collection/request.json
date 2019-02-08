@@ -268,11 +268,11 @@
           },
           "timings": {
             "title": "Response Timings",
+            "description": "Set of timing information related to request and response in milliseconds",
             "type": [
               "object",
               "null"
-            ],
-            "description": "Set of timing information related to request and response in milliseconds"
+            ]
           },
           "headers": {
             "type": "array",
