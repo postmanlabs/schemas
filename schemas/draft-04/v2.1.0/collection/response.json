@@ -27,10 +27,10 @@
       "description": "The time taken by the request to complete. If a number, the unit is milliseconds. If the response is manually created, this can be set to `null`."
     },
     "timings": {
+      "title": "Response Timings",
+      "description": "Set of timing information related to request and response in milliseconds",
       "oneOf": [
         {
-          "title": "Response Timings",
-          "description": "Set of timing information related to request and response in milliseconds",
           "type": "object"
         },
         {

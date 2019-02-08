@@ -21,16 +21,12 @@
       "description": "The time taken by the request to complete. If a number, the unit is milliseconds. If the response is manually created, this can be set to `null`."
     },
     "timings": {
-      "oneOf": [
-        {
-          "title": "Response Timings",
-          "description": "Set of timing information related to request and response in milliseconds",
-          "type": "object"
-        },
-        {
-          "type": "null"
-        }
-      ]
+      "title": "Response Timings",
+      "type": [
+        "object",
+        "null"
+      ],
+      "description": "Set of timing information related to request and response in milliseconds"
     },
     "header": {
       "title": "Headers",
