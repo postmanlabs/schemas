@@ -20,6 +20,14 @@
         "number"
       ]
     },
+    "timings": {
+      "title": "Response Timings",
+      "description": "Set of timing information related to request and response in milliseconds",
+      "type": [
+        "object",
+        "null"
+      ]
+    },
     "header": {
       "title": "Headers",
       "oneOf": [

@@ -303,6 +303,18 @@
             ],
             "description": "The time taken by this particular HTTP transaction to complete is stored in this field. For manually created responses, this field can be set to ``null``."
           },
+          "timings": {
+            "title": "Response Timings",
+            "description": "Set of timing information related to request and response in milliseconds",
+            "oneOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "headers": {
             "type": "array",
             "title": "Header",
