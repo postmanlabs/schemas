@@ -1,0 +1,49 @@
+{
+  "variables": [],
+  "info": {
+    "name": "apikeyAuthTest",
+    "_postman_id": "d497d10e-e280-8c83-709a-a4d4ea12ad14",
+    "description": "",
+    "schema": "http://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "id": "951fc3e8-c6b6-5c19-9f69-4e7499b3127f",
+      "name": "test apikey auth success",
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "key",
+              "value": "token"
+            },
+            {
+              "key": "value",
+              "value": "wkjehbxoqnunc2k3"
+            },
+            {
+              "key": "in",
+              "value": "header"
+            }
+          ]
+        },
+        "url": "https://postman-echo.com/get",
+        "method": "GET",
+        "header": [
+          {
+            "key": "token",
+            "value": "wkjehbxoqnunc2k3",
+            "description": ""
+          }
+        ],
+        "data": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "description": ""
+      },
+      "response": []
+    }
+  ]
+}
