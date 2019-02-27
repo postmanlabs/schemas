@@ -19,6 +19,24 @@
     },
     {
       "type": "object",
+      "title": "API Key Authentication",
+      "description": "The attributes for API Key Authentication. e.g. key, value, in.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "enum": [
+            "apikey"
+          ],
+          "description": "This field contains the type of the helper. In this case, it is ``apikey``"
+        }
+      },
+      "additionalProperties": true,
+      "required": [
+        "id"
+      ]
+    },
+    {
+      "type": "object",
       "title": "AWS Signature v4",
       "description": "The attributes for [AWS Auth](http://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html). e.g. accessKey, secretKey, region, service.",
       "properties": {
