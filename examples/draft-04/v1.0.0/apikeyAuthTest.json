@@ -13,7 +13,7 @@
   "requests": [
     {
       "id": "951fc3e8-c6b6-5c19-9f69-4e7499b3127f",
-      "headers": "x-api-key: wkjehbxoqnunc2k3",
+      "headers": "x-api-key: ABC123",
       "url": "https://postman-echo.com/get",
       "preRequestScript": "",
       "pathVariables": {},
