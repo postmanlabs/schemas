@@ -22,6 +22,11 @@
               "src": ""
             },
             {
+              "key": "file_with_array",
+              "type": "file",
+              "src": []
+            },
+            {
               "key": "not_a_file",
               "type": "text",
               "value": ""
