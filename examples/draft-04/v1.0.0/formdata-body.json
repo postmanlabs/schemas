@@ -27,6 +27,11 @@
           "key": "file",
           "type": "file",
           "value": ""
+        },
+        {
+          "key": "file",
+          "type": "file",
+          "value": []
         }
       ],
       "headers": "",
