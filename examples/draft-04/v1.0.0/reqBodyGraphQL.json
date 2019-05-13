@@ -1,0 +1,37 @@
+{
+  "id": "5adbd3b7-80cb-43cc-bf1e-8578ab3c9b15",
+  "name": "GraphQL Request",
+  "description": null,
+  "auth": null,
+  "events": [],
+  "variables": [],
+  "order": [
+    "844470c1-2017-4a08-b322-bc9a037d8cb5"
+  ],
+  "folders_order": [],
+  "folders": [],
+  "requests": [
+    {
+      "id": "844470c1-2017-4a08-b322-bc9a037d8cb5",
+      "name": "default",
+      "url": "https://postman-echo.com/post",
+      "description": "",
+      "dataMode": "graphql",
+      "graphqlModeData": {
+        "query": "query Test { hello }",
+        "operationName": "Test",
+        "variables": "{\"foo\":\"bar\"}"
+      },
+      "headerData": [],
+      "method": "POST",
+      "pathVariableData": [],
+      "queryParams": [],
+      "auth": null,
+      "events": [],
+      "folder": null,
+      "headers": "",
+      "pathVariables": {},
+      "collectionId": "5adbd3b7-80cb-43cc-bf1e-8578ab3c9b15"
+    }
+  ]
+}
