@@ -158,6 +158,7 @@
                           },
                           "src": {
                             "type": [
+                              "array",
                               "string",
                               "null"
                             ]
