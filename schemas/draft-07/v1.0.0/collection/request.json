@@ -28,7 +28,8 @@
             "raw",
             "urlencoded",
             "params",
-            "binary"
+            "binary",
+            "graphql"
           ],
           "description": "A request can have a specific data mode, and Postman supports these."
         },
@@ -410,6 +411,10 @@
         "array"
       ],
       "description": "Contains the raw data (parameters) that Postman sends to the server"
+    },
+    "graphqlModeData": {
+      "type": "object",
+      "description": "This field contains the GraphQL request body"
     },
     "collectionId": {
       "type": "string",

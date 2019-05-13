@@ -1,0 +1,38 @@
+{
+  "info": {
+    "_postman_id": "5adbd3b7-80cb-43cc-bf1e-8578ab3c9b15",
+    "name": "GraphQL Request",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "_postman_id": "6412986b-9e91-4f03-9cf9-baaccc762da4",
+      "name": "default",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "graphql",
+          "graphql": {
+            "query": "query Test { hello }",
+            "operationName": "Test",
+            "variables": "{\"foo\":\"bar\"}"
+          }
+        },
+        "url": {
+          "raw": "https://postman-echo.com/post",
+          "protocol": "https",
+          "host": [
+            "postman-echo",
+            "com"
+          ],
+          "path": [
+            "post"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": []
+}

@@ -81,7 +81,8 @@
                     "raw",
                     "urlencoded",
                     "formdata",
-                    "file"
+                    "file",
+                    "graphql"
                   ]
                 },
                 "raw": {
@@ -212,6 +213,9 @@
                       "type": "string"
                     }
                   }
+                },
+                "graphql": {
+                  "type": "object"
                 },
                 "disabled": {
                   "type": "boolean",

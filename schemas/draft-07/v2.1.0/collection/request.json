@@ -81,11 +81,15 @@
                     "raw",
                     "urlencoded",
                     "formdata",
-                    "file"
+                    "file",
+                    "graphql"
                   ]
                 },
                 "raw": {
                   "type": "string"
+                },
+                "graphql": {
+                  "type": "object"
                 },
                 "urlencoded": {
                   "type": "array",
