@@ -27,7 +27,8 @@
     "lodash": "4.17.11",
     "mustache": "3.0.1",
     "semver": "6.2.0",
-    "strip-json-comments": "3.0.1"
+    "strip-json-comments": "3.0.1",
+    "snyk": "^1.189.0"
   },
   "scripts": {
     "build-docs": "node npm/build-docs.js",
@@ -35,7 +36,9 @@
     "test": "node npm/test.js",
     "test-system": "node npm/test-system.js",
     "test-lint": "node npm/test-lint.js",
-    "test-integration": "node npm/test-integration.js"
+    "test-integration": "node npm/test-integration.js",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "devDependencies": {
     "async": "3.0.1",
@@ -57,5 +60,6 @@
   },
   "engines": {
     "node": "8"
-  }
+  },
+  "snyk": true
 }
