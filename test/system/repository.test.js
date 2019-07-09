@@ -53,7 +53,7 @@ describe('project repository', function () {
             });
 
             it('should ignore applicable dependencies for GreenKeeper pull requests', function () {
-                expect(json.greenkeeper).to.be.undefined;
+                expect(json.greenkeeper.ignore).to.eql(['eslint-plugin-jsdoc']);
             });
 
             it('should have a valid version string in form of <major>.<minor>.<revision>', function () {
