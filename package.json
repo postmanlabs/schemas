@@ -57,5 +57,10 @@
   },
   "engines": {
     "node": "8"
+  },
+  "greenkeeper": {
+    "ignore": [
+      "eslint-plugin-jsdoc"
+    ]
   }
 }
