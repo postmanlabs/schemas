@@ -217,6 +217,10 @@
                 "graphql": {
                   "type": "object"
                 },
+                "options": {
+                  "type": "object",
+                  "description": "Additional configurations and options set for various body modes."
+                },
                 "disabled": {
                   "type": "boolean",
                   "default": false,
