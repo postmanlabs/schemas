@@ -38,6 +38,10 @@
         }
       ]
     },
+    "dataOptions": {
+      "type": "object",
+      "description": "Additional configurations and options set for various body modes."
+    },
     "dataDisabled": {
       "type": "boolean",
       "default": false,
