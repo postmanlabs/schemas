@@ -35,6 +35,11 @@
       ],
       "dataMode": "params",
       "dataDisabled": true,
+      "dataOptions": {
+        "raw": {
+          "language": "text"
+        }
+      },
       "headerData": [],
       "method": "POST",
       "pathVariableData": [],
