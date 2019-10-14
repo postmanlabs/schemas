@@ -1,0 +1,45 @@
+{
+    "variables": [],
+    "info": {
+      "name": "edgegridAuthTest",
+      "_postman_id": "d497d10e-e280-8c83-709a-a4d4ea12ad14",
+      "description": "",
+      "schema": "http://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+    },
+    "item": [
+      {
+        "id": "951fc3e8-c6b6-5c19-9f69-4e7499b3127f",
+        "name": "test edgegrid auth success",
+        "request": {
+          "auth": {
+            "type": "edgegrid",
+            "edgegrid": {
+              "accessToken": "foo",
+              "clientToken": "bar",
+              "clientSecret": "baz",
+              "baseURL": "postman-echo.com",
+              "nonce": "djnenfn",
+              "timestamp": "20191014T08:12:46+0000",
+              "headersToSign": "Host,Cache-Control"
+            }
+          },
+          "url": "https://postman-echo.com/get",
+          "method": "GET",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "EG1-HMAC-SHA256 client_token=bar;access_token=foo;timestamp=20191014T08:12:46+0000;nonce=djnenfn;signature=1Tpt1twixhLxh0tazTT+fxzI8a8Kjur1aTpQ0Xbm8Hw=",
+              "description": ""
+            }
+          ],
+          "data": {
+            "mode": "formdata",
+            "formdata": []
+          },
+          "description": ""
+        },
+        "response": []
+      }
+    ]
+  }
+  

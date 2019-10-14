@@ -1,0 +1,43 @@
+{
+    "id": "d497d10e-e280-8c83-709a-a4d4ea12ad14",
+    "name": "edgegridAuthTest",
+    "description": "",
+    "order": [
+      "951fc3e8-c6b6-5c19-9f69-4e7499b3127f"
+    ],
+    "folders": [],
+    "timestamp": 1448876955917,
+    "owner": 0,
+    "remoteLink": "",
+    "public": false,
+    "requests": [
+      {
+        "id": "951fc3e8-c6b6-5c19-9f69-4e7499b3127f",
+        "headers": "Authorization: EG1-HMAC-SHA256 client_token=bar;access_token=foo;timestamp=20191014T08:12:46+0000;nonce=djnenfn;signature=1Tpt1twixhLxh0tazTT+fxzI8a8Kjur1aTpQ0Xbm8Hw=",
+        "url": "https://postman-echo.com/get",
+        "preRequestScript": "",
+        "pathVariables": {},
+        "method": "GET",
+        "data": [],
+        "dataMode": "params",
+        "version": 2,
+        "currentHelper": "edgegridAuth",
+        "helperAttributes": {
+          "id": "edgegrid",
+          "accessToken": "foo",
+          "clientToken": "bar",
+          "clientSecret": "baz",
+          "baseURL": "postman-echo.com",
+          "nonce": "djnenfn",
+          "timestamp": "20191014T08:12:46+0000",
+          "headersToSign": "Host,Cache-Control"
+        },
+        "time": 1448888108375,
+        "name": "test edgegrid auth success",
+        "description": "",
+        "collectionId": "d497d10e-e280-8c83-709a-a4d4ea12ad14",
+        "responses": []
+      }
+    ]
+  }
+  

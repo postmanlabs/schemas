@@ -69,6 +69,22 @@
     },
     {
       "type": "object",
+      "title": "EdgeGrid Authentication",
+      "description": "The attributes for [Akamai EdgeGrid Authentication](https://developer.akamai.com/legacy/introduction/Client_Auth.html). e.g. accessToken, clientToken, clientSecret, baseURL, nonce, timestamp, headersToSign.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "const": "edgegrid",
+          "description": "This field contains the type of the helper. In this case, it is ``edgegrid``"
+        }
+      },
+      "additionalProperties": true,
+      "required": [
+        "id"
+      ]
+    },
+    {
+      "type": "object",
       "title": "Hawk Authentication",
       "description": "The attributes for [Hawk Authentication](https://github.com/hueniverse/hawk). e.g. authId, authKey, algorith, user, nonce, extraData, appId, delegation, timestamp.",
       "properties": {
