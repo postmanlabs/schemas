@@ -25,7 +25,7 @@
     "commander": "3.0.1",
     "fs-extra": "8.1.0",
     "lodash": "4.17.15",
-    "mustache": "3.0.3",
+    "mustache": "3.2.0",
     "semver": "6.3.0",
     "strip-json-comments": "3.0.1"
   },
