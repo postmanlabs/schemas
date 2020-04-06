@@ -27,7 +27,7 @@
     "lodash": "4.17.15",
     "mustache": "3.0.3",
     "semver": "6.3.0",
-    "strip-json-comments": "3.0.1"
+    "strip-json-comments": "3.1.0"
   },
   "scripts": {
     "build-docs": "node npm/build-docs.js",
