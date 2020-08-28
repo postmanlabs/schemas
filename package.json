@@ -24,7 +24,7 @@
     "ajv": "6.10.2",
     "commander": "3.0.1",
     "fs-extra": "8.1.0",
-    "lodash": "4.17.15",
+    "lodash": "4.17.17",
     "mustache": "3.0.3",
     "semver": "6.3.0",
     "strip-json-comments": "3.0.1"
@@ -44,7 +44,7 @@
     "editorconfig": "0.15.3",
     "eslint": "5.16.0",
     "eslint-plugin-jsdoc": "4.8.4",
-    "eslint-plugin-lodash": "5.1.0",
+    "eslint-plugin-lodash": "5.1.1",
     "eslint-plugin-mocha": "5.3.0",
     "eslint-plugin-security": "1.4.0",
     "js-yaml": "3.13.1",
