@@ -55,7 +55,8 @@
           "cert": {
             "src": "/path/to/certificate"
           },
-          "passphrase": "r@nd0m$ecret$tr1ng"
+          "passphrase": "r@nd0m$ecret$tr1ng",
+          "matches": ["https://postman-echo.com/*"]
         },
         "method": "GET",
         "header": [

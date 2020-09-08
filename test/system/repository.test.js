@@ -52,10 +52,6 @@ describe('project repository', function () {
                 expect(json.engines).to.eql({ node: '8' });
             });
 
-            it('should ignore applicable dependencies for GreenKeeper pull requests', function () {
-                expect(json.greenkeeper.ignore).to.eql(['eslint-plugin-jsdoc']);
-            });
-
             it('should have a valid version string in form of <major>.<minor>.<revision>', function () {
                 // eslint-disable-next-line max-len
                 expect(json.version).to.match(/^((\d+)\.(\d+)\.(\d+))(?:-([\dA-Za-z-]+(?:\.[\dA-Za-z-]+)*))?(?:\+([\dA-Za-z-]+(?:\.[\dA-Za-z-]+)*))?$/);
