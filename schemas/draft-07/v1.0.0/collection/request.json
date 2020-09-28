@@ -53,7 +53,7 @@
           "type": "array",
           "description": "Data is an array of key-values that the request goes with. POST data, PUT data, etc goes here.",
           "items": {
-            "oneOf": [
+            "anyOf": [
               {
                 "type": "object",
                 "properties": {
