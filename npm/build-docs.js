@@ -155,7 +155,7 @@ function buildToc (versions) {
 
     allversions = _.map(versions, (version) => {
         let raw = version,
-            semVersion = semver.SemVer(version),
+            semVersion = new semver.SemVer(version),
             status,
             bootstrapClass;
 
