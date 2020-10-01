@@ -8,6 +8,10 @@
       "description": "A unique, user defined identifier that can  be used to refer to this response from requests.",
       "type": "string"
     },
+    "name": {
+      "description": "A user defined description of the response.",
+      "type": "string"
+    },
     "originalRequest": {
       "$ref": "#/definitions/request"
     },
