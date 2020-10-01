@@ -85,6 +85,11 @@
     "code": {
       "type": "integer",
       "description": "The numerical response code, example: 200, 201, 404, etc."
+    },
+    "_postman_previewlanguage": {
+      "type": "string",
+      "description": "The preview language of the response.",
+      "enum": [ "", "json", "text", "html", "javascript", "plain" ]
     }
   }
 }
