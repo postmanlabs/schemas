@@ -6,7 +6,7 @@
   "description": "A script is a snippet of Javascript code that can be used to to perform setup or teardown operations on a particular response.",
   "properties": {
     "id": {
-      "description": "A unique, user defined identifier that can  be used to refer to this script from requests.",
+      "description": "A unique, user defined identifier that can be used to refer to this script from requests.",
       "type": "string"
     },
     "type": {
