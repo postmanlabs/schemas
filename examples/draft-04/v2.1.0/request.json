@@ -65,7 +65,7 @@
             "value": "application/json; charset=utf8"
           }
         ],
-        "data": {
+        "body": {
           "mode": "formdata",
           "formdata": [
             {
@@ -107,7 +107,6 @@
             {
               "key": "count",
               "value": "10",
-              "type": "text",
               "enabled": true
             }
           ]

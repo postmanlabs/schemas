@@ -118,7 +118,7 @@
                   "items": {
                     "type": "object",
                     "title": "FormParameter",
-                    "oneOf": [
+                    "anyOf": [
                       {
                         "properties": {
                           "key": {
