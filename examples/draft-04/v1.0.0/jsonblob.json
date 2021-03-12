@@ -144,7 +144,10 @@
           "write": false
         }
       ],
-      "rawModeData": "{\"people\":[\"bill\", \"steve\", \"bob\"]}"
+      "rawModeData": "{\"people\":[\"bill\", \"steve\", \"bob\"]}",
+      "responses_order": [
+        "f6ad7cfd-2693-e78d-1732-e330c5012aee"
+      ]
     },
     {
       "id": "59665941-3886-0622-fe29-6d4d4b02e4ee",

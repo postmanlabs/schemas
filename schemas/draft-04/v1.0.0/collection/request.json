@@ -562,6 +562,14 @@
     },
     "protocolProfileBehavior": {
       "$ref": "#/definitions/protocol-profile-behavior"
+    },
+    "responses_order": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "description": "Postman preserves the order of your responses within each request. This field holds a sequence of [UUIDs](https://en.wikipedia.org/wiki/Globally_unique_identifier), where each ID corresponds to a particular response."
     }
   },
   "anyOf": [
