@@ -6,23 +6,23 @@ Repository of all schemas for JSON structures compatible with Postman (such as t
 
 ## Usage
 
-All the schemas in this repository are valid JSON Schemas, compliant with the [JSON-Schema, Draft 4](http://json-schema.org/documentation.html). As such, they can be used with a number of tools to validate arbitrary JSON blobs, as show below: 
+All the schemas in this repository are valid JSON Schemas, compliant with the [JSON-Schema, Draft 7](https://json-schema.org/specification-links.html#draft-7). As such, they can be used with a number of tools to validate arbitrary JSON blobs, as show below: 
 
 ### Examples: JavaScript
 
 #### [is-my-json-valid](https://github.com/mafintosh/is-my-json-valid)
 
-```
+```javascript
 var https = require('https'),
-    validate = require('is-my-json-valid');
+    validator = require('is-my-json-valid');
 
 var input = {
-    /* JSON of a collection V1 */
+    /* JSON of a collection V2.1.0 */
 };
 
 // we fetch the schema from server and when it is received, 
 // validate our input JSON against it.
-https.get('https://schema.getpostman.com/json/collection/v1/', function (response) {
+https.get('https://schema.postman.com/collection/json/v2.1.0/draft-07/collection.json', function (response) {
     var body = '';
 
     response.on('data', function (d) {
@@ -33,51 +33,23 @@ https.get('https://schema.getpostman.com/json/collection/v1/', function (respons
         var validate = validator(JSON.parse(body));
         console.log(validate(input) ? 'It is a valid collection!' : 'It is not a valid collection!');
     });
-});
-```
-
-#### [tv4](https://github.com/geraintluff/tv4)
-```
-var https = require('https'),
-    tv4 = require('tv4');
-
-var input = {
-    /* JSON of a collection V1 */
-};
-
-// we fetch the schema from server and when it is received,
-// validate our input JSON against it.
-https.get('https://schema.getpostman.com/json/collection/v1/', function (response) {
-    var body = '';
-
-    response.on('data', function (d) {
-        body += d;
-    });
-
-    response.on('end', function () {
-        var result = tv4.validate(input, JSON.parse(body));
-        console.log((result) ? 'It is a valid collection!' : 'It is not a valid collection!');
-    });
-});
+  });
 ```
 
 ### Example: Python
 
-#### [jsonschema](https://github.com/Julian/jsonschema)
+#### [jsonschema](https://github.com/python-jsonschema/jsonschema)
 
-```
-import requests  # make sure this is installed
-from jsonschema import validate
-from jsonschema.exceptions import ValidationError
+```python
+from jsonschema import Draft7Validator
 
-schema = requests.get('https://schema.getpostman.com/json/collection/v1/').json()
+SCHEMA_URL = "https://schema.postman.com/collection/json/v2.1.0/draft-07/collection.json"
+validator = Draft7Validator(schema={"$ref": SCHEMA_URL})
 
 test_input = {}  # Whatever needs to be validated.
 
-try:
-    validate(test_input, schema)
-except ValidationError:
-    print 'It is not a valid collection!'
+if validator.is_valid(test_input):
+    print("It is a valid collection!")
 else:
-    print 'It is a valid collection!'
+    print("It is not a valid collection!")
 ```
