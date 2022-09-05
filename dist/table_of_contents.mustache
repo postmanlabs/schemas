@@ -60,7 +60,7 @@
                               </tr>
                           </thead>
                           <tbody>
-                              {{#versions}}
+                              {{#collections}}
                               <tr>
                                   <td>{{raw}}</td>
                                   <td><span class="label label-{{bootstrapClass}}">{{status}}</span></td>
@@ -68,10 +68,36 @@
                                           Documentation</a></td>
                                   <td><a href="./collection/json/{{raw}}/draft-07/collection.json" target="_blank">JSON Schema</a></td>
                               </tr>
-                              {{/versions}}
+                              {{/collections}}
                           </tbody>
                       </table>
                   </div>
+                  {{#environments}}
+                  <div>
+                      <h3>Environments</h3>
+                      <table class="table table-striped table-bordered table-hover">
+                          <thead>
+                              <tr>
+                                  <th>Version</th>
+                                  <th>Status</th>
+                                  <th>Documentation</th>
+                                  <th>Raw Schema</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              {{#environments}}
+                              <tr>
+                                  <td>{{raw}}</td>
+                                  <td><span class="label label-{{bootstrapClass}}">{{status}}</span></td>
+                                  <td><a href="./environment/json/{{raw}}/draft-07/docs/index.html" target="_blank">View
+                                          Documentation</a></td>
+                                  <td><a href="./environment/json/{{raw}}/draft-07/environment.json" target="_blank">JSON Schema</a></td>
+                              </tr>
+                              {{/environments}}
+                          </tbody>
+                      </table>
+                  </div>
+                  {{/environments}}
                   <div>
                       <h3>Legend</h3>
                       <table class="table table-striped table-bordered table-hover">

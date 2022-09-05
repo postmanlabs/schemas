@@ -14,7 +14,11 @@ const path = require('path'),
     BASE_ASSET_DIR = path.join(__dirname, '..', 'dist'),
     BASE_OUTPUT_DIR = path.join(__dirname, '..', 'webout'),
     OUTPUT_DIR = path.join(BASE_OUTPUT_DIR, 'json'),
-    NEW_OUTPUT_DIR = path.join(BASE_OUTPUT_DIR, 'collection', 'json'),
+    ELEMENTS = ['collection', 'environment'],
+    NEW_OUTPUT_DIR = (element) => {
+        return path.join(BASE_OUTPUT_DIR, element, 'json');
+    },
+
     STATUS_MAP_BOOTSTRAP = {
         draft: 'warning',
         stable: 'success',
@@ -22,20 +26,27 @@ const path = require('path'),
     };
 
 /**
- *
  * @param {String} version - Schema Version
  * @param {String} draft - The JSON draft version to build for.
+ * @param {String} element - The element to build for.
  */
-function buildVersion (version, draft) {
+function buildVersion (version, draft, element) {
+    const schemaFile = path.join(SCHEMA_DIR, draft, version, `${element}.json`);
+
+    if (!fse.existsSync(schemaFile)) {
+        console.info(`Skipping ${version} for ${element} as it does not have a schema file`);
+
+        return;
+    }
+
     let isLatestDraft = draft === DEFAULT_DRAFT,
         draftSubDir = isLatestDraft ? '' : draft,
-        versionDir = path.join(NEW_OUTPUT_DIR, version, draft, 'docs'),
-        outSchemaFile = path.join(NEW_OUTPUT_DIR, version, draft, 'collection.json'),
-        legacyVersionDir = path.join(OUTPUT_DIR, draftSubDir, 'collection', version, 'docs'),
-        legacyOutSchemaFile = path.join(OUTPUT_DIR, draftSubDir, 'collection', version, 'collection.json'),
-        schemaFile = path.join(SCHEMA_DIR, draft, version, 'collection.json'),
+        versionDir = path.join(NEW_OUTPUT_DIR(element), version, draft, 'docs'),
+        outSchemaFile = path.join(NEW_OUTPUT_DIR(element), version, draft, `${element}.json`),
+        legacyVersionDir = path.join(OUTPUT_DIR, draftSubDir, element, version, 'docs'),
+        legacyOutSchemaFile = path.join(OUTPUT_DIR, draftSubDir, element, version, `${element}.json`),
         versionSchemaDir = path.join(SCHEMA_DIR, draft, version),
-        templateFile = path.join(BASE_ASSET_DIR, 'index.mustache'),
+        templateFile = path.join(BASE_ASSET_DIR, `${element}.mustache`),
         compiledSchema = tools.compile(schemaFile, versionSchemaDir, draft),
         templateContent = fse.readFileSync(templateFile),
         renderedTemplate,
@@ -69,15 +80,16 @@ function buildVersion (version, draft) {
  *
  * @param {String} version - Schema Version
  * @param {String} draft - The JSON draft version to build for
+ * @param {String} element - The element to build for
  */
-function buildLatest (version, draft) {
-    const versionDocsDir = path.join(NEW_OUTPUT_DIR, version, draft),
-        latestDocsDir = path.join(NEW_OUTPUT_DIR, 'latest', draft),
-        legacyVersionDocsDir = path.join(OUTPUT_DIR, draft === DEFAULT_DRAFT ? '' : draft, 'collection', version),
-        legacyLatestDocsDir = path.join(OUTPUT_DIR, draft === DEFAULT_DRAFT ? '' : draft, 'collection', 'latest');
+function buildLatest (version, draft, element) {
+    const versionDocsDir = path.join(NEW_OUTPUT_DIR(element), version, draft),
+        latestDocsDir = path.join(NEW_OUTPUT_DIR(element), 'latest', draft),
+        legacyVersionDocsDir = path.join(OUTPUT_DIR, draft === DEFAULT_DRAFT ? '' : draft, element, version),
+        legacyLatestDocsDir = path.join(OUTPUT_DIR, draft === DEFAULT_DRAFT ? '' : draft, element, 'latest');
 
-    fse.copySync(versionDocsDir, latestDocsDir);
-    fse.copySync(legacyVersionDocsDir, legacyLatestDocsDir);
+    fse.existsSync(versionDocsDir) && fse.copySync(versionDocsDir, latestDocsDir);
+    fse.existsSync(legacyVersionDocsDir) && fse.copySync(legacyVersionDocsDir, legacyLatestDocsDir);
     console.info('Copied %s as the latest version', version);
 }
 
@@ -102,11 +114,11 @@ function getLatestStable (versions) {
 }
 
 /**
- *
  * @param {String[]} versions - Schema Versions
  * @param {String} draft - The JSON draft version to build for
+ * @param {String} element - The element to build for
  */
-function buildSymlinks (versions, draft) {
+function buildSymlinks (versions, draft, element) {
     const stableVersions = getStableVersions(versions),
 
         // groups versions by major: { "1": ["1.0.1", "1.2.0"], "2": ["2.0.0", "2.1.0"]
@@ -130,10 +142,10 @@ function buildSymlinks (versions, draft) {
     mapping = _.zipObject(_.map(mapping, 'major'), _.map(mapping, 'latest'));
 
     _.forEach(mapping, (latest, major) => {
-        const src = path.relative(NEW_OUTPUT_DIR, path.join(NEW_OUTPUT_DIR, 'collection', 'json', latest)),
-            dest = path.join(NEW_OUTPUT_DIR, 'v' + major.toString()),
-            legacySrc = path.relative(OUTPUT_DIR, path.join(OUTPUT_DIR, 'collection', latest)),
-            legacyDest = path.join(OUTPUT_DIR, draft === DEFAULT_DRAFT ? '' : draft, 'collection', 'v' + major);
+        const src = path.relative(NEW_OUTPUT_DIR(element), path.join(NEW_OUTPUT_DIR(element), element, 'json', latest)),
+            dest = path.join(NEW_OUTPUT_DIR(element), 'v' + major.toString()),
+            legacySrc = path.relative(OUTPUT_DIR, path.join(OUTPUT_DIR, element, latest)),
+            legacyDest = path.join(OUTPUT_DIR, draft === DEFAULT_DRAFT ? '' : draft, element, 'v' + major);
 
         (draft === DEFAULT_DRAFT) && fse.symlinkSync(src, dest);
         fse.symlinkSync(legacySrc, legacyDest);
@@ -141,41 +153,54 @@ function buildSymlinks (versions, draft) {
 }
 
 /**
- *
  * @param {String[]} versions - Schema Versions
+ * @param {String} draft - The JSON draft version to build for.
  */
-function buildToc (versions) {
-    const templateFile = path.join(BASE_ASSET_DIR, 'table_of_contents.mustache'),
-        templateContent = fse.readFileSync(templateFile);
-
-    let renderedTemplate,
-        allversions;
-
+function buildToc (versions, draft) {
     console.info('Creating a Table of Contents...');
 
-    allversions = _.map(versions, (version) => {
-        let raw = version,
-            semVersion = new semver.SemVer(version),
-            status,
-            bootstrapClass;
+    const templateFile = path.join(BASE_ASSET_DIR, 'table_of_contents.mustache'),
+        templateContent = fse.readFileSync(templateFile),
 
-        status = _.isArray(semVersion.prerelease) && semVersion.prerelease.length ?
-            semVersion.prerelease[0] : 'stable';
+        allVersions = _.reduce(ELEMENTS, (acc, element) => {
+            acc[element] = _.reduce(versions, (acc, version) => {
+                let raw = version,
+                    semVersion = new semver.SemVer(version),
+                    status,
+                    bootstrapClass;
 
-        bootstrapClass = STATUS_MAP_BOOTSTRAP[status];
+                // check if schema file for this element exists
+                if (!fse.existsSync(path.join(SCHEMA_DIR, draft, version, `${element}.json`))) {
+                    return acc;
+                }
 
-        if (!bootstrapClass) {
-            throw new Error('Invalid status "' + status + '". Please use a valid semver pre-release tag. ' +
-                'It should be one of ' + _.keys(STATUS_MAP_BOOTSTRAP));
-        }
+                status = _.isArray(semVersion.prerelease) && semVersion.prerelease.length ?
+                    semVersion.prerelease[0] : 'stable';
 
-        return {
-            raw,
-            status,
-            bootstrapClass
-        };
-    });
-    renderedTemplate = mustache.render(templateContent.toString(), { versions: allversions });
+                bootstrapClass = STATUS_MAP_BOOTSTRAP[status];
+
+                if (!bootstrapClass) {
+                    throw new Error('Invalid status "' + status + '". Please use a valid semver pre-release tag. ' +
+                        'It should be one of ' + _.keys(STATUS_MAP_BOOTSTRAP));
+                }
+
+                acc.push({
+                    raw,
+                    status,
+                    bootstrapClass
+                });
+
+                return acc;
+            }, []);
+
+            return acc;
+        }, {}),
+
+        renderedTemplate = mustache.render(templateContent.toString(), {
+            collections: allVersions.collection,
+            environments: allVersions.environment
+        });
+
     fse.writeFileSync(path.join(BASE_OUTPUT_DIR, 'index.html'), renderedTemplate);
 }
 
@@ -183,53 +208,62 @@ function buildToc (versions) {
  * Main handler
  */
 function main () {
-    // Check if output directory exists, and remove it if it's there
-    if (fse.existsSync(NEW_OUTPUT_DIR)) {
-        console.info('Output directory exists! Removing the existing one.');
-        fse.removeSync(NEW_OUTPUT_DIR);
-    }
+    ELEMENTS.forEach((element) => {
+        const outputDir = path.join(BASE_OUTPUT_DIR, element, 'json');
 
-    fse.mkdirpSync(NEW_OUTPUT_DIR);
+        // Check if output directory exists, and remove it if it's there
+        if (fse.existsSync(outputDir)) {
+            console.info('Output directory exists! Removing the existing one.');
+            fse.removeSync(outputDir);
+        }
+
+        fse.mkdirpSync(outputDir);
+    });
 
     // Copy statics assets (js, css, etc)
     fse.copySync(BASE_ASSET_DIR, BASE_OUTPUT_DIR);
 
     fse.readdirSync(SCHEMA_DIR).forEach((draft) => {
-        const outDir = path.join(OUTPUT_DIR, draft === DEFAULT_DRAFT ? '' : draft, 'collection'),
-            versions = fse.readdirSync(path.join(SCHEMA_DIR, draft));
+        const versions = fse.readdirSync(path.join(SCHEMA_DIR, draft));
 
         // Ensures that versions are displayed in the descending order in the ToC
         versions.sort(semver.rcompare);
-        console.info('Output directory is: %s', outDir);
-
-        // Check if output directory exists, and remove it if it's there
-        if (fse.existsSync(outDir)) {
-            console.info('Output directory exists! Removing the existing one.');
-            fse.removeSync(outDir);
-        }
-
-        // Create output directory
-        fse.mkdirpSync(outDir);
 
         // Create the table of contents
-        buildToc(versions);
+        buildToc(versions, draft);
 
-        versions.forEach((version) => {
-            buildVersion(version, draft);
+        ELEMENTS.forEach((element) => {
+            versions.forEach((version) => {
+                buildVersion(version, draft, element);
+            });
         });
 
-        // Remove templates from output directory.
-        fse.remove(path.join(outDir, 'index.mustache'));
-        fse.remove(path.join(outDir, 'table_of_contents.mustache'));
+        ELEMENTS.forEach((element) => {
+            const outDir = path.join(OUTPUT_DIR, draft === DEFAULT_DRAFT ? '' : draft, element);
 
+            console.info('Output directory is: %s', outDir);
 
-        // Construct the docs for the latest stable version.
-        console.info('Building docs for the latest...');
-        buildLatest(getLatestStable(versions), draft);
+            // Check if output directory exists, and remove it if it's there
+            if (fse.existsSync(outDir)) {
+                console.info('Output directory exists! Removing the existing one.');
+                fse.removeSync(outDir);
+            }
 
-        // Create symlinks for stable versions.. v1 => v1.0.0, etc.
-        console.info('Creating symlinks from major versions to the latest...');
-        buildSymlinks(versions, draft);
+            // Create output directory
+            fse.mkdirpSync(outDir);
+
+            // Remove templates from output directory.
+            fse.remove(path.join(outDir, 'index.mustache'));
+            fse.remove(path.join(outDir, 'table_of_contents.mustache'));
+
+            // Construct the docs for the latest stable version.
+            console.info('Building docs for the latest...');
+            buildLatest(getLatestStable(versions), draft, element);
+
+            // Create symlinks for stable versions.. v1 => v1.0.0, etc.
+            console.info('Creating symlinks from major versions to the latest...');
+            buildSymlinks(versions, draft, element);
+        });
     });
 }
 
