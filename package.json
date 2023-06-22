@@ -26,7 +26,7 @@
     "fs-extra": "9.0.1",
     "lodash": "4.17.20",
     "mustache": "4.0.1",
-    "semver": "7.3.2",
+    "semver": "7.5.2",
     "strip-json-comments": "3.1.1"
   },
   "scripts": {
@@ -41,7 +41,7 @@
     "async": "3.2.0",
     "chai": "4.2.0",
     "colors": "1.4.0",
-    "editorconfig": "0.15.3",
+    "editorconfig": "1.0.0",
     "eslint": "7.8.1",
     "eslint-plugin-jsdoc": "30.3.3",
     "eslint-plugin-lodash": "7.1.0",
