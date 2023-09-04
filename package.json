@@ -21,7 +21,7 @@
   },
   "main": "index.js",
   "dependencies": {
-    "ajv": "6.12.4",
+    "ajv": "6.12.5",
     "commander": "6.1.0",
     "fs-extra": "9.0.1",
     "lodash": "4.17.20",
