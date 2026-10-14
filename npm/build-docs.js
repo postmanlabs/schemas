@@ -129,14 +129,16 @@ function buildSymlinks (versions, draft) {
 
     mapping = _.zipObject(_.map(mapping, 'major'), _.map(mapping, 'latest'));
 
+    // Copied rather than symlinked so static hosts (e.g. Cloudflare) serve them as real files
     _.forEach(mapping, (latest, major) => {
-        const src = path.relative(NEW_OUTPUT_DIR, path.join(NEW_OUTPUT_DIR, 'collection', 'json', latest)),
-            dest = path.join(NEW_OUTPUT_DIR, 'v' + major.toString()),
-            legacySrc = path.relative(OUTPUT_DIR, path.join(OUTPUT_DIR, 'collection', latest)),
-            legacyDest = path.join(OUTPUT_DIR, draft === DEFAULT_DRAFT ? '' : draft, 'collection', 'v' + major);
+        const src = path.join(NEW_OUTPUT_DIR, latest, draft),
+            dest = path.join(NEW_OUTPUT_DIR, 'v' + major, draft),
+            legacyDir = path.join(OUTPUT_DIR, draft === DEFAULT_DRAFT ? '' : draft, 'collection'),
+            legacySrc = path.join(legacyDir, latest),
+            legacyDest = path.join(legacyDir, 'v' + major);
 
-        (draft === DEFAULT_DRAFT) && fse.symlinkSync(src, dest);
-        fse.symlinkSync(legacySrc, legacyDest);
+        fse.copySync(src, dest);
+        fse.copySync(legacySrc, legacyDest);
     });
 }
 
@@ -228,7 +230,7 @@ function main () {
         buildLatest(getLatestStable(versions), draft);
 
         // Create symlinks for stable versions.. v1 => v1.0.0, etc.
-        console.info('Creating symlinks from major versions to the latest...');
+        console.info('Copying the latest of each major version to its major alias (v1, v2, ...)...');
         buildSymlinks(versions, draft);
     });
 }
