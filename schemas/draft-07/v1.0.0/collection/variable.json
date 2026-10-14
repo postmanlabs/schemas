@@ -45,16 +45,19 @@
   },
   "anyOf": [
     {
+      "title": "Variable (requires id)",
       "required": [
         "id"
       ]
     },
     {
+      "title": "Variable (requires key)",
       "required": [
         "key"
       ]
     },
     {
+      "title": "Variable (requires id and key)",
       "required": [
         "id",
         "key"

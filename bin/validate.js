@@ -2,7 +2,7 @@
 
 const program = require('commander'),
 
-    schema = require('..');
+    schema = require('../lib');
 
 program
     .option('--input <input>', 'Path to the JSON file containing the data to be validated')

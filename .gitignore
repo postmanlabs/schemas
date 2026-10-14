@@ -129,8 +129,26 @@ node_modules
 # Linux trash folder which might appear on any partition or disk
 .Trash-*
 
-# Generated Documentation
-webout/
+# Workspace package build output
+packages/*/dist/
 
-# Generated Documentation
-compiled-schemas/
+# TanStack Start / Vite build output
+.output/
+.nitro/
+.tanstack/
+dist/
+
+# Cloudflare / Wrangler
+.wrangler/
+
+# Generated schema viewer assets
+src/generated/
+src/routeTree.gen.ts
+public/collection/
+public/json/
+
+# Generated favicon assets (from public/assets/postman-logo-orange.svg)
+public/favicon.ico
+public/favicon-16x16.png
+public/favicon-32x32.png
+public/apple-touch-icon.png

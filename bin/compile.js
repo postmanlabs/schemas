@@ -3,7 +3,7 @@
 const fs = require('fs'),
     program = require('commander'),
 
-    schema = require('..');
+    schema = require('../lib');
 
 program
     .option('--output <output>', 'Path to the output JSON file')

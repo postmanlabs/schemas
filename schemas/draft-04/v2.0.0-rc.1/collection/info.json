@@ -56,7 +56,7 @@
       ]
     },
     "schema": {
-      "description": "This should ideally hold a link to the Postman schema that is used to validate this collection. E.g: https://schema.getpostman.com/collection/v1",
+      "description": "This should ideally hold a link to the Postman schema that is used to validate this collection. E.g: https://schema.postman.com/collection/json/v1.0.0/draft-07/docs/index.html",
       "type": "string"
     }
   },
