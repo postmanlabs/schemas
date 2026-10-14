@@ -49,7 +49,7 @@ describe('project repository', function () {
                 expect(json.keywords).to.eql(['postman', 'collection', 'json-schema']);
 
                 expect(json).to.have.property('engines');
-                expect(json.engines).to.eql({ node: '8' });
+                expect(json.engines).to.eql({ node: '>=20' });
             });
 
             it('should have a valid version string in form of <major>.<minor>.<revision>', function () {
