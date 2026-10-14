@@ -12,7 +12,7 @@
 			"description": "Display name of the collection."
 		},
 		"description": {
-			"description": "Markdown documentation for the item, up to 1,000,000 characters.",
+			"description": "Markdown documentation.",
 			"type": "string",
 			"maxLength": 1000000
 		},
@@ -485,7 +485,19 @@
 						"propertyNames": {
 							"type": "string"
 						},
-						"additionalProperties": false
+						"additionalProperties": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"type": "string",
+									"description": "Identifier of the package."
+								}
+							},
+							"required": [
+								"id"
+							],
+							"additionalProperties": false
+						}
 					},
 					"requests": {
 						"description": "Collection requests the script sends, keyed by the name it references them under.",
@@ -493,7 +505,32 @@
 						"propertyNames": {
 							"type": "string"
 						},
-						"additionalProperties": false
+						"additionalProperties": {
+							"type": "object",
+							"properties": {
+								"workspace": {
+									"type": "string",
+									"description": "Identifier of the workspace."
+								},
+								"collection": {
+									"type": "string",
+									"description": "Identifier of the collection."
+								},
+								"location": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"description": "Path to the request, from the collection root."
+								}
+							},
+							"required": [
+								"workspace",
+								"collection",
+								"location"
+							],
+							"additionalProperties": false
+						}
 					}
 				},
 				"required": [
@@ -783,7 +820,7 @@
 					"description": "Display name of the item."
 				},
 				"description": {
-					"description": "Markdown documentation for the item, up to 1,000,000 characters.",
+					"description": "Markdown documentation.",
 					"type": "string",
 					"maxLength": 1000000
 				},
@@ -1400,7 +1437,7 @@
 					"description": "Display name of the item."
 				},
 				"description": {
-					"description": "Markdown documentation for the item, up to 1,000,000 characters.",
+					"description": "Markdown documentation.",
 					"type": "string",
 					"maxLength": 1000000
 				},
@@ -1600,7 +1637,19 @@
 						"propertyNames": {
 							"type": "string"
 						},
-						"additionalProperties": false
+						"additionalProperties": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"type": "string",
+									"description": "Identifier of the package."
+								}
+							},
+							"required": [
+								"id"
+							],
+							"additionalProperties": false
+						}
 					},
 					"requests": {
 						"description": "Collection requests the script sends, keyed by the name it references them under.",
@@ -1608,7 +1657,32 @@
 						"propertyNames": {
 							"type": "string"
 						},
-						"additionalProperties": false
+						"additionalProperties": {
+							"type": "object",
+							"properties": {
+								"workspace": {
+									"type": "string",
+									"description": "Identifier of the workspace."
+								},
+								"collection": {
+									"type": "string",
+									"description": "Identifier of the collection."
+								},
+								"location": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"description": "Path to the request, from the collection root."
+								}
+							},
+							"required": [
+								"workspace",
+								"collection",
+								"location"
+							],
+							"additionalProperties": false
+						}
 					}
 				},
 				"required": [
@@ -1631,7 +1705,7 @@
 					"description": "Display name of the item."
 				},
 				"description": {
-					"description": "Markdown documentation for the item, up to 1,000,000 characters.",
+					"description": "Markdown documentation.",
 					"type": "string",
 					"maxLength": 1000000
 				},
@@ -1865,7 +1939,19 @@
 						"propertyNames": {
 							"type": "string"
 						},
-						"additionalProperties": false
+						"additionalProperties": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"type": "string",
+									"description": "Identifier of the package."
+								}
+							},
+							"required": [
+								"id"
+							],
+							"additionalProperties": false
+						}
 					},
 					"requests": {
 						"description": "Collection requests the script sends, keyed by the name it references them under.",
@@ -1873,7 +1959,32 @@
 						"propertyNames": {
 							"type": "string"
 						},
-						"additionalProperties": false
+						"additionalProperties": {
+							"type": "object",
+							"properties": {
+								"workspace": {
+									"type": "string",
+									"description": "Identifier of the workspace."
+								},
+								"collection": {
+									"type": "string",
+									"description": "Identifier of the collection."
+								},
+								"location": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"description": "Path to the request, from the collection root."
+								}
+							},
+							"required": [
+								"workspace",
+								"collection",
+								"location"
+							],
+							"additionalProperties": false
+						}
 					}
 				},
 				"required": [
@@ -1896,7 +2007,7 @@
 					"description": "Display name of the item."
 				},
 				"description": {
-					"description": "Markdown documentation for the item, up to 1,000,000 characters.",
+					"description": "Markdown documentation.",
 					"type": "string",
 					"maxLength": 1000000
 				},
@@ -2072,7 +2183,7 @@
 					"description": "Display name of the item."
 				},
 				"description": {
-					"description": "Markdown documentation for the item, up to 1,000,000 characters.",
+					"description": "Markdown documentation.",
 					"type": "string",
 					"maxLength": 1000000
 				},
@@ -2220,27 +2331,11 @@
 						},
 						"maxResponseSize": {
 							"description": "Largest response accepted, in bytes.",
-							"oneOf": [
-								{
-									"type": "number"
-								},
-								{
-									"type": "number",
-									"const": null
-								}
-							]
+							"type": "number"
 						},
 						"maxHeaderSize": {
 							"description": "Largest response header block accepted, in bytes.",
-							"oneOf": [
-								{
-									"type": "number"
-								},
-								{
-									"type": "number",
-									"const": null
-								}
-							]
+							"type": "number"
 						},
 						"tlsPreferServerCiphers": {
 							"description": "Whether the server cipher order wins over the client order.",
@@ -2731,7 +2826,7 @@
 					"description": "Display name of the item."
 				},
 				"description": {
-					"description": "Markdown documentation for the item, up to 1,000,000 characters.",
+					"description": "Markdown documentation.",
 					"type": "string",
 					"maxLength": 1000000
 				},
@@ -2921,7 +3016,19 @@
 						"propertyNames": {
 							"type": "string"
 						},
-						"additionalProperties": false
+						"additionalProperties": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"type": "string",
+									"description": "Identifier of the package."
+								}
+							},
+							"required": [
+								"id"
+							],
+							"additionalProperties": false
+						}
 					},
 					"requests": {
 						"description": "Collection requests the script sends, keyed by the name it references them under.",
@@ -2929,7 +3036,32 @@
 						"propertyNames": {
 							"type": "string"
 						},
-						"additionalProperties": false
+						"additionalProperties": {
+							"type": "object",
+							"properties": {
+								"workspace": {
+									"type": "string",
+									"description": "Identifier of the workspace."
+								},
+								"collection": {
+									"type": "string",
+									"description": "Identifier of the collection."
+								},
+								"location": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"description": "Path to the request, from the collection root."
+								}
+							},
+							"required": [
+								"workspace",
+								"collection",
+								"location"
+							],
+							"additionalProperties": false
+						}
 					}
 				},
 				"required": [
@@ -2958,7 +3090,7 @@
 							"description": "Display name of the item."
 						},
 						"description": {
-							"description": "Markdown documentation for the item, up to 1,000,000 characters.",
+							"description": "Markdown documentation.",
 							"type": "string",
 							"maxLength": 1000000
 						},
@@ -3012,7 +3144,7 @@
 							]
 						},
 						"messages": {
-							"description": "Saved messages that a producer can send.",
+							"description": "Saved messages for the request.",
 							"type": "array",
 							"items": {
 								"$ref": "#/definitions/v3-kafka-message"
@@ -3065,7 +3197,7 @@
 							"description": "Display name of the item."
 						},
 						"description": {
-							"description": "Markdown documentation for the item, up to 1,000,000 characters.",
+							"description": "Markdown documentation.",
 							"type": "string",
 							"maxLength": 1000000
 						},
@@ -3119,7 +3251,7 @@
 							]
 						},
 						"messages": {
-							"description": "Saved messages that a producer can send.",
+							"description": "Saved messages for the request.",
 							"type": "array",
 							"items": {
 								"$ref": "#/definitions/v3-kafka-message"
@@ -3268,30 +3400,26 @@
 								},
 								"endPosition": {
 									"description": "Position that ends the consume. The record at the boundary is emitted, then the consume ends.",
-									"oneOf": [
-										{
-											"type": "object",
-											"properties": {
-												"type": {
-													"type": "string",
-													"const": "timestamp",
-													"description": "What the boundary is measured against."
-												},
-												"timestamp": {
-													"type": "integer",
-													"minimum": -9007199254740991,
-													"maximum": 9007199254740991,
-													"description": "Epoch milliseconds the consume stops at."
-												}
-											},
-											"required": [
-												"type",
-												"timestamp"
-											],
-											"additionalProperties": false,
-											"title": "Until a timestamp"
+									"type": "object",
+									"properties": {
+										"type": {
+											"type": "string",
+											"const": "timestamp",
+											"description": "What the boundary is measured against."
+										},
+										"timestamp": {
+											"type": "integer",
+											"minimum": -9007199254740991,
+											"maximum": 9007199254740991,
+											"description": "Epoch milliseconds the consume stops at."
 										}
-									]
+									},
+									"required": [
+										"type",
+										"timestamp"
+									],
+									"additionalProperties": false,
+									"title": "Until a timestamp"
 								}
 							},
 							"additionalProperties": false
@@ -3542,7 +3670,19 @@
 						"propertyNames": {
 							"type": "string"
 						},
-						"additionalProperties": false
+						"additionalProperties": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"type": "string",
+									"description": "Identifier of the package."
+								}
+							},
+							"required": [
+								"id"
+							],
+							"additionalProperties": false
+						}
 					},
 					"requests": {
 						"description": "Collection requests the script sends, keyed by the name it references them under.",
@@ -3550,7 +3690,32 @@
 						"propertyNames": {
 							"type": "string"
 						},
-						"additionalProperties": false
+						"additionalProperties": {
+							"type": "object",
+							"properties": {
+								"workspace": {
+									"type": "string",
+									"description": "Identifier of the workspace."
+								},
+								"collection": {
+									"type": "string",
+									"description": "Identifier of the collection."
+								},
+								"location": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"description": "Path to the request, from the collection root."
+								}
+							},
+							"required": [
+								"workspace",
+								"collection",
+								"location"
+							],
+							"additionalProperties": false
+						}
 					}
 				},
 				"required": [
@@ -3583,7 +3748,7 @@
 							"description": "Display name of the item."
 						},
 						"description": {
-							"description": "Markdown documentation for the item, up to 1,000,000 characters.",
+							"description": "Markdown documentation.",
 							"type": "string",
 							"maxLength": 1000000
 						},
@@ -3668,7 +3833,7 @@
 							"description": "Display name of the item."
 						},
 						"description": {
-							"description": "Markdown documentation for the item, up to 1,000,000 characters.",
+							"description": "Markdown documentation.",
 							"type": "string",
 							"maxLength": 1000000
 						},
@@ -3834,7 +3999,7 @@
 					"description": "Display name of the item."
 				},
 				"description": {
-					"description": "Markdown documentation for the item, up to 1,000,000 characters.",
+					"description": "Markdown documentation.",
 					"type": "string",
 					"maxLength": 1000000
 				},
@@ -4178,7 +4343,7 @@
 					"description": "Display name of the item."
 				},
 				"description": {
-					"description": "Markdown documentation for the item, up to 1,000,000 characters.",
+					"description": "Markdown documentation.",
 					"type": "string",
 					"maxLength": 1000000
 				},
@@ -4701,7 +4866,7 @@
 					"description": "Display name of the item."
 				},
 				"description": {
-					"description": "Markdown documentation for the item, up to 1,000,000 characters.",
+					"description": "Markdown documentation.",
 					"type": "string",
 					"maxLength": 1000000
 				},
@@ -4919,7 +5084,7 @@
 					"description": "Display name of the item."
 				},
 				"description": {
-					"description": "Markdown documentation for the item, up to 1,000,000 characters.",
+					"description": "Markdown documentation.",
 					"type": "string",
 					"maxLength": 1000000
 				},
@@ -5190,7 +5355,7 @@
 					"description": "Display name of the item."
 				},
 				"description": {
-					"description": "Markdown documentation for the item, up to 1,000,000 characters.",
+					"description": "Markdown documentation.",
 					"type": "string",
 					"maxLength": 1000000
 				},
@@ -5410,7 +5575,7 @@
 					"description": "Display name of the item."
 				},
 				"description": {
-					"description": "Markdown documentation for the item, up to 1,000,000 characters.",
+					"description": "Markdown documentation.",
 					"type": "string",
 					"maxLength": 1000000
 				},
@@ -5644,7 +5809,7 @@
 					"description": "Display name of the item."
 				},
 				"description": {
-					"description": "Markdown documentation for the item, up to 1,000,000 characters.",
+					"description": "Markdown documentation.",
 					"type": "string",
 					"maxLength": 1000000
 				},
@@ -5865,7 +6030,7 @@
 							"description": "Display name of the item."
 						},
 						"description": {
-							"description": "Markdown documentation for the item, up to 1,000,000 characters.",
+							"description": "Markdown documentation.",
 							"type": "string",
 							"maxLength": 1000000
 						},
@@ -5942,7 +6107,7 @@
 							"description": "Display name of the item."
 						},
 						"description": {
-							"description": "Markdown documentation for the item, up to 1,000,000 characters.",
+							"description": "Markdown documentation.",
 							"type": "string",
 							"maxLength": 1000000
 						},
@@ -6015,7 +6180,7 @@
 							"description": "Display name of the item."
 						},
 						"description": {
-							"description": "Markdown documentation for the item, up to 1,000,000 characters.",
+							"description": "Markdown documentation.",
 							"type": "string",
 							"maxLength": 1000000
 						},
@@ -6082,7 +6247,7 @@
 							"description": "Display name of the item."
 						},
 						"description": {
-							"description": "Markdown documentation for the item, up to 1,000,000 characters.",
+							"description": "Markdown documentation.",
 							"type": "string",
 							"maxLength": 1000000
 						},
@@ -6091,7 +6256,7 @@
 							"const": "data-request"
 						},
 						"url": {
-							"description": "Connection string for the data source.",
+							"description": "URL of the file.",
 							"type": "string"
 						},
 						"query": {
@@ -6163,7 +6328,7 @@
 							"description": "Display name of the item."
 						},
 						"description": {
-							"description": "Markdown documentation for the item, up to 1,000,000 characters.",
+							"description": "Markdown documentation.",
 							"type": "string",
 							"maxLength": 1000000
 						},
@@ -6172,7 +6337,7 @@
 							"const": "data-request"
 						},
 						"url": {
-							"description": "Connection string for the data source.",
+							"description": "URL of the file.",
 							"type": "string"
 						},
 						"query": {
@@ -6236,7 +6401,7 @@
 							"description": "Display name of the item."
 						},
 						"description": {
-							"description": "Markdown documentation for the item, up to 1,000,000 characters.",
+							"description": "Markdown documentation.",
 							"type": "string",
 							"maxLength": 1000000
 						},
@@ -6245,7 +6410,7 @@
 							"const": "data-request"
 						},
 						"url": {
-							"description": "Connection string for the data source.",
+							"description": "URL of the file.",
 							"type": "string"
 						},
 						"query": {
@@ -6309,7 +6474,7 @@
 							"description": "Display name of the item."
 						},
 						"description": {
-							"description": "Markdown documentation for the item, up to 1,000,000 characters.",
+							"description": "Markdown documentation.",
 							"type": "string",
 							"maxLength": 1000000
 						},
@@ -6444,7 +6609,7 @@
 					"description": "Display name of the folder."
 				},
 				"description": {
-					"description": "Markdown documentation for the item, up to 1,000,000 characters.",
+					"description": "Markdown documentation.",
 					"type": "string",
 					"maxLength": 1000000
 				},
@@ -6561,7 +6726,19 @@
 						"propertyNames": {
 							"type": "string"
 						},
-						"additionalProperties": false
+						"additionalProperties": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"type": "string",
+									"description": "Identifier of the package."
+								}
+							},
+							"required": [
+								"id"
+							],
+							"additionalProperties": false
+						}
 					},
 					"requests": {
 						"description": "Collection requests the script sends, keyed by the name it references them under.",
@@ -6569,7 +6746,32 @@
 						"propertyNames": {
 							"type": "string"
 						},
-						"additionalProperties": false
+						"additionalProperties": {
+							"type": "object",
+							"properties": {
+								"workspace": {
+									"type": "string",
+									"description": "Identifier of the workspace."
+								},
+								"collection": {
+									"type": "string",
+									"description": "Identifier of the collection."
+								},
+								"location": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"description": "Path to the request, from the collection root."
+								}
+							},
+							"required": [
+								"workspace",
+								"collection",
+								"location"
+							],
+							"additionalProperties": false
+						}
 					}
 				},
 				"required": [

@@ -148,11 +148,9 @@ describe('colliding labels get distinct, meaningful names', () => {
     ['v2.1.0', 'properties/originalRequest', ['object', 'string']],
     ['v2.0.0', 'response/items/properties/header', ['array[oneOf]', 'string', 'null']],
     ['v2.1.0', 'response/items/properties/header/oneOf/0', ['objects', 'strings']],
-    // const → its value; enum → "<type> (enum)".
+    // enum → "<type> (enum)". const → its value is checked separately below.
     ['v1.0.0', 'properties/requests/items/anyOf/0/properties/method', ['string (enum)', 'string']],
     ['v2.1.0', 'request/oneOf/0/properties/method', ['string (enum)', 'string']],
-    ['v3.0.0', 'properties/settings/properties/maxResponseSize', ['number', 'null']],
-    ['v3.0.0', 'properties/settings/properties/maxHeaderSize', ['number', 'null']],
     // Objects told apart by a const property.
     ['v1.0.0', 'properties/requests/items/anyOf/0/properties/data/oneOf/0', ['type: text', 'type: file']],
     ['v2.0.0', 'properties/body/oneOf/0/properties/formdata', ['type: text', 'type: file']],
@@ -171,6 +169,13 @@ describe('colliding labels get distinct, meaningful names', () => {
         expect((first.type.fragment as { properties: { type: { const: string } } }).properties.type.const).toBe('text');
       }
     }
+  });
+
+  it('names a const variant by its value (number vs const null)', () => {
+    const tree = deserializeTree(buildSerializedTree({ oneOf: [{ type: 'number' }, { type: 'number', const: null }] }).tree);
+    const combiner = (tree as SchemaNode & { children: SchemaNode[] }).children[0];
+
+    expect(buildChoices(combiner).map(c => c.title)).toEqual(['number', 'null']);
   });
 
   it('falls back to an ordinal suffix when no other rule tells the variants apart', () => {
