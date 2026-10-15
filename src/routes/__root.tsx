@@ -78,7 +78,7 @@ function TopBar() {
         >
           <img className="brand__logo" src={postmanLogo} alt="Postman" />
         </a>
-        {/* `/` redirects to the latest schema. */}
+        {/* `/` is the homepage: every schema version. */}
         <Link reloadDocument to="/" className="brand">
           Postman Schemas
         </Link>
@@ -107,7 +107,7 @@ function NotFound() {
       <h1>Page not found</h1>
       <p>
         <Link reloadDocument to="/" className="schema-link">
-          View latest schema
+          View all schemas
         </Link>
       </p>
     </div>

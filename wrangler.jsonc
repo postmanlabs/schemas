@@ -9,6 +9,8 @@
   "workers_dev": true,
   "preview_urls": false,
   // Serve the prerendered /…/docs/index.html files as-is. The default
-  // ("auto-trailing-slash") would 307 them to /…/docs/.
+  // ("auto-trailing-slash") would 307 them to /…/docs/. With "none", `/` is
+  // mapped to the prerendered /index.html by the `/ /index.html 200` line in
+  // the generated `_redirects`.
   "assets": { "html_handling": "none" }
 }

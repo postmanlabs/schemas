@@ -5,7 +5,7 @@ import { cloudflare } from '@cloudflare/vite-plugin';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { viewerPage, VIEWER_DRAFT } from './scripts/legacy-urls';
+import { viewerPage, VIEWER_DRAFT, withHomepageRewrite } from './scripts/legacy-urls';
 
 // Prerendered docs pages, computed from schemas/ directly so `vite dev` works
 // without a prior generate.
@@ -15,6 +15,7 @@ const SCHEMA_DIR = fileURLToPath(new URL('./schemas', import.meta.url));
 const versionsByDraft = Object.fromEntries(
   listDirs(SCHEMA_DIR).map((draft) => [draft, listDirs(path.join(SCHEMA_DIR, draft))]),
 );
+const BUILT_REDIRECTS = fileURLToPath(new URL('./dist/client/_redirects', import.meta.url));
 
 export default defineConfig({
   server: {
@@ -40,15 +41,26 @@ export default defineConfig({
     cloudflare({ viteEnvironment: { name: 'ssr' } }),
     tanstackStart({
       srcDirectory: 'src',
-      // Static HTML for the docs pages, served by Cloudflare as Workers assets
-      // without running the Worker.
+      // Static HTML for the homepage and the docs pages, served by Cloudflare as
+      // Workers assets without running the Worker (`/` via the `_redirects` rewrite).
       prerender: {
         enabled: true,
-        autoStaticPathsDiscovery: false, // else `/` (a redirect) is written as /index.html
+        autoStaticPathsDiscovery: false, // explicit page list; `/` is listed in `pages`
         crawlLinks: false,
         failOnError: true,
       },
-      pages: (versionsByDraft[VIEWER_DRAFT] ?? []).map((v) => ({ path: viewerPage(v) })),
+      pages: [
+        {
+          path: '/',
+          // Serve the new dist/client/index.html for `/` (see withHomepageRewrite).
+          prerender: {
+            onSuccess: () => {
+              fs.writeFileSync(BUILT_REDIRECTS, withHomepageRewrite(fs.readFileSync(BUILT_REDIRECTS, 'utf8')));
+            },
+          },
+        },
+        ...(versionsByDraft[VIEWER_DRAFT] ?? []).map((v) => ({ path: viewerPage(v) })),
+      ],
     }),
     viteReact(),
   ],

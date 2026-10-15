@@ -11,8 +11,8 @@ export type Draft = 'draft-04' | 'draft-07';
 type JsonSchema = Record<string, unknown> & { definitions?: Record<string, unknown> };
 
 interface Lib {
-  validate(inputPath: string, schemaPath: string, schemaDirPath: string, draft: Draft): boolean;
-  compile(schemaPath: string, schemaDirPath: string, draft: Draft): JsonSchema;
+  validate(inputPath: string, schemaPath: string, schemaDirPath: string, draft?: Draft): boolean;
+  compile(schemaPath: string, schemaDirPath: string, draft?: Draft): JsonSchema;
 }
 
 interface LibUtils {

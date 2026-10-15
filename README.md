@@ -29,9 +29,11 @@ Each schema under `schemas/<draft>/<version>/` is compiled into a single documen
 The underlying schema tooling is still available directly:
 
 ```
-pnpm compile --schema <file> --schema-dir <dir> --output <file>
-pnpm validate --input <file> --schema <file> --schema-dir <dir>
+pnpm compile --schema <file> --schema-dir <dir> --output <file> [--draft-version <draft>]
+pnpm validate --input <file> --schema <file> --schema-dir <dir> [--draft-version <draft>]
 ```
+
+The draft (`draft-04` or `draft-07`) is read from the schema's `$schema` when `--draft-version` is omitted. `validate` exits 1 when validation fails.
 
 ## Usage
 

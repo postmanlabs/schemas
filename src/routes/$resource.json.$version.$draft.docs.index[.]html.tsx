@@ -51,6 +51,13 @@ export const Route = createFileRoute(
       version: entry.version,
     };
   },
+  // The most-nested title wins, so this overrides the root's "Postman Schemas".
+  // Without loaderData (not found, or the loader threw) the page keeps the root
+  // title.
+  head: ({ loaderData }) =>
+    loaderData
+      ? { meta: [{ title: `Postman ${loaderData.label} Format ${loaderData.version} Schema Documentation` }] }
+      : {},
   component: SchemaPage,
   errorComponent: SchemaError,
   notFoundComponent: () => (
@@ -58,7 +65,7 @@ export const Route = createFileRoute(
       <h1>Schema not found</h1>
       <p>
         <Link reloadDocument to="/" className="schema-link">
-          View latest schema
+          View all schemas
         </Link>
       </p>
     </div>
@@ -130,7 +137,7 @@ function SchemaError({ error }: ErrorComponentProps) {
           View raw JSON
         </a>
         <Link reloadDocument to="/" className="schema-link">
-          View latest schema
+          View all schemas
         </Link>
       </div>
       <details className="error-state__details">
