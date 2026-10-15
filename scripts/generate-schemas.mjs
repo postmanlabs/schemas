@@ -15,6 +15,7 @@
  *   src/generated/schemas/{resource}/{draft}/{version}.json   (viewer bundle, INCLUDED_DRAFTS only)
  *   public/{resource}/json/{version}/{draft}/{resource}.json  (raw download, every draft)
  *   public/json/...                                           (legacy raw URLs, see legacy-urls.ts)
+ *   public/_redirects                                         (legacy docs URL 301s, see legacy-urls.ts)
  *
  * Run as a script to regenerate everything; import `writeSchemas` to write the
  * schema files elsewhere (used by tests).
@@ -23,7 +24,7 @@ import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import fs from 'node:fs';
-import { VIEWER_DRAFT, legacyUrls } from './legacy-urls.ts';
+import { VIEWER_DRAFT, legacyRedirectsFile, legacyUrls } from './legacy-urls.ts';
 
 const require = createRequire(import.meta.url);
 const semver = require('semver');
@@ -152,6 +153,9 @@ export function writeSchemas({ publicDir = PUBLIC_DIR, schemaOutDir = SCHEMA_OUT
   for (const file of raw) {
     writeFile(path.join(publicDir, file.path), serialized.get(`${file.draft}/${file.version}`));
   }
+
+  // Legacy docs URLs → 301, applied by Cloudflare before the assets and the Worker.
+  writeFile(path.join(publicDir, '_redirects'), legacyRedirectsFile(versionsByDraft));
 
   return { entries, rawPaths: raw.map((f) => f.path) };
 }

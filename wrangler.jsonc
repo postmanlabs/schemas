@@ -1,15 +1,14 @@
 {
-  // The build (`pnpm run build:cf`) generates the deploy config in
-  // .output/server/wrangler.json from this file, adding the entry point, the
-  // assets directory/binding and nodejs_compat; wrangler dev/deploy pick it up
-  // through .wrangler/deploy/config.json.
+  // Built by @cloudflare/vite-plugin (`pnpm run build:cf`): it writes the deploy
+  // config to dist/server/wrangler.json (entry bundle + dist/client assets), and
+  // wrangler dev/deploy pick it up through .wrangler/deploy/config.json.
   "name": "schemas",
+  "main": "@tanstack/react-start/server-entry",
   "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat"],
   "workers_dev": true,
   "preview_urls": false,
   // Serve the prerendered /…/docs/index.html files as-is. The default
-  // ("auto-trailing-slash") would 307 them to /…/docs/. Nitro merges this into
-  // the generated config; its "Wrangler config assets is overridden" warning is
-  // expected, and html_handling still survives the merge.
+  // ("auto-trailing-slash") would 307 them to /…/docs/.
   "assets": { "html_handling": "none" }
 }

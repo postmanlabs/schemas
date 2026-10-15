@@ -133,8 +133,6 @@ node_modules
 packages/*/dist/
 
 # TanStack Start / Vite build output
-.output/
-.nitro/
 .tanstack/
 dist/
 
@@ -146,8 +144,9 @@ src/generated/
 src/routeTree.gen.ts
 public/collection/
 public/json/
+public/_redirects
 
-# Generated favicon assets (from public/assets/postman-logo-orange.svg)
+# Generated favicon assets (from src/assets/postman-logo-orange.svg)
 public/favicon.ico
 public/favicon-16x16.png
 public/favicon-32x32.png

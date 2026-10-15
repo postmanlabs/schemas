@@ -2,7 +2,7 @@
  * Legacy schema URLs served by the old docson site (schema.getpostman.com /
  * schema.postman.com), restored so existing links and `info.schema` URLs keep
  * working. Pure (no I/O): shared by scripts/generate-schemas.mjs (writes the raw
- * copies), vite.config.ts (Nitro 301 routeRules) and test/legacy-urls.test.ts.
+ * copies and the `_redirects` file), vite.config.ts and test/legacy-urls.test.ts.
  *
  * Scope matches what production serves today (v{major} aliases, index.json and
  * directory URLs 403 there, so they are not recreated):
@@ -99,16 +99,12 @@ export function legacyUrls(versionsByDraft: Record<string, string[]>): LegacyUrl
 }
 
 /**
- * Nitro `routeRules` for the legacy docs redirects (exact-path keys). h3 v2 reads
- * `redirect.status`; `statusCode` (still shown in the Nitro docs) is ignored → 307.
+ * Workers static-assets `_redirects` file for the legacy docs redirects: one
+ * exact-path `source destination 301` line each. Cloudflare applies it before
+ * both the static assets and the Worker.
  */
-export function legacyRouteRules(
-  versionsByDraft: Record<string, string[]>,
-): Record<string, { redirect: { to: string; status: 301 } }> {
-  return Object.fromEntries(
-    Object.entries(legacyUrls(versionsByDraft).redirects).map(([from, to]) => [
-      from,
-      { redirect: { to, status: 301 as const } },
-    ]),
-  );
+export function legacyRedirectsFile(versionsByDraft: Record<string, string[]>): string {
+  return Object.entries(legacyUrls(versionsByDraft).redirects)
+    .map(([from, to]) => `${from} ${to} 301\n`)
+    .join('');
 }
