@@ -8,12 +8,14 @@ import {
 import type { ReactNode } from 'react';
 import { INTER_PRELOAD_HREFS } from '../lib/fonts';
 
-// Served from public/ at its literal root URL.
-const postmanLogo = '/assets/postman-logo-orange.svg';
+// Emitted byte-for-byte as content-hashed files under /assets/ (served
+// immutable). `no-inline` keeps them real files even below assetsInlineLimit
+// (the logo is 4063 B), so they are never inlined as data: URIs.
+import postmanLogo from '../assets/postman-logo-orange.svg?url&no-inline';
+// Postman analytics (pmt) SDK — restored from the legacy hosted docs. `?url`
+// copies it as-is (not bundled or minified); configured for "schemas" below.
+import pmtSdkSrc from '../assets/pmt-sdk.js?url&no-inline';
 
-// Postman analytics (pmt) SDK — restored from the legacy hosted docs. The SDK is
-// served from public/, then configured for the "schemas" property.
-const pmtSdkSrc = '/assets/pmt-sdk.js';
 const pmtConfigScript = `if (location.hostname !== 'localhost' && typeof window.pmt === 'function') {
   window.pmt('setScalp', [{ property: 'schemas' }]);
   window.pmt('scalp', ['pm-analytics', 'load', document.location.pathname]);
@@ -39,7 +41,7 @@ export const Route = createRootRoute({
       // Modern browsers prefer the crisp SVG; .ico/.png are fallbacks. Generated
       // from the Postman logo SVG by scripts/generate-favicon.mjs.
       { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
-      { rel: 'icon', type: 'image/svg+xml', href: '/assets/postman-logo-orange.svg' },
+      { rel: 'icon', type: 'image/svg+xml', href: postmanLogo },
       { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
       { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
       { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },

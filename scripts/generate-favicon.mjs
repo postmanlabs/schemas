@@ -20,7 +20,7 @@ import pngToIco from 'png-to-ico';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
-const SRC_SVG = path.join(ROOT, 'public', 'assets', 'postman-logo-orange.svg');
+const SRC_SVG = path.join(ROOT, 'src', 'assets', 'postman-logo-orange.svg');
 const PUBLIC_DIR = path.join(ROOT, 'public');
 
 // A high density rasterizes the vector crisply before downscaling to icon sizes.
