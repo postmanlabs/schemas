@@ -1,8 +1,6 @@
 import { Menu } from '@base-ui/react/menu';
 import { Link } from '@tanstack/react-router';
-import { useQueryClient } from '@tanstack/react-query';
 import { schemas } from '../generated/manifest';
-import { prefetchSchemaTree } from '../lib/schemaTree';
 
 // Imported only by the docs route, so Base UI stays in that chunk (the viewer
 // already bundles Menu there) and out of the root/entry chunk.
@@ -15,7 +13,6 @@ export default function VersionMenu({
   draft: string;
   version: string;
 }) {
-  const queryClient = useQueryClient();
   // The manifest is already sorted newest first per resource.
   const entries = schemas.filter((s) => s.resource === resource && s.draft === draft);
 
@@ -43,15 +40,13 @@ export default function VersionMenu({
                 <Menu.LinkItem
                   key={entry.id}
                   className="version-menu__item"
-                  // LinkItem defaults to staying open; the route stays mounted on a
-                  // version switch, so close explicitly.
+                  // LinkItem defaults to staying open; close it so a Cmd/Ctrl-click
+                  // (new tab) doesn't leave the menu open on this page.
                   closeOnClick
                   aria-current={current ? 'page' : undefined}
-                  // Build the schema tree in a Web Worker ahead of the click.
-                  onMouseEnter={() => prefetchSchemaTree(queryClient, entry)}
-                  onFocus={() => prefetchSchemaTree(queryClient, entry)}
                   render={
                     <Link
+                      reloadDocument
                       to="/$resource/json/$version/$draft/docs/index.html"
                       params={{ resource: entry.resource, version: entry.version, draft: entry.draft }}
                     />

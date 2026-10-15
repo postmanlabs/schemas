@@ -1,7 +1,6 @@
-// React-free entry point intended to run inside a Web Worker (and on the main thread
-// for deserialization). It builds a populated json-schema-tree and serializes it into
-// a structured-clone-safe shape that can be posted back to the main thread, where
-// `deserializeTree` rebuilds real node instances.
+// React-free entry point (used by the app's server render). It builds a populated
+// json-schema-tree and serializes it into a structured-clone/JSON-safe shape that can
+// be sent to the browser, where `deserializeTree` rebuilds real node instances.
 import { deserializeTree, SchemaTree as JsonSchemaTree, serializeTree, type SerializedTree } from '@postman/json-schema-tree';
 
 import { shouldNodeBeIncluded } from './tree/utils';

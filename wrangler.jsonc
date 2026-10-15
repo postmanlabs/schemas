@@ -1,10 +1,15 @@
 {
   // The build (`pnpm run build:cf`) generates the deploy config in
   // .output/server/wrangler.json from this file, adding the entry point, the
-  // static assets and nodejs_compat; wrangler dev/deploy pick it up through
-  // .wrangler/deploy/config.json.
+  // assets directory/binding and nodejs_compat; wrangler dev/deploy pick it up
+  // through .wrangler/deploy/config.json.
   "name": "schemas",
   "compatibility_date": "2026-10-01",
   "workers_dev": true,
-  "preview_urls": false
+  "preview_urls": false,
+  // Serve the prerendered /…/docs/index.html files as-is. The default
+  // ("auto-trailing-slash") would 307 them to /…/docs/. Nitro merges this into
+  // the generated config; its "Wrangler config assets is overridden" warning is
+  // expected, and html_handling still survives the merge.
+  "assets": { "html_handling": "none" }
 }
