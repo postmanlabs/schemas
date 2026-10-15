@@ -127,12 +127,21 @@ describe('named required-only variants', () => {
 
     expect(root?.titles).toEqual(['array[Variable]', 'null']);
   });
+});
 
-  it('still sorts other array variants alphabetically (v3.0.0 items)', () => {
-    const [titles] = titlesAt('v3.0.0', 'properties/items');
+describe('array variants keep schema order', () => {
+  it('v3.0.0 items, collection and folder', () => {
+    const schema = JSON.parse(fs.readFileSync(path.join(tmp, 'schemas', 'collection', 'draft-07', 'v3.0.0.json'), 'utf8'));
+    // A variant is a $ref, or (the folder's own recursive ref) an allOf around one.
+    type Variant = { $ref?: string; allOf?: { $ref: string }[] };
+    const title = (v: Variant) => schema.definitions[(v.$ref ?? v.allOf![0].$ref).split('/').pop()!].title as string;
+    const collectionOrder = schema.properties.items.items.oneOf.map(title);
+    const folderOrder = schema.definitions['v3-folder'].properties.items.items.oneOf.map(title);
+    const sets = titlesAt('v3.0.0', 'properties/items');
 
-    expect(titles.length).toBeGreaterThan(5);
-    expect(titles).toEqual([...titles].sort((a, b) => a.localeCompare(b)));
+    expect(collectionOrder.length).toBeGreaterThan(5);
+    expect(sets[0]).toEqual(collectionOrder);
+    for (const titles of sets.slice(1)) expect(titles).toEqual(folderOrder);
   });
 });
 
@@ -188,7 +197,7 @@ describe('colliding labels get distinct, meaningful names', () => {
   });
 
   it('keeps labels that do not collide, e.g. v2.1.0 item and auth', () => {
-    for (const titles of titlesAt('v2.1.0', 'properties/item')) expect(titles).toEqual(['Folder', 'Item']);
+    for (const titles of titlesAt('v2.1.0', 'properties/item')) expect(titles).toEqual(['Item', 'Folder']);
     for (const titles of titlesAt('v2.1.0', 'oneOf/0/properties/auth')) expect(titles).toEqual(['null', 'Auth']);
   });
 });

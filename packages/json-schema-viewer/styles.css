@@ -83,6 +83,24 @@
   margin-right: 0;
 }
 /*
+ * No name (e.g. a oneOf variant): a one-line square centred on the caret's
+ * gutter slot. The margins cancel its width, so the title still lines up with
+ * the description below.
+ */
+.jsv-row-toggle--caret-only {
+  --jsv-toggle-size: 1em;
+  align-self: center;
+  justify-content: center;
+  width: var(--jsv-toggle-size);
+  height: var(--jsv-toggle-size);
+  margin: 0 calc(1.5rem / 2 - var(--jsv-toggle-size) / 2) 0 calc(-1.5rem / 2 - var(--jsv-toggle-size) / 2);
+  padding: 0;
+}
+.jsv-row-toggle--caret-only .jsv-caret {
+  width: auto;
+  margin-left: 0;
+}
+/*
  * Required mark (infotip trigger), right after the name or the toggle pill.
  * Both end --jsv-name-gap past the name text, so pull the mark back to
  * --jsv-required-gap from it, and leave the same gap before the type.

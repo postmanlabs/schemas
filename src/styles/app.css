@@ -88,7 +88,7 @@ body {
 
 .layout__main {
   flex: 1 0 auto;
-  padding-block: var(--spacing-xxl, 24px);
+  padding-bottom: var(--spacing-xxl, 24px);
 }
 
 /*
@@ -182,8 +182,8 @@ body {
 
 /*
  * Schema page. The header sticks under the top bar until the end of .schema-page, so it never covers the
- * footer. Opaque so rows scroll under it. The padding/negative margin gives it
- * room when stuck without moving it at rest (it pulls into main's top padding).
+ * footer. Opaque so rows scroll under it. It sits flush under the top bar at rest
+ * (main has no top padding), so it is stuck from scroll 0 and never shifts.
  */
 .schema-page__header {
   position: sticky;
@@ -199,9 +199,9 @@ body {
    */
   box-shadow: 0 0 0 100vmax var(--background-color-primary);
   clip-path: inset(calc(-1 * var(--topbar-height)) -100vmax 0);
-  padding-top: var(--spacing-xl, 16px);
-  margin-top: calc(-1 * var(--spacing-xl, 16px));
-  border-bottom: var(--border-width-default, 1px) solid var(--border-color-default);
+  padding-top: var(--spacing-xxl, 24px);
+  border-bottom: var(--border-width-default, 1px) solid
+    var(--border-color-default);
   padding-bottom: var(--spacing-xl, 16px);
   margin-bottom: var(--spacing-xxl, 24px);
 }
@@ -350,13 +350,13 @@ body {
 
 .empty-state,
 .loading {
-  padding: var(--spacing-xxl, 24px) 0;
+  padding: var(--spacing-xxxxl, 48px) 0 var(--spacing-xxl, 24px);
   color: var(--content-color-tertiary);
 }
 
 /* Docs route error boundary (failed schema load) */
 .error-state {
-  padding: var(--spacing-xxl, 24px) 0;
+  padding: var(--spacing-xxxxl, 48px) 0 var(--spacing-xxl, 24px);
   max-width: 640px;
 }
 
