@@ -14,6 +14,9 @@
  *   docs HTML (301): the matching .../docs/index.html URLs → the draft-07 viewer
  *     page for that version, or the version's raw JSON when no viewer page
  *     exists; /index.html → /.
+ *   The built `_redirects` also starts with `/ /index.html 200`
+ *   (HOMEPAGE_REWRITE, added after the homepage is prerendered), which serves
+ *   the prerendered homepage for `/`.
  *
  * Kept free of TS-only runtime syntax so Node can run it with type stripping.
  */
@@ -107,4 +110,20 @@ export function legacyRedirectsFile(versionsByDraft: Record<string, string[]>): 
   return Object.entries(legacyUrls(versionsByDraft).redirects)
     .map(([from, to]) => `${from} ${to} 301\n`)
     .join('');
+}
+
+/**
+ * Serve the prerendered homepage as an asset: `html_handling: "none"` doesn't map
+ * `/` to `/index.html`. Only the first matching rule applies, so it doesn't loop
+ * with `/index.html / 301`. Kept out of `redirects` (a rewrite, not a 301 hop).
+ */
+export const HOMEPAGE_REWRITE = '/ /index.html 200';
+
+/**
+ * Puts HOMEPAGE_REWRITE first in a `_redirects` file (idempotent). Applied to the
+ * built file only once /index.html exists (vite.config.ts): the prerender server
+ * honours `_redirects`, so the rule in public/ would 404 the `/` prerender.
+ */
+export function withHomepageRewrite(file: string): string {
+  return file.startsWith(`${HOMEPAGE_REWRITE}\n`) ? file : `${HOMEPAGE_REWRITE}\n${file}`;
 }

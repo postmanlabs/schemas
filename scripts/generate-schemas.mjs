@@ -5,11 +5,10 @@
  * along with a manifest, into `src/generated/` so the TanStack Start app can load
  * them for the Stoplight JSON Schema Viewer.
  *
- * Schemas all live under the local `schemas/` tree. Two layouts are supported:
- *   - Legacy: `collection.json` references sibling definition files that are
- *     merged into `definitions` by `tools.compile` (e.g. v1/v2).
- *   - Self-contained: `collection.json` already carries its own `definitions`
- *     (e.g. v3), so it is emitted verbatim.
+ * Schemas all live under the local `schemas/` tree and are compiled by
+ * `tools.compile`, which keeps a schema's inline `definitions` and adds any
+ * sibling definition files: v1/v2 keep theirs in sibling files, while v3 is
+ * self-contained and comes out unchanged.
  *
  * Output layout (per resource kind, e.g. "collection"):
  *   src/generated/schemas/{resource}/{draft}/{version}.json   (viewer bundle, INCLUDED_DRAFTS only)
@@ -28,7 +27,7 @@ import { VIEWER_DRAFT, legacyRedirectsFile, legacyUrls } from './legacy-urls.ts'
 
 const require = createRequire(import.meta.url);
 const semver = require('semver');
-const tools = require('../lib'); // { compile, validate, versions }
+const tools = require('../lib'); // { compile, validate }
 
 const DEFAULT_DRAFT = 'draft-07';
 
@@ -95,16 +94,7 @@ function listVersions() {
 function loadSchema(draft, version) {
   const versionSchemaDir = path.join(SCHEMA_DIR, draft, version);
   const schemaFile = path.join(versionSchemaDir, 'collection.json');
-  const raw = JSON.parse(fs.readFileSync(schemaFile, 'utf8'));
 
-  if (raw.definitions && Object.keys(raw.definitions).length > 0) {
-    // Self-contained: `definitions` are already inline, emit as-is.
-    console.info('Bundling collection %s/%s (self-contained) ...', draft, version);
-
-    return raw;
-  }
-
-  // Legacy: `definitions` live in sibling files, merged by compile().
   console.info('Compiling collection %s/%s ...', draft, version);
 
   return tools.compile(schemaFile, versionSchemaDir, draft);

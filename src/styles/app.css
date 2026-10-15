@@ -431,3 +431,83 @@ body {
   background: var(--button-primary-disabled-background-color);
   cursor: default;
 }
+
+/* Homepage: the version tables. */
+.homepage {
+  padding-top: var(--spacing-xxl, 24px);
+}
+
+.homepage h1 {
+  margin: 0 0 var(--spacing-xl, 16px);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.homepage h2 {
+  margin: var(--spacing-xxl, 24px) 0 var(--spacing-m, 8px);
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.homepage .empty-state {
+  padding: 0;
+}
+
+/* The versions table can't fit 320px screens; it scrolls here, not the page. */
+.table-scroll {
+  overflow-x: auto;
+  border-radius: var(--border-radius-default, 6px);
+}
+
+.table-scroll:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.homepage-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.homepage-table th,
+.homepage-table td {
+  padding: var(--spacing-m, 8px) var(--spacing-l, 12px);
+  text-align: left;
+  vertical-align: top;
+  border-bottom: var(--border-width-default, 1px) solid var(--border-color-default);
+}
+
+.homepage-table th {
+  font-weight: 600;
+  color: var(--content-color-secondary);
+  background: var(--background-color-secondary);
+  white-space: nowrap;
+}
+
+.homepage-table td {
+  color: var(--content-color-primary);
+}
+
+.homepage-table code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  background: var(--background-color-tertiary);
+  padding: 2px var(--spacing-s, 6px);
+  border-radius: var(--border-radius-s, 4px);
+}
+
+.homepage-table a {
+  color: var(--content-color-link, var(--base-color-brand));
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.homepage-table a:hover {
+  text-decoration: underline;
+}
+
+.homepage-table a:focus-visible {
+  outline: none;
+  border-radius: var(--border-radius-s, 4px);
+  box-shadow: var(--shadow-focus);
+}

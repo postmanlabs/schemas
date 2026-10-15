@@ -1,2 +1,6 @@
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
+
+# Only JSON files (the raw schemas) can be fetched from any origin.
+/*.json
+  Access-Control-Allow-Origin: *

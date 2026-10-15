@@ -2,8 +2,16 @@ import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { lib, utils, schemaVersions } from './helpers';
-import { legacyRedirectsFile, legacyUrls, latestStable, viewerPage, VIEWER_DRAFT } from '../scripts/legacy-urls';
+import { lib, schemaVersions } from './helpers';
+import {
+  HOMEPAGE_REWRITE,
+  legacyRedirectsFile,
+  legacyUrls,
+  latestStable,
+  viewerPage,
+  VIEWER_DRAFT,
+  withHomepageRewrite,
+} from '../scripts/legacy-urls';
 import { writeSchemas } from '../scripts/generate-schemas.mjs';
 
 const versions = schemaVersions();
@@ -16,7 +24,7 @@ for (const { draft, version } of versions) {
 const { raw, redirects } = legacyUrls(versionsByDraft);
 const viewerPages = new Set(versionsByDraft[VIEWER_DRAFT].map(viewerPage));
 
-/** Same rule as generate-schemas.mjs: self-contained schemas as-is, else lib.compile. */
+/** Same as generate-schemas.mjs: lib.compile. */
 function expectedSchema(draft: string, version: string): unknown {
   const v = versions.find((s) => s.draft === draft && s.version === version);
 
@@ -24,11 +32,7 @@ function expectedSchema(draft: string, version: string): unknown {
     throw new Error(`unknown schema ${draft}/${version}`);
   }
 
-  const schema = utils.removeCommentsAndLoadJSON(v.schemaPath);
-
-  return schema.definitions && Object.keys(schema.definitions).length > 0
-    ? schema
-    : lib.compile(v.schemaPath, v.schemaDir, v.draft);
+  return lib.compile(v.schemaPath, v.schemaDir, v.draft);
 }
 
 let tmp: string;
@@ -91,6 +95,17 @@ it("includes the legacy URLs that 404'd after the rebuild", () => {
 
   expect(redirects['/json/collection/v2.1.0/docs/index.html']).toBe(viewerPage('v2.1.0'));
   expect(redirects['/index.html']).toBe('/');
+});
+
+it('starts the built _redirects with the homepage rewrite (first match wins)', () => {
+  const built = withHomepageRewrite(fs.readFileSync(path.join(tmp, 'public', '_redirects'), 'utf8'));
+
+  expect(HOMEPAGE_REWRITE).toBe('/ /index.html 200');
+  expect(built.startsWith('/ /index.html 200\n')).toBe(true);
+  expect(built.split('\n')).toContain('/index.html / 301');
+  // Idempotent (a rebuild reuses the copied file), and never in the 301 map.
+  expect(withHomepageRewrite(built)).toBe(built);
+  expect(redirects['/']).toBeUndefined();
 });
 
 it('writes exactly the listed raw files', () => {

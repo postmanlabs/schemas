@@ -141,7 +141,6 @@ dist/
 
 # Generated schema viewer assets
 src/generated/
-src/routeTree.gen.ts
 public/collection/
 public/json/
 public/_redirects
