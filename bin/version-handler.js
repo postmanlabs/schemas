@@ -3,7 +3,7 @@
 const program = require('commander'),
     version = require('../package.json').version,
 
-    schema = require('..');
+    schema = require('../lib');
 
 program
     .usage('<command> [options]')

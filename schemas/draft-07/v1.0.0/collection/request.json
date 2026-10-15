@@ -517,6 +517,7 @@
   },
   "anyOf": [
     {
+      "title": "Request (requires collectionId)",
       "required": [
         "id",
         "method",
@@ -527,6 +528,7 @@
       ]
     },
     {
+      "title": "Request (requires collection)",
       "required": [
         "id",
         "method",

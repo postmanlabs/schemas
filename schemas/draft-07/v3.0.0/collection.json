@@ -1,0 +1,7039 @@
+{
+	"$id": "v3-collection",
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"type": "object",
+	"properties": {
+		"id": {
+			"description": "Identifier of the collection.",
+			"type": "string"
+		},
+		"name": {
+			"type": "string",
+			"description": "Display name of the collection."
+		},
+		"description": {
+			"description": "Markdown documentation.",
+			"type": "string",
+			"maxLength": 1000000
+		},
+		"$kind": {
+			"type": "string",
+			"const": "collection"
+		},
+		"variables": {
+			"description": "Variables available to every request in the collection.",
+			"allOf": [
+				{
+					"$ref": "#/definitions/v3-variables"
+				}
+			]
+		},
+		"scripts": {
+			"description": "Scripts that run on events in the request execution lifecycle.",
+			"allOf": [
+				{
+					"$ref": "#/definitions/v3-collection-scripts"
+				}
+			]
+		},
+		"auth": {
+			"description": "Credentials inherited by every request in the collection.",
+			"allOf": [
+				{
+					"$ref": "#/definitions/v3-collection-auth"
+				}
+			]
+		},
+		"uses": {
+			"description": "Resources the collection uses.",
+			"allOf": [
+				{
+					"$ref": "#/definitions/v3-collection-uses"
+				}
+			]
+		},
+		"items": {
+			"description": "Requests and folders the collection holds.",
+			"type": "array",
+			"items": {
+				"oneOf": [
+					{
+						"$ref": "#/definitions/v3-graphql-request"
+					},
+					{
+						"$ref": "#/definitions/v3-grpc-request"
+					},
+					{
+						"$ref": "#/definitions/v3-http-request"
+					},
+					{
+						"$ref": "#/definitions/v3-kafka-request"
+					},
+					{
+						"$ref": "#/definitions/v3-mcp-request"
+					},
+					{
+						"$ref": "#/definitions/v3-llm-request"
+					},
+					{
+						"$ref": "#/definitions/v3-mqtt-request"
+					},
+					{
+						"$ref": "#/definitions/v3-websocket-request"
+					},
+					{
+						"$ref": "#/definitions/v3-socketio-request"
+					},
+					{
+						"$ref": "#/definitions/v3-data-request"
+					},
+					{
+						"$ref": "#/definitions/v3-folder"
+					}
+				]
+			}
+		}
+	},
+	"required": [
+		"name",
+		"$kind"
+	],
+	"additionalProperties": false,
+	"title": "Collection",
+	"definitions": {
+		"v3-variables": {
+			"type": "array",
+			"items": {
+				"oneOf": [
+					{
+						"type": "object",
+						"properties": {
+							"key": {
+								"type": "string",
+								"description": "Name of the variable."
+							},
+							"secret": {
+								"type": "boolean",
+								"const": true,
+								"description": "Whether the variable references a secret rather than an inline value."
+							},
+							"disabled": {
+								"description": "Whether the variable is excluded from resolution.",
+								"type": "boolean"
+							},
+							"description": {
+								"description": "Human-readable note about the variable.",
+								"type": "string"
+							},
+							"source": {
+								"description": "Vault the value is read from at run time.",
+								"allOf": [
+									{
+										"$ref": "#/definitions/secret-source"
+									}
+								]
+							}
+						},
+						"required": [
+							"key",
+							"secret"
+						],
+						"additionalProperties": false,
+						"title": "Secret variable"
+					},
+					{
+						"type": "object",
+						"properties": {
+							"key": {
+								"type": "string",
+								"description": "Name of the variable."
+							},
+							"value": {
+								"description": "Value substituted wherever the variable is referenced.",
+								"type": "string"
+							},
+							"disabled": {
+								"description": "Whether the variable is excluded from resolution.",
+								"type": "boolean"
+							},
+							"secret": {
+								"description": "Whether the variable references a secret rather than an inline value.",
+								"type": "boolean",
+								"const": false
+							},
+							"description": {
+								"description": "Human-readable note about the variable.",
+								"type": "string"
+							}
+						},
+						"required": [
+							"key"
+						],
+						"additionalProperties": false,
+						"title": "Plain variable"
+					}
+				]
+			},
+			"title": "Variables"
+		},
+		"secret-source": {
+			"oneOf": [
+				{
+					"type": "object",
+					"properties": {
+						"provider": {
+							"type": "string",
+							"const": "postman",
+							"description": "Vault provider the secret is read from."
+						},
+						"postman": {
+							"oneOf": [
+								{
+									"type": "object",
+									"properties": {
+										"type": {
+											"type": "string",
+											"const": "local",
+											"description": "Whether the Postman vault is stored locally or in the cloud."
+										},
+										"secretId": {
+											"type": "string",
+											"description": "Identifier of the secret."
+										},
+										"vaultId": {
+											"description": "Identifier of the local vault holding the secret.",
+											"type": "string"
+										}
+									},
+									"required": [
+										"type",
+										"secretId"
+									],
+									"additionalProperties": false,
+									"title": "Local Postman vault"
+								},
+								{
+									"type": "object",
+									"properties": {
+										"type": {
+											"type": "string",
+											"const": "cloud",
+											"description": "Whether the Postman vault is stored locally or in the cloud."
+										},
+										"secretId": {
+											"type": "string",
+											"description": "Identifier of the secret."
+										},
+										"vaultId": {
+											"type": "string",
+											"description": "Identifier of the cloud vault holding the secret."
+										}
+									},
+									"required": [
+										"type",
+										"secretId",
+										"vaultId"
+									],
+									"additionalProperties": false,
+									"title": "Cloud Postman vault"
+								}
+							],
+							"description": "Location of the secret in a Postman vault."
+						}
+					},
+					"required": [
+						"provider",
+						"postman"
+					],
+					"additionalProperties": false,
+					"title": "Postman vault secret"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"provider": {
+							"type": "string",
+							"const": "azure",
+							"description": "Vault provider the secret is read from."
+						},
+						"azure": {
+							"type": "object",
+							"properties": {
+								"secretId": {
+									"type": "string",
+									"description": "Identifier of the secret."
+								}
+							},
+							"required": [
+								"secretId"
+							],
+							"additionalProperties": false,
+							"description": "Location of the secret in Azure Key Vault."
+						}
+					},
+					"required": [
+						"provider",
+						"azure"
+					],
+					"additionalProperties": false,
+					"title": "Azure Key Vault secret"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"provider": {
+							"type": "string",
+							"const": "1password",
+							"description": "Vault provider the secret is read from."
+						},
+						"1password": {
+							"type": "object",
+							"properties": {
+								"secretReference": {
+									"type": "string",
+									"description": "1Password secret reference URI, such as `op://vault/item/field`."
+								}
+							},
+							"required": [
+								"secretReference"
+							],
+							"additionalProperties": false,
+							"description": "Location of the secret in 1Password."
+						}
+					},
+					"required": [
+						"provider",
+						"1password"
+					],
+					"additionalProperties": false,
+					"title": "1Password secret"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"provider": {
+							"type": "string",
+							"const": "aws",
+							"description": "Vault provider the secret is read from."
+						},
+						"aws": {
+							"type": "object",
+							"properties": {
+								"secretArn": {
+									"type": "string",
+									"description": "ARN of the secret in AWS Secrets Manager."
+								},
+								"roleArn": {
+									"description": "ARN of the role assumed to read the secret.",
+									"type": "string"
+								},
+								"version": {
+									"description": "Version of the secret to read. Defaults to the current one.",
+									"type": "string"
+								},
+								"format": {
+									"description": "How the stored secret value is encoded.",
+									"type": "string",
+									"enum": [
+										"json",
+										"plaintext"
+									]
+								}
+							},
+							"required": [
+								"secretArn"
+							],
+							"additionalProperties": false,
+							"description": "Location of the secret in AWS Secrets Manager."
+						}
+					},
+					"required": [
+						"provider",
+						"aws"
+					],
+					"additionalProperties": false,
+					"title": "AWS Secrets Manager secret"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"provider": {
+							"type": "string",
+							"const": "hashicorp",
+							"description": "Vault provider the secret is read from."
+						},
+						"hashicorp": {
+							"type": "object",
+							"properties": {
+								"engine": {
+									"type": "string",
+									"description": "Name of the Vault secrets engine holding the secret."
+								},
+								"path": {
+									"type": "string",
+									"description": "Path to the secret within the engine."
+								},
+								"key": {
+									"type": "string",
+									"description": "Key to read from the secret."
+								},
+								"version": {
+									"description": "Version of the secret to read. Defaults to the current one.",
+									"type": "string"
+								}
+							},
+							"required": [
+								"engine",
+								"path",
+								"key"
+							],
+							"additionalProperties": false,
+							"description": "Location of the secret in HashiCorp Vault."
+						}
+					},
+					"required": [
+						"provider",
+						"hashicorp"
+					],
+					"additionalProperties": false,
+					"title": "HashiCorp Vault secret"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"provider": {
+							"type": "string",
+							"const": "passport",
+							"description": "Vault provider the secret is read from."
+						},
+						"passport": {
+							"type": "object",
+							"properties": {
+								"provider": {
+									"type": "string",
+									"description": "Name of the upstream provider Passport brokers access to."
+								},
+								"proxyId": {
+									"type": "string",
+									"description": "Identifier of the Passport proxy serving the secret."
+								},
+								"pointer": {
+									"type": "string",
+									"description": "JSON pointer to the value within the brokered payload."
+								},
+								"namespaceId": {
+									"description": "Identifier of the namespace the secret belongs to.",
+									"type": "string"
+								}
+							},
+							"required": [
+								"provider",
+								"proxyId",
+								"pointer"
+							],
+							"additionalProperties": false,
+							"description": "Location of the secret behind a Passport proxy."
+						}
+					},
+					"required": [
+						"provider",
+						"passport"
+					],
+					"additionalProperties": false,
+					"title": "Passport secret"
+				}
+			],
+			"title": "Secret source"
+		},
+		"v3-collection-scripts": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"type": {
+						"type": "string",
+						"enum": [
+							"graphql:beforeQuery",
+							"graphql:afterResponse",
+							"grpc:beforeInvoke",
+							"grpc:onIncomingMessage",
+							"grpc:afterResponse",
+							"http:beforeRequest",
+							"http:afterResponse",
+							"kafka:beforeConsume",
+							"kafka:onIncomingMessage",
+							"kafka:afterConsume",
+							"kafka:beforeProduce",
+							"kafka:afterProduce"
+						],
+						"description": "Lifecycle point the script runs at."
+					},
+					"code": {
+						"type": "string",
+						"description": "Source of the script."
+					},
+					"language": {
+						"description": "Language the script is written in.",
+						"type": "string",
+						"enum": [
+							"text/javascript"
+						]
+					},
+					"packages": {
+						"description": "Package Library packages the script imports, keyed by the name it imports them under.",
+						"type": "object",
+						"propertyNames": {
+							"type": "string"
+						},
+						"additionalProperties": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"type": "string",
+									"description": "Identifier of the package."
+								}
+							},
+							"required": [
+								"id"
+							],
+							"additionalProperties": false
+						}
+					},
+					"requests": {
+						"description": "Collection requests the script sends, keyed by the name it references them under.",
+						"type": "object",
+						"propertyNames": {
+							"type": "string"
+						},
+						"additionalProperties": {
+							"type": "object",
+							"properties": {
+								"workspace": {
+									"type": "string",
+									"description": "Identifier of the workspace."
+								},
+								"collection": {
+									"type": "string",
+									"description": "Identifier of the collection."
+								},
+								"location": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"description": "Path to the request, from the collection root."
+								}
+							},
+							"required": [
+								"workspace",
+								"collection",
+								"location"
+							],
+							"additionalProperties": false
+						}
+					}
+				},
+				"required": [
+					"type",
+					"code"
+				],
+				"additionalProperties": false
+			},
+			"title": "Collection scripts"
+		},
+		"v3-collection-auth": {
+			"title": "Collection auth",
+			"oneOf": [
+				{
+					"oneOf": [
+						{
+							"type": "object",
+							"properties": {
+								"id": {
+									"description": "Identifier of the credential set.",
+									"type": "string"
+								},
+								"name": {
+									"description": "Display name of the credential set.",
+									"type": "string"
+								},
+								"description": {
+									"description": "Human-readable note about the credential set.",
+									"type": "string"
+								},
+								"type": {
+									"type": "string",
+									"const": "noauth",
+									"description": "Auth scheme to apply."
+								}
+							},
+							"required": [
+								"type"
+							],
+							"additionalProperties": false,
+							"title": "No auth"
+						},
+						{
+							"type": "object",
+							"properties": {
+								"id": {
+									"description": "Identifier of the credential set.",
+									"type": "string"
+								},
+								"name": {
+									"description": "Display name of the credential set.",
+									"type": "string"
+								},
+								"description": {
+									"description": "Human-readable note about the credential set.",
+									"type": "string"
+								},
+								"credentials": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"key": {
+												"type": "string",
+												"description": "Name of the credential field."
+											},
+											"value": {
+												"description": "Value of the credential field."
+											}
+										},
+										"required": [
+											"key",
+											"value"
+										],
+										"additionalProperties": false
+									},
+									"description": "Credential fields for the auth type, as key-value pairs."
+								},
+								"type": {
+									"type": "string",
+									"enum": [
+										"basic",
+										"bearer",
+										"apikey",
+										"oauth1",
+										"oauth2",
+										"jwt",
+										"ntlm",
+										"digest",
+										"edgegrid",
+										"hawk",
+										"asap",
+										"awsv4",
+										"sasl"
+									],
+									"description": "Auth scheme to apply."
+								}
+							},
+							"required": [
+								"credentials",
+								"type"
+							],
+							"additionalProperties": false,
+							"title": "Credential set"
+						}
+					],
+					"title": "One credential set"
+				},
+				{
+					"type": "array",
+					"items": {
+						"title": "Credential set with rules",
+						"oneOf": [
+							{
+								"type": "object",
+								"properties": {
+									"id": {
+										"type": "string",
+										"description": "Identifier of the credential set."
+									},
+									"name": {
+										"type": "string",
+										"description": "Display name of the credential set."
+									},
+									"rules": {
+										"description": "Conditions that select this credential set. A request uses the first set whose rules all match.",
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"key": {
+													"type": "string",
+													"enum": [
+														"url"
+													],
+													"description": "Property the rule matches on."
+												},
+												"value": {
+													"type": "string",
+													"description": "Value the property has to match."
+												}
+											},
+											"required": [
+												"key",
+												"value"
+											],
+											"additionalProperties": false
+										}
+									},
+									"description": {
+										"description": "Human-readable note about the credential set.",
+										"type": "string"
+									},
+									"type": {
+										"type": "string",
+										"const": "noauth",
+										"description": "Auth scheme to apply."
+									}
+								},
+								"required": [
+									"id",
+									"name",
+									"type"
+								],
+								"additionalProperties": false,
+								"title": "No auth"
+							},
+							{
+								"type": "object",
+								"properties": {
+									"id": {
+										"type": "string",
+										"description": "Identifier of the credential set."
+									},
+									"name": {
+										"type": "string",
+										"description": "Display name of the credential set."
+									},
+									"description": {
+										"description": "Human-readable note about the credential set.",
+										"type": "string"
+									},
+									"rules": {
+										"description": "Conditions that select this credential set. A request uses the first set whose rules all match.",
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"key": {
+													"type": "string",
+													"enum": [
+														"url"
+													],
+													"description": "Property the rule matches on."
+												},
+												"value": {
+													"type": "string",
+													"description": "Value the property has to match."
+												}
+											},
+											"required": [
+												"key",
+												"value"
+											],
+											"additionalProperties": false
+										}
+									},
+									"credentials": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"key": {
+													"type": "string",
+													"description": "Name of the credential field."
+												},
+												"value": {
+													"description": "Value of the credential field."
+												}
+											},
+											"required": [
+												"key",
+												"value"
+											],
+											"additionalProperties": false
+										},
+										"description": "Credential fields for the auth type, as key-value pairs."
+									},
+									"type": {
+										"type": "string",
+										"enum": [
+											"basic",
+											"bearer",
+											"apikey",
+											"oauth1",
+											"oauth2",
+											"jwt",
+											"ntlm",
+											"digest",
+											"edgegrid",
+											"hawk",
+											"asap",
+											"awsv4",
+											"sasl"
+										],
+										"description": "Auth scheme to apply."
+									}
+								},
+								"required": [
+									"id",
+									"name",
+									"credentials",
+									"type"
+								],
+								"additionalProperties": false,
+								"title": "Credential set"
+							}
+						]
+					},
+					"title": "Credential sets, selected by rule"
+				}
+			]
+		},
+		"v3-collection-uses": {
+			"type": "object",
+			"properties": {
+				"environment": {
+					"description": "Identifiers of the environments the collection uses.",
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"additionalProperties": false,
+			"title": "Uses"
+		},
+		"v3-graphql-request": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"description": "Identifier of the item.",
+					"type": "string"
+				},
+				"name": {
+					"type": "string",
+					"description": "Display name of the item."
+				},
+				"description": {
+					"description": "Markdown documentation.",
+					"type": "string",
+					"maxLength": 1000000
+				},
+				"url": {
+					"description": "URL of the GraphQL endpoint.",
+					"type": "string"
+				},
+				"query": {
+					"description": "GraphQL document holding the operations to send.",
+					"type": "string"
+				},
+				"variables": {
+					"description": "Variables for the operation, as a JSON object.",
+					"type": "string"
+				},
+				"headers": {
+					"description": "Headers sent with the request.",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/v3-key-value-meta"
+					}
+				},
+				"settings": {
+					"description": "Transport settings for the request.",
+					"type": "object",
+					"properties": {
+						"disabledSystemHeaders": {
+							"description": "Headers Postman adds by default that are suppressed.",
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						}
+					},
+					"additionalProperties": false
+				},
+				"auth": {
+					"description": "Credentials applied to the request.",
+					"allOf": [
+						{
+							"$ref": "#/definitions/v3-graphql-auth"
+						}
+					]
+				},
+				"schema": {
+					"description": "Source of the GraphQL schema used for validation.",
+					"allOf": [
+						{
+							"$ref": "#/definitions/v3-graphql-schema"
+						}
+					]
+				},
+				"operationName": {
+					"description": "Operation to run, for a query document that defines several.",
+					"type": "string"
+				},
+				"$kind": {
+					"type": "string",
+					"const": "graphql-request"
+				},
+				"examples": {
+					"description": "Saved request and response pairs for this request.",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/v3-graphql-example"
+					}
+				},
+				"scripts": {
+					"description": "Scripts that run on events in the request execution lifecycle.",
+					"allOf": [
+						{
+							"$ref": "#/definitions/v3-graphql-scripts"
+						}
+					]
+				}
+			},
+			"required": [
+				"name",
+				"$kind"
+			],
+			"additionalProperties": false,
+			"title": "GraphQL request"
+		},
+		"v3-key-value-meta": {
+			"type": "object",
+			"properties": {
+				"key": {
+					"type": "string",
+					"description": "Name of the entry."
+				},
+				"value": {
+					"type": "string",
+					"description": "Value of the entry."
+				},
+				"disabled": {
+					"description": "Whether the entry is excluded from the request.",
+					"type": "boolean"
+				},
+				"description": {
+					"description": "Human-readable note about the entry.",
+					"type": "string"
+				}
+			},
+			"required": [
+				"key",
+				"value"
+			],
+			"additionalProperties": false,
+			"title": "Descriptive key-value"
+		},
+		"v3-graphql-auth": {
+			"oneOf": [
+				{
+					"type": "object",
+					"properties": {
+						"id": {
+							"description": "Identifier of the credential set.",
+							"type": "string"
+						},
+						"name": {
+							"description": "Display name of the credential set.",
+							"type": "string"
+						},
+						"description": {
+							"description": "Human-readable note about the credential set.",
+							"type": "string"
+						},
+						"type": {
+							"type": "string",
+							"const": "noauth",
+							"description": "Auth scheme to apply."
+						}
+					},
+					"required": [
+						"type"
+					],
+					"additionalProperties": false,
+					"title": "No auth"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"id": {
+							"description": "Identifier of the credential set.",
+							"type": "string"
+						},
+						"name": {
+							"description": "Display name of the credential set.",
+							"type": "string"
+						},
+						"description": {
+							"description": "Human-readable note about the credential set.",
+							"type": "string"
+						},
+						"credentials": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"key": {
+										"type": "string",
+										"description": "Name of the credential field."
+									},
+									"value": {
+										"description": "Value of the credential field."
+									}
+								},
+								"required": [
+									"key",
+									"value"
+								],
+								"additionalProperties": false
+							},
+							"description": "Credential fields for the auth type, as key-value pairs."
+						},
+						"type": {
+							"type": "string",
+							"enum": [
+								"inherit",
+								"basic",
+								"bearer",
+								"apikey",
+								"oauth1",
+								"oauth2",
+								"edgegrid",
+								"hawk",
+								"awsv4",
+								"jwt",
+								"digest",
+								"ntlm",
+								"asap"
+							],
+							"description": "Auth scheme to apply. `inherit` takes the credentials of the nearest ancestor that defines them."
+						}
+					},
+					"required": [
+						"credentials",
+						"type"
+					],
+					"additionalProperties": false,
+					"title": "Credential set"
+				}
+			],
+			"title": "GraphQL auth"
+		},
+		"v3-graphql-schema": {
+			"title": "GraphQL schema source",
+			"allOf": [
+				{
+					"$ref": "#/definitions/v3-schema"
+				}
+			]
+		},
+		"v3-auth": {
+			"title": "Auth",
+			"oneOf": [
+				{
+					"oneOf": [
+						{
+							"type": "object",
+							"properties": {
+								"id": {
+									"description": "Identifier of the credential set.",
+									"type": "string"
+								},
+								"name": {
+									"description": "Display name of the credential set.",
+									"type": "string"
+								},
+								"description": {
+									"description": "Human-readable note about the credential set.",
+									"type": "string"
+								},
+								"type": {
+									"type": "string",
+									"const": "noauth",
+									"description": "Auth scheme to apply."
+								}
+							},
+							"required": [
+								"type"
+							],
+							"additionalProperties": false,
+							"title": "No auth"
+						},
+						{
+							"type": "object",
+							"properties": {
+								"id": {
+									"description": "Identifier of the credential set.",
+									"type": "string"
+								},
+								"name": {
+									"description": "Display name of the credential set.",
+									"type": "string"
+								},
+								"description": {
+									"description": "Human-readable note about the credential set.",
+									"type": "string"
+								},
+								"credentials": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"key": {
+												"type": "string",
+												"description": "Name of the credential field."
+											},
+											"value": {
+												"description": "Value of the credential field."
+											}
+										},
+										"required": [
+											"key",
+											"value"
+										],
+										"additionalProperties": false
+									},
+									"description": "Credential fields for the auth type, as key-value pairs."
+								},
+								"type": {
+									"type": "string",
+									"enum": [
+										"awsv4",
+										"basic",
+										"bearer",
+										"hawk",
+										"oauth1",
+										"oauth2",
+										"apikey",
+										"edgegrid",
+										"jwt",
+										"digest",
+										"ntlm",
+										"asap",
+										"azure",
+										"sasl",
+										"inherit"
+									],
+									"description": "Auth scheme to apply. `inherit` takes the credentials of the nearest ancestor that defines them."
+								}
+							},
+							"required": [
+								"credentials",
+								"type"
+							],
+							"additionalProperties": false,
+							"title": "Credential set"
+						}
+					],
+					"title": "One credential set"
+				},
+				{
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/v3-multi-auth-entry"
+					},
+					"title": "Credential sets, selected by rule"
+				}
+			]
+		},
+		"v3-multi-auth-entry": {
+			"title": "Credential set with rules",
+			"oneOf": [
+				{
+					"type": "object",
+					"properties": {
+						"id": {
+							"type": "string",
+							"description": "Identifier of the credential set."
+						},
+						"name": {
+							"type": "string",
+							"description": "Display name of the credential set."
+						},
+						"description": {
+							"description": "Human-readable note about the credential set.",
+							"type": "string"
+						},
+						"rules": {
+							"description": "Conditions that select this credential set. A request uses the first set whose rules all match.",
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"key": {
+										"type": "string",
+										"enum": [
+											"url"
+										],
+										"description": "Property the rule matches on."
+									},
+									"value": {
+										"type": "string",
+										"description": "Value the property has to match."
+									}
+								},
+								"required": [
+									"key",
+									"value"
+								],
+								"additionalProperties": false
+							}
+						},
+						"type": {
+							"type": "string",
+							"const": "noauth",
+							"description": "Auth scheme to apply."
+						}
+					},
+					"required": [
+						"id",
+						"name",
+						"type"
+					],
+					"additionalProperties": false,
+					"title": "No auth"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"id": {
+							"type": "string",
+							"description": "Identifier of the credential set."
+						},
+						"name": {
+							"type": "string",
+							"description": "Display name of the credential set."
+						},
+						"description": {
+							"description": "Human-readable note about the credential set.",
+							"type": "string"
+						},
+						"rules": {
+							"description": "Conditions that select this credential set. A request uses the first set whose rules all match.",
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"key": {
+										"type": "string",
+										"enum": [
+											"url"
+										],
+										"description": "Property the rule matches on."
+									},
+									"value": {
+										"type": "string",
+										"description": "Value the property has to match."
+									}
+								},
+								"required": [
+									"key",
+									"value"
+								],
+								"additionalProperties": false
+							}
+						},
+						"credentials": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"key": {
+										"type": "string",
+										"description": "Name of the credential field."
+									},
+									"value": {
+										"description": "Value of the credential field."
+									}
+								},
+								"required": [
+									"key",
+									"value"
+								],
+								"additionalProperties": false
+							},
+							"description": "Credential fields for the auth type, as key-value pairs."
+						},
+						"type": {
+							"type": "string",
+							"enum": [
+								"awsv4",
+								"basic",
+								"bearer",
+								"hawk",
+								"oauth1",
+								"oauth2",
+								"apikey",
+								"edgegrid",
+								"jwt",
+								"digest",
+								"ntlm",
+								"asap",
+								"azure",
+								"sasl"
+							],
+							"description": "Auth scheme to apply."
+						}
+					},
+					"required": [
+						"id",
+						"name",
+						"credentials",
+						"type"
+					],
+					"additionalProperties": false,
+					"title": "Credential set"
+				}
+			]
+		},
+		"v3-schema": {
+			"oneOf": [
+				{
+					"type": "object",
+					"properties": {
+						"source": {
+							"type": "string",
+							"const": "none",
+							"description": "Where the schema is loaded from."
+						}
+					},
+					"required": [
+						"source"
+					],
+					"additionalProperties": false,
+					"title": "No schema"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"source": {
+							"type": "string",
+							"const": "auto",
+							"description": "Where the schema is loaded from."
+						}
+					},
+					"required": [
+						"source"
+					],
+					"additionalProperties": false,
+					"title": "Auto-detected schema"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"source": {
+							"type": "string",
+							"const": "file",
+							"description": "Where the schema is loaded from."
+						},
+						"location": {
+							"type": "string",
+							"description": "Path to the schema file, relative to the working directory."
+						}
+					},
+					"required": [
+						"source",
+						"location"
+					],
+					"additionalProperties": false,
+					"title": "Schema from a file"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"source": {
+							"type": "string",
+							"const": "api",
+							"description": "Where the schema is loaded from."
+						},
+						"apiId": {
+							"type": "string",
+							"description": "Identifier of the Postman API."
+						},
+						"versionId": {
+							"type": "string",
+							"description": "Identifier of the API version the schema belongs to."
+						},
+						"releaseId": {
+							"description": "Identifier of the release to pin the schema to. Defaults to the latest.",
+							"type": "string"
+						}
+					},
+					"required": [
+						"source",
+						"apiId",
+						"versionId"
+					],
+					"additionalProperties": false,
+					"title": "Schema from an API"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"source": {
+							"type": "string",
+							"const": "specification",
+							"description": "Where the schema is loaded from."
+						},
+						"specificationId": {
+							"type": "string",
+							"description": "Identifier of the Postman specification."
+						}
+					},
+					"required": [
+						"source",
+						"specificationId"
+					],
+					"additionalProperties": false,
+					"title": "Schema from a specification"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"source": {
+							"type": "string",
+							"const": "url",
+							"description": "Where the schema is loaded from."
+						},
+						"url": {
+							"type": "string",
+							"description": "URL the schema is fetched from."
+						},
+						"auth": {
+							"description": "Credentials used to fetch the schema.",
+							"allOf": [
+								{
+									"$ref": "#/definitions/v3-auth"
+								}
+							]
+						}
+					},
+					"required": [
+						"source",
+						"url"
+					],
+					"additionalProperties": false,
+					"title": "Schema from a URL"
+				}
+			],
+			"title": "Schema source"
+		},
+		"v3-graphql-example": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"description": "Identifier of the item.",
+					"type": "string"
+				},
+				"name": {
+					"type": "string",
+					"description": "Display name of the item."
+				},
+				"description": {
+					"description": "Markdown documentation.",
+					"type": "string",
+					"maxLength": 1000000
+				},
+				"settings": {
+					"description": "Transport settings for the request.",
+					"type": "object",
+					"properties": {
+						"disabledSystemHeaders": {
+							"description": "Headers Postman adds by default that are suppressed.",
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						}
+					},
+					"additionalProperties": false
+				},
+				"auth": {
+					"description": "Credentials applied to the request.",
+					"allOf": [
+						{
+							"$ref": "#/definitions/v3-graphql-auth"
+						}
+					]
+				},
+				"schema": {
+					"description": "Source of the GraphQL schema used for validation.",
+					"allOf": [
+						{
+							"$ref": "#/definitions/v3-graphql-schema"
+						}
+					]
+				},
+				"$kind": {
+					"type": "string",
+					"const": "graphql-example"
+				},
+				"request": {
+					"description": "Request the example was captured from.",
+					"type": "object",
+					"properties": {
+						"url": {
+							"description": "URL of the GraphQL endpoint.",
+							"type": "string"
+						},
+						"query": {
+							"description": "GraphQL document holding the operations to send.",
+							"type": "string"
+						},
+						"variables": {
+							"description": "Variables for the operation, as a JSON object.",
+							"type": "string"
+						},
+						"headers": {
+							"description": "Headers sent with the request.",
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/v3-key-value-meta"
+							}
+						},
+						"operationType": {
+							"description": "Kind of GraphQL operation that was sent.",
+							"type": "string",
+							"enum": [
+								"query",
+								"mutation",
+								"subscription"
+							]
+						},
+						"operationName": {
+							"description": "Operation that was run.",
+							"type": "string"
+						}
+					},
+					"additionalProperties": false
+				},
+				"response": {
+					"type": "object",
+					"properties": {
+						"events": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"id": {
+										"type": "string",
+										"description": "Identifier of the event."
+									},
+									"type": {
+										"type": "string",
+										"enum": [
+											"received-response"
+										],
+										"description": "Kind of event."
+									},
+									"content": {
+										"type": "string",
+										"description": "Payload the server sent, as text."
+									}
+								},
+								"required": [
+									"id",
+									"type",
+									"content"
+								],
+								"additionalProperties": false
+							},
+							"description": "Responses received, in the order they arrived."
+						},
+						"http": {
+							"description": "Underlying HTTP response that carried the result.",
+							"type": "object",
+							"properties": {
+								"status": {
+									"type": "string",
+									"description": "HTTP status line of the response."
+								},
+								"headers": {
+									"description": "Headers returned with the response.",
+									"type": "array",
+									"items": {
+										"$ref": "#/definitions/v3-key-value"
+									}
+								},
+								"body": {
+									"description": "Raw HTTP response body.",
+									"type": "string"
+								}
+							},
+							"required": [
+								"status"
+							],
+							"additionalProperties": false
+						}
+					},
+					"required": [
+						"events"
+					],
+					"additionalProperties": false,
+					"description": "Response captured for the example."
+				}
+			},
+			"required": [
+				"name",
+				"$kind",
+				"response"
+			],
+			"additionalProperties": false,
+			"title": "GraphQL example"
+		},
+		"v3-key-value": {
+			"type": "object",
+			"properties": {
+				"key": {
+					"type": "string",
+					"description": "Name of the entry."
+				},
+				"value": {
+					"type": "string",
+					"description": "Value of the entry."
+				}
+			},
+			"required": [
+				"key",
+				"value"
+			],
+			"additionalProperties": false,
+			"title": "Key-value"
+		},
+		"v3-graphql-scripts": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"type": {
+						"type": "string",
+						"enum": [
+							"beforeQuery",
+							"afterResponse"
+						],
+						"description": "Lifecycle point the script runs at."
+					},
+					"code": {
+						"type": "string",
+						"description": "Source of the script."
+					},
+					"language": {
+						"description": "Language the script is written in.",
+						"type": "string",
+						"enum": [
+							"text/javascript"
+						]
+					},
+					"packages": {
+						"description": "Package Library packages the script imports, keyed by the name it imports them under.",
+						"type": "object",
+						"propertyNames": {
+							"type": "string"
+						},
+						"additionalProperties": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"type": "string",
+									"description": "Identifier of the package."
+								}
+							},
+							"required": [
+								"id"
+							],
+							"additionalProperties": false
+						}
+					},
+					"requests": {
+						"description": "Collection requests the script sends, keyed by the name it references them under.",
+						"type": "object",
+						"propertyNames": {
+							"type": "string"
+						},
+						"additionalProperties": {
+							"type": "object",
+							"properties": {
+								"workspace": {
+									"type": "string",
+									"description": "Identifier of the workspace."
+								},
+								"collection": {
+									"type": "string",
+									"description": "Identifier of the collection."
+								},
+								"location": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"description": "Path to the request, from the collection root."
+								}
+							},
+							"required": [
+								"workspace",
+								"collection",
+								"location"
+							],
+							"additionalProperties": false
+						}
+					}
+				},
+				"required": [
+					"type",
+					"code"
+				],
+				"additionalProperties": false
+			},
+			"title": "GraphQL scripts"
+		},
+		"v3-grpc-request": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"description": "Identifier of the item.",
+					"type": "string"
+				},
+				"name": {
+					"type": "string",
+					"description": "Display name of the item."
+				},
+				"description": {
+					"description": "Markdown documentation.",
+					"type": "string",
+					"maxLength": 1000000
+				},
+				"url": {
+					"description": "Host and port of the gRPC server.",
+					"type": "string"
+				},
+				"methodPath": {
+					"description": "Fully qualified method to invoke, as `package.Service/Method`.",
+					"type": "string"
+				},
+				"methodDescriptor": {
+					"description": "Serialized descriptor of the method, for calls made without a schema.",
+					"type": "string"
+				},
+				"message": {
+					"description": "Message sent when the call is invoked.",
+					"type": "object",
+					"properties": {
+						"content": {
+							"description": "Message body, as JSON.",
+							"type": "string"
+						}
+					},
+					"additionalProperties": false
+				},
+				"metadata": {
+					"description": "Metadata sent with the call.",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/v3-key-value-meta"
+					}
+				},
+				"settings": {
+					"description": "Transport settings for the call.",
+					"type": "object",
+					"properties": {
+						"secureConnection": {
+							"description": "Whether the connection uses TLS.",
+							"type": "boolean"
+						},
+						"strictSSL": {
+							"description": "Whether the server certificate is verified.",
+							"type": "boolean"
+						},
+						"serverNameOverride": {
+							"description": "Server name checked against the certificate.",
+							"type": "string"
+						},
+						"maxResponseMessageSize": {
+							"description": "Largest response message accepted, in bytes.",
+							"type": "number"
+						},
+						"includeDefaultFields": {
+							"description": "Whether fields left at their default are kept in the response.",
+							"type": "boolean"
+						},
+						"connectionTimeout": {
+							"description": "How long to wait for the connection, in milliseconds.",
+							"type": "number"
+						}
+					},
+					"additionalProperties": false
+				},
+				"auth": {
+					"description": "Credentials applied to the call.",
+					"allOf": [
+						{
+							"$ref": "#/definitions/v3-grpc-auth"
+						}
+					]
+				},
+				"schema": {
+					"description": "Source of the protobuf definition the call is made against.",
+					"allOf": [
+						{
+							"$ref": "#/definitions/v3-grpc-schema"
+						}
+					]
+				},
+				"$kind": {
+					"type": "string",
+					"const": "grpc-request"
+				},
+				"scripts": {
+					"description": "Scripts that run on events in the request execution lifecycle.",
+					"allOf": [
+						{
+							"$ref": "#/definitions/v3-grpc-scripts"
+						}
+					]
+				},
+				"examples": {
+					"description": "Saved call and response pairs for this request.",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/v3-grpc-example"
+					}
+				}
+			},
+			"required": [
+				"name",
+				"$kind"
+			],
+			"additionalProperties": false,
+			"title": "gRPC request"
+		},
+		"v3-grpc-auth": {
+			"oneOf": [
+				{
+					"type": "object",
+					"properties": {
+						"id": {
+							"description": "Identifier of the credential set.",
+							"type": "string"
+						},
+						"name": {
+							"description": "Display name of the credential set.",
+							"type": "string"
+						},
+						"description": {
+							"description": "Human-readable note about the credential set.",
+							"type": "string"
+						},
+						"type": {
+							"type": "string",
+							"const": "noauth",
+							"description": "Auth scheme to apply."
+						}
+					},
+					"required": [
+						"type"
+					],
+					"additionalProperties": false,
+					"title": "No auth"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"id": {
+							"description": "Identifier of the credential set.",
+							"type": "string"
+						},
+						"name": {
+							"description": "Display name of the credential set.",
+							"type": "string"
+						},
+						"description": {
+							"description": "Human-readable note about the credential set.",
+							"type": "string"
+						},
+						"credentials": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"key": {
+										"type": "string",
+										"description": "Name of the credential field."
+									},
+									"value": {
+										"description": "Value of the credential field."
+									}
+								},
+								"required": [
+									"key",
+									"value"
+								],
+								"additionalProperties": false
+							},
+							"description": "Credential fields for the auth type, as key-value pairs."
+						},
+						"type": {
+							"type": "string",
+							"enum": [
+								"inherit",
+								"basic",
+								"bearer",
+								"apikey",
+								"oauth2"
+							],
+							"description": "Auth scheme to apply. `inherit` takes the credentials of the nearest ancestor that defines them."
+						}
+					},
+					"required": [
+						"credentials",
+						"type"
+					],
+					"additionalProperties": false,
+					"title": "Credential set"
+				}
+			],
+			"title": "gRPC auth"
+		},
+		"v3-grpc-schema": {
+			"title": "gRPC schema source",
+			"allOf": [
+				{
+					"$ref": "#/definitions/v3-schema"
+				}
+			]
+		},
+		"v3-grpc-scripts": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"type": {
+						"type": "string",
+						"enum": [
+							"beforeInvoke",
+							"onIncomingMessage",
+							"afterResponse"
+						],
+						"description": "Lifecycle point the script runs at."
+					},
+					"code": {
+						"type": "string",
+						"description": "Source of the script."
+					},
+					"language": {
+						"description": "Language the script is written in.",
+						"type": "string",
+						"enum": [
+							"text/javascript"
+						]
+					},
+					"packages": {
+						"description": "Package Library packages the script imports, keyed by the name it imports them under.",
+						"type": "object",
+						"propertyNames": {
+							"type": "string"
+						},
+						"additionalProperties": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"type": "string",
+									"description": "Identifier of the package."
+								}
+							},
+							"required": [
+								"id"
+							],
+							"additionalProperties": false
+						}
+					},
+					"requests": {
+						"description": "Collection requests the script sends, keyed by the name it references them under.",
+						"type": "object",
+						"propertyNames": {
+							"type": "string"
+						},
+						"additionalProperties": {
+							"type": "object",
+							"properties": {
+								"workspace": {
+									"type": "string",
+									"description": "Identifier of the workspace."
+								},
+								"collection": {
+									"type": "string",
+									"description": "Identifier of the collection."
+								},
+								"location": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"description": "Path to the request, from the collection root."
+								}
+							},
+							"required": [
+								"workspace",
+								"collection",
+								"location"
+							],
+							"additionalProperties": false
+						}
+					}
+				},
+				"required": [
+					"type",
+					"code"
+				],
+				"additionalProperties": false
+			},
+			"title": "gRPC scripts"
+		},
+		"v3-grpc-example": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"description": "Identifier of the item.",
+					"type": "string"
+				},
+				"name": {
+					"type": "string",
+					"description": "Display name of the item."
+				},
+				"description": {
+					"description": "Markdown documentation.",
+					"type": "string",
+					"maxLength": 1000000
+				},
+				"settings": {
+					"description": "Transport settings for the call.",
+					"type": "object",
+					"properties": {
+						"secureConnection": {
+							"description": "Whether the connection uses TLS.",
+							"type": "boolean"
+						},
+						"strictSSL": {
+							"description": "Whether the server certificate is verified.",
+							"type": "boolean"
+						},
+						"serverNameOverride": {
+							"description": "Server name checked against the certificate.",
+							"type": "string"
+						},
+						"maxResponseMessageSize": {
+							"description": "Largest response message accepted, in bytes.",
+							"type": "number"
+						},
+						"includeDefaultFields": {
+							"description": "Whether fields left at their default are kept in the response.",
+							"type": "boolean"
+						},
+						"connectionTimeout": {
+							"description": "How long to wait for the connection, in milliseconds.",
+							"type": "number"
+						}
+					},
+					"additionalProperties": false
+				},
+				"auth": {
+					"description": "Credentials applied to the call.",
+					"allOf": [
+						{
+							"$ref": "#/definitions/v3-grpc-auth"
+						}
+					]
+				},
+				"schema": {
+					"description": "Source of the protobuf definition the call is made against.",
+					"allOf": [
+						{
+							"$ref": "#/definitions/v3-grpc-schema"
+						}
+					]
+				},
+				"$kind": {
+					"type": "string",
+					"const": "grpc-example"
+				},
+				"request": {
+					"description": "Call the example was captured from.",
+					"type": "object",
+					"properties": {
+						"url": {
+							"description": "Host and port of the gRPC server.",
+							"type": "string"
+						},
+						"methodPath": {
+							"description": "Fully qualified method to invoke, as `package.Service/Method`.",
+							"type": "string"
+						},
+						"methodDescriptor": {
+							"description": "Serialized descriptor of the method, for calls made without a schema.",
+							"type": "string"
+						},
+						"message": {
+							"description": "Message sent when the call is invoked.",
+							"type": "object",
+							"properties": {
+								"content": {
+									"description": "Message body, as JSON.",
+									"type": "string"
+								}
+							},
+							"additionalProperties": false
+						},
+						"metadata": {
+							"description": "Metadata sent with the call.",
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/v3-key-value-meta"
+							}
+						}
+					},
+					"additionalProperties": false
+				},
+				"response": {
+					"type": "object",
+					"properties": {
+						"code": {
+							"type": "number",
+							"description": "gRPC status code of the call."
+						},
+						"metadata": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/v3-key-value"
+							},
+							"description": "Metadata the server sent with the response."
+						},
+						"trailers": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/v3-key-value"
+							},
+							"description": "Trailers the server sent after the response."
+						},
+						"messages": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"id": {
+										"type": "string",
+										"description": "Identifier of the message."
+									},
+									"type": {
+										"type": "string",
+										"enum": [
+											"incoming",
+											"outgoing",
+											"error"
+										],
+										"description": "Direction of the message, or an error record."
+									},
+									"content": {
+										"type": "string",
+										"description": "Message body, as JSON."
+									}
+								},
+								"required": [
+									"id",
+									"type",
+									"content"
+								],
+								"additionalProperties": false
+							},
+							"description": "Messages exchanged, in the order they occurred."
+						}
+					},
+					"required": [
+						"code",
+						"metadata",
+						"trailers",
+						"messages"
+					],
+					"additionalProperties": false,
+					"description": "Response captured for the example."
+				}
+			},
+			"required": [
+				"name",
+				"$kind",
+				"response"
+			],
+			"additionalProperties": false,
+			"title": "gRPC example"
+		},
+		"v3-http-request": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"description": "Identifier of the item.",
+					"type": "string"
+				},
+				"name": {
+					"type": "string",
+					"description": "Display name of the item."
+				},
+				"description": {
+					"description": "Markdown documentation.",
+					"type": "string",
+					"maxLength": 1000000
+				},
+				"url": {
+					"description": "URL the request is sent to, including any query string.",
+					"type": "string"
+				},
+				"method": {
+					"description": "HTTP method of the request.",
+					"type": "string"
+				},
+				"headers": {
+					"description": "Headers sent with the request.",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/v3-key-value-meta-with-type"
+					}
+				},
+				"queryParams": {
+					"description": "Parameters appended to the URL query string.",
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"key": {
+								"description": "Name of the parameter.",
+								"oneOf": [
+									{
+										"type": "string"
+									},
+									{
+										"type": "null"
+									}
+								]
+							},
+							"value": {
+								"description": "Value of the parameter.",
+								"oneOf": [
+									{
+										"type": "string"
+									},
+									{
+										"type": "null"
+									}
+								]
+							},
+							"description": {
+								"description": "Human-readable note about the parameter.",
+								"type": "string"
+							},
+							"disabled": {
+								"description": "Whether the parameter is left out of the URL.",
+								"type": "boolean"
+							},
+							"$type": {
+								"description": "JSON Schema for the value, either a type name such as `number` or a serialized schema object.",
+								"type": "string"
+							}
+						},
+						"additionalProperties": false
+					}
+				},
+				"pathVariables": {
+					"description": "Values substituted for `:name` segments in the URL path.",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/v3-key-value-meta-with-type"
+					}
+				},
+				"body": {
+					"description": "Payload sent with the request.",
+					"allOf": [
+						{
+							"$ref": "#/definitions/v3-http-request-body"
+						}
+					]
+				},
+				"auth": {
+					"description": "Credentials applied to the request.",
+					"allOf": [
+						{
+							"$ref": "#/definitions/v3-http-auth"
+						}
+					]
+				},
+				"$kind": {
+					"type": "string",
+					"const": "http-request"
+				},
+				"examples": {
+					"description": "Saved request and response pairs for this request.",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/v3-http-example"
+					}
+				},
+				"settings": {
+					"description": "Transport settings for the request.",
+					"type": "object",
+					"properties": {
+						"protocolVersion": {
+							"description": "HTTP version used for the request.",
+							"type": "string",
+							"enum": [
+								"auto",
+								"http1",
+								"http2"
+							]
+						},
+						"strictSSL": {
+							"description": "Whether the server certificate is verified.",
+							"type": "boolean"
+						},
+						"followRedirects": {
+							"description": "Whether redirect responses are followed.",
+							"type": "boolean"
+						},
+						"maxRedirects": {
+							"description": "How many redirects are followed before giving up.",
+							"type": "number"
+						},
+						"followOriginalHttpMethod": {
+							"description": "Whether a redirect keeps the original method instead of switching to GET.",
+							"type": "boolean"
+						},
+						"followAuthorizationHeader": {
+							"description": "Whether the Authorization header is kept when a redirect changes host.",
+							"type": "boolean"
+						},
+						"removeRefererHeaderOnRedirect": {
+							"description": "Whether the Referer header is dropped when following a redirect.",
+							"type": "boolean"
+						},
+						"insecureHTTPParser": {
+							"description": "Whether responses that violate the HTTP spec are accepted.",
+							"type": "boolean"
+						},
+						"disableUrlEncoding": {
+							"description": "Whether the URL is sent as authored, without encoding.",
+							"type": "boolean"
+						},
+						"disableCookies": {
+							"description": "Whether the cookie jar is bypassed for the request.",
+							"type": "boolean"
+						},
+						"maxResponseSize": {
+							"description": "Largest response accepted, in bytes.",
+							"type": "number"
+						},
+						"maxHeaderSize": {
+							"description": "Largest response header block accepted, in bytes.",
+							"type": "number"
+						},
+						"tlsPreferServerCiphers": {
+							"description": "Whether the server cipher order wins over the client order.",
+							"type": "boolean"
+						},
+						"tlsDisabledProtocols": {
+							"description": "TLS versions the handshake refuses.",
+							"type": "array",
+							"items": {
+								"type": "string",
+								"enum": [
+									"TLSv1",
+									"TLSv1_1",
+									"TLSv1_2",
+									"TLSv1_3"
+								]
+							}
+						},
+						"tlsCipherSelection": {
+							"description": "Ciphers offered in the handshake, in order of preference.",
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"disabledSystemHeaders": {
+							"description": "Headers Postman adds by default that are suppressed.",
+							"type": "array",
+							"items": {
+								"type": "string",
+								"enum": [
+									"cache-control",
+									"postman-token",
+									"content-type",
+									"content-length",
+									"accept-encoding",
+									"user-agent",
+									"connection",
+									"accept",
+									"host",
+									"x-amz-date",
+									"x-amz-security-token",
+									"x-amz-content-sha256"
+								]
+							}
+						}
+					},
+					"additionalProperties": false
+				},
+				"scripts": {
+					"description": "Scripts that run on events in the request execution lifecycle.",
+					"allOf": [
+						{
+							"$ref": "#/definitions/v3-http-scripts"
+						}
+					]
+				},
+				"uses": {
+					"description": "Source request this request reuses.",
+					"type": "object",
+					"properties": {
+						"items": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							},
+							"description": "Identifier of the source request."
+						}
+					},
+					"required": [
+						"items"
+					],
+					"additionalProperties": false
+				},
+				"usedBy": {
+					"description": "Requests that reuse this request as their source.",
+					"type": "object",
+					"properties": {
+						"items": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							},
+							"description": "Identifiers of the requests that reuse this one."
+						}
+					},
+					"required": [
+						"items"
+					],
+					"additionalProperties": false
+				}
+			},
+			"required": [
+				"name",
+				"$kind"
+			],
+			"additionalProperties": false,
+			"title": "HTTP request"
+		},
+		"v3-key-value-meta-with-type": {
+			"type": "object",
+			"properties": {
+				"key": {
+					"type": "string",
+					"description": "Name of the entry."
+				},
+				"value": {
+					"type": "string",
+					"description": "Value of the entry."
+				},
+				"disabled": {
+					"description": "Whether the entry is excluded from the request.",
+					"type": "boolean"
+				},
+				"description": {
+					"description": "Human-readable note about the entry.",
+					"type": "string"
+				},
+				"$type": {
+					"description": "JSON Schema for the value, either a type name such as `number` or a serialized schema object.",
+					"type": "string"
+				}
+			},
+			"required": [
+				"key",
+				"value"
+			],
+			"additionalProperties": false,
+			"title": "Descriptive key-value with type"
+		},
+		"v3-http-request-body": {
+			"oneOf": [
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string",
+							"const": "none",
+							"description": "Format of the request body."
+						}
+					},
+					"required": [
+						"type"
+					],
+					"additionalProperties": false,
+					"title": "No body"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string",
+							"const": "formdata",
+							"description": "Format of the request body."
+						},
+						"content": {
+							"type": "array",
+							"items": {
+								"oneOf": [
+									{
+										"type": "object",
+										"properties": {
+											"type": {
+												"type": "string",
+												"const": "text",
+												"description": "Kind of form part."
+											},
+											"key": {
+												"type": "string",
+												"description": "Name of the form field."
+											},
+											"value": {
+												"type": "string",
+												"description": "Value of the form field."
+											},
+											"contentType": {
+												"description": "Content type sent for this part.",
+												"type": "string"
+											},
+											"description": {
+												"description": "Human-readable note about the field.",
+												"type": "string"
+											},
+											"disabled": {
+												"description": "Whether the field is left out of the body.",
+												"type": "boolean"
+											}
+										},
+										"required": [
+											"type",
+											"key",
+											"value"
+										],
+										"additionalProperties": false,
+										"title": "Text part"
+									},
+									{
+										"type": "object",
+										"properties": {
+											"type": {
+												"type": "string",
+												"const": "file",
+												"description": "Kind of form part."
+											},
+											"key": {
+												"type": "string",
+												"description": "Name of the form field."
+											},
+											"src": {
+												"description": "Path to the file, or paths for a multi-file field.",
+												"oneOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													}
+												]
+											},
+											"contentType": {
+												"description": "Content type sent for this part.",
+												"type": "string"
+											},
+											"description": {
+												"description": "Human-readable note about the field.",
+												"type": "string"
+											},
+											"disabled": {
+												"description": "Whether the field is left out of the body.",
+												"type": "boolean"
+											}
+										},
+										"required": [
+											"type",
+											"key",
+											"src"
+										],
+										"additionalProperties": false,
+										"title": "File part"
+									}
+								]
+							},
+							"description": "Parts of the multipart body."
+						}
+					},
+					"required": [
+						"type",
+						"content"
+					],
+					"additionalProperties": false,
+					"title": "Multipart form body"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string",
+							"const": "urlencoded",
+							"description": "Format of the request body."
+						},
+						"content": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/v3-key-value-meta"
+							},
+							"description": "Fields encoded into the body as a query string."
+						}
+					},
+					"required": [
+						"type",
+						"content"
+					],
+					"additionalProperties": false,
+					"title": "URL-encoded body"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string",
+							"enum": [
+								"text",
+								"json",
+								"xml",
+								"html",
+								"javascript"
+							],
+							"description": "Format of the request body."
+						},
+						"content": {
+							"type": "string",
+							"description": "Raw body, as text."
+						},
+						"$type": {
+							"description": "JSON Schema for the body, either a type name such as `object` or a serialized schema object.",
+							"type": "string"
+						}
+					},
+					"required": [
+						"type",
+						"content"
+					],
+					"additionalProperties": false,
+					"title": "Raw body"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string",
+							"const": "file",
+							"description": "Format of the request body."
+						},
+						"content": {
+							"type": "object",
+							"properties": {
+								"src": {
+									"description": "Path to the file sent as the body.",
+									"type": "string"
+								}
+							},
+							"additionalProperties": false,
+							"description": "File sent as the body."
+						}
+					},
+					"required": [
+						"type",
+						"content"
+					],
+					"additionalProperties": false,
+					"title": "File body"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string",
+							"const": "graphql",
+							"description": "Format of the request body."
+						},
+						"content": {
+							"type": "object",
+							"properties": {
+								"query": {
+									"type": "string",
+									"description": "GraphQL document holding the operations to send."
+								},
+								"variables": {
+									"description": "Variables for the operation, as a JSON object.",
+									"type": "string"
+								},
+								"operationName": {
+									"description": "Operation to run, for a query document that defines several.",
+									"oneOf": [
+										{
+											"type": "string"
+										},
+										{
+											"type": "null"
+										}
+									]
+								}
+							},
+							"required": [
+								"query"
+							],
+							"additionalProperties": false,
+							"description": "GraphQL payload sent as the body."
+						}
+					},
+					"required": [
+						"type",
+						"content"
+					],
+					"additionalProperties": false,
+					"title": "GraphQL body"
+				}
+			],
+			"title": "HTTP request body"
+		},
+		"v3-http-auth": {
+			"oneOf": [
+				{
+					"type": "object",
+					"properties": {
+						"id": {
+							"description": "Identifier of the credential set.",
+							"type": "string"
+						},
+						"name": {
+							"description": "Display name of the credential set.",
+							"type": "string"
+						},
+						"description": {
+							"description": "Human-readable note about the credential set.",
+							"type": "string"
+						},
+						"type": {
+							"type": "string",
+							"const": "noauth",
+							"description": "Auth scheme to apply."
+						}
+					},
+					"required": [
+						"type"
+					],
+					"additionalProperties": false,
+					"title": "No auth"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"id": {
+							"description": "Identifier of the credential set.",
+							"type": "string"
+						},
+						"name": {
+							"description": "Display name of the credential set.",
+							"type": "string"
+						},
+						"description": {
+							"description": "Human-readable note about the credential set.",
+							"type": "string"
+						},
+						"credentials": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"key": {
+										"type": "string",
+										"description": "Name of the credential field."
+									},
+									"value": {
+										"description": "Value of the credential field."
+									}
+								},
+								"required": [
+									"key",
+									"value"
+								],
+								"additionalProperties": false
+							},
+							"description": "Credential fields for the auth type, as key-value pairs."
+						},
+						"type": {
+							"type": "string",
+							"enum": [
+								"inherit",
+								"basic",
+								"bearer",
+								"apikey",
+								"oauth1",
+								"oauth2",
+								"jwt",
+								"ntlm",
+								"digest",
+								"edgegrid",
+								"hawk",
+								"asap",
+								"awsv4"
+							],
+							"description": "Auth scheme to apply. `inherit` takes the credentials of the nearest ancestor that defines them."
+						}
+					},
+					"required": [
+						"credentials",
+						"type"
+					],
+					"additionalProperties": false,
+					"title": "Credential set"
+				}
+			],
+			"title": "HTTP auth"
+		},
+		"v3-http-example": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"description": "Identifier of the item.",
+					"type": "string"
+				},
+				"name": {
+					"type": "string",
+					"description": "Display name of the item."
+				},
+				"description": {
+					"description": "Markdown documentation.",
+					"type": "string",
+					"maxLength": 1000000
+				},
+				"auth": {
+					"description": "Credentials applied to the request.",
+					"allOf": [
+						{
+							"$ref": "#/definitions/v3-http-auth"
+						}
+					]
+				},
+				"$kind": {
+					"type": "string",
+					"const": "http-example"
+				},
+				"request": {
+					"description": "Request the example was captured from.",
+					"type": "object",
+					"properties": {
+						"url": {
+							"description": "URL the request is sent to, including any query string.",
+							"type": "string"
+						},
+						"method": {
+							"description": "HTTP method of the request.",
+							"type": "string"
+						},
+						"headers": {
+							"description": "Headers sent with the request.",
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/v3-key-value-meta"
+							}
+						},
+						"queryParams": {
+							"description": "Parameters appended to the URL query string.",
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"key": {
+										"description": "Name of the parameter.",
+										"oneOf": [
+											{
+												"type": "string"
+											},
+											{
+												"type": "null"
+											}
+										]
+									},
+									"value": {
+										"description": "Value of the parameter.",
+										"oneOf": [
+											{
+												"type": "string"
+											},
+											{
+												"type": "null"
+											}
+										]
+									},
+									"description": {
+										"description": "Human-readable note about the parameter.",
+										"type": "string"
+									},
+									"disabled": {
+										"description": "Whether the parameter is left out of the URL.",
+										"type": "boolean"
+									}
+								},
+								"additionalProperties": false
+							}
+						},
+						"pathVariables": {
+							"description": "Values substituted for `:name` segments in the URL path.",
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/v3-key-value-meta"
+							}
+						},
+						"body": {
+							"description": "Payload sent with the request.",
+							"allOf": [
+								{
+									"$ref": "#/definitions/v3-http-request-body"
+								}
+							]
+						}
+					},
+					"additionalProperties": false
+				},
+				"response": {
+					"type": "object",
+					"properties": {
+						"statusCode": {
+							"type": "number",
+							"description": "HTTP status code of the response."
+						},
+						"statusText": {
+							"type": "string",
+							"description": "Reason phrase sent with the status code."
+						},
+						"headers": {
+							"description": "Headers returned with the response.",
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/v3-key-value-meta-with-type"
+							}
+						},
+						"body": {
+							"type": "object",
+							"properties": {
+								"type": {
+									"type": "string",
+									"enum": [
+										"text",
+										"json",
+										"xml",
+										"html",
+										"javascript",
+										"yaml"
+									],
+									"description": "How the body is rendered."
+								},
+								"content": {
+									"type": "string",
+									"description": "Response body, as text."
+								},
+								"$type": {
+									"description": "JSON Schema for the body, either a type name such as `object` or a serialized schema object.",
+									"type": "string"
+								}
+							},
+							"required": [
+								"type",
+								"content"
+							],
+							"additionalProperties": false,
+							"description": "Body of the response."
+						}
+					},
+					"required": [
+						"statusCode",
+						"statusText",
+						"body"
+					],
+					"additionalProperties": false,
+					"description": "Response captured for the example."
+				}
+			},
+			"required": [
+				"name",
+				"$kind",
+				"response"
+			],
+			"additionalProperties": false,
+			"title": "HTTP example"
+		},
+		"v3-http-scripts": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"type": {
+						"type": "string",
+						"enum": [
+							"beforeRequest",
+							"afterResponse"
+						],
+						"description": "Lifecycle point the script runs at."
+					},
+					"code": {
+						"type": "string",
+						"description": "Source of the script."
+					},
+					"language": {
+						"description": "Language the script is written in.",
+						"type": "string",
+						"enum": [
+							"text/javascript"
+						]
+					},
+					"packages": {
+						"description": "Package Library packages the script imports, keyed by the name it imports them under.",
+						"type": "object",
+						"propertyNames": {
+							"type": "string"
+						},
+						"additionalProperties": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"type": "string",
+									"description": "Identifier of the package."
+								}
+							},
+							"required": [
+								"id"
+							],
+							"additionalProperties": false
+						}
+					},
+					"requests": {
+						"description": "Collection requests the script sends, keyed by the name it references them under.",
+						"type": "object",
+						"propertyNames": {
+							"type": "string"
+						},
+						"additionalProperties": {
+							"type": "object",
+							"properties": {
+								"workspace": {
+									"type": "string",
+									"description": "Identifier of the workspace."
+								},
+								"collection": {
+									"type": "string",
+									"description": "Identifier of the collection."
+								},
+								"location": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"description": "Path to the request, from the collection root."
+								}
+							},
+							"required": [
+								"workspace",
+								"collection",
+								"location"
+							],
+							"additionalProperties": false
+						}
+					}
+				},
+				"required": [
+					"type",
+					"code"
+				],
+				"additionalProperties": false
+			},
+			"title": "HTTP scripts"
+		},
+		"v3-kafka-request": {
+			"oneOf": [
+				{
+					"type": "object",
+					"properties": {
+						"$kind": {
+							"type": "string",
+							"const": "kafka-request"
+						},
+						"id": {
+							"description": "Identifier of the item.",
+							"type": "string"
+						},
+						"name": {
+							"type": "string",
+							"description": "Display name of the item."
+						},
+						"description": {
+							"description": "Markdown documentation.",
+							"type": "string",
+							"maxLength": 1000000
+						},
+						"url": {
+							"description": "Bootstrap servers the client connects to.",
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"auth": {
+							"description": "Credentials applied to the connection.",
+							"allOf": [
+								{
+									"$ref": "#/definitions/v3-kafka-auth"
+								}
+							]
+						},
+						"settings": {
+							"description": "Transport settings for the connection.",
+							"type": "object",
+							"properties": {
+								"secureConnection": {
+									"description": "Whether the connection uses TLS.",
+									"type": "boolean"
+								},
+								"strictSSL": {
+									"description": "Whether the broker certificate is verified.",
+									"type": "boolean"
+								},
+								"compression": {
+									"description": "Codec applied to produced records.",
+									"type": "string",
+									"enum": [
+										"none",
+										"gzip",
+										"snappy",
+										"lz4",
+										"zstd"
+									]
+								}
+							},
+							"additionalProperties": false
+						},
+						"schema": {
+							"description": "Schema used for every topic, from an API specification or a schema registry. A topic-level `schema` overrides it.",
+							"allOf": [
+								{
+									"$ref": "#/definitions/v3-kafka-schema"
+								}
+							]
+						},
+						"messages": {
+							"description": "Saved messages for the request.",
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/v3-kafka-message"
+							}
+						},
+						"scripts": {
+							"description": "Scripts that run on events in the request execution lifecycle.",
+							"allOf": [
+								{
+									"$ref": "#/definitions/v3-kafka-scripts"
+								}
+							]
+						},
+						"mode": {
+							"type": "string",
+							"const": "producer",
+							"description": "Whether the request produces or consumes records."
+						},
+						"acknowledgements": {
+							"description": "How many brokers acknowledge a send. Maps to the Kafka levels 0, 1, and -1.",
+							"type": "string",
+							"enum": [
+								"none",
+								"leader",
+								"all"
+							]
+						}
+					},
+					"required": [
+						"$kind",
+						"name",
+						"mode"
+					],
+					"additionalProperties": false,
+					"title": "Kafka producer request"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"$kind": {
+							"type": "string",
+							"const": "kafka-request"
+						},
+						"id": {
+							"description": "Identifier of the item.",
+							"type": "string"
+						},
+						"name": {
+							"type": "string",
+							"description": "Display name of the item."
+						},
+						"description": {
+							"description": "Markdown documentation.",
+							"type": "string",
+							"maxLength": 1000000
+						},
+						"url": {
+							"description": "Bootstrap servers the client connects to.",
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"auth": {
+							"description": "Credentials applied to the connection.",
+							"allOf": [
+								{
+									"$ref": "#/definitions/v3-kafka-auth"
+								}
+							]
+						},
+						"settings": {
+							"description": "Transport settings for the connection.",
+							"type": "object",
+							"properties": {
+								"secureConnection": {
+									"description": "Whether the connection uses TLS.",
+									"type": "boolean"
+								},
+								"strictSSL": {
+									"description": "Whether the broker certificate is verified.",
+									"type": "boolean"
+								},
+								"compression": {
+									"description": "Codec applied to produced records.",
+									"type": "string",
+									"enum": [
+										"none",
+										"gzip",
+										"snappy",
+										"lz4",
+										"zstd"
+									]
+								}
+							},
+							"additionalProperties": false
+						},
+						"schema": {
+							"description": "Schema used for every topic, from an API specification or a schema registry. A topic-level `schema` overrides it.",
+							"allOf": [
+								{
+									"$ref": "#/definitions/v3-kafka-schema"
+								}
+							]
+						},
+						"messages": {
+							"description": "Saved messages for the request.",
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/v3-kafka-message"
+							}
+						},
+						"scripts": {
+							"description": "Scripts that run on events in the request execution lifecycle.",
+							"allOf": [
+								{
+									"$ref": "#/definitions/v3-kafka-scripts"
+								}
+							]
+						},
+						"mode": {
+							"type": "string",
+							"const": "consumer",
+							"description": "Whether the request produces or consumes records."
+						},
+						"topics": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"name": {
+										"type": "string",
+										"description": "Topic to consume. A leading `^` marks a regex; any other value is a literal name."
+									},
+									"disabled": {
+										"description": "Whether the entry is left out of the subscription.",
+										"type": "boolean"
+									},
+									"description": {
+										"description": "Human-readable note about the entry.",
+										"type": "string"
+									},
+									"schema": {
+										"description": "Schema for this topic, overriding the request-level one.",
+										"allOf": [
+											{
+												"$ref": "#/definitions/v3-kafka-topic-schema"
+											}
+										]
+									},
+									"partitions": {
+										"description": "Partitions to consume. Omitted, the entry consumes every partition it resolves to.",
+										"minItems": 1,
+										"type": "array",
+										"items": {
+											"type": "integer",
+											"minimum": 0,
+											"maximum": 9007199254740991
+										}
+									},
+									"startOffset": {
+										"description": "Offset the consume starts at, within each partition.",
+										"type": "string",
+										"pattern": "^\\d+$"
+									},
+									"endOffset": {
+										"description": "Offset the consume stops at, within each partition.",
+										"type": "string",
+										"pattern": "^\\d+$"
+									}
+								},
+								"required": [
+									"name"
+								],
+								"additionalProperties": false
+							},
+							"description": "Topics the request consumes from."
+						},
+						"startPosition": {
+							"oneOf": [
+								{
+									"type": "object",
+									"properties": {
+										"type": {
+											"type": "string",
+											"const": "beginning",
+											"description": "Where in the log the consume starts."
+										}
+									},
+									"required": [
+										"type"
+									],
+									"additionalProperties": false,
+									"title": "From the beginning of the log"
+								},
+								{
+									"type": "object",
+									"properties": {
+										"type": {
+											"type": "string",
+											"const": "end",
+											"description": "Where in the log the consume starts."
+										}
+									},
+									"required": [
+										"type"
+									],
+									"additionalProperties": false,
+									"title": "From the end of the log"
+								},
+								{
+									"type": "object",
+									"properties": {
+										"type": {
+											"type": "string",
+											"const": "timestamp",
+											"description": "Where in the log the consume starts."
+										},
+										"timestamp": {
+											"type": "integer",
+											"minimum": -9007199254740991,
+											"maximum": 9007199254740991,
+											"description": "Epoch milliseconds the consume starts from."
+										}
+									},
+									"required": [
+										"type",
+										"timestamp"
+									],
+									"additionalProperties": false,
+									"title": "From a timestamp"
+								}
+							],
+							"description": "Where in the log the consume starts."
+						},
+						"stopAfter": {
+							"description": "Conditions that end the consume. The first one reached wins.",
+							"type": "object",
+							"properties": {
+								"maxRecords": {
+									"description": "How many records to consume before stopping.",
+									"type": "integer",
+									"minimum": 0,
+									"maximum": 9007199254740991
+								},
+								"maxDurationMs": {
+									"description": "How long to consume for before stopping, in milliseconds.",
+									"type": "number"
+								},
+								"idleMs": {
+									"description": "How long to wait without a record before stopping, in milliseconds.",
+									"type": "number"
+								},
+								"endPosition": {
+									"description": "Position that ends the consume. The record at the boundary is emitted, then the consume ends.",
+									"type": "object",
+									"properties": {
+										"type": {
+											"type": "string",
+											"const": "timestamp",
+											"description": "What the boundary is measured against."
+										},
+										"timestamp": {
+											"type": "integer",
+											"minimum": -9007199254740991,
+											"maximum": 9007199254740991,
+											"description": "Epoch milliseconds the consume stops at."
+										}
+									},
+									"required": [
+										"type",
+										"timestamp"
+									],
+									"additionalProperties": false,
+									"title": "Until a timestamp"
+								}
+							},
+							"additionalProperties": false
+						}
+					},
+					"required": [
+						"$kind",
+						"name",
+						"mode",
+						"topics",
+						"startPosition"
+					],
+					"additionalProperties": false,
+					"title": "Kafka consumer request"
+				}
+			],
+			"title": "Kafka request"
+		},
+		"v3-kafka-auth": {
+			"oneOf": [
+				{
+					"type": "object",
+					"properties": {
+						"id": {
+							"description": "Identifier of the credential set.",
+							"type": "string"
+						},
+						"name": {
+							"description": "Display name of the credential set.",
+							"type": "string"
+						},
+						"description": {
+							"description": "Human-readable note about the credential set.",
+							"type": "string"
+						},
+						"type": {
+							"type": "string",
+							"const": "noauth",
+							"description": "Auth scheme to apply."
+						}
+					},
+					"required": [
+						"type"
+					],
+					"additionalProperties": false,
+					"title": "No auth"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"id": {
+							"description": "Identifier of the credential set.",
+							"type": "string"
+						},
+						"name": {
+							"description": "Display name of the credential set.",
+							"type": "string"
+						},
+						"description": {
+							"description": "Human-readable note about the credential set.",
+							"type": "string"
+						},
+						"credentials": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"key": {
+										"type": "string",
+										"description": "Name of the credential field."
+									},
+									"value": {
+										"description": "Value of the credential field."
+									}
+								},
+								"required": [
+									"key",
+									"value"
+								],
+								"additionalProperties": false
+							},
+							"description": "Credential fields for the auth type, as key-value pairs."
+						},
+						"type": {
+							"type": "string",
+							"enum": [
+								"inherit",
+								"sasl",
+								"awsv4",
+								"oauth2",
+								"bearer"
+							],
+							"description": "Auth scheme to apply. `inherit` takes the credentials of the nearest ancestor that defines them."
+						}
+					},
+					"required": [
+						"credentials",
+						"type"
+					],
+					"additionalProperties": false,
+					"title": "Credential set"
+				}
+			],
+			"title": "Kafka auth"
+		},
+		"v3-kafka-schema": {
+			"title": "Kafka schema source",
+			"allOf": [
+				{
+					"$ref": "#/definitions/v3-schema"
+				}
+			]
+		},
+		"v3-kafka-message": {
+			"type": "object",
+			"properties": {
+				"$kind": {
+					"type": "string",
+					"const": "kafka-message"
+				},
+				"id": {
+					"description": "Identifier of the item.",
+					"type": "string"
+				},
+				"name": {
+					"type": "string",
+					"description": "Display name of the message."
+				},
+				"topic": {
+					"type": "string",
+					"description": "Topic the message is sent to."
+				},
+				"schema": {
+					"description": "Schema for this message's topic, overriding the request-level one.",
+					"allOf": [
+						{
+							"$ref": "#/definitions/v3-kafka-message-schema"
+						}
+					]
+				},
+				"key": {
+					"description": "Key the message is partitioned by. Omitted, partitioning is left to the producer.",
+					"allOf": [
+						{
+							"$ref": "#/definitions/v3-kafka-content"
+						}
+					]
+				},
+				"value": {
+					"description": "Body of the message. Omitted, the message is a tombstone, which differs from an empty `content`.",
+					"allOf": [
+						{
+							"$ref": "#/definitions/v3-kafka-content"
+						}
+					]
+				},
+				"headers": {
+					"description": "Headers sent with the message.",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/v3-key-value-meta"
+					}
+				},
+				"partition": {
+					"description": "Partition to send to, bypassing the producer's partitioner.",
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 9007199254740991
+				},
+				"timestamp": {
+					"description": "Epoch milliseconds stamped on the message, overriding the send-time stamp.",
+					"type": "integer",
+					"minimum": -9007199254740991,
+					"maximum": 9007199254740991
+				}
+			},
+			"required": [
+				"$kind",
+				"name",
+				"topic"
+			],
+			"additionalProperties": false,
+			"title": "Kafka message"
+		},
+		"v3-kafka-message-schema": {
+			"title": "Kafka message schema source",
+			"allOf": [
+				{
+					"$ref": "#/definitions/v3-schema"
+				}
+			]
+		},
+		"v3-kafka-content": {
+			"type": "object",
+			"properties": {
+				"contentType": {
+					"type": "string",
+					"enum": [
+						"text",
+						"json",
+						"hex",
+						"base64"
+					],
+					"description": "How the payload is encoded."
+				},
+				"content": {
+					"type": "string",
+					"description": "Payload, as text."
+				}
+			},
+			"required": [
+				"contentType",
+				"content"
+			],
+			"additionalProperties": false,
+			"title": "Kafka content"
+		},
+		"v3-kafka-scripts": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"type": {
+						"type": "string",
+						"enum": [
+							"beforeConsume",
+							"onIncomingMessage",
+							"afterConsume",
+							"beforeProduce",
+							"afterProduce"
+						],
+						"description": "Lifecycle point the script runs at."
+					},
+					"code": {
+						"type": "string",
+						"description": "Source of the script."
+					},
+					"language": {
+						"description": "Language the script is written in.",
+						"type": "string",
+						"enum": [
+							"text/javascript"
+						]
+					},
+					"packages": {
+						"description": "Package Library packages the script imports, keyed by the name it imports them under.",
+						"type": "object",
+						"propertyNames": {
+							"type": "string"
+						},
+						"additionalProperties": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"type": "string",
+									"description": "Identifier of the package."
+								}
+							},
+							"required": [
+								"id"
+							],
+							"additionalProperties": false
+						}
+					},
+					"requests": {
+						"description": "Collection requests the script sends, keyed by the name it references them under.",
+						"type": "object",
+						"propertyNames": {
+							"type": "string"
+						},
+						"additionalProperties": {
+							"type": "object",
+							"properties": {
+								"workspace": {
+									"type": "string",
+									"description": "Identifier of the workspace."
+								},
+								"collection": {
+									"type": "string",
+									"description": "Identifier of the collection."
+								},
+								"location": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"description": "Path to the request, from the collection root."
+								}
+							},
+							"required": [
+								"workspace",
+								"collection",
+								"location"
+							],
+							"additionalProperties": false
+						}
+					}
+				},
+				"required": [
+					"type",
+					"code"
+				],
+				"additionalProperties": false
+			},
+			"title": "Kafka scripts"
+		},
+		"v3-kafka-topic-schema": {
+			"title": "Kafka topic schema source",
+			"allOf": [
+				{
+					"$ref": "#/definitions/v3-schema"
+				}
+			]
+		},
+		"v3-mcp-request": {
+			"oneOf": [
+				{
+					"type": "object",
+					"properties": {
+						"id": {
+							"description": "Identifier of the item.",
+							"type": "string"
+						},
+						"name": {
+							"type": "string",
+							"description": "Display name of the item."
+						},
+						"description": {
+							"description": "Markdown documentation.",
+							"type": "string",
+							"maxLength": 1000000
+						},
+						"$kind": {
+							"type": "string",
+							"const": "mcp-request"
+						},
+						"message": {
+							"description": "JSON-RPC message sent to the server.",
+							"type": "string"
+						},
+						"auth": {
+							"description": "Credentials applied to the connection.",
+							"allOf": [
+								{
+									"$ref": "#/definitions/v3-mcp-auth"
+								}
+							]
+						},
+						"transport": {
+							"type": "string",
+							"const": "sse",
+							"description": "How the client connects to the server."
+						},
+						"url": {
+							"description": "URL of the MCP server.",
+							"type": "string"
+						},
+						"headers": {
+							"description": "Headers sent with each request to the server.",
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/v3-key-value-meta"
+							}
+						},
+						"settings": {
+							"description": "Transport settings for the connection.",
+							"type": "object",
+							"properties": {
+								"version": {
+									"description": "MCP protocol version the client speaks.",
+									"type": "string",
+									"enum": [
+										"auto",
+										"legacy",
+										"2026-07-28"
+									]
+								},
+								"strictSSL": {
+									"description": "Whether the server certificate is verified.",
+									"type": "boolean"
+								},
+								"requestTimeout": {
+									"description": "How long to wait for a response, in milliseconds.",
+									"type": "number"
+								},
+								"sessionTimeout": {
+									"description": "How long an idle session is kept open, in milliseconds.",
+									"type": "number"
+								}
+							},
+							"additionalProperties": false
+						}
+					},
+					"required": [
+						"name",
+						"$kind",
+						"transport"
+					],
+					"additionalProperties": false,
+					"title": "MCP request over SSE"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"id": {
+							"description": "Identifier of the item.",
+							"type": "string"
+						},
+						"name": {
+							"type": "string",
+							"description": "Display name of the item."
+						},
+						"description": {
+							"description": "Markdown documentation.",
+							"type": "string",
+							"maxLength": 1000000
+						},
+						"$kind": {
+							"type": "string",
+							"const": "mcp-request"
+						},
+						"message": {
+							"description": "JSON-RPC message sent to the server.",
+							"type": "string"
+						},
+						"auth": {
+							"description": "Credentials applied to the connection.",
+							"allOf": [
+								{
+									"$ref": "#/definitions/v3-mcp-auth"
+								}
+							]
+						},
+						"transport": {
+							"type": "string",
+							"const": "stdio",
+							"description": "How the client connects to the server."
+						},
+						"command": {
+							"description": "Command that starts the MCP server process.",
+							"type": "string"
+						},
+						"env": {
+							"description": "Environment variables set for the server process.",
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/v3-key-value-meta"
+							}
+						},
+						"settings": {
+							"description": "Transport settings for the connection.",
+							"type": "object",
+							"properties": {
+								"version": {
+									"description": "MCP protocol version the client speaks.",
+									"type": "string",
+									"enum": [
+										"auto",
+										"legacy",
+										"2026-07-28"
+									]
+								},
+								"requestTimeout": {
+									"description": "How long to wait for a response, in milliseconds.",
+									"type": "number"
+								}
+							},
+							"additionalProperties": false
+						}
+					},
+					"required": [
+						"name",
+						"$kind",
+						"transport"
+					],
+					"additionalProperties": false,
+					"title": "MCP request over stdio"
+				}
+			],
+			"title": "MCP request"
+		},
+		"v3-mcp-auth": {
+			"oneOf": [
+				{
+					"type": "object",
+					"properties": {
+						"id": {
+							"description": "Identifier of the credential set.",
+							"type": "string"
+						},
+						"name": {
+							"description": "Display name of the credential set.",
+							"type": "string"
+						},
+						"description": {
+							"description": "Human-readable note about the credential set.",
+							"type": "string"
+						},
+						"type": {
+							"type": "string",
+							"const": "noauth",
+							"description": "Auth scheme to apply."
+						}
+					},
+					"required": [
+						"type"
+					],
+					"additionalProperties": false,
+					"title": "No auth"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"id": {
+							"description": "Identifier of the credential set.",
+							"type": "string"
+						},
+						"name": {
+							"description": "Display name of the credential set.",
+							"type": "string"
+						},
+						"description": {
+							"description": "Human-readable note about the credential set.",
+							"type": "string"
+						},
+						"credentials": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"key": {
+										"type": "string",
+										"description": "Name of the credential field."
+									},
+									"value": {
+										"description": "Value of the credential field."
+									}
+								},
+								"required": [
+									"key",
+									"value"
+								],
+								"additionalProperties": false
+							},
+							"description": "Credential fields for the auth type, as key-value pairs."
+						},
+						"type": {
+							"type": "string",
+							"enum": [
+								"inherit",
+								"basic",
+								"bearer",
+								"oauth2"
+							],
+							"description": "Auth scheme to apply. `inherit` takes the credentials of the nearest ancestor that defines them."
+						}
+					},
+					"required": [
+						"credentials",
+						"type"
+					],
+					"additionalProperties": false,
+					"title": "Credential set"
+				}
+			],
+			"title": "MCP auth"
+		},
+		"v3-llm-request": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"description": "Identifier of the item.",
+					"type": "string"
+				},
+				"name": {
+					"type": "string",
+					"description": "Display name of the item."
+				},
+				"description": {
+					"description": "Markdown documentation.",
+					"type": "string",
+					"maxLength": 1000000
+				},
+				"$kind": {
+					"type": "string",
+					"const": "llm-request"
+				},
+				"url": {
+					"description": "URL of the provider endpoint the request is sent to.",
+					"type": "string"
+				},
+				"config": {
+					"description": "Model and provider the request targets.",
+					"type": "object",
+					"properties": {
+						"model": {
+							"type": "string",
+							"description": "Model the request is sent to."
+						},
+						"provider": {
+							"type": "string",
+							"description": "Provider serving the model."
+						}
+					},
+					"required": [
+						"model",
+						"provider"
+					],
+					"additionalProperties": false
+				},
+				"settings": {
+					"description": "Sampling and execution settings for the request.",
+					"type": "object",
+					"properties": {
+						"temperature": {
+							"description": "How much randomness the model samples with.",
+							"type": "number"
+						},
+						"presencePenalty": {
+							"description": "How strongly the model is pushed toward new topics.",
+							"type": "number"
+						},
+						"frequencyPenalty": {
+							"description": "How strongly the model is pushed away from repeating itself.",
+							"type": "number"
+						},
+						"maxToken": {
+							"description": "Largest completion the model returns, in tokens.",
+							"type": "integer",
+							"minimum": -9007199254740991,
+							"maximum": 9007199254740991
+						},
+						"streamResponse": {
+							"description": "Whether the completion arrives as a stream.",
+							"type": "boolean"
+						},
+						"responseFormatJSON": {
+							"description": "Whether the model is asked to reply with JSON.",
+							"type": "boolean"
+						},
+						"topP": {
+							"description": "Cumulative probability the model samples within.",
+							"type": "number"
+						},
+						"topK": {
+							"description": "How many of the likeliest tokens the model samples from.",
+							"type": "number"
+						},
+						"repetitionPenalty": {
+							"description": "How strongly repeated tokens are penalized.",
+							"type": "number"
+						},
+						"contextWindow": {
+							"description": "How much context the request is allowed to use, in tokens.",
+							"type": "number"
+						},
+						"seed": {
+							"description": "Seed that makes sampling reproducible.",
+							"type": "number"
+						},
+						"maxSteps": {
+							"description": "How many tool-calling rounds a single run may take.",
+							"type": "number"
+						},
+						"streamTools": {
+							"description": "Whether tool calls are streamed as they are produced.",
+							"type": "boolean"
+						},
+						"toolTimeoutMs": {
+							"description": "How long a tool call may run, in milliseconds.",
+							"type": "integer",
+							"minimum": 0,
+							"maximum": 9007199254740991
+						}
+					},
+					"additionalProperties": false
+				},
+				"userPrompts": {
+					"description": "Prompts sent as the user turn.",
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"id": {
+								"description": "Identifier of the prompt.",
+								"type": "string"
+							},
+							"value": {
+								"description": "Text of the prompt.",
+								"type": "string"
+							},
+							"timestamp": {
+								"description": "Epoch milliseconds the prompt was authored at.",
+								"type": "number"
+							},
+							"active": {
+								"description": "Whether the prompt is sent with the request.",
+								"type": "boolean"
+							},
+							"contentType": {
+								"description": "How the prompt value is encoded.",
+								"type": "string",
+								"enum": [
+									"text",
+									"image",
+									"audio",
+									"video",
+									"postman_json",
+									"json",
+									"xml",
+									"html",
+									"binary",
+									"hexdump"
+								]
+							}
+						},
+						"additionalProperties": false
+					}
+				},
+				"systemPrompts": {
+					"description": "Prompts sent as the system turn.",
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"id": {
+								"description": "Identifier of the prompt.",
+								"type": "string"
+							},
+							"value": {
+								"description": "Text of the prompt.",
+								"type": "string"
+							},
+							"timestamp": {
+								"description": "Epoch milliseconds the prompt was authored at.",
+								"type": "number"
+							},
+							"active": {
+								"description": "Whether the prompt is sent with the request.",
+								"type": "boolean"
+							},
+							"contentType": {
+								"description": "How the prompt value is encoded.",
+								"type": "string",
+								"enum": [
+									"text",
+									"image",
+									"audio",
+									"video",
+									"postman_json",
+									"json",
+									"xml",
+									"html",
+									"binary",
+									"hexdump"
+								]
+							}
+						},
+						"additionalProperties": false
+					}
+				},
+				"mcpConfig": {
+					"description": "MCP server configuration the request draws tools from, as JSON.",
+					"type": "string"
+				},
+				"enabledTools": {
+					"description": "Names of the MCP tools the model may call.",
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"clientTools": {
+					"description": "Client-side toolsets exposed to the model.",
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"id": {
+								"type": "string",
+								"description": "Handle of the toolset."
+							},
+							"tools": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"id": {
+											"type": "string",
+											"description": "Handle of the tool within the toolset."
+										}
+									},
+									"required": [
+										"id"
+									],
+									"additionalProperties": false
+								},
+								"description": "Tools selected from the toolset."
+							}
+						},
+						"required": [
+							"id",
+							"tools"
+						],
+						"additionalProperties": false
+					}
+				},
+				"auth": {
+					"description": "Credentials applied to the request.",
+					"allOf": [
+						{
+							"$ref": "#/definitions/v3-llm-auth"
+						}
+					]
+				}
+			},
+			"required": [
+				"name",
+				"$kind"
+			],
+			"additionalProperties": false,
+			"title": "LLM request"
+		},
+		"v3-llm-auth": {
+			"oneOf": [
+				{
+					"type": "object",
+					"properties": {
+						"id": {
+							"description": "Identifier of the credential set.",
+							"type": "string"
+						},
+						"name": {
+							"description": "Display name of the credential set.",
+							"type": "string"
+						},
+						"description": {
+							"description": "Human-readable note about the credential set.",
+							"type": "string"
+						},
+						"type": {
+							"type": "string",
+							"const": "noauth",
+							"description": "Auth scheme to apply."
+						}
+					},
+					"required": [
+						"type"
+					],
+					"additionalProperties": false,
+					"title": "No auth"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"id": {
+							"description": "Identifier of the credential set.",
+							"type": "string"
+						},
+						"name": {
+							"description": "Display name of the credential set.",
+							"type": "string"
+						},
+						"description": {
+							"description": "Human-readable note about the credential set.",
+							"type": "string"
+						},
+						"credentials": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"key": {
+										"type": "string",
+										"description": "Name of the credential field."
+									},
+									"value": {
+										"description": "Value of the credential field."
+									}
+								},
+								"required": [
+									"key",
+									"value"
+								],
+								"additionalProperties": false
+							},
+							"description": "Credential fields for the auth type, as key-value pairs."
+						},
+						"type": {
+							"type": "string",
+							"enum": [
+								"basic",
+								"bearer",
+								"apikey",
+								"inherit",
+								"awsv4",
+								"azure"
+							],
+							"description": "Auth scheme to apply. `inherit` takes the credentials of the nearest ancestor that defines them."
+						}
+					},
+					"required": [
+						"credentials",
+						"type"
+					],
+					"additionalProperties": false,
+					"title": "Credential set"
+				}
+			],
+			"title": "LLM auth"
+		},
+		"v3-mqtt-request": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"description": "Identifier of the item.",
+					"type": "string"
+				},
+				"name": {
+					"type": "string",
+					"description": "Display name of the item."
+				},
+				"description": {
+					"description": "Markdown documentation.",
+					"type": "string",
+					"maxLength": 1000000
+				},
+				"url": {
+					"description": "URL of the MQTT broker.",
+					"type": "string"
+				},
+				"clientId": {
+					"description": "Client identifier sent to the broker.",
+					"type": "string"
+				},
+				"version": {
+					"description": "MQTT protocol version, 4 for 3.1.1 or 5 for 5.0.",
+					"type": "number",
+					"enum": [
+						4,
+						5
+					]
+				},
+				"topics": {
+					"description": "Topics the client subscribes to.",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/v3-mqtt-topic"
+					}
+				},
+				"lastWill": {
+					"description": "Message the broker publishes if the client disconnects unexpectedly.",
+					"allOf": [
+						{
+							"$ref": "#/definitions/v3-mqtt-last-will"
+						}
+					]
+				},
+				"properties": {
+					"description": "MQTT 5 properties sent with the connect packet.",
+					"allOf": [
+						{
+							"$ref": "#/definitions/v3-mqtt-connection-properties"
+						}
+					]
+				},
+				"auth": {
+					"description": "Credentials applied to the connection.",
+					"allOf": [
+						{
+							"$ref": "#/definitions/v3-mqtt-auth"
+						}
+					]
+				},
+				"$kind": {
+					"type": "string",
+					"const": "mqtt-request"
+				},
+				"settings": {
+					"description": "Transport settings for the connection.",
+					"type": "object",
+					"properties": {
+						"cleanSession": {
+							"description": "Whether the broker discards session state from earlier connections.",
+							"type": "boolean"
+						},
+						"keepAlive": {
+							"description": "Interval between keep-alive pings, in seconds.",
+							"type": "integer",
+							"minimum": 0,
+							"maximum": 9007199254740991
+						},
+						"autoReconnect": {
+							"description": "Whether the client reconnects after the connection drops.",
+							"type": "boolean"
+						},
+						"connectionTimeout": {
+							"description": "How long to wait for the connection, in milliseconds.",
+							"type": "integer",
+							"minimum": 0,
+							"maximum": 9007199254740991
+						},
+						"strictSSL": {
+							"description": "Whether the broker certificate is verified.",
+							"type": "boolean"
+						}
+					},
+					"additionalProperties": false
+				},
+				"messages": {
+					"description": "Saved messages that can be published over the connection.",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/v3-mqtt-message"
+					}
+				},
+				"examples": {
+					"description": "Saved sessions captured for this request.",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/v3-mqtt-example"
+					}
+				}
+			},
+			"required": [
+				"name",
+				"$kind"
+			],
+			"additionalProperties": false,
+			"title": "MQTT request"
+		},
+		"v3-mqtt-topic": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string",
+					"description": "Topic filter, which may contain wildcards."
+				},
+				"qos": {
+					"description": "Delivery guarantee requested for the subscription.",
+					"type": "number",
+					"enum": [
+						0,
+						1,
+						2
+					]
+				},
+				"subscribe": {
+					"description": "Whether the client subscribes to the topic on connect.",
+					"type": "boolean"
+				},
+				"description": {
+					"description": "Human-readable note about the topic.",
+					"type": "string"
+				},
+				"settings": {
+					"description": "MQTT 5 subscription options for the topic.",
+					"oneOf": [
+						{
+							"type": "object",
+							"properties": {
+								"noLocal": {
+									"description": "Whether the broker withholds messages this client published.",
+									"type": "boolean"
+								},
+								"retainAsPublished": {
+									"description": "Whether forwarded messages keep the retain flag they were published with.",
+									"type": "boolean"
+								},
+								"retainHandling": {
+									"description": "When the broker sends retained messages for the subscription.",
+									"type": "number",
+									"enum": [
+										0,
+										1,
+										2
+									]
+								},
+								"subscriptionIdentifier": {
+									"description": "Identifier the broker echoes on messages matching the subscription.",
+									"type": "integer",
+									"minimum": -9007199254740991,
+									"maximum": 9007199254740991
+								}
+							},
+							"additionalProperties": false,
+							"title": "Subscription options"
+						},
+						{
+							"type": "number",
+							"const": 0,
+							"title": "No subscription options"
+						}
+					]
+				},
+				"userProperties": {
+					"description": "Custom key-value properties sent with the subscription.",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/v3-key-value"
+					}
+				}
+			},
+			"required": [
+				"name"
+			],
+			"additionalProperties": false,
+			"title": "MQTT topic"
+		},
+		"v3-mqtt-last-will": {
+			"type": "object",
+			"properties": {
+				"payload": {
+					"description": "Payload of the will message.",
+					"type": "string"
+				},
+				"topic": {
+					"description": "Topic the will message is published to.",
+					"type": "string"
+				},
+				"qos": {
+					"description": "Delivery guarantee for the will message.",
+					"type": "number",
+					"enum": [
+						0,
+						1,
+						2
+					]
+				},
+				"retain": {
+					"description": "Whether the broker retains the will message for later subscribers.",
+					"type": "boolean"
+				},
+				"type": {
+					"description": "How the payload is encoded.",
+					"type": "string",
+					"enum": [
+						"text",
+						"json",
+						"hex",
+						"base64"
+					]
+				},
+				"properties": {
+					"description": "MQTT 5 properties sent with the will message.",
+					"allOf": [
+						{
+							"$ref": "#/definitions/v3-mqtt-last-will-properties"
+						}
+					]
+				}
+			},
+			"additionalProperties": false,
+			"title": "MQTT last will"
+		},
+		"v3-mqtt-last-will-properties": {
+			"type": "object",
+			"properties": {
+				"payloadFormatIndicator": {
+					"description": "Whether the payload is UTF-8 text rather than bytes.",
+					"type": "boolean"
+				},
+				"messageExpiryInterval": {
+					"description": "How long the broker keeps the message, in seconds.",
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 9007199254740991
+				},
+				"willDelayInterval": {
+					"description": "How long the broker waits before publishing the will, in seconds.",
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 9007199254740991
+				},
+				"responseTopic": {
+					"description": "Topic a reply to the message is sent to.",
+					"type": "string"
+				},
+				"correlationData": {
+					"description": "Opaque value that ties a reply back to this message.",
+					"type": "string"
+				},
+				"contentType": {
+					"description": "MIME type of the payload.",
+					"type": "string"
+				},
+				"userProperties": {
+					"description": "Custom key-value properties sent with the message.",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/v3-key-value"
+					}
+				}
+			},
+			"additionalProperties": false,
+			"title": "MQTT last will properties"
+		},
+		"v3-mqtt-connection-properties": {
+			"type": "object",
+			"properties": {
+				"sessionExpiryInterval": {
+					"description": "How long the broker keeps session state after disconnect, in seconds.",
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 9007199254740991
+				},
+				"receiveMaximum": {
+					"description": "How many unacknowledged messages the client accepts at once.",
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 9007199254740991
+				},
+				"maximumPacketSize": {
+					"description": "Largest packet the client accepts, in bytes.",
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 9007199254740991
+				},
+				"requestResponseInformation": {
+					"description": "Whether the client asks the broker for response topic information.",
+					"type": "boolean"
+				},
+				"userProperties": {
+					"description": "Custom key-value properties sent with the connect packet.",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/v3-key-value-meta"
+					}
+				}
+			},
+			"additionalProperties": false,
+			"title": "MQTT connection properties"
+		},
+		"v3-mqtt-auth": {
+			"oneOf": [
+				{
+					"type": "object",
+					"properties": {
+						"id": {
+							"description": "Identifier of the credential set.",
+							"type": "string"
+						},
+						"name": {
+							"description": "Display name of the credential set.",
+							"type": "string"
+						},
+						"description": {
+							"description": "Human-readable note about the credential set.",
+							"type": "string"
+						},
+						"type": {
+							"type": "string",
+							"const": "noauth",
+							"description": "Auth scheme to apply."
+						}
+					},
+					"required": [
+						"type"
+					],
+					"additionalProperties": false,
+					"title": "No auth"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"id": {
+							"description": "Identifier of the credential set.",
+							"type": "string"
+						},
+						"name": {
+							"description": "Display name of the credential set.",
+							"type": "string"
+						},
+						"description": {
+							"description": "Human-readable note about the credential set.",
+							"type": "string"
+						},
+						"credentials": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"key": {
+										"type": "string",
+										"description": "Name of the credential field."
+									},
+									"value": {
+										"description": "Value of the credential field."
+									}
+								},
+								"required": [
+									"key",
+									"value"
+								],
+								"additionalProperties": false
+							},
+							"description": "Credential fields for the auth type, as key-value pairs."
+						},
+						"type": {
+							"type": "string",
+							"enum": [
+								"inherit",
+								"basic"
+							],
+							"description": "Auth scheme to apply. `inherit` takes the credentials of the nearest ancestor that defines them."
+						}
+					},
+					"required": [
+						"credentials",
+						"type"
+					],
+					"additionalProperties": false,
+					"title": "Credential set"
+				}
+			],
+			"title": "MQTT auth"
+		},
+		"v3-mqtt-message": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"description": "Identifier of the item.",
+					"type": "string"
+				},
+				"name": {
+					"type": "string",
+					"description": "Display name of the message."
+				},
+				"description": {
+					"description": "Human-readable note about the message.",
+					"type": "string"
+				},
+				"$kind": {
+					"type": "string",
+					"const": "mqtt-message"
+				},
+				"content": {
+					"type": "string",
+					"description": "Payload of the message."
+				},
+				"topic": {
+					"type": "string",
+					"description": "Topic the message is published to."
+				},
+				"qos": {
+					"description": "Delivery guarantee for the message.",
+					"type": "number",
+					"enum": [
+						0,
+						1,
+						2
+					]
+				},
+				"retain": {
+					"description": "Whether the broker retains the message for later subscribers.",
+					"type": "boolean"
+				},
+				"contentType": {
+					"type": "string",
+					"enum": [
+						"text",
+						"json",
+						"hex",
+						"base64"
+					],
+					"description": "How the payload is encoded."
+				},
+				"properties": {
+					"description": "MQTT 5 properties sent with the message.",
+					"allOf": [
+						{
+							"$ref": "#/definitions/v3-mqtt-message-properties"
+						}
+					]
+				}
+			},
+			"required": [
+				"name",
+				"$kind",
+				"content",
+				"topic",
+				"contentType"
+			],
+			"additionalProperties": false,
+			"title": "MQTT message"
+		},
+		"v3-mqtt-message-properties": {
+			"type": "object",
+			"properties": {
+				"payloadFormatIndicator": {
+					"description": "Whether the payload is UTF-8 text rather than bytes.",
+					"type": "boolean"
+				},
+				"messageExpiryInterval": {
+					"description": "How long the broker keeps the message, in seconds.",
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 9007199254740991
+				},
+				"topicAlias": {
+					"description": "Short alias standing in for the topic name.",
+					"type": "integer",
+					"minimum": -9007199254740991,
+					"maximum": 9007199254740991
+				},
+				"responseTopic": {
+					"description": "Topic a reply to the message is sent to.",
+					"type": "string"
+				},
+				"correlationData": {
+					"description": "Opaque value that ties a reply back to this message.",
+					"type": "string"
+				},
+				"subscriptionIdentifier": {
+					"description": "Identifier of the subscription the message arrived on.",
+					"type": "integer",
+					"minimum": -9007199254740991,
+					"maximum": 9007199254740991
+				},
+				"contentType": {
+					"description": "MIME type of the payload.",
+					"type": "string"
+				},
+				"userProperties": {
+					"description": "Custom key-value properties sent with the message.",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/v3-key-value"
+					}
+				}
+			},
+			"additionalProperties": false,
+			"title": "MQTT message properties"
+		},
+		"v3-mqtt-example": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"description": "Identifier of the item.",
+					"type": "string"
+				},
+				"name": {
+					"type": "string",
+					"description": "Display name of the item."
+				},
+				"description": {
+					"description": "Markdown documentation.",
+					"type": "string",
+					"maxLength": 1000000
+				},
+				"auth": {
+					"description": "Credentials applied to the connection.",
+					"allOf": [
+						{
+							"$ref": "#/definitions/v3-mqtt-auth"
+						}
+					]
+				},
+				"$kind": {
+					"type": "string",
+					"const": "mqtt-example"
+				},
+				"request": {
+					"description": "Request the example was captured from.",
+					"type": "object",
+					"properties": {
+						"url": {
+							"description": "URL of the MQTT broker.",
+							"type": "string"
+						},
+						"clientId": {
+							"description": "Client identifier sent to the broker.",
+							"type": "string"
+						},
+						"version": {
+							"description": "MQTT protocol version, 4 for 3.1.1 or 5 for 5.0.",
+							"type": "number",
+							"enum": [
+								4,
+								5
+							]
+						},
+						"topics": {
+							"description": "Topics the client subscribes to.",
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/v3-mqtt-topic"
+							}
+						},
+						"lastWill": {
+							"description": "Message the broker publishes if the client disconnects unexpectedly.",
+							"allOf": [
+								{
+									"$ref": "#/definitions/v3-mqtt-last-will"
+								}
+							]
+						},
+						"properties": {
+							"description": "MQTT 5 properties sent with the connect packet.",
+							"allOf": [
+								{
+									"$ref": "#/definitions/v3-mqtt-connection-properties"
+								}
+							]
+						}
+					},
+					"additionalProperties": false
+				},
+				"response": {
+					"type": "object",
+					"properties": {
+						"events": {
+							"description": "Events recorded during the session, in order.",
+							"type": "array",
+							"items": {
+								"oneOf": [
+									{
+										"type": "object",
+										"properties": {
+											"id": {
+												"type": "string",
+												"description": "Identifier of the event."
+											},
+											"type": {
+												"type": "string",
+												"enum": [
+													"incoming",
+													"outgoing"
+												],
+												"description": "Direction the message traveled."
+											},
+											"content": {
+												"description": "Payload of the message.",
+												"type": "string"
+											},
+											"topic": {
+												"description": "Topic the message was published to.",
+												"type": "string"
+											},
+											"qos": {
+												"description": "Delivery guarantee the message was sent with.",
+												"type": "number",
+												"enum": [
+													0,
+													1,
+													2
+												]
+											},
+											"retain": {
+												"description": "Whether the broker retained the message.",
+												"type": "boolean"
+											},
+											"contentType": {
+												"description": "How the payload is encoded.",
+												"type": "string",
+												"enum": [
+													"text",
+													"json",
+													"binary"
+												]
+											},
+											"properties": {
+												"description": "MQTT 5 properties sent with the message.",
+												"allOf": [
+													{
+														"$ref": "#/definitions/v3-mqtt-message-properties"
+													}
+												]
+											}
+										},
+										"required": [
+											"id",
+											"type"
+										],
+										"additionalProperties": false,
+										"title": "Message event"
+									},
+									{
+										"type": "object",
+										"properties": {
+											"id": {
+												"type": "string",
+												"description": "Identifier of the event."
+											},
+											"type": {
+												"type": "string",
+												"const": "error",
+												"description": "Kind of event."
+											},
+											"content": {
+												"description": "Text of the error.",
+												"type": "string"
+											},
+											"code": {
+												"description": "Error code the broker returned.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"id",
+											"type"
+										],
+										"additionalProperties": false,
+										"title": "Error event"
+									},
+									{
+										"type": "object",
+										"properties": {
+											"id": {
+												"type": "string",
+												"description": "Identifier of the event."
+											},
+											"type": {
+												"type": "string",
+												"enum": [
+													"info",
+													"success"
+												],
+												"description": "Outcome the event records."
+											},
+											"content": {
+												"description": "Text of the notice.",
+												"type": "string"
+											},
+											"system": {
+												"description": "Whether Postman raised the event rather than the broker.",
+												"type": "boolean"
+											}
+										},
+										"required": [
+											"id",
+											"type"
+										],
+										"additionalProperties": false,
+										"title": "Notice event"
+									}
+								]
+							}
+						}
+					},
+					"additionalProperties": false,
+					"description": "Session captured for the example."
+				}
+			},
+			"required": [
+				"name",
+				"$kind",
+				"response"
+			],
+			"additionalProperties": false,
+			"title": "MQTT example"
+		},
+		"v3-websocket-request": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"description": "Identifier of the item.",
+					"type": "string"
+				},
+				"name": {
+					"type": "string",
+					"description": "Display name of the item."
+				},
+				"description": {
+					"description": "Markdown documentation.",
+					"type": "string",
+					"maxLength": 1000000
+				},
+				"url": {
+					"description": "URL of the WebSocket endpoint.",
+					"type": "string"
+				},
+				"headers": {
+					"description": "Headers sent with the handshake request.",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/v3-key-value-meta"
+					}
+				},
+				"queryParams": {
+					"description": "Parameters appended to the URL query string.",
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"key": {
+								"description": "Name of the parameter.",
+								"oneOf": [
+									{
+										"type": "string"
+									},
+									{
+										"type": "null"
+									}
+								]
+							},
+							"value": {
+								"description": "Value of the parameter.",
+								"oneOf": [
+									{
+										"type": "string"
+									},
+									{
+										"type": "null"
+									}
+								]
+							},
+							"description": {
+								"description": "Human-readable note about the parameter.",
+								"type": "string"
+							},
+							"disabled": {
+								"description": "Whether the parameter is left out of the URL.",
+								"type": "boolean"
+							}
+						},
+						"additionalProperties": false
+					}
+				},
+				"auth": {
+					"description": "Credentials applied to the handshake request.",
+					"allOf": [
+						{
+							"$ref": "#/definitions/v3-websocket-auth"
+						}
+					]
+				},
+				"$kind": {
+					"type": "string",
+					"const": "websocket-request"
+				},
+				"settings": {
+					"description": "Transport settings for the connection.",
+					"type": "object",
+					"properties": {
+						"handshakeTimeout": {
+							"description": "How long to wait for the handshake, in milliseconds.",
+							"type": "integer",
+							"minimum": 0,
+							"maximum": 9007199254740991
+						},
+						"retryCount": {
+							"description": "How many times to retry a failed connection.",
+							"type": "integer",
+							"minimum": 0,
+							"maximum": 9007199254740991
+						},
+						"maxPayload": {
+							"description": "Largest message accepted, in bytes.",
+							"type": "number",
+							"minimum": 0
+						},
+						"retryDelay": {
+							"description": "How long to wait between retries, in milliseconds.",
+							"type": "integer",
+							"minimum": 0,
+							"maximum": 9007199254740991
+						},
+						"strictSSL": {
+							"description": "Whether the server certificate is verified.",
+							"type": "boolean"
+						}
+					},
+					"additionalProperties": false
+				},
+				"messages": {
+					"description": "Saved messages that can be sent over the connection.",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/v3-websocket-message"
+					}
+				},
+				"examples": {
+					"description": "Saved sessions captured for this request.",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/v3-websocket-example"
+					}
+				}
+			},
+			"required": [
+				"name",
+				"$kind"
+			],
+			"additionalProperties": false,
+			"title": "WebSocket request"
+		},
+		"v3-websocket-auth": {
+			"oneOf": [
+				{
+					"type": "object",
+					"properties": {
+						"id": {
+							"description": "Identifier of the credential set.",
+							"type": "string"
+						},
+						"name": {
+							"description": "Display name of the credential set.",
+							"type": "string"
+						},
+						"description": {
+							"description": "Human-readable note about the credential set.",
+							"type": "string"
+						},
+						"type": {
+							"type": "string",
+							"const": "noauth",
+							"description": "Auth scheme to apply."
+						}
+					},
+					"required": [
+						"type"
+					],
+					"additionalProperties": false,
+					"title": "No auth"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"id": {
+							"description": "Identifier of the credential set.",
+							"type": "string"
+						},
+						"name": {
+							"description": "Display name of the credential set.",
+							"type": "string"
+						},
+						"description": {
+							"description": "Human-readable note about the credential set.",
+							"type": "string"
+						},
+						"credentials": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"key": {
+										"type": "string",
+										"description": "Name of the credential field."
+									},
+									"value": {
+										"description": "Value of the credential field."
+									}
+								},
+								"required": [
+									"key",
+									"value"
+								],
+								"additionalProperties": false
+							},
+							"description": "Credential fields for the auth type, as key-value pairs."
+						},
+						"type": {
+							"type": "string",
+							"enum": [
+								"awsv4",
+								"basic",
+								"bearer",
+								"hawk",
+								"oauth1",
+								"oauth2",
+								"apikey",
+								"edgegrid",
+								"jwt",
+								"digest",
+								"ntlm",
+								"asap",
+								"inherit"
+							],
+							"description": "Auth scheme to apply. `inherit` takes the credentials of the nearest ancestor that defines them."
+						}
+					},
+					"required": [
+						"credentials",
+						"type"
+					],
+					"additionalProperties": false,
+					"title": "Credential set"
+				}
+			],
+			"title": "WebSocket auth"
+		},
+		"v3-websocket-message": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"description": "Identifier of the item.",
+					"type": "string"
+				},
+				"name": {
+					"type": "string",
+					"description": "Display name of the message."
+				},
+				"$kind": {
+					"type": "string",
+					"const": "websocket-message"
+				},
+				"content": {
+					"type": "string",
+					"description": "Payload sent over the connection."
+				},
+				"contentType": {
+					"type": "string",
+					"enum": [
+						"text",
+						"json",
+						"xml",
+						"html",
+						"hex",
+						"base64"
+					],
+					"description": "How the payload is encoded."
+				}
+			},
+			"required": [
+				"name",
+				"$kind",
+				"content",
+				"contentType"
+			],
+			"additionalProperties": false,
+			"title": "WebSocket message"
+		},
+		"v3-websocket-example": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"description": "Identifier of the item.",
+					"type": "string"
+				},
+				"name": {
+					"type": "string",
+					"description": "Display name of the item."
+				},
+				"description": {
+					"description": "Markdown documentation.",
+					"type": "string",
+					"maxLength": 1000000
+				},
+				"$kind": {
+					"type": "string",
+					"const": "websocket-example"
+				},
+				"request": {
+					"description": "Request the example was captured from.",
+					"type": "object",
+					"properties": {
+						"url": {
+							"description": "URL of the WebSocket endpoint.",
+							"type": "string"
+						},
+						"headers": {
+							"description": "Headers sent with the handshake request.",
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/v3-key-value-meta"
+							}
+						},
+						"queryParams": {
+							"description": "Parameters appended to the URL query string.",
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"key": {
+										"description": "Name of the parameter.",
+										"oneOf": [
+											{
+												"type": "string"
+											},
+											{
+												"type": "null"
+											}
+										]
+									},
+									"value": {
+										"description": "Value of the parameter.",
+										"oneOf": [
+											{
+												"type": "string"
+											},
+											{
+												"type": "null"
+											}
+										]
+									},
+									"description": {
+										"description": "Human-readable note about the parameter.",
+										"type": "string"
+									},
+									"disabled": {
+										"description": "Whether the parameter is left out of the URL.",
+										"type": "boolean"
+									}
+								},
+								"additionalProperties": false
+							}
+						},
+						"auth": {
+							"description": "Credentials applied to the handshake request.",
+							"allOf": [
+								{
+									"$ref": "#/definitions/v3-websocket-auth"
+								}
+							]
+						}
+					},
+					"additionalProperties": false
+				},
+				"response": {
+					"type": "object",
+					"properties": {
+						"disconnectStatus": {
+							"description": "Close code and reason the connection ended with.",
+							"type": "string"
+						},
+						"events": {
+							"description": "Events recorded during the session, in order.",
+							"type": "array",
+							"items": {
+								"oneOf": [
+									{
+										"type": "object",
+										"properties": {
+											"id": {
+												"type": "string",
+												"description": "Identifier of the event."
+											},
+											"type": {
+												"type": "string",
+												"enum": [
+													"incoming",
+													"outgoing"
+												],
+												"description": "Direction the message traveled."
+											},
+											"content": {
+												"description": "Payload of the message.",
+												"type": "string"
+											},
+											"contentType": {
+												"description": "How the payload is encoded.",
+												"type": "string",
+												"enum": [
+													"text",
+													"json",
+													"hex"
+												]
+											}
+										},
+										"required": [
+											"id",
+											"type"
+										],
+										"additionalProperties": false,
+										"title": "Message event"
+									},
+									{
+										"type": "object",
+										"properties": {
+											"id": {
+												"type": "string",
+												"description": "Identifier of the event."
+											},
+											"type": {
+												"type": "string",
+												"enum": [
+													"error",
+													"success"
+												],
+												"description": "Outcome the event records."
+											},
+											"statusCode": {
+												"description": "HTTP status code of the handshake response.",
+												"type": "number"
+											},
+											"requestUrl": {
+												"description": "URL the connection was made to.",
+												"type": "string"
+											},
+											"system": {
+												"description": "Whether Postman raised the event rather than the server.",
+												"type": "boolean"
+											},
+											"responseHeaders": {
+												"description": "Headers returned with the handshake response.",
+												"type": "array",
+												"items": {
+													"$ref": "#/definitions/v3-key-value-meta"
+												}
+											}
+										},
+										"required": [
+											"id",
+											"type"
+										],
+										"additionalProperties": false,
+										"title": "Handshake event"
+									},
+									{
+										"type": "object",
+										"properties": {
+											"id": {
+												"type": "string",
+												"description": "Identifier of the event."
+											},
+											"type": {
+												"type": "string",
+												"const": "info",
+												"description": "Kind of event."
+											},
+											"content": {
+												"description": "Text of the notice.",
+												"type": "string"
+											},
+											"system": {
+												"description": "Whether Postman raised the event rather than the server.",
+												"type": "boolean"
+											}
+										},
+										"required": [
+											"id",
+											"type"
+										],
+										"additionalProperties": false,
+										"title": "Notice event"
+									}
+								]
+							}
+						}
+					},
+					"additionalProperties": false,
+					"description": "Session captured for the example."
+				}
+			},
+			"required": [
+				"name",
+				"$kind",
+				"response"
+			],
+			"additionalProperties": false,
+			"title": "WebSocket example"
+		},
+		"v3-socketio-request": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"description": "Identifier of the item.",
+					"type": "string"
+				},
+				"name": {
+					"type": "string",
+					"description": "Display name of the item."
+				},
+				"description": {
+					"description": "Markdown documentation.",
+					"type": "string",
+					"maxLength": 1000000
+				},
+				"url": {
+					"description": "URL of the Socket.IO server.",
+					"type": "string"
+				},
+				"headers": {
+					"description": "Headers sent with the handshake request.",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/v3-key-value-meta"
+					}
+				},
+				"queryParams": {
+					"description": "Parameters appended to the URL query string.",
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"key": {
+								"description": "Name of the parameter.",
+								"oneOf": [
+									{
+										"type": "string"
+									},
+									{
+										"type": "null"
+									}
+								]
+							},
+							"value": {
+								"description": "Value of the parameter.",
+								"oneOf": [
+									{
+										"type": "string"
+									},
+									{
+										"type": "null"
+									}
+								]
+							},
+							"description": {
+								"description": "Human-readable note about the parameter.",
+								"type": "string"
+							},
+							"disabled": {
+								"description": "Whether the parameter is left out of the URL.",
+								"type": "boolean"
+							}
+						},
+						"additionalProperties": false
+					}
+				},
+				"events": {
+					"description": "Events the client subscribes to.",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/v3-socketio-subscription-event"
+					}
+				},
+				"$kind": {
+					"type": "string",
+					"const": "socket.io-request"
+				},
+				"settings": {
+					"description": "Transport settings for the connection.",
+					"type": "object",
+					"properties": {
+						"version": {
+							"description": "Socket.IO protocol version the client speaks.",
+							"type": "string",
+							"enum": [
+								"2",
+								"3",
+								"4"
+							]
+						},
+						"path": {
+							"description": "Path the Socket.IO server is mounted at.",
+							"type": "string"
+						},
+						"handshakeTimeout": {
+							"description": "How long to wait for the handshake, in milliseconds.",
+							"type": "integer",
+							"minimum": 0,
+							"maximum": 9007199254740991
+						},
+						"retryCount": {
+							"description": "How many times to retry a failed connection.",
+							"type": "integer",
+							"minimum": 0,
+							"maximum": 9007199254740991
+						},
+						"retryDelay": {
+							"description": "How long to wait between retries, in milliseconds.",
+							"type": "integer",
+							"minimum": 0,
+							"maximum": 9007199254740991
+						},
+						"strictSSL": {
+							"description": "Whether the server certificate is verified.",
+							"type": "boolean"
+						}
+					},
+					"additionalProperties": false
+				},
+				"messages": {
+					"description": "Saved messages that can be emitted over the connection.",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/v3-socketio-message"
+					}
+				},
+				"examples": {
+					"description": "Saved sessions captured for this request.",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/v3-socketio-example"
+					}
+				}
+			},
+			"required": [
+				"name",
+				"$kind"
+			],
+			"additionalProperties": false,
+			"title": "Socket.IO request"
+		},
+		"v3-socketio-subscription-event": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string",
+					"description": "Name of the Socket.IO event."
+				},
+				"description": {
+					"description": "Human-readable note about the event.",
+					"type": "string"
+				},
+				"subscribeOnConnect": {
+					"description": "Whether to listen for the event as soon as the connection opens.",
+					"type": "boolean"
+				}
+			},
+			"required": [
+				"name"
+			],
+			"additionalProperties": false,
+			"title": "Socket.IO subscription event"
+		},
+		"v3-socketio-message": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"description": "Identifier of the item.",
+					"type": "string"
+				},
+				"name": {
+					"type": "string",
+					"description": "Display name of the message."
+				},
+				"description": {
+					"description": "Human-readable note about the message.",
+					"type": "string"
+				},
+				"$kind": {
+					"type": "string",
+					"const": "socket.io-message"
+				},
+				"eventName": {
+					"type": "string",
+					"description": "Socket.IO event the message is emitted as."
+				},
+				"acknowledgement": {
+					"description": "Whether the client waits for the server to acknowledge the message.",
+					"type": "boolean"
+				},
+				"args": {
+					"minItems": 1,
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/v3-socketio-message-arg"
+					},
+					"description": "Arguments sent with the event, in order."
+				}
+			},
+			"required": [
+				"name",
+				"$kind",
+				"eventName",
+				"args"
+			],
+			"additionalProperties": false,
+			"title": "Socket.IO message"
+		},
+		"v3-socketio-message-arg": {
+			"type": "object",
+			"properties": {
+				"content": {
+					"type": "string",
+					"description": "Payload of the argument."
+				},
+				"contentType": {
+					"type": "string",
+					"enum": [
+						"text",
+						"json",
+						"hex",
+						"base64"
+					],
+					"description": "How the payload is encoded."
+				}
+			},
+			"required": [
+				"content",
+				"contentType"
+			],
+			"additionalProperties": false,
+			"title": "Socket.IO message argument"
+		},
+		"v3-socketio-example": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"description": "Identifier of the item.",
+					"type": "string"
+				},
+				"name": {
+					"type": "string",
+					"description": "Display name of the item."
+				},
+				"description": {
+					"description": "Markdown documentation.",
+					"type": "string",
+					"maxLength": 1000000
+				},
+				"$kind": {
+					"type": "string",
+					"const": "socket.io-example"
+				},
+				"request": {
+					"description": "Request the example was captured from.",
+					"type": "object",
+					"properties": {
+						"url": {
+							"description": "URL of the Socket.IO server.",
+							"type": "string"
+						},
+						"headers": {
+							"description": "Headers sent with the handshake request.",
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/v3-key-value-meta"
+							}
+						},
+						"queryParams": {
+							"description": "Parameters appended to the URL query string.",
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"key": {
+										"description": "Name of the parameter.",
+										"oneOf": [
+											{
+												"type": "string"
+											},
+											{
+												"type": "null"
+											}
+										]
+									},
+									"value": {
+										"description": "Value of the parameter.",
+										"oneOf": [
+											{
+												"type": "string"
+											},
+											{
+												"type": "null"
+											}
+										]
+									},
+									"description": {
+										"description": "Human-readable note about the parameter.",
+										"type": "string"
+									},
+									"disabled": {
+										"description": "Whether the parameter is left out of the URL.",
+										"type": "boolean"
+									}
+								},
+								"additionalProperties": false
+							}
+						},
+						"events": {
+							"description": "Events the client subscribes to.",
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/v3-socketio-subscription-event"
+							}
+						}
+					},
+					"additionalProperties": false
+				},
+				"response": {
+					"type": "object",
+					"properties": {
+						"events": {
+							"description": "Events recorded during the session, in order.",
+							"type": "array",
+							"items": {
+								"oneOf": [
+									{
+										"type": "object",
+										"properties": {
+											"id": {
+												"type": "string",
+												"description": "Identifier of the event."
+											},
+											"type": {
+												"type": "string",
+												"enum": [
+													"incoming",
+													"outgoing"
+												],
+												"description": "Direction the message traveled."
+											},
+											"content": {
+												"description": "Payload of the message.",
+												"type": "string"
+											},
+											"eventName": {
+												"description": "Socket.IO event the message was sent as.",
+												"type": "string"
+											},
+											"contentType": {
+												"description": "How the payload is encoded.",
+												"type": "string",
+												"enum": [
+													"text",
+													"json",
+													"binary"
+												]
+											}
+										},
+										"required": [
+											"id",
+											"type"
+										],
+										"additionalProperties": false,
+										"title": "Message event"
+									},
+									{
+										"type": "object",
+										"properties": {
+											"id": {
+												"type": "string",
+												"description": "Identifier of the event."
+											},
+											"type": {
+												"type": "string",
+												"enum": [
+													"error",
+													"success"
+												],
+												"description": "Outcome the event records."
+											},
+											"statusCode": {
+												"description": "HTTP status code of the handshake response.",
+												"type": "number"
+											},
+											"requestUrl": {
+												"description": "URL the connection was made to.",
+												"type": "string"
+											},
+											"system": {
+												"description": "Whether Postman raised the event rather than the server.",
+												"type": "boolean"
+											},
+											"responseHeaders": {
+												"description": "Headers returned with the handshake response.",
+												"type": "array",
+												"items": {
+													"$ref": "#/definitions/v3-key-value-meta"
+												}
+											}
+										},
+										"required": [
+											"id",
+											"type"
+										],
+										"additionalProperties": false,
+										"title": "Handshake event"
+									},
+									{
+										"type": "object",
+										"properties": {
+											"id": {
+												"type": "string",
+												"description": "Identifier of the event."
+											},
+											"type": {
+												"type": "string",
+												"const": "info",
+												"description": "Kind of event."
+											},
+											"content": {
+												"description": "Text of the notice.",
+												"type": "string"
+											},
+											"system": {
+												"description": "Whether Postman raised the event rather than the server.",
+												"type": "boolean"
+											}
+										},
+										"required": [
+											"id",
+											"type"
+										],
+										"additionalProperties": false,
+										"title": "Notice event"
+									}
+								]
+							}
+						}
+					},
+					"additionalProperties": false,
+					"description": "Session captured for the example."
+				}
+			},
+			"required": [
+				"name",
+				"$kind",
+				"response"
+			],
+			"additionalProperties": false,
+			"title": "Socket.IO example"
+		},
+		"v3-data-request": {
+			"oneOf": [
+				{
+					"type": "object",
+					"properties": {
+						"id": {
+							"description": "Identifier of the item.",
+							"type": "string"
+						},
+						"name": {
+							"type": "string",
+							"description": "Display name of the item."
+						},
+						"description": {
+							"description": "Markdown documentation.",
+							"type": "string",
+							"maxLength": 1000000
+						},
+						"$kind": {
+							"type": "string",
+							"const": "data-request"
+						},
+						"url": {
+							"description": "Connection string for the data source.",
+							"type": "string"
+						},
+						"query": {
+							"description": "Statement to run. Left empty, the request introspects the source instead.",
+							"type": "string"
+						},
+						"auth": {
+							"description": "Credentials applied to the connection.",
+							"allOf": [
+								{
+									"$ref": "#/definitions/v3-data-auth"
+								}
+							]
+						},
+						"type": {
+							"type": "string",
+							"const": "postgres",
+							"description": "Data source the request targets."
+						},
+						"settings": {
+							"description": "Execution and parse settings for the source.",
+							"type": "object",
+							"properties": {
+								"rowLimit": {
+									"description": "Largest number of rows returned by a query.",
+									"type": "integer",
+									"minimum": 0,
+									"maximum": 9007199254740991
+								},
+								"queryTimeoutMs": {
+									"description": "How long a query may run, in milliseconds.",
+									"type": "integer",
+									"minimum": 0,
+									"maximum": 9007199254740991
+								},
+								"mutationsEnabled": {
+									"description": "Whether statements that change data are allowed.",
+									"type": "boolean"
+								},
+								"schema": {
+									"description": "Schema queries resolve unqualified names against.",
+									"type": "string"
+								}
+							},
+							"additionalProperties": false
+						}
+					},
+					"required": [
+						"name",
+						"$kind",
+						"type"
+					],
+					"additionalProperties": false,
+					"title": "Postgres data request"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"id": {
+							"description": "Identifier of the item.",
+							"type": "string"
+						},
+						"name": {
+							"type": "string",
+							"description": "Display name of the item."
+						},
+						"description": {
+							"description": "Markdown documentation.",
+							"type": "string",
+							"maxLength": 1000000
+						},
+						"$kind": {
+							"type": "string",
+							"const": "data-request"
+						},
+						"url": {
+							"description": "Connection string for the data source.",
+							"type": "string"
+						},
+						"query": {
+							"description": "Statement to run. Left empty, the request introspects the source instead.",
+							"type": "string"
+						},
+						"auth": {
+							"description": "Credentials applied to the connection.",
+							"allOf": [
+								{
+									"$ref": "#/definitions/v3-data-auth"
+								}
+							]
+						},
+						"type": {
+							"type": "string",
+							"const": "mysql",
+							"description": "Data source the request targets."
+						},
+						"settings": {
+							"description": "Execution and parse settings for the source.",
+							"type": "object",
+							"properties": {
+								"rowLimit": {
+									"description": "Largest number of rows returned by a query.",
+									"type": "integer",
+									"minimum": 0,
+									"maximum": 9007199254740991
+								},
+								"queryTimeoutMs": {
+									"description": "How long a query may run, in milliseconds.",
+									"type": "integer",
+									"minimum": 0,
+									"maximum": 9007199254740991
+								},
+								"mutationsEnabled": {
+									"description": "Whether statements that change data are allowed.",
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false
+						}
+					},
+					"required": [
+						"name",
+						"$kind",
+						"type"
+					],
+					"additionalProperties": false,
+					"title": "MySQL data request"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"id": {
+							"description": "Identifier of the item.",
+							"type": "string"
+						},
+						"name": {
+							"type": "string",
+							"description": "Display name of the item."
+						},
+						"description": {
+							"description": "Markdown documentation.",
+							"type": "string",
+							"maxLength": 1000000
+						},
+						"$kind": {
+							"type": "string",
+							"const": "data-request"
+						},
+						"url": {
+							"description": "Connection string for the data source.",
+							"type": "string"
+						},
+						"query": {
+							"description": "Statement to run. Left empty, the request introspects the source instead.",
+							"type": "string"
+						},
+						"auth": {
+							"description": "Credentials applied to the connection.",
+							"allOf": [
+								{
+									"$ref": "#/definitions/v3-data-auth"
+								}
+							]
+						},
+						"type": {
+							"type": "string",
+							"const": "redis",
+							"description": "Data source the request targets."
+						},
+						"settings": {
+							"description": "Execution and parse settings for the source.",
+							"type": "object",
+							"properties": {
+								"queryTimeoutMs": {
+									"description": "How long a query may run, in milliseconds.",
+									"type": "integer",
+									"minimum": 0,
+									"maximum": 9007199254740991
+								},
+								"mutationsEnabled": {
+									"description": "Whether statements that change data are allowed.",
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false
+						}
+					},
+					"required": [
+						"name",
+						"$kind",
+						"type"
+					],
+					"additionalProperties": false,
+					"title": "Redis data request"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"id": {
+							"description": "Identifier of the item.",
+							"type": "string"
+						},
+						"name": {
+							"type": "string",
+							"description": "Display name of the item."
+						},
+						"description": {
+							"description": "Markdown documentation.",
+							"type": "string",
+							"maxLength": 1000000
+						},
+						"$kind": {
+							"type": "string",
+							"const": "data-request"
+						},
+						"url": {
+							"description": "URL of the file.",
+							"type": "string"
+						},
+						"query": {
+							"description": "Statement to run. Left empty, the request introspects the source instead.",
+							"type": "string"
+						},
+						"auth": {
+							"description": "Credentials applied to the connection.",
+							"allOf": [
+								{
+									"$ref": "#/definitions/v3-data-auth"
+								}
+							]
+						},
+						"type": {
+							"type": "string",
+							"const": "csv",
+							"description": "Data source the request targets."
+						},
+						"settings": {
+							"description": "Execution and parse settings for the source.",
+							"type": "object",
+							"properties": {
+								"rowLimit": {
+									"description": "Largest number of rows returned by a query.",
+									"type": "integer",
+									"minimum": 0,
+									"maximum": 9007199254740991
+								},
+								"queryTimeoutMs": {
+									"description": "How long a query may run, in milliseconds.",
+									"type": "integer",
+									"minimum": 0,
+									"maximum": 9007199254740991
+								},
+								"encoding": {
+									"description": "Character encoding of the file.",
+									"type": "string"
+								},
+								"delimiter": {
+									"description": "Character separating fields in a row.",
+									"type": "string"
+								},
+								"hasHeader": {
+									"description": "Whether the first row holds column names.",
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false
+						}
+					},
+					"required": [
+						"name",
+						"$kind",
+						"type"
+					],
+					"additionalProperties": false,
+					"title": "CSV data request"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"id": {
+							"description": "Identifier of the item.",
+							"type": "string"
+						},
+						"name": {
+							"type": "string",
+							"description": "Display name of the item."
+						},
+						"description": {
+							"description": "Markdown documentation.",
+							"type": "string",
+							"maxLength": 1000000
+						},
+						"$kind": {
+							"type": "string",
+							"const": "data-request"
+						},
+						"url": {
+							"description": "URL of the file.",
+							"type": "string"
+						},
+						"query": {
+							"description": "Statement to run. Left empty, the request introspects the source instead.",
+							"type": "string"
+						},
+						"auth": {
+							"description": "Credentials applied to the connection.",
+							"allOf": [
+								{
+									"$ref": "#/definitions/v3-data-auth"
+								}
+							]
+						},
+						"type": {
+							"type": "string",
+							"const": "json",
+							"description": "Data source the request targets."
+						},
+						"settings": {
+							"description": "Execution and parse settings for the source.",
+							"type": "object",
+							"properties": {
+								"rowLimit": {
+									"description": "Largest number of rows returned by a query.",
+									"type": "integer",
+									"minimum": 0,
+									"maximum": 9007199254740991
+								},
+								"queryTimeoutMs": {
+									"description": "How long a query may run, in milliseconds.",
+									"type": "integer",
+									"minimum": 0,
+									"maximum": 9007199254740991
+								},
+								"jsonPath": {
+									"description": "JSONPath selecting the array of rows within the file.",
+									"type": "string"
+								}
+							},
+							"additionalProperties": false
+						}
+					},
+					"required": [
+						"name",
+						"$kind",
+						"type"
+					],
+					"additionalProperties": false,
+					"title": "JSON data request"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"id": {
+							"description": "Identifier of the item.",
+							"type": "string"
+						},
+						"name": {
+							"type": "string",
+							"description": "Display name of the item."
+						},
+						"description": {
+							"description": "Markdown documentation.",
+							"type": "string",
+							"maxLength": 1000000
+						},
+						"$kind": {
+							"type": "string",
+							"const": "data-request"
+						},
+						"url": {
+							"description": "URL of the file.",
+							"type": "string"
+						},
+						"query": {
+							"description": "Statement to run. Left empty, the request introspects the source instead.",
+							"type": "string"
+						},
+						"auth": {
+							"description": "Credentials applied to the connection.",
+							"allOf": [
+								{
+									"$ref": "#/definitions/v3-data-auth"
+								}
+							]
+						},
+						"type": {
+							"type": "string",
+							"const": "xlsx",
+							"description": "Data source the request targets."
+						},
+						"settings": {
+							"description": "Execution and parse settings for the source.",
+							"type": "object",
+							"properties": {
+								"rowLimit": {
+									"description": "Largest number of rows returned by a query.",
+									"type": "integer",
+									"minimum": 0,
+									"maximum": 9007199254740991
+								},
+								"queryTimeoutMs": {
+									"description": "How long a query may run, in milliseconds.",
+									"type": "integer",
+									"minimum": 0,
+									"maximum": 9007199254740991
+								},
+								"sheetName": {
+									"description": "Sheet the rows are read from.",
+									"type": "string"
+								}
+							},
+							"additionalProperties": false
+						}
+					},
+					"required": [
+						"name",
+						"$kind",
+						"type"
+					],
+					"additionalProperties": false,
+					"title": "XLSX data request"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"id": {
+							"description": "Identifier of the item.",
+							"type": "string"
+						},
+						"name": {
+							"type": "string",
+							"description": "Display name of the item."
+						},
+						"description": {
+							"description": "Markdown documentation.",
+							"type": "string",
+							"maxLength": 1000000
+						},
+						"$kind": {
+							"type": "string",
+							"const": "data-request"
+						},
+						"url": {
+							"description": "Connection string for the data source.",
+							"type": "string"
+						},
+						"query": {
+							"description": "Statement to run. Left empty, the request introspects the source instead.",
+							"type": "string"
+						},
+						"auth": {
+							"description": "Credentials applied to the connection.",
+							"allOf": [
+								{
+									"$ref": "#/definitions/v3-data-auth"
+								}
+							]
+						},
+						"type": {
+							"description": "Data source the request targets. Absent until one is picked.",
+							"type": "null"
+						}
+					},
+					"required": [
+						"name",
+						"$kind"
+					],
+					"additionalProperties": false,
+					"title": "Unconfigured data request"
+				}
+			],
+			"title": "Data request"
+		},
+		"v3-data-auth": {
+			"oneOf": [
+				{
+					"type": "object",
+					"properties": {
+						"id": {
+							"description": "Identifier of the credential set.",
+							"type": "string"
+						},
+						"name": {
+							"description": "Display name of the credential set.",
+							"type": "string"
+						},
+						"description": {
+							"description": "Human-readable note about the credential set.",
+							"type": "string"
+						},
+						"type": {
+							"type": "string",
+							"const": "noauth",
+							"description": "Auth scheme to apply."
+						}
+					},
+					"required": [
+						"type"
+					],
+					"additionalProperties": false,
+					"title": "No auth"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"id": {
+							"description": "Identifier of the credential set.",
+							"type": "string"
+						},
+						"name": {
+							"description": "Display name of the credential set.",
+							"type": "string"
+						},
+						"description": {
+							"description": "Human-readable note about the credential set.",
+							"type": "string"
+						},
+						"credentials": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"key": {
+										"type": "string",
+										"description": "Name of the credential field."
+									},
+									"value": {
+										"description": "Value of the credential field."
+									}
+								},
+								"required": [
+									"key",
+									"value"
+								],
+								"additionalProperties": false
+							},
+							"description": "Credential fields for the auth type, as key-value pairs."
+						},
+						"type": {
+							"type": "string",
+							"enum": [
+								"inherit",
+								"basic"
+							],
+							"description": "Auth scheme to apply. `inherit` takes the credentials of the nearest ancestor that defines them."
+						}
+					},
+					"required": [
+						"credentials",
+						"type"
+					],
+					"additionalProperties": false,
+					"title": "Credential set"
+				}
+			],
+			"title": "Data auth"
+		},
+		"v3-folder": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"description": "Identifier of the folder.",
+					"type": "string"
+				},
+				"name": {
+					"type": "string",
+					"description": "Display name of the folder."
+				},
+				"description": {
+					"description": "Markdown documentation.",
+					"type": "string",
+					"maxLength": 1000000
+				},
+				"$kind": {
+					"type": "string",
+					"const": "collection"
+				},
+				"scripts": {
+					"description": "Scripts that run on events in the request execution lifecycle.",
+					"allOf": [
+						{
+							"$ref": "#/definitions/v3-folder-scripts"
+						}
+					]
+				},
+				"auth": {
+					"description": "Credentials inherited by every request in the folder.",
+					"allOf": [
+						{
+							"$ref": "#/definitions/v3-folder-auth"
+						}
+					]
+				},
+				"items": {
+					"description": "Requests and folders the folder holds.",
+					"type": "array",
+					"items": {
+						"oneOf": [
+							{
+								"$ref": "#/definitions/v3-graphql-request"
+							},
+							{
+								"$ref": "#/definitions/v3-grpc-request"
+							},
+							{
+								"$ref": "#/definitions/v3-http-request"
+							},
+							{
+								"$ref": "#/definitions/v3-kafka-request"
+							},
+							{
+								"$ref": "#/definitions/v3-mcp-request"
+							},
+							{
+								"$ref": "#/definitions/v3-llm-request"
+							},
+							{
+								"$ref": "#/definitions/v3-mqtt-request"
+							},
+							{
+								"$ref": "#/definitions/v3-websocket-request"
+							},
+							{
+								"$ref": "#/definitions/v3-socketio-request"
+							},
+							{
+								"$ref": "#/definitions/v3-data-request"
+							},
+							{
+								"allOf": [
+									{
+										"$ref": "#/definitions/v3-folder"
+									}
+								]
+							}
+						]
+					}
+				}
+			},
+			"required": [
+				"name",
+				"$kind"
+			],
+			"additionalProperties": false,
+			"title": "Folder"
+		},
+		"v3-folder-scripts": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"type": {
+						"type": "string",
+						"enum": [
+							"graphql:beforeQuery",
+							"graphql:afterResponse",
+							"grpc:beforeInvoke",
+							"grpc:onIncomingMessage",
+							"grpc:afterResponse",
+							"http:beforeRequest",
+							"http:afterResponse",
+							"kafka:beforeConsume",
+							"kafka:onIncomingMessage",
+							"kafka:afterConsume",
+							"kafka:beforeProduce",
+							"kafka:afterProduce"
+						],
+						"description": "Lifecycle point the script runs at."
+					},
+					"code": {
+						"type": "string",
+						"description": "Source of the script."
+					},
+					"language": {
+						"description": "Language the script is written in.",
+						"type": "string",
+						"enum": [
+							"text/javascript"
+						]
+					},
+					"packages": {
+						"description": "Package Library packages the script imports, keyed by the name it imports them under.",
+						"type": "object",
+						"propertyNames": {
+							"type": "string"
+						},
+						"additionalProperties": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"type": "string",
+									"description": "Identifier of the package."
+								}
+							},
+							"required": [
+								"id"
+							],
+							"additionalProperties": false
+						}
+					},
+					"requests": {
+						"description": "Collection requests the script sends, keyed by the name it references them under.",
+						"type": "object",
+						"propertyNames": {
+							"type": "string"
+						},
+						"additionalProperties": {
+							"type": "object",
+							"properties": {
+								"workspace": {
+									"type": "string",
+									"description": "Identifier of the workspace."
+								},
+								"collection": {
+									"type": "string",
+									"description": "Identifier of the collection."
+								},
+								"location": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"description": "Path to the request, from the collection root."
+								}
+							},
+							"required": [
+								"workspace",
+								"collection",
+								"location"
+							],
+							"additionalProperties": false
+						}
+					}
+				},
+				"required": [
+					"type",
+					"code"
+				],
+				"additionalProperties": false
+			},
+			"title": "Folder scripts"
+		},
+		"v3-folder-auth": {
+			"title": "Folder auth",
+			"oneOf": [
+				{
+					"oneOf": [
+						{
+							"type": "object",
+							"properties": {
+								"id": {
+									"description": "Identifier of the credential set.",
+									"type": "string"
+								},
+								"name": {
+									"description": "Display name of the credential set.",
+									"type": "string"
+								},
+								"description": {
+									"description": "Human-readable note about the credential set.",
+									"type": "string"
+								},
+								"type": {
+									"type": "string",
+									"const": "noauth",
+									"description": "Auth scheme to apply."
+								}
+							},
+							"required": [
+								"type"
+							],
+							"additionalProperties": false,
+							"title": "No auth"
+						},
+						{
+							"type": "object",
+							"properties": {
+								"id": {
+									"description": "Identifier of the credential set.",
+									"type": "string"
+								},
+								"name": {
+									"description": "Display name of the credential set.",
+									"type": "string"
+								},
+								"description": {
+									"description": "Human-readable note about the credential set.",
+									"type": "string"
+								},
+								"credentials": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"key": {
+												"type": "string",
+												"description": "Name of the credential field."
+											},
+											"value": {
+												"description": "Value of the credential field."
+											}
+										},
+										"required": [
+											"key",
+											"value"
+										],
+										"additionalProperties": false
+									},
+									"description": "Credential fields for the auth type, as key-value pairs."
+								},
+								"type": {
+									"type": "string",
+									"enum": [
+										"awsv4",
+										"basic",
+										"bearer",
+										"hawk",
+										"oauth1",
+										"oauth2",
+										"apikey",
+										"edgegrid",
+										"jwt",
+										"digest",
+										"ntlm",
+										"asap",
+										"sasl"
+									],
+									"description": "Auth scheme to apply."
+								}
+							},
+							"required": [
+								"credentials",
+								"type"
+							],
+							"additionalProperties": false,
+							"title": "Credential set"
+						}
+					],
+					"title": "One credential set"
+				},
+				{
+					"type": "array",
+					"items": {
+						"title": "Credential set with rules",
+						"oneOf": [
+							{
+								"type": "object",
+								"properties": {
+									"id": {
+										"type": "string",
+										"description": "Identifier of the credential set."
+									},
+									"name": {
+										"type": "string",
+										"description": "Display name of the credential set."
+									},
+									"rules": {
+										"description": "Conditions that select this credential set. A request uses the first set whose rules all match.",
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"key": {
+													"type": "string",
+													"enum": [
+														"url"
+													],
+													"description": "Property the rule matches on."
+												},
+												"value": {
+													"type": "string",
+													"description": "Value the property has to match."
+												}
+											},
+											"required": [
+												"key",
+												"value"
+											],
+											"additionalProperties": false
+										}
+									},
+									"description": {
+										"description": "Human-readable note about the credential set.",
+										"type": "string"
+									},
+									"type": {
+										"type": "string",
+										"const": "noauth",
+										"description": "Auth scheme to apply."
+									}
+								},
+								"required": [
+									"id",
+									"name",
+									"type"
+								],
+								"additionalProperties": false,
+								"title": "No auth"
+							},
+							{
+								"type": "object",
+								"properties": {
+									"id": {
+										"type": "string",
+										"description": "Identifier of the credential set."
+									},
+									"name": {
+										"type": "string",
+										"description": "Display name of the credential set."
+									},
+									"description": {
+										"description": "Human-readable note about the credential set.",
+										"type": "string"
+									},
+									"rules": {
+										"description": "Conditions that select this credential set. A request uses the first set whose rules all match.",
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"key": {
+													"type": "string",
+													"enum": [
+														"url"
+													],
+													"description": "Property the rule matches on."
+												},
+												"value": {
+													"type": "string",
+													"description": "Value the property has to match."
+												}
+											},
+											"required": [
+												"key",
+												"value"
+											],
+											"additionalProperties": false
+										}
+									},
+									"credentials": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"key": {
+													"type": "string",
+													"description": "Name of the credential field."
+												},
+												"value": {
+													"description": "Value of the credential field."
+												}
+											},
+											"required": [
+												"key",
+												"value"
+											],
+											"additionalProperties": false
+										},
+										"description": "Credential fields for the auth type, as key-value pairs."
+									},
+									"type": {
+										"type": "string",
+										"enum": [
+											"awsv4",
+											"basic",
+											"bearer",
+											"hawk",
+											"oauth1",
+											"oauth2",
+											"apikey",
+											"edgegrid",
+											"jwt",
+											"digest",
+											"ntlm",
+											"asap",
+											"sasl"
+										],
+										"description": "Auth scheme to apply."
+									}
+								},
+								"required": [
+									"id",
+									"name",
+									"credentials",
+									"type"
+								],
+								"additionalProperties": false,
+								"title": "Credential set"
+							}
+						]
+					},
+					"title": "Credential sets, selected by rule"
+				}
+			]
+		}
+	}
+}

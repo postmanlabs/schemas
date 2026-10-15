@@ -1,0 +1,65 @@
+@postman/json-schema-tree
+Copyright 2026 Postman, Inc.
+
+This product is a fork of and includes software developed by Stoplight, Inc.
+(now part of SmartBear Software), originally released under the Apache License,
+Version 2.0.
+
+The upstream project below was used as the basis for this fork. The compiled
+distribution is vendored under src/vendor and modified. The modifications include:
+replacing an internal CommonJS `require('@stoplight/json-schema-merge-allof')`
+with a static ESM import so the module bundles cleanly for native ESM and Web
+Workers, and adding `serializeTree` / `deserializeTree` ("serde") helpers so a
+populated tree can be built in a Web Worker and transferred to the main thread
+over `postMessage`. A multi-branch `oneOf` / `anyOf` node also keeps the
+combiner's display annotations (title, description, default, example(s),
+deprecated, readOnly, writeOnly, $comment and `x-*` keys), but not its
+structural keywords, which are already merged into every branch.
+
+  - @stoplight/json-schema-tree
+    Copyright Stoplight, Inc.
+    https://github.com/stoplightio/json-schema-tree
+    Licensed under the Apache License, Version 2.0.
+
+A copy of the Apache License, Version 2.0 is provided in the LICENSE file
+alongside this NOTICE.
+
+The compiled distribution (dist/) also bundles the following MIT-licensed
+packages, unmodified, so their CommonJS deep requires (e.g. `lodash/compact`)
+do not leak into worker/edge bundles:
+
+  - @stoplight/json-schema-merge-allof
+    Copyright (c) Martin Hansen; fork maintained by Stoplight
+    https://github.com/stoplightio/json-schema-merge-allof
+  - json-schema-compare
+    Copyright (c) 2017 Martin Hansen
+  - compute-lcm, compute-gcd, validate.io-array
+    Copyright (c) 2014-2015 Athan Reines
+  - validate.io-function, validate.io-integer, validate.io-number
+    Copyright (c) 2014 Athan Reines
+  - validate.io-integer-array
+    Copyright (c) 2015 Athan Reines
+  - lodash
+    Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
+    Based on Underscore.js, copyright Jeremy Ashkenas,
+    DocumentCloud and Investigative Reporters & Editors <http://underscorejs.org/>
+
+Each of the packages above is licensed under the MIT License:
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

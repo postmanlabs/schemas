@@ -1,0 +1,39 @@
+{
+  "name": "@postman/json-schema-tree",
+  "version": "4.0.0",
+  "description": "SSR-friendly fork of @stoplight/json-schema-tree with Web Worker serialization (serde), vendored for the Postman schemas site",
+  "license": "Apache-2.0",
+  "private": true,
+  "type": "module",
+  "files": [
+    "dist",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@stoplight/json": "^3.21.0",
+    "@stoplight/json-schema-merge-allof": "^0.8.0",
+    "@stoplight/lifecycle": "^2.3.3",
+    "@stoplight/types": "^14.1.1",
+    "magic-error": "0.0.1"
+  },
+  "devDependencies": {
+    "@types/json-schema": "^7.0.15",
+    "tsup": "^8.5.0",
+    "typescript": "^5.7.3"
+  }
+}

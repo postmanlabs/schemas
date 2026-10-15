@@ -1,0 +1,30 @@
+@postman/json-schema-viewer
+Copyright 2026 Postman, Inc.
+
+This product is a fork of and includes software developed by Stoplight, Inc.
+(now part of SmartBear Software), originally released under the Apache License,
+Version 2.0.
+
+The following upstream projects were used as the basis for this fork and were
+modified. The modifications include: making the components server-side-rendering
+(SSR) safe, removing the runtime CSS-in-JS dependency (@stoplight/mosaic) in favor
+of static inline styles and a plain stylesheet backed by Postman Aether design
+tokens, and replacing @stoplight/markdown-viewer with markdown-it.
+
+  - @stoplight/json-schema-viewer
+    Copyright Stoplight, Inc.
+    https://github.com/stoplightio/json-schema-viewer
+    Licensed under the Apache License, Version 2.0.
+
+  - @stoplight/mosaic (portions reimplemented as the local UI kit in src/ui)
+    Copyright Stoplight, Inc.
+    https://github.com/stoplightio/mosaic
+    Licensed under the Apache License, Version 2.0.
+
+  - @stoplight/markdown-viewer (replaced by a markdown-it based renderer)
+    Copyright Stoplight, Inc.
+    https://github.com/stoplightio/markdown
+    Licensed under the Apache License, Version 2.0.
+
+A copy of the Apache License, Version 2.0 is provided in the LICENSE file
+alongside this NOTICE.
