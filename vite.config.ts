@@ -20,6 +20,13 @@ export default defineConfig({
   server: {
     port: 3000,
   },
+  // The prerender step starts this preview server and fetches it on
+  // 127.0.0.1. On Linux `localhost` can resolve to ::1 first, so the server
+  // would listen on IPv6 only and the build fails with ECONNREFUSED
+  // (reproduced in node:24-bookworm). Bind to 127.0.0.1 explicitly.
+  preview: {
+    host: '127.0.0.1',
+  },
   resolve: {
     dedupe: ['react', 'react-dom'],
   },
