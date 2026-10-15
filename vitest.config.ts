@@ -1,7 +1,7 @@
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vitest/config';
 
-// Standalone config so vitest doesn't load vite.config.ts (tanstackStart + nitro plugins).
+// Standalone config so vitest doesn't load vite.config.ts (tanstackStart + cloudflare plugins).
 export default defineConfig({
   resolve: {
     // Test the fork's source directly, so tests don't depend on a prior package build.

@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { lib, utils, schemaVersions } from './helpers';
-import { legacyRouteRules, legacyUrls, latestStable, viewerPage, VIEWER_DRAFT } from '../scripts/legacy-urls';
+import { legacyRedirectsFile, legacyUrls, latestStable, viewerPage, VIEWER_DRAFT } from '../scripts/legacy-urls';
 import { writeSchemas } from '../scripts/generate-schemas.mjs';
 
 const versions = schemaVersions();
@@ -14,7 +14,6 @@ for (const { draft, version } of versions) {
 }
 
 const { raw, redirects } = legacyUrls(versionsByDraft);
-const routeRules = legacyRouteRules(versionsByDraft);
 const viewerPages = new Set(versionsByDraft[VIEWER_DRAFT].map(viewerPage));
 
 /** Same rule as generate-schemas.mjs: self-contained schemas as-is, else lib.compile. */
@@ -42,6 +41,18 @@ beforeAll(() => {
 
 afterAll(() => {
   fs.rmSync(tmp, { recursive: true, force: true });
+});
+
+it('writes every redirect into public/_redirects as an exact-path 301', () => {
+  const file = fs.readFileSync(path.join(tmp, 'public', '_redirects'), 'utf8');
+
+  const lines = file.trimEnd().split('\n').sort();
+
+  // Exact paths, so the order (newest-first in the generator) doesn't matter.
+  expect(lines).toEqual(legacyRedirectsFile(versionsByDraft).trimEnd().split('\n').sort());
+  expect(lines).toEqual(Object.entries(redirects).map(([from, to]) => `${from} ${to} 301`).sort());
+  // No splats/placeholders: every source must be matched literally.
+  expect(file).not.toMatch(/[*:]/);
 });
 
 // Guards so a discovery bug can't pass vacuously. Raw: (8 draft-04 + latest) × 2
@@ -101,7 +112,6 @@ describe.each(Object.entries(redirects).map(([from, to]) => ({ from, to })))('$f
   it('is a single-hop redirect to an existing target', () => {
     const exists = to === '/' || viewerPages.has(to) || fs.existsSync(path.join(tmp, 'public', to));
 
-    expect(routeRules[from]).toEqual({ redirect: { to, status: 301 } });
     expect(exists).toBe(true);
     expect(redirects[to]).toBeUndefined();
     expect(viewerPages.has(from)).toBe(false);
