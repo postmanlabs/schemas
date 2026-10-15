@@ -1,8 +1,7 @@
-// Server-only: builds the serialized schema tree during SSR so it can be transferred
-// to the client and used as React Query initial data (avoiding a redundant, main-thread
-// build on first load). Kept in its own module and imported dynamically under an
-// `import.meta.env.SSR` guard so this (and the tree-building code it pulls in) is never
-// included in the client bundle.
+// Server-only: builds the serialized schema tree during SSR/prerender so it can be
+// sent to the client in the loader data; the client only deserialises it. Kept in its
+// own module and imported dynamically after the loader's `import.meta.env.SSR` guard so
+// this (and the tree-building code it pulls in) is never included in the client bundle.
 import { buildSerializedTree } from '@postman/json-schema-viewer/worker';
 import type { JSONSchema, ViewMode } from '@postman/json-schema-viewer';
 

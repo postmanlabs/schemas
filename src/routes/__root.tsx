@@ -6,8 +6,6 @@ import {
   createRootRoute,
 } from '@tanstack/react-router';
 import type { ReactNode } from 'react';
-import { QueryClientProvider } from '@tanstack/react-query';
-import { getQueryClient } from '../lib/queryClient';
 import { INTER_PRELOAD_HREFS } from '../lib/fonts';
 
 // Served from public/ at its literal root URL.
@@ -79,7 +77,7 @@ function TopBar() {
           <img className="brand__logo" src={postmanLogo} alt="Postman" />
         </a>
         {/* `/` redirects to the latest schema. */}
-        <Link to="/" className="brand">
+        <Link reloadDocument to="/" className="brand">
           Postman Schemas
         </Link>
       </div>
@@ -106,7 +104,7 @@ function NotFound() {
     <div className="empty-state">
       <h1>Page not found</h1>
       <p>
-        <Link to="/" className="schema-link">
+        <Link reloadDocument to="/" className="schema-link">
           View latest schema
         </Link>
       </p>
@@ -122,15 +120,13 @@ function RootDocument({ children }: { children: ReactNode }) {
         <HeadContent />
       </head>
       <body data-theme={theme}>
-        <QueryClientProvider client={getQueryClient()}>
-          <div className="layout">
-            <TopBar />
-            <main className="layout__main">
-              <div className="layout__content">{children}</div>
-            </main>
-            <SiteFooter />
-          </div>
-        </QueryClientProvider>
+        <div className="layout">
+          <TopBar />
+          <main className="layout__main">
+            <div className="layout__content">{children}</div>
+          </main>
+          <SiteFooter />
+        </div>
         {/* Postman analytics SDK + config (restored from the legacy hosted docs). */}
         <script id="pmtSDK" src={pmtSdkSrc} />
         <script dangerouslySetInnerHTML={{ __html: pmtConfigScript }} />

@@ -5,7 +5,7 @@ import { nitro } from 'nitro/vite';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { legacyRouteRules } from './scripts/legacy-urls';
+import { legacyRouteRules, viewerPage, VIEWER_DRAFT } from './scripts/legacy-urls';
 
 // Legacy docs URLs → 301. Computed from schemas/ directly so `vite dev` works
 // without a prior generate.
@@ -41,6 +41,16 @@ export default defineConfig({
   plugins: [
     tanstackStart({
       srcDirectory: 'src',
+      // Static HTML for the docs pages, served by Cloudflare as Workers assets
+      // without running the Worker. Cloudflare build only: production runs on
+      // Workers, and the Node build hangs after prerendering.
+      prerender: {
+        enabled: process.env.NITRO_PRESET === 'cloudflare_module',
+        autoStaticPathsDiscovery: false, // else `/` (a redirect) is written as /index.html
+        crawlLinks: false,
+        failOnError: true,
+      },
+      pages: (versionsByDraft[VIEWER_DRAFT] ?? []).map((v) => ({ path: viewerPage(v) })),
     }),
     viteReact(),
     nitro({
