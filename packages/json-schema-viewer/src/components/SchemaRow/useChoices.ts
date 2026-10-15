@@ -135,13 +135,6 @@ function disambiguateTitles(choices: Choice[], parentTitles: (string | null)[], 
   return result;
 }
 
-/** Every title is "<parent title> (...)", e.g. "Variable (requires id)". */
-function isNamedVariantList(choices: Choice[], parentTitles: (string | null)[]): boolean {
-  return parentTitles.some(
-    parent => parent !== null && choices.every(choice => choice.title.startsWith(`${parent} (`)),
-  );
-}
-
 /**
  * Enumerates the sub-schema types for a given node.
  *
@@ -158,15 +151,8 @@ export function buildChoices(schemaNode: SchemaNode): Choice[] {
   ) {
     const combinerNode = schemaNode.children[0];
     const parentTitles = [combinerNode.title, schemaNode.title];
-    const choices = combinerNode.children.map(makeArrayChoice);
-    // Variants the schema names after their parent ("Variable (requires id)", ...)
-    // stay in schema order, so the list opens on the first one. Otherwise sort, and
-    // do it before disambiguating so colliding variants keep their schema order
-    // (and the default choice stays the same).
-    const sorted = isNamedVariantList(choices, parentTitles)
-      ? choices
-      : choices.sort((a, b) => a.title.localeCompare(b.title));
-    return disambiguateTitles(sorted, parentTitles, true);
+    // Choices keep the schema order, so the list opens on the first variant.
+    return disambiguateTitles(combinerNode.children.map(makeArrayChoice), parentTitles, true);
   }
 
   // if current node is a combiner, offer its children

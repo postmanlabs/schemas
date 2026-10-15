@@ -148,7 +148,7 @@ export const SchemaRow: React.FunctionComponent<SchemaRowProps> = React.memo(
             setHoveredNode(selectedChoice.type);
           }}
         >
-          {!isRootLevel && <Box borderT w={isCollapsible ? 1 : 3} ml={-3} mr={3} mt={2} />}
+          {!isRootLevel && <Box borderT w={isCollapsible ? 1 : 3} ml={-3} mr={3} mt={2.5} />}
           {parentChangeType !== 'added' && parentChangeType !== 'removed' ? (
             <NodeAnnotation change={hasChanged} style={{ left: annotationLeftOffset }} />
           ) : null}
@@ -160,7 +160,7 @@ export const SchemaRow: React.FunctionComponent<SchemaRowProps> = React.memo(
                   // Only the caret + name toggles the row; the rest of the row (required
                   // infotip, type, type select, divider, validations) is not a click target.
                   <span
-                    className="jsv-row-toggle"
+                    className={showName ? 'jsv-row-toggle' : 'jsv-row-toggle jsv-row-toggle--caret-only'}
                     role="button"
                     tabIndex={0}
                     aria-expanded={isExpanded}
