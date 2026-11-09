@@ -2,12 +2,16 @@
 
 > JSON Schemas (draft-07) for the Postman Collection format. Use them to generate, validate and explain Postman Collections, and to migrate between versions. Target Collection v3.0.0 for new work; v2.1.0 is the previous version.
 
-Notes for agents:
+## Schemas
 
-- Target v3.0.0 for new work. Use v2.1.0 when the collection is a single JSON file exported from the Postman app, must run in Newman, or will be imported by tools that only read v2.1.
-- The v3.0.0 JSON Schema describes a whole collection as one JSON document. It is not the schema of the on-disk v3 format, where Postman splits a collection into many YAML files (`*.request.yaml`, `definition.yaml`, `.resources/`). Don't validate those files against it; see the Learning Center links below.
-- Pin a version. Don't use the `/latest/` URLs: they move between releases and differ by draft (`/collection/json/latest/draft-04/` is v2.1.0, `/collection/json/latest/draft-07/` is v3.0.0).
-- The raw schemas can be fetched from any origin (CORS allows all). Internal `$ref`s are kept, not dereferenced. Every v3 definition is under `#/definitions/`, named `v3-<protocol>-<part>` (for example `v3-http-request`, `v3-grpc-auth`).
+- [Collection v3.0.0 JSON Schema](https://schema.postman.com/collection/json/v3.0.0/draft-07/collection.json): The current collection format. Each item has a `$kind`: HTTP, GraphQL, gRPC, WebSocket, Socket.IO, MQTT, Kafka, MCP, LLM and data requests, or a folder (`$kind: "collection"`).
+- [Collection v2.1.0 JSON Schema](https://schema.postman.com/collection/json/v2.1.0/draft-07/collection.json): The previous collection format, used by Postman app exports and Newman. Requires `info` and `item`.
+
+## Postman Learning Center
+
+- [Collections schemas](https://learning.postman.com/docs/use/use-collections/collections-schemas.md): The on-disk v3.0.0 format: YAML files, directory layout and naming rules.
+- [Postman CLI collection commands](https://learning.postman.com/docs/postman-cli/postman-cli-collections.md): `postman collection migrate` (v2.1 JSON to v3 YAML), `postman collection lint` (check a collection against the v3 format), `get` and `run`.
+- [Migrate from Newman to the Postman CLI](https://learning.postman.com/docs/reference/newman-cli/migrate-to-postman-cli.md): Newman runs only v2.1 collections; the Postman CLI runs v3.
 
 ## v3.0.0 at a glance
 
@@ -87,16 +91,11 @@ Migrating from v2.1.0 to v3.0.0:
 - A v2.1 secret variable's value has to move to a vault `source`.
 - Going back to v2.1 drops `$kind`, non-HTTP items, secret sources, `uses` and script `packages`.
 
-## Schemas
+## Notes for agents
 
-- [Collection v3.0.0 JSON Schema](https://schema.postman.com/collection/json/v3.0.0/draft-07/collection.json): The current collection format. Each item has a `$kind`: HTTP, GraphQL, gRPC, WebSocket, Socket.IO, MQTT, Kafka, MCP, LLM and data requests, or a folder (`$kind: "collection"`).
-- [Collection v2.1.0 JSON Schema](https://schema.postman.com/collection/json/v2.1.0/draft-07/collection.json): The previous collection format, used by Postman app exports and Newman. Requires `info` and `item`.
-
-## Postman Learning Center
-
-- [Collections schemas](https://learning.postman.com/docs/use/use-collections/collections-schemas.md): The on-disk v3.0.0 format: YAML files, directory layout and naming rules.
-- [Postman CLI collection commands](https://learning.postman.com/docs/postman-cli/postman-cli-collections.md): `postman collection migrate` (v2.1 JSON to v3 YAML), `postman collection lint` (check a collection against the v3 format), `get` and `run`.
-- [Migrate from Newman to the Postman CLI](https://learning.postman.com/docs/reference/newman-cli/migrate-to-postman-cli.md): Newman runs only v2.1 collections; the Postman CLI runs v3.
+- The v3.0.0 JSON Schema describes a whole collection as one JSON document. It is not the schema of the on-disk v3 format, where Postman splits a collection into many YAML files (`*.request.yaml`, `definition.yaml`, `.resources/`). Don't validate those files against it; see the Learning Center links above.
+- Pin a version. Don't use the `/latest/` URLs: they move between releases and differ by draft (`/collection/json/latest/draft-04/` is v2.1.0, `/collection/json/latest/draft-07/` is v3.0.0).
+- The raw schemas can be fetched from any origin (CORS allows all). Internal `$ref`s are kept, not dereferenced. Every v3 definition is under `#/definitions/`, named `v3-<protocol>-<part>` (for example `v3-http-request`, `v3-grpc-auth`).
 
 ## Optional
 
