@@ -7,16 +7,89 @@ Notes for agents:
 - Target v3.0.0 for new work. Use v2.1.0 when the collection is a single JSON file exported from the Postman app, must run in Newman, or will be imported by tools that only read v2.1.
 - The v3.0.0 JSON Schema describes a whole collection as one JSON document. It is not the schema of the on-disk v3 format, where Postman splits a collection into many YAML files (`*.request.yaml`, `definition.yaml`, `.resources/`). Don't validate those files against it; see the Learning Center links below.
 - Pin a version. Don't use the `/latest/` URLs: they move between releases and differ by draft (`/collection/json/latest/draft-04/` is v2.1.0, `/collection/json/latest/draft-07/` is v3.0.0).
-- The raw schemas can be fetched from any origin (CORS allows all). Internal `$ref`s are kept, not dereferenced.
+- The raw schemas can be fetched from any origin (CORS allows all). Internal `$ref`s are kept, not dereferenced. Every v3 definition is under `#/definitions/`, named `v3-<protocol>-<part>` (for example `v3-http-request`, `v3-grpc-auth`).
 
-Key differences from v2.1.0 to v3.0.0:
+## v3.0.0 at a glance
 
-- No `info` block. `name` and `$kind: "collection"` are required at the top level, and there is no `info.schema` URL.
-- `event` (with `listen` set to `prerequest` or `test`) is replaced by `scripts`. On a request, a script's `type` is a lifecycle point such as `beforeRequest` or `afterResponse` (HTTP); on a collection or folder it is prefixed with the protocol, such as `http:beforeRequest` or `grpc:beforeInvoke`.
+A minimal valid v3.0.0 collection with a folder and one HTTP request:
+
+```json
+{
+  "$kind": "collection",
+  "name": "Users API",
+  "variables": [{ "key": "baseUrl", "value": "https://api.example.com" }, { "key": "token", "secret": true }],
+  "auth": { "type": "bearer", "credentials": [{ "key": "token", "value": "{{token}}" }] },
+  "items": [{
+    "$kind": "collection",
+    "name": "Users",
+    "items": [{
+      "$kind": "http-request",
+      "name": "Create user",
+      "method": "POST",
+      "url": "{{baseUrl}}/users?notify=true",
+      "queryParams": [{ "key": "notify", "value": "true" }],
+      "headers": [{ "key": "Content-Type", "value": "application/json" }],
+      "body": { "type": "json", "content": "{\"name\":\"Ada\"}" },
+      "auth": { "type": "inherit", "credentials": [] },
+      "scripts": [{ "type": "afterResponse", "language": "text/javascript", "code": "pm.test('created', () => pm.response.to.have.status(201));" }],
+      "examples": [{ "$kind": "http-example", "name": "Created", "response": { "statusCode": 201, "statusText": "Created", "body": { "type": "json", "content": "{\"id\":1}" } } }]
+    }]
+  }]
+}
+```
+
+Items and `$kind`:
+
+- Every item needs `name` and `$kind`. Children go in `items` (plural) on the collection and on folders. `id` is optional and its uniqueness isn't checked; order is the array order.
+- A folder's `$kind` is `"collection"`, the same as the root. There is no `"folder"` kind.
+- Request kinds: `http-request`, `graphql-request`, `grpc-request`, `websocket-request`, `socket.io-request` (with a dot), `mqtt-request`, `kafka-request`, `mcp-request`, `llm-request`, `data-request`.
+- Extra required fields: `kafka-request` needs `mode` (`producer` or `consumer`; a consumer also needs `topics` and `startPosition`); `mcp-request` needs `transport` (`sse` with `url`, or `stdio` with `command` and `env`); `data-request` takes `type` (`postgres`, `mysql`, `redis`, `csv`, `json`, `xlsx`).
+- Every object rejects unknown properties. The root accepts only `id`, `name`, `description`, `$kind`, `variables`, `scripts`, `auth`, `uses` and `items`, so `$schema`, `info`, `item`, `variable` and `event` all fail.
+
+Requests:
+
+- Request fields sit directly on the item; there is no `request` wrapper. `url` is a plain string (Kafka: an array of bootstrap servers; MCP over stdio has `command` instead). `method` is a string.
+- `headers`, `queryParams` and `pathVariables` are arrays of `{ key, value, disabled?, description? }`. The schema doesn't check that they match the `url` string.
+- HTTP `body` is `{ type, content }`: `none` (no content), `json`/`text`/`xml`/`html`/`javascript` (content is a string), `urlencoded` (array of key-value), `formdata` (parts `{ type: "text", key, value }` or `{ type: "file", key, src }`), `file` (`{ src }`), `graphql` (`{ query, variables, operationName }`).
+- GraphQL `variables` is a JSON string, not an object, both in a `graphql-request` and in an HTTP `graphql` body. A gRPC `message.content` is a JSON string too.
+- Saved responses are `examples`. An `http-example` needs `name`, `$kind` and `response`, and `response` needs `statusCode`, `statusText` and `body` (`{ type, content }`), even for a 204.
+- Client options are a per-request `settings` object whose keys depend on the kind (HTTP: `followRedirects`, `maxRedirects`, `strictSSL`, `tlsDisabledProtocols`…; gRPC: `secureConnection`, `connectionTimeout`…; WebSocket: `handshakeTimeout`, `retryCount`…). Collections and folders have no `settings`, and HTTP has no timeout setting.
+
+Auth:
+
+- Auth is `{ type: "noauth" }` or `{ type, credentials: [{ key, value }] }`. There are no per-scheme keys such as v2.1's `bearer: [...]`.
+- `inherit` is allowed only on requests and still needs `credentials: []`.
+- The schema doesn't define or check credential key names for any scheme; any `{ key, value }` pairs pass.
+- Allowed `type`s depend on the protocol: MQTT and data requests take only `noauth`, `inherit` and `basic`; gRPC adds `bearer`, `apikey` and `oauth2`; Socket.IO requests have no `auth`. Look up `v3-<protocol>-auth`.
+- A collection or folder `auth` can also be an array of credential sets with `rules` (`[{ key: "url", value }]`); a request uses the first set whose rules all match. A request can't combine several schemes.
+
+Variables, scripts and uses:
+
+- `variables` exist only on the root collection; folders and requests reject them. An entry is `{ key, value?, disabled?, description? }`. There is no `type` field.
+- A secret is `{ key, secret: true, source? }` and can't hold a `value`. `source` points at a vault: `postman`, `azure`, `1password`, `aws`, `hashicorp` or `passport` (see `#/definitions/secret-source`).
+- A script is `{ type, code, language? }`. `code` is one string (join v2.1's `exec` lines with newlines), and `language` is `text/javascript`.
+- On a request, a script's `type` is a lifecycle point: HTTP `beforeRequest`/`afterResponse`; GraphQL `beforeQuery`/`afterResponse`; gRPC `beforeInvoke`/`onIncomingMessage`/`afterResponse`; Kafka `beforeProduce`/`afterProduce`/`beforeConsume`/`onIncomingMessage`/`afterConsume`.
+- On a collection or folder, the same points are prefixed with the protocol (`http:beforeRequest`, `grpc:beforeInvoke`). WebSocket, Socket.IO, MQTT, MCP, LLM and data requests have no scripts.
+- The root `uses` takes only `environment`, an array of environment IDs.
+
+Reading validation errors:
+
+- An invalid item is checked against every item kind, so one mistake can return dozens of errors, most of them about the wrong kind. Find the branch whose `$kind` matches yours and read its errors, usually `additionalProperties` or a missing required field.
+- An unknown or misspelled `$kind` (such as `"folder"`) matches no branch, and no error names the right value; check it against the kind list above.
+
+Migrating from v2.1.0 to v3.0.0:
+
+- Remove `info`. Set `name` and `$kind: "collection"` at the root; there is no `info.schema` URL. Tell versions apart this way: v2.x has `info` (with `info.schema`), v3 has a root `$kind: "collection"`.
+- Rename `item` → `items`, `variable` → `variables`, `header` → `headers`, `response` → `examples`. Add a `$kind` to every item and lift `request.*` onto the item.
+- Map `url` objects to a string plus `queryParams`/`pathVariables`; `body.mode` + `body.<mode>` to `body.type` + `body.content`; `auth.<scheme>` arrays to `auth.credentials`.
+- `event` becomes `scripts`: `prerequest` is `beforeRequest` and `test` is `afterResponse` (prefixed with `http:` on a collection or folder).
+- `protocolProfileBehavior` becomes per-request `settings`; copy collection-wide values onto each request. `disableBodyPruning` has no v3 equivalent.
+- A v2.1 secret variable's value has to move to a vault `source`.
+- Going back to v2.1 drops `$kind`, non-HTTP items, secret sources, `uses` and script `packages`.
 
 ## Schemas
 
-- [Collection v3.0.0 JSON Schema](https://schema.postman.com/collection/json/v3.0.0/draft-07/collection.json): The current collection format. Each item has a `$kind`: HTTP, GraphQL, gRPC, WebSocket, Socket.IO, MQTT, Kafka, MCP and LLM requests, or a folder.
+- [Collection v3.0.0 JSON Schema](https://schema.postman.com/collection/json/v3.0.0/draft-07/collection.json): The current collection format. Each item has a `$kind`: HTTP, GraphQL, gRPC, WebSocket, Socket.IO, MQTT, Kafka, MCP, LLM and data requests, or a folder (`$kind: "collection"`).
 - [Collection v2.1.0 JSON Schema](https://schema.postman.com/collection/json/v2.1.0/draft-07/collection.json): The previous collection format, used by Postman app exports and Newman. Requires `info` and `item`.
 
 ## Postman Learning Center
