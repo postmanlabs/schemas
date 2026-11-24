@@ -47,15 +47,19 @@ Items and `$kind`:
 - Every item needs `name` and `$kind`. Children go in `items` (plural) on the collection and on folders. `id` is optional and its uniqueness isn't checked; order is the array order.
 - A folder's `$kind` is `"collection"`, the same as the root. There is no `"folder"` kind.
 - Request kinds: `http-request`, `graphql-request`, `grpc-request`, `websocket-request`, `socket.io-request` (with a dot), `mqtt-request`, `kafka-request`, `mcp-request`, `llm-request`, `data-request`.
-- Extra required fields: `kafka-request` needs `mode` (`producer` or `consumer`; a consumer also needs `topics` and `startPosition`); `mcp-request` needs `transport` (`sse` with `url`, or `stdio` with `command` and `env`); `data-request` takes `type` (`postgres`, `mysql`, `redis`, `csv`, `json`, `xlsx`).
+- Only `name` and `$kind` are required on an item; `url`, `method` and `auth` are optional. The exceptions: `kafka-request` needs `mode` (`producer` or `consumer`; a consumer also needs `topics` and `startPosition`), and `mcp-request` needs `transport` (`sse`, which uses `url`, or `stdio`, which uses `command` and `env`). A `data-request` may set `type` (`postgres`, `mysql`, `redis`, `csv`, `json`, `xlsx`).
+- Kafka, MCP and data requests are `oneOf` variants keyed on `mode`, `transport` or `type`, so their fields sit under `#/definitions/v3-kafka-request/oneOf/…` and the like. Definition names drop the dot: `socket.io-request` is defined as `v3-socketio-request`.
 - Every object rejects unknown properties. The root accepts only `id`, `name`, `description`, `$kind`, `variables`, `scripts`, `auth`, `uses` and `items`, so `$schema`, `info`, `item`, `variable` and `event` all fail.
 
 Requests:
 
 - Request fields sit directly on the item; there is no `request` wrapper. `url` is a plain string (Kafka: an array of bootstrap servers; MCP over stdio has `command` instead). `method` is a string.
-- `headers`, `queryParams` and `pathVariables` are arrays of `{ key, value, disabled?, description? }`. The schema doesn't check that they match the `url` string.
+- `headers` and `pathVariables` are arrays of `{ key, value, disabled?, description?, $type? }`, where `key` and `value` are required strings. In `queryParams` both are optional and can be `null`. Path variables are written `:name` in the `url`. The schema doesn't check that these arrays match the `url` string.
 - HTTP `body` is `{ type, content }`: `none` (no content), `json`/`text`/`xml`/`html`/`javascript` (content is a string), `urlencoded` (array of key-value), `formdata` (parts `{ type: "text", key, value }` or `{ type: "file", key, src }`), `file` (`{ src }`), `graphql` (`{ query, variables, operationName }`).
-- GraphQL `variables` is a JSON string, not an object, both in a `graphql-request` and in an HTTP `graphql` body. A gRPC `message.content` is a JSON string too.
+- A `graphql-request` has `url`, `query`, `variables`, `operationName` and `headers` on the item, and no `method` or `body`. GraphQL `variables` is a JSON string, not an object, both there and in an HTTP `graphql` body.
+- A `grpc-request` has `url` (`host:port`), `methodPath` (`package.Service/Method`), `message: { content }` (a JSON string) and `metadata` (key-value pairs, not `headers`).
+- A Kafka producer sends `messages: [{ $kind: "kafka-message", name, topic, key?, value?: { contentType, content } }]`; the topic is set on each message. A consumer has `topics: [{ name }]` and `startPosition: { type: "beginning" }` (or `"end"` and others), both objects, not strings.
+- Saved WebSocket, Socket.IO and MQTT `messages` each need their own `$kind`: `websocket-message`, `socket.io-message` or `mqtt-message`.
 - Saved responses are `examples`. An `http-example` needs `name`, `$kind` and `response`, and `response` needs `statusCode`, `statusText` and `body` (`{ type, content }`), even for a 204.
 - Client options are a per-request `settings` object whose keys depend on the kind (HTTP: `followRedirects`, `maxRedirects`, `strictSSL`, `tlsDisabledProtocols`…; gRPC: `secureConnection`, `connectionTimeout`…; WebSocket: `handshakeTimeout`, `retryCount`…). Collections and folders have no `settings`, and HTTP has no timeout setting.
 
@@ -64,13 +68,14 @@ Auth:
 - Auth is `{ type: "noauth" }` or `{ type, credentials: [{ key, value }] }`. There are no per-scheme keys such as v2.1's `bearer: [...]`.
 - `inherit` is allowed only on requests and still needs `credentials: []`.
 - The schema doesn't define or check credential key names for any scheme; any `{ key, value }` pairs pass.
-- Allowed `type`s depend on the protocol: MQTT and data requests take only `noauth`, `inherit` and `basic`; gRPC adds `bearer`, `apikey` and `oauth2`; Socket.IO requests have no `auth`. Look up `v3-<protocol>-auth`.
-- A collection or folder `auth` can also be an array of credential sets with `rules` (`[{ key: "url", value }]`); a request uses the first set whose rules all match. A request can't combine several schemes.
+- HTTP requests take `noauth`, `inherit`, `basic`, `bearer`, `apikey`, `oauth1`, `oauth2`, `jwt`, `ntlm`, `digest`, `edgegrid`, `hawk`, `asap` and `awsv4`. Collections and folders take the same without `inherit`, plus `sasl`.
+- Other protocols allow fewer: MQTT and data requests take only `noauth`, `inherit` and `basic`; gRPC adds `bearer`, `apikey` and `oauth2`; Kafka takes `noauth`, `inherit`, `sasl`, `awsv4`, `oauth2` and `bearer`. Socket.IO requests have no `auth`. Look up `v3-<protocol>-auth`.
+- A collection or folder `auth` can also be an array of credential sets, each with `id`, `name`, `type`, `credentials` and `rules` (`[{ key: "url", value }]`); a request uses the first set whose rules all match. A request can't combine several schemes.
 
 Variables, scripts and uses:
 
 - `variables` exist only on the root collection; folders and requests reject them. An entry is `{ key, value?, disabled?, description? }`. There is no `type` field.
-- A secret is `{ key, secret: true, source? }` and can't hold a `value`. `source` points at a vault: `postman`, `azure`, `1password`, `aws`, `hashicorp` or `passport` (see `#/definitions/secret-source`).
+- A secret is `{ key, secret: true, source? }` and can't hold a `value`. `source` names a vault `provider` (`postman`, `azure`, `1password`, `aws`, `hashicorp` or `passport`) and puts its details under a key of the same name, for example `{ provider: "postman", postman: { type: "local", secretId } }`. See `#/definitions/secret-source`.
 - A script is `{ type, code, language? }`. `code` is one string (join v2.1's `exec` lines with newlines), and `language` is `text/javascript`.
 - On a request, a script's `type` is a lifecycle point: HTTP `beforeRequest`/`afterResponse`; GraphQL `beforeQuery`/`afterResponse`; gRPC `beforeInvoke`/`onIncomingMessage`/`afterResponse`; Kafka `beforeProduce`/`afterProduce`/`beforeConsume`/`onIncomingMessage`/`afterConsume`.
 - On a collection or folder, the same points are prefixed with the protocol (`http:beforeRequest`, `grpc:beforeInvoke`). WebSocket, Socket.IO, MQTT, MCP, LLM and data requests have no scripts.
@@ -83,7 +88,8 @@ Reading validation errors:
 
 Migrating from v2.1.0 to v3.0.0:
 
-- Remove `info`. Set `name` and `$kind: "collection"` at the root; there is no `info.schema` URL. Tell versions apart this way: v2.x has `info` (with `info.schema`), v3 has a root `$kind: "collection"`.
+- Remove `info`. Set `name` and `$kind: "collection"` at the root; there is no `info.schema` URL. To tell versions apart, check for `info` first (v2.x, with `info.schema`), because v2.1 accepts extra root keys; otherwise a root `$kind: "collection"` means v3.
+- `description` stays a Markdown string (v2.1's `{ content, type }` object fails) and is capped at 1,000,000 characters, the only length limit in the schema.
 - Rename `item` → `items`, `variable` → `variables`, `header` → `headers`, `response` → `examples`. Add a `$kind` to every item and lift `request.*` onto the item.
 - Map `url` objects to a string plus `queryParams`/`pathVariables`; `body.mode` + `body.<mode>` to `body.type` + `body.content`; `auth.<scheme>` arrays to `auth.credentials`.
 - `event` becomes `scripts`: `prerequest` is `beforeRequest` and `test` is `afterResponse` (prefixed with `http:` on a collection or folder).
