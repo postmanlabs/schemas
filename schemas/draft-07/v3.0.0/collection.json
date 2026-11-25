@@ -464,7 +464,11 @@
 							"kafka:onIncomingMessage",
 							"kafka:afterConsume",
 							"kafka:beforeProduce",
-							"kafka:afterProduce"
+							"kafka:afterProduce",
+							"mcp:beforeConnect",
+							"mcp:afterConnect",
+							"mcp:afterResponse",
+							"mcp:afterDisconnect"
 						],
 						"description": "Lifecycle point the script runs at."
 					},
@@ -916,7 +920,11 @@
 							"kafka:onIncomingMessage",
 							"kafka:afterConsume",
 							"kafka:beforeProduce",
-							"kafka:afterProduce"
+							"kafka:afterProduce",
+							"mcp:beforeConnect",
+							"mcp:afterConnect",
+							"mcp:afterResponse",
+							"mcp:afterDisconnect"
 						],
 						"description": "Lifecycle point the script runs at."
 					},
@@ -2366,273 +2374,6 @@
 			"title": "GraphQL auth"
 		},
 		"v3-graphql-schema": {
-			"title": "GraphQL schema source",
-			"allOf": [
-				{
-					"$ref": "#/definitions/v3-schema"
-				}
-			]
-		},
-		"v3-auth": {
-			"title": "Auth",
-			"oneOf": [
-				{
-					"oneOf": [
-						{
-							"type": "object",
-							"properties": {
-								"id": {
-									"description": "Identifier of the credential set.",
-									"type": "string"
-								},
-								"name": {
-									"description": "Display name of the credential set.",
-									"type": "string"
-								},
-								"description": {
-									"description": "Human-readable note about the credential set.",
-									"type": "string"
-								},
-								"type": {
-									"type": "string",
-									"const": "noauth",
-									"description": "Auth scheme to apply."
-								}
-							},
-							"required": [
-								"type"
-							],
-							"additionalProperties": false,
-							"title": "No auth"
-						},
-						{
-							"type": "object",
-							"properties": {
-								"id": {
-									"description": "Identifier of the credential set.",
-									"type": "string"
-								},
-								"name": {
-									"description": "Display name of the credential set.",
-									"type": "string"
-								},
-								"description": {
-									"description": "Human-readable note about the credential set.",
-									"type": "string"
-								},
-								"credentials": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"key": {
-												"type": "string",
-												"description": "Name of the credential field."
-											},
-											"value": {
-												"description": "Value of the credential field."
-											}
-										},
-										"required": [
-											"key",
-											"value"
-										],
-										"additionalProperties": false
-									},
-									"description": "Credential fields for the auth type, as key-value pairs."
-								},
-								"type": {
-									"type": "string",
-									"enum": [
-										"awsv4",
-										"basic",
-										"bearer",
-										"hawk",
-										"oauth1",
-										"oauth2",
-										"apikey",
-										"edgegrid",
-										"jwt",
-										"digest",
-										"ntlm",
-										"asap",
-										"azure",
-										"sasl",
-										"inherit"
-									],
-									"description": "Auth scheme to apply. `inherit` takes the credentials of the nearest ancestor that defines them."
-								}
-							},
-							"required": [
-								"credentials",
-								"type"
-							],
-							"additionalProperties": false,
-							"title": "Credential set"
-						}
-					],
-					"title": "One credential set"
-				},
-				{
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/v3-multi-auth-entry"
-					},
-					"title": "Credential sets, selected by rule"
-				}
-			]
-		},
-		"v3-multi-auth-entry": {
-			"title": "Credential set with rules",
-			"oneOf": [
-				{
-					"type": "object",
-					"properties": {
-						"id": {
-							"type": "string",
-							"description": "Identifier of the credential set."
-						},
-						"name": {
-							"type": "string",
-							"description": "Display name of the credential set."
-						},
-						"description": {
-							"description": "Human-readable note about the credential set.",
-							"type": "string"
-						},
-						"rules": {
-							"description": "Conditions that select this credential set. A request uses the first set whose rules all match.",
-							"type": "array",
-							"items": {
-								"type": "object",
-								"properties": {
-									"key": {
-										"type": "string",
-										"enum": [
-											"url"
-										],
-										"description": "Property the rule matches on."
-									},
-									"value": {
-										"type": "string",
-										"description": "Value the property has to match."
-									}
-								},
-								"required": [
-									"key",
-									"value"
-								],
-								"additionalProperties": false
-							}
-						},
-						"credentials": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"properties": {
-									"key": {
-										"type": "string",
-										"description": "Name of the credential field."
-									},
-									"value": {
-										"description": "Value of the credential field."
-									}
-								},
-								"required": [
-									"key",
-									"value"
-								],
-								"additionalProperties": false
-							},
-							"description": "Credential fields for the auth type, as key-value pairs."
-						},
-						"type": {
-							"type": "string",
-							"enum": [
-								"awsv4",
-								"basic",
-								"bearer",
-								"hawk",
-								"oauth1",
-								"oauth2",
-								"apikey",
-								"edgegrid",
-								"jwt",
-								"digest",
-								"ntlm",
-								"asap",
-								"azure",
-								"sasl"
-							],
-							"description": "Auth scheme to apply."
-						}
-					},
-					"required": [
-						"id",
-						"name",
-						"credentials",
-						"type"
-					],
-					"additionalProperties": false,
-					"title": "Credential set"
-				},
-				{
-					"type": "object",
-					"properties": {
-						"id": {
-							"type": "string",
-							"description": "Identifier of the credential set."
-						},
-						"name": {
-							"type": "string",
-							"description": "Display name of the credential set."
-						},
-						"description": {
-							"description": "Human-readable note about the credential set.",
-							"type": "string"
-						},
-						"rules": {
-							"description": "Conditions that select this credential set. A request uses the first set whose rules all match.",
-							"type": "array",
-							"items": {
-								"type": "object",
-								"properties": {
-									"key": {
-										"type": "string",
-										"enum": [
-											"url"
-										],
-										"description": "Property the rule matches on."
-									},
-									"value": {
-										"type": "string",
-										"description": "Value the property has to match."
-									}
-								},
-								"required": [
-									"key",
-									"value"
-								],
-								"additionalProperties": false
-							}
-						},
-						"type": {
-							"type": "string",
-							"const": "noauth",
-							"description": "Auth scheme to apply."
-						}
-					},
-					"required": [
-						"id",
-						"name",
-						"type"
-					],
-					"additionalProperties": false,
-					"title": "No auth"
-				}
-			]
-		},
-		"v3-schema": {
 			"oneOf": [
 				{
 					"type": "object",
@@ -2732,37 +2473,9 @@
 					],
 					"additionalProperties": false,
 					"title": "Schema from a specification"
-				},
-				{
-					"type": "object",
-					"properties": {
-						"source": {
-							"type": "string",
-							"const": "url",
-							"description": "Where the schema is loaded from."
-						},
-						"url": {
-							"type": "string",
-							"description": "URL the schema is fetched from."
-						},
-						"auth": {
-							"description": "Credentials used to fetch the schema.",
-							"allOf": [
-								{
-									"$ref": "#/definitions/v3-auth"
-								}
-							]
-						}
-					},
-					"required": [
-						"source",
-						"url"
-					],
-					"additionalProperties": false,
-					"title": "Schema from a URL"
 				}
 			],
-			"title": "Schema source"
+			"title": "GraphQL schema source"
 		},
 		"v3-graphql-example": {
 			"type": "object",
@@ -3240,12 +2953,108 @@
 			"title": "gRPC auth"
 		},
 		"v3-grpc-schema": {
-			"title": "gRPC schema source",
-			"allOf": [
+			"oneOf": [
 				{
-					"$ref": "#/definitions/v3-schema"
+					"type": "object",
+					"properties": {
+						"source": {
+							"type": "string",
+							"const": "none",
+							"description": "Where the schema is loaded from."
+						}
+					},
+					"required": [
+						"source"
+					],
+					"additionalProperties": false,
+					"title": "No schema"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"source": {
+							"type": "string",
+							"const": "auto",
+							"description": "Where the schema is loaded from."
+						}
+					},
+					"required": [
+						"source"
+					],
+					"additionalProperties": false,
+					"title": "Auto-detected schema"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"source": {
+							"type": "string",
+							"const": "file",
+							"description": "Where the schema is loaded from."
+						},
+						"location": {
+							"type": "string",
+							"description": "Path to the schema file, relative to the working directory."
+						}
+					},
+					"required": [
+						"source",
+						"location"
+					],
+					"additionalProperties": false,
+					"title": "Schema from a file"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"source": {
+							"type": "string",
+							"const": "api",
+							"description": "Where the schema is loaded from."
+						},
+						"apiId": {
+							"type": "string",
+							"description": "Identifier of the Postman API."
+						},
+						"versionId": {
+							"type": "string",
+							"description": "Identifier of the API version the schema belongs to."
+						},
+						"releaseId": {
+							"description": "Identifier of the release to pin the schema to. Defaults to the latest.",
+							"type": "string"
+						}
+					},
+					"required": [
+						"source",
+						"apiId",
+						"versionId"
+					],
+					"additionalProperties": false,
+					"title": "Schema from an API"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"source": {
+							"type": "string",
+							"const": "specification",
+							"description": "Where the schema is loaded from."
+						},
+						"specificationId": {
+							"type": "string",
+							"description": "Identifier of the Postman specification."
+						}
+					},
+					"required": [
+						"source",
+						"specificationId"
+					],
+					"additionalProperties": false,
+					"title": "Schema from a specification"
 				}
-			]
+			],
+			"title": "gRPC schema source"
 		},
 		"v3-grpc-scripts": {
 			"type": "array",
@@ -5649,10 +5458,314 @@
 			"title": "Kafka auth"
 		},
 		"v3-kafka-schema": {
-			"title": "Kafka schema source",
-			"allOf": [
+			"oneOf": [
 				{
-					"$ref": "#/definitions/v3-schema"
+					"type": "object",
+					"properties": {
+						"source": {
+							"type": "string",
+							"const": "specification",
+							"description": "Where the schema is loaded from."
+						},
+						"specificationId": {
+							"type": "string",
+							"description": "Identifier of the Postman specification."
+						}
+					},
+					"required": [
+						"source",
+						"specificationId"
+					],
+					"additionalProperties": false,
+					"title": "Schema from a specification"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"source": {
+							"type": "string",
+							"const": "url",
+							"description": "Where the schema is loaded from."
+						},
+						"url": {
+							"type": "string",
+							"description": "URL the schema is fetched from."
+						},
+						"auth": {
+							"description": "Credentials used to fetch the schema.",
+							"allOf": [
+								{
+									"$ref": "#/definitions/v3-auth"
+								}
+							]
+						}
+					},
+					"required": [
+						"source",
+						"url"
+					],
+					"additionalProperties": false,
+					"title": "Schema from a URL"
+				}
+			],
+			"title": "Kafka schema source"
+		},
+		"v3-auth": {
+			"title": "Auth",
+			"oneOf": [
+				{
+					"oneOf": [
+						{
+							"type": "object",
+							"properties": {
+								"id": {
+									"description": "Identifier of the credential set.",
+									"type": "string"
+								},
+								"name": {
+									"description": "Display name of the credential set.",
+									"type": "string"
+								},
+								"description": {
+									"description": "Human-readable note about the credential set.",
+									"type": "string"
+								},
+								"type": {
+									"type": "string",
+									"const": "noauth",
+									"description": "Auth scheme to apply."
+								}
+							},
+							"required": [
+								"type"
+							],
+							"additionalProperties": false,
+							"title": "No auth"
+						},
+						{
+							"type": "object",
+							"properties": {
+								"id": {
+									"description": "Identifier of the credential set.",
+									"type": "string"
+								},
+								"name": {
+									"description": "Display name of the credential set.",
+									"type": "string"
+								},
+								"description": {
+									"description": "Human-readable note about the credential set.",
+									"type": "string"
+								},
+								"credentials": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"key": {
+												"type": "string",
+												"description": "Name of the credential field."
+											},
+											"value": {
+												"description": "Value of the credential field."
+											}
+										},
+										"required": [
+											"key",
+											"value"
+										],
+										"additionalProperties": false
+									},
+									"description": "Credential fields for the auth type, as key-value pairs."
+								},
+								"type": {
+									"type": "string",
+									"enum": [
+										"awsv4",
+										"basic",
+										"bearer",
+										"hawk",
+										"oauth1",
+										"oauth2",
+										"apikey",
+										"edgegrid",
+										"jwt",
+										"digest",
+										"ntlm",
+										"asap",
+										"azure",
+										"sasl",
+										"inherit"
+									],
+									"description": "Auth scheme to apply. `inherit` takes the credentials of the nearest ancestor that defines them."
+								}
+							},
+							"required": [
+								"credentials",
+								"type"
+							],
+							"additionalProperties": false,
+							"title": "Credential set"
+						}
+					],
+					"title": "One credential set"
+				},
+				{
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/v3-multi-auth-entry"
+					},
+					"title": "Credential sets, selected by rule"
+				}
+			]
+		},
+		"v3-multi-auth-entry": {
+			"title": "Credential set with rules",
+			"oneOf": [
+				{
+					"type": "object",
+					"properties": {
+						"id": {
+							"type": "string",
+							"description": "Identifier of the credential set."
+						},
+						"name": {
+							"type": "string",
+							"description": "Display name of the credential set."
+						},
+						"description": {
+							"description": "Human-readable note about the credential set.",
+							"type": "string"
+						},
+						"rules": {
+							"description": "Conditions that select this credential set. A request uses the first set whose rules all match.",
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"key": {
+										"type": "string",
+										"enum": [
+											"url"
+										],
+										"description": "Property the rule matches on."
+									},
+									"value": {
+										"type": "string",
+										"description": "Value the property has to match."
+									}
+								},
+								"required": [
+									"key",
+									"value"
+								],
+								"additionalProperties": false
+							}
+						},
+						"credentials": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"key": {
+										"type": "string",
+										"description": "Name of the credential field."
+									},
+									"value": {
+										"description": "Value of the credential field."
+									}
+								},
+								"required": [
+									"key",
+									"value"
+								],
+								"additionalProperties": false
+							},
+							"description": "Credential fields for the auth type, as key-value pairs."
+						},
+						"type": {
+							"type": "string",
+							"enum": [
+								"awsv4",
+								"basic",
+								"bearer",
+								"hawk",
+								"oauth1",
+								"oauth2",
+								"apikey",
+								"edgegrid",
+								"jwt",
+								"digest",
+								"ntlm",
+								"asap",
+								"azure",
+								"sasl"
+							],
+							"description": "Auth scheme to apply."
+						}
+					},
+					"required": [
+						"id",
+						"name",
+						"credentials",
+						"type"
+					],
+					"additionalProperties": false,
+					"title": "Credential set"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"id": {
+							"type": "string",
+							"description": "Identifier of the credential set."
+						},
+						"name": {
+							"type": "string",
+							"description": "Display name of the credential set."
+						},
+						"description": {
+							"description": "Human-readable note about the credential set.",
+							"type": "string"
+						},
+						"rules": {
+							"description": "Conditions that select this credential set. A request uses the first set whose rules all match.",
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"key": {
+										"type": "string",
+										"enum": [
+											"url"
+										],
+										"description": "Property the rule matches on."
+									},
+									"value": {
+										"type": "string",
+										"description": "Value the property has to match."
+									}
+								},
+								"required": [
+									"key",
+									"value"
+								],
+								"additionalProperties": false
+							}
+						},
+						"type": {
+							"type": "string",
+							"const": "noauth",
+							"description": "Auth scheme to apply."
+						}
+					},
+					"required": [
+						"id",
+						"name",
+						"type"
+					],
+					"additionalProperties": false,
+					"title": "No auth"
 				}
 			]
 		},
@@ -5728,12 +5841,29 @@
 			"title": "Kafka message"
 		},
 		"v3-kafka-message-schema": {
-			"title": "Kafka message schema source",
-			"allOf": [
+			"oneOf": [
 				{
-					"$ref": "#/definitions/v3-schema"
+					"type": "object",
+					"properties": {
+						"source": {
+							"type": "string",
+							"const": "specification",
+							"description": "Where the schema is loaded from."
+						},
+						"specificationId": {
+							"type": "string",
+							"description": "Identifier of the Postman specification."
+						}
+					},
+					"required": [
+						"source",
+						"specificationId"
+					],
+					"additionalProperties": false,
+					"title": "Schema from a specification"
 				}
-			]
+			],
+			"title": "Kafka message schema source"
 		},
 		"v3-kafka-content": {
 			"type": "object",
@@ -5850,12 +5980,29 @@
 			"title": "Kafka scripts"
 		},
 		"v3-kafka-topic-schema": {
-			"title": "Kafka topic schema source",
-			"allOf": [
+			"oneOf": [
 				{
-					"$ref": "#/definitions/v3-schema"
+					"type": "object",
+					"properties": {
+						"source": {
+							"type": "string",
+							"const": "specification",
+							"description": "Where the schema is loaded from."
+						},
+						"specificationId": {
+							"type": "string",
+							"description": "Identifier of the Postman specification."
+						}
+					},
+					"required": [
+						"source",
+						"specificationId"
+					],
+					"additionalProperties": false,
+					"title": "Schema from a specification"
 				}
-			]
+			],
+			"title": "Kafka topic schema source"
 		},
 		"v3-mcp-request": {
 			"oneOf": [
@@ -5882,6 +6029,14 @@
 						"message": {
 							"description": "JSON-RPC message sent to the server.",
 							"type": "string"
+						},
+						"scripts": {
+							"description": "Scripts that run on events in the request execution lifecycle.",
+							"allOf": [
+								{
+									"$ref": "#/definitions/v3-mcp-scripts"
+								}
+							]
 						},
 						"auth": {
 							"description": "Credentials applied to the connection.",
@@ -5968,6 +6123,14 @@
 							"description": "JSON-RPC message sent to the server.",
 							"type": "string"
 						},
+						"scripts": {
+							"description": "Scripts that run on events in the request execution lifecycle.",
+							"allOf": [
+								{
+									"$ref": "#/definitions/v3-mcp-scripts"
+								}
+							]
+						},
 						"auth": {
 							"description": "Credentials applied to the connection.",
 							"allOf": [
@@ -6023,6 +6186,94 @@
 				}
 			],
 			"title": "MCP request"
+		},
+		"v3-mcp-scripts": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"type": {
+						"type": "string",
+						"enum": [
+							"beforeConnect",
+							"afterConnect",
+							"afterResponse",
+							"afterDisconnect"
+						],
+						"description": "Lifecycle point the script runs at."
+					},
+					"code": {
+						"type": "string",
+						"description": "Source of the script."
+					},
+					"language": {
+						"description": "Language the script is written in.",
+						"type": "string",
+						"enum": [
+							"text/javascript"
+						]
+					},
+					"packages": {
+						"description": "Package Library packages the script imports, keyed by the name it imports them under.",
+						"type": "object",
+						"propertyNames": {
+							"type": "string"
+						},
+						"additionalProperties": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"type": "string",
+									"description": "Identifier of the package."
+								}
+							},
+							"required": [
+								"id"
+							],
+							"additionalProperties": false
+						}
+					},
+					"requests": {
+						"description": "Collection requests the script sends, keyed by the name it references them under.",
+						"type": "object",
+						"propertyNames": {
+							"type": "string"
+						},
+						"additionalProperties": {
+							"type": "object",
+							"properties": {
+								"workspace": {
+									"type": "string",
+									"description": "Identifier of the workspace."
+								},
+								"collection": {
+									"type": "string",
+									"description": "Identifier of the collection."
+								},
+								"location": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"description": "Path to the request, from the collection root."
+								}
+							},
+							"required": [
+								"workspace",
+								"collection",
+								"location"
+							],
+							"additionalProperties": false
+						}
+					}
+				},
+				"required": [
+					"type",
+					"code"
+				],
+				"additionalProperties": false
+			},
+			"title": "MCP scripts"
 		},
 		"v3-mcp-auth": {
 			"oneOf": [
@@ -6492,6 +6743,45 @@
 								}
 							]
 						},
+						"visualizations": {
+							"description": "Charts drawn from the result, in the order they are shown.",
+							"type": "array",
+							"items": {
+								"oneOf": [
+									{
+										"$ref": "#/definitions/v3-data-visualization"
+									},
+									{
+										"type": "object",
+										"properties": {},
+										"additionalProperties": {},
+										"title": "Chart from a later version",
+										"description": "A chart of a kind this version does not know, kept as written.",
+										"not": {
+											"required": [
+												"type"
+											],
+											"properties": {
+												"type": {
+													"enum": [
+														"bar",
+														"line",
+														"area",
+														"radar",
+														"pie",
+														"polar",
+														"scatter",
+														"heatmap",
+														"counter"
+													],
+													"type": "string"
+												}
+											}
+										}
+									}
+								]
+							}
+						},
 						"type": {
 							"type": "string",
 							"const": "postgres",
@@ -6569,6 +6859,45 @@
 								}
 							]
 						},
+						"visualizations": {
+							"description": "Charts drawn from the result, in the order they are shown.",
+							"type": "array",
+							"items": {
+								"oneOf": [
+									{
+										"$ref": "#/definitions/v3-data-visualization"
+									},
+									{
+										"type": "object",
+										"properties": {},
+										"additionalProperties": {},
+										"title": "Chart from a later version",
+										"description": "A chart of a kind this version does not know, kept as written.",
+										"not": {
+											"required": [
+												"type"
+											],
+											"properties": {
+												"type": {
+													"enum": [
+														"bar",
+														"line",
+														"area",
+														"radar",
+														"pie",
+														"polar",
+														"scatter",
+														"heatmap",
+														"counter"
+													],
+													"type": "string"
+												}
+											}
+										}
+									}
+								]
+							}
+						},
 						"type": {
 							"type": "string",
 							"const": "mysql",
@@ -6642,6 +6971,45 @@
 								}
 							]
 						},
+						"visualizations": {
+							"description": "Charts drawn from the result, in the order they are shown.",
+							"type": "array",
+							"items": {
+								"oneOf": [
+									{
+										"$ref": "#/definitions/v3-data-visualization"
+									},
+									{
+										"type": "object",
+										"properties": {},
+										"additionalProperties": {},
+										"title": "Chart from a later version",
+										"description": "A chart of a kind this version does not know, kept as written.",
+										"not": {
+											"required": [
+												"type"
+											],
+											"properties": {
+												"type": {
+													"enum": [
+														"bar",
+														"line",
+														"area",
+														"radar",
+														"pie",
+														"polar",
+														"scatter",
+														"heatmap",
+														"counter"
+													],
+													"type": "string"
+												}
+											}
+										}
+									}
+								]
+							}
+						},
 						"type": {
 							"type": "string",
 							"const": "redis",
@@ -6708,6 +7076,45 @@
 									"$ref": "#/definitions/v3-data-auth"
 								}
 							]
+						},
+						"visualizations": {
+							"description": "Charts drawn from the result, in the order they are shown.",
+							"type": "array",
+							"items": {
+								"oneOf": [
+									{
+										"$ref": "#/definitions/v3-data-visualization"
+									},
+									{
+										"type": "object",
+										"properties": {},
+										"additionalProperties": {},
+										"title": "Chart from a later version",
+										"description": "A chart of a kind this version does not know, kept as written.",
+										"not": {
+											"required": [
+												"type"
+											],
+											"properties": {
+												"type": {
+													"enum": [
+														"bar",
+														"line",
+														"area",
+														"radar",
+														"pie",
+														"polar",
+														"scatter",
+														"heatmap",
+														"counter"
+													],
+													"type": "string"
+												}
+											}
+										}
+									}
+								]
+							}
 						},
 						"type": {
 							"type": "string",
@@ -6790,6 +7197,45 @@
 								}
 							]
 						},
+						"visualizations": {
+							"description": "Charts drawn from the result, in the order they are shown.",
+							"type": "array",
+							"items": {
+								"oneOf": [
+									{
+										"$ref": "#/definitions/v3-data-visualization"
+									},
+									{
+										"type": "object",
+										"properties": {},
+										"additionalProperties": {},
+										"title": "Chart from a later version",
+										"description": "A chart of a kind this version does not know, kept as written.",
+										"not": {
+											"required": [
+												"type"
+											],
+											"properties": {
+												"type": {
+													"enum": [
+														"bar",
+														"line",
+														"area",
+														"radar",
+														"pie",
+														"polar",
+														"scatter",
+														"heatmap",
+														"counter"
+													],
+													"type": "string"
+												}
+											}
+										}
+									}
+								]
+							}
+						},
 						"type": {
 							"type": "string",
 							"const": "json",
@@ -6863,6 +7309,45 @@
 								}
 							]
 						},
+						"visualizations": {
+							"description": "Charts drawn from the result, in the order they are shown.",
+							"type": "array",
+							"items": {
+								"oneOf": [
+									{
+										"$ref": "#/definitions/v3-data-visualization"
+									},
+									{
+										"type": "object",
+										"properties": {},
+										"additionalProperties": {},
+										"title": "Chart from a later version",
+										"description": "A chart of a kind this version does not know, kept as written.",
+										"not": {
+											"required": [
+												"type"
+											],
+											"properties": {
+												"type": {
+													"enum": [
+														"bar",
+														"line",
+														"area",
+														"radar",
+														"pie",
+														"polar",
+														"scatter",
+														"heatmap",
+														"counter"
+													],
+													"type": "string"
+												}
+											}
+										}
+									}
+								]
+							}
+						},
 						"type": {
 							"type": "string",
 							"const": "xlsx",
@@ -6935,6 +7420,45 @@
 									"$ref": "#/definitions/v3-data-auth"
 								}
 							]
+						},
+						"visualizations": {
+							"description": "Charts drawn from the result, in the order they are shown.",
+							"type": "array",
+							"items": {
+								"oneOf": [
+									{
+										"$ref": "#/definitions/v3-data-visualization"
+									},
+									{
+										"type": "object",
+										"properties": {},
+										"additionalProperties": {},
+										"title": "Chart from a later version",
+										"description": "A chart of a kind this version does not know, kept as written.",
+										"not": {
+											"required": [
+												"type"
+											],
+											"properties": {
+												"type": {
+													"enum": [
+														"bar",
+														"line",
+														"area",
+														"radar",
+														"pie",
+														"polar",
+														"scatter",
+														"heatmap",
+														"counter"
+													],
+													"type": "string"
+												}
+											}
+										}
+									}
+								]
+							}
 						},
 						"type": {
 							"description": "Data source the request targets. Absent until one is picked.",
@@ -7034,6 +7558,939 @@
 				}
 			],
 			"title": "Data auth"
+		},
+		"v3-data-visualization": {
+			"oneOf": [
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string",
+							"const": "bar",
+							"description": "Kind of chart."
+						},
+						"title": {
+							"description": "Heading shown with the chart.",
+							"type": "string"
+						},
+						"category": {
+							"description": "The categories the values are plotted against. Absent, each row is a category named by its row number.",
+							"type": "object",
+							"properties": {
+								"column": {
+									"description": "Column whose values name the categories. Absent, each row is a category named by its row number.",
+									"type": "string"
+								},
+								"label": {
+									"description": "Title of the category axis.",
+									"type": "string"
+								},
+								"sort": {
+									"description": "Orders the categories by their total across the series. Absent, they keep the order the query returned.",
+									"type": "string",
+									"enum": [
+										"asc",
+										"desc"
+									]
+								}
+							},
+							"additionalProperties": false,
+							"title": "Category axis",
+							"minProperties": 1
+						},
+						"value": {
+							"type": "object",
+							"properties": {
+								"label": {
+									"description": "Title of the value axis.",
+									"type": "string"
+								},
+								"stacked": {
+									"description": "Whether a category's bars stack into one bar rather than standing side by side.",
+									"type": "boolean"
+								},
+								"series": {
+									"minItems": 1,
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"column": {
+												"type": "string",
+												"description": "Result column the series plots."
+											},
+											"label": {
+												"description": "Name of the series in the legend and tooltips. Absent, the column name.",
+												"type": "string"
+											},
+											"color": {
+												"description": "Color the series is drawn in. Absent, the next color of the palette.",
+												"oneOf": [
+													{
+														"type": "string",
+														"enum": [
+															"blue",
+															"yellow",
+															"pink",
+															"green",
+															"purple",
+															"red"
+														]
+													},
+													{
+														"type": "string",
+														"pattern": "^#(?:[0-9a-fA-F]{3}){1,2}$"
+													}
+												]
+											},
+											"dataLabels": {
+												"description": "The values printed on the marks. Absent, every value is.",
+												"type": "object",
+												"properties": {
+													"hidden": {
+														"description": "Whether the values are left off the marks.",
+														"type": "boolean"
+													}
+												},
+												"additionalProperties": false,
+												"title": "Data labels",
+												"minProperties": 1
+											}
+										},
+										"required": [
+											"column"
+										],
+										"additionalProperties": false,
+										"title": "Cartesian series"
+									},
+									"description": "Columns plotted against the categories, a set of bars each."
+								}
+							},
+							"required": [
+								"series"
+							],
+							"additionalProperties": false,
+							"title": "Bar values",
+							"description": "The columns the bars plot, and the axis they run along."
+						},
+						"horizontal": {
+							"description": "Whether the bars run left to right, with the categories down the side.",
+							"type": "boolean"
+						},
+						"legend": {
+							"description": "The legend naming each series, or each slice. Absent, it is drawn wherever there is more than one to name.",
+							"type": "object",
+							"properties": {
+								"hidden": {
+									"description": "Whether the legend is left out.",
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"title": "Legend",
+							"minProperties": 1
+						}
+					},
+					"required": [
+						"type",
+						"value"
+					],
+					"additionalProperties": false,
+					"title": "Bar chart"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string",
+							"const": "line",
+							"description": "Kind of chart."
+						},
+						"title": {
+							"description": "Heading shown with the chart.",
+							"type": "string"
+						},
+						"category": {
+							"description": "The categories the values are plotted against. Absent, each row is a category named by its row number.",
+							"type": "object",
+							"properties": {
+								"column": {
+									"description": "Column whose values name the categories. Absent, each row is a category named by its row number.",
+									"type": "string"
+								},
+								"label": {
+									"description": "Title of the category axis.",
+									"type": "string"
+								},
+								"sort": {
+									"description": "Orders the categories by their total across the series. Absent, they keep the order the query returned.",
+									"type": "string",
+									"enum": [
+										"asc",
+										"desc"
+									]
+								}
+							},
+							"additionalProperties": false,
+							"title": "Category axis",
+							"minProperties": 1
+						},
+						"value": {
+							"type": "object",
+							"properties": {
+								"label": {
+									"description": "Title of the value axis.",
+									"type": "string"
+								},
+								"series": {
+									"minItems": 1,
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"column": {
+												"type": "string",
+												"description": "Result column the series plots."
+											},
+											"label": {
+												"description": "Name of the series in the legend and tooltips. Absent, the column name.",
+												"type": "string"
+											},
+											"color": {
+												"description": "Color the series is drawn in. Absent, the next color of the palette.",
+												"oneOf": [
+													{
+														"type": "string",
+														"enum": [
+															"blue",
+															"yellow",
+															"pink",
+															"green",
+															"purple",
+															"red"
+														]
+													},
+													{
+														"type": "string",
+														"pattern": "^#(?:[0-9a-fA-F]{3}){1,2}$"
+													}
+												]
+											},
+											"dataLabels": {
+												"description": "The values printed on the marks. Absent, every value is.",
+												"type": "object",
+												"properties": {
+													"hidden": {
+														"description": "Whether the values are left off the marks.",
+														"type": "boolean"
+													}
+												},
+												"additionalProperties": false,
+												"title": "Data labels",
+												"minProperties": 1
+											}
+										},
+										"required": [
+											"column"
+										],
+										"additionalProperties": false,
+										"title": "Cartesian series"
+									},
+									"description": "Columns plotted against the categories, a line each."
+								}
+							},
+							"required": [
+								"series"
+							],
+							"additionalProperties": false,
+							"title": "Line values",
+							"description": "The columns the lines plot, and the axis they run along."
+						},
+						"legend": {
+							"description": "The legend naming each series, or each slice. Absent, it is drawn wherever there is more than one to name.",
+							"type": "object",
+							"properties": {
+								"hidden": {
+									"description": "Whether the legend is left out.",
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"title": "Legend",
+							"minProperties": 1
+						}
+					},
+					"required": [
+						"type",
+						"value"
+					],
+					"additionalProperties": false,
+					"title": "Line chart"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string",
+							"const": "area",
+							"description": "Kind of chart."
+						},
+						"title": {
+							"description": "Heading shown with the chart.",
+							"type": "string"
+						},
+						"category": {
+							"description": "The categories the values are plotted against. Absent, each row is a category named by its row number.",
+							"type": "object",
+							"properties": {
+								"column": {
+									"description": "Column whose values name the categories. Absent, each row is a category named by its row number.",
+									"type": "string"
+								},
+								"label": {
+									"description": "Title of the category axis.",
+									"type": "string"
+								},
+								"sort": {
+									"description": "Orders the categories by their total across the series. Absent, they keep the order the query returned.",
+									"type": "string",
+									"enum": [
+										"asc",
+										"desc"
+									]
+								}
+							},
+							"additionalProperties": false,
+							"title": "Category axis",
+							"minProperties": 1
+						},
+						"value": {
+							"type": "object",
+							"properties": {
+								"label": {
+									"description": "Title of the value axis.",
+									"type": "string"
+								},
+								"stacked": {
+									"description": "Whether each area sits on the one before it rather than rising from zero.",
+									"type": "boolean"
+								},
+								"series": {
+									"minItems": 1,
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"column": {
+												"type": "string",
+												"description": "Result column the series plots."
+											},
+											"label": {
+												"description": "Name of the series in the legend and tooltips. Absent, the column name.",
+												"type": "string"
+											},
+											"color": {
+												"description": "Color the series is drawn in. Absent, the next color of the palette.",
+												"oneOf": [
+													{
+														"type": "string",
+														"enum": [
+															"blue",
+															"yellow",
+															"pink",
+															"green",
+															"purple",
+															"red"
+														]
+													},
+													{
+														"type": "string",
+														"pattern": "^#(?:[0-9a-fA-F]{3}){1,2}$"
+													}
+												]
+											},
+											"dataLabels": {
+												"description": "The values printed on the marks. Absent, every value is.",
+												"type": "object",
+												"properties": {
+													"hidden": {
+														"description": "Whether the values are left off the marks.",
+														"type": "boolean"
+													}
+												},
+												"additionalProperties": false,
+												"title": "Data labels",
+												"minProperties": 1
+											}
+										},
+										"required": [
+											"column"
+										],
+										"additionalProperties": false,
+										"title": "Cartesian series"
+									},
+									"description": "Columns plotted against the categories, an area each."
+								}
+							},
+							"required": [
+								"series"
+							],
+							"additionalProperties": false,
+							"title": "Area values",
+							"description": "The columns the areas plot, and the axis they run along."
+						},
+						"legend": {
+							"description": "The legend naming each series, or each slice. Absent, it is drawn wherever there is more than one to name.",
+							"type": "object",
+							"properties": {
+								"hidden": {
+									"description": "Whether the legend is left out.",
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"title": "Legend",
+							"minProperties": 1
+						}
+					},
+					"required": [
+						"type",
+						"value"
+					],
+					"additionalProperties": false,
+					"title": "Area chart"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string",
+							"const": "radar",
+							"description": "Kind of chart."
+						},
+						"title": {
+							"description": "Heading shown with the chart.",
+							"type": "string"
+						},
+						"category": {
+							"description": "The categories the measure is split across. Absent, each row is a category named by its row number.",
+							"type": "object",
+							"properties": {
+								"column": {
+									"description": "Column whose values name the categories. Absent, each row is a category named by its row number.",
+									"type": "string"
+								},
+								"sort": {
+									"description": "Orders the categories by their total across the series. Absent, they keep the order the query returned.",
+									"type": "string",
+									"enum": [
+										"asc",
+										"desc"
+									]
+								}
+							},
+							"additionalProperties": false,
+							"title": "Categories",
+							"minProperties": 1
+						},
+						"value": {
+							"type": "object",
+							"properties": {
+								"series": {
+									"minItems": 1,
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"column": {
+												"type": "string",
+												"description": "Result column the series plots."
+											},
+											"label": {
+												"description": "Name of the series in the legend and tooltips. Absent, the column name.",
+												"type": "string"
+											},
+											"color": {
+												"description": "Color the series is drawn in. Absent, the next color of the palette.",
+												"oneOf": [
+													{
+														"type": "string",
+														"enum": [
+															"blue",
+															"yellow",
+															"pink",
+															"green",
+															"purple",
+															"red"
+														]
+													},
+													{
+														"type": "string",
+														"pattern": "^#(?:[0-9a-fA-F]{3}){1,2}$"
+													}
+												]
+											}
+										},
+										"required": [
+											"column"
+										],
+										"additionalProperties": false,
+										"title": "Radar series"
+									},
+									"description": "Columns drawn as polygons over the categories, one each."
+								}
+							},
+							"required": [
+								"series"
+							],
+							"additionalProperties": false,
+							"title": "Radar values",
+							"description": "The columns drawn as polygons."
+						},
+						"legend": {
+							"description": "The legend naming each series, or each slice. Absent, it is drawn wherever there is more than one to name.",
+							"type": "object",
+							"properties": {
+								"hidden": {
+									"description": "Whether the legend is left out.",
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"title": "Legend",
+							"minProperties": 1
+						}
+					},
+					"required": [
+						"type",
+						"value"
+					],
+					"additionalProperties": false,
+					"title": "Radar chart"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string",
+							"const": "pie",
+							"description": "Kind of chart."
+						},
+						"title": {
+							"description": "Heading shown with the chart.",
+							"type": "string"
+						},
+						"category": {
+							"description": "The categories the measure is split across. Absent, each row is a category named by its row number.",
+							"type": "object",
+							"properties": {
+								"column": {
+									"description": "Column whose values name the categories. Absent, each row is a category named by its row number.",
+									"type": "string"
+								},
+								"sort": {
+									"description": "Orders the categories by their total across the series. Absent, they keep the order the query returned.",
+									"type": "string",
+									"enum": [
+										"asc",
+										"desc"
+									]
+								}
+							},
+							"additionalProperties": false,
+							"title": "Categories",
+							"minProperties": 1
+						},
+						"value": {
+							"type": "object",
+							"properties": {
+								"column": {
+									"type": "string",
+									"description": "Result column whose values size the slices."
+								},
+								"label": {
+									"description": "Name of the measure in tooltips. Absent, the column name.",
+									"type": "string"
+								},
+								"dataLabels": {
+									"description": "The values printed on the marks. Absent, every value is.",
+									"type": "object",
+									"properties": {
+										"hidden": {
+											"description": "Whether the values are left off the marks.",
+											"type": "boolean"
+										}
+									},
+									"additionalProperties": false,
+									"title": "Data labels",
+									"minProperties": 1
+								}
+							},
+							"required": [
+								"column"
+							],
+							"additionalProperties": false,
+							"title": "Slice measure",
+							"description": "The column whose values size the slices."
+						},
+						"legend": {
+							"description": "The legend naming each series, or each slice. Absent, it is drawn wherever there is more than one to name.",
+							"type": "object",
+							"properties": {
+								"hidden": {
+									"description": "Whether the legend is left out.",
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"title": "Legend",
+							"minProperties": 1
+						}
+					},
+					"required": [
+						"type",
+						"value"
+					],
+					"additionalProperties": false,
+					"title": "Pie chart"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string",
+							"const": "polar",
+							"description": "Kind of chart."
+						},
+						"title": {
+							"description": "Heading shown with the chart.",
+							"type": "string"
+						},
+						"category": {
+							"description": "The categories the measure is split across. Absent, each row is a category named by its row number.",
+							"type": "object",
+							"properties": {
+								"column": {
+									"description": "Column whose values name the categories. Absent, each row is a category named by its row number.",
+									"type": "string"
+								},
+								"sort": {
+									"description": "Orders the categories by their total across the series. Absent, they keep the order the query returned.",
+									"type": "string",
+									"enum": [
+										"asc",
+										"desc"
+									]
+								}
+							},
+							"additionalProperties": false,
+							"title": "Categories",
+							"minProperties": 1
+						},
+						"value": {
+							"type": "object",
+							"properties": {
+								"column": {
+									"type": "string",
+									"description": "Result column whose values size the slices."
+								},
+								"label": {
+									"description": "Name of the measure in tooltips. Absent, the column name.",
+									"type": "string"
+								},
+								"dataLabels": {
+									"description": "The values printed on the marks. Absent, every value is.",
+									"type": "object",
+									"properties": {
+										"hidden": {
+											"description": "Whether the values are left off the marks.",
+											"type": "boolean"
+										}
+									},
+									"additionalProperties": false,
+									"title": "Data labels",
+									"minProperties": 1
+								}
+							},
+							"required": [
+								"column"
+							],
+							"additionalProperties": false,
+							"title": "Slice measure",
+							"description": "The column whose values size the slices."
+						},
+						"legend": {
+							"description": "The legend naming each series, or each slice. Absent, it is drawn wherever there is more than one to name.",
+							"type": "object",
+							"properties": {
+								"hidden": {
+									"description": "Whether the legend is left out.",
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"title": "Legend",
+							"minProperties": 1
+						}
+					},
+					"required": [
+						"type",
+						"value"
+					],
+					"additionalProperties": false,
+					"title": "Polar area chart"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string",
+							"const": "scatter",
+							"description": "Kind of chart."
+						},
+						"title": {
+							"description": "Heading shown with the chart.",
+							"type": "string"
+						},
+						"category": {
+							"description": "The axis the points are placed along. Absent, each row is placed at its row number.",
+							"type": "object",
+							"properties": {
+								"column": {
+									"description": "Numeric column the points are placed along. Absent, a row's number is its value.",
+									"type": "string"
+								},
+								"label": {
+									"description": "Title of the category axis.",
+									"type": "string"
+								}
+							},
+							"additionalProperties": false,
+							"title": "Category axis",
+							"minProperties": 1
+						},
+						"value": {
+							"type": "object",
+							"properties": {
+								"label": {
+									"description": "Title of the value axis.",
+									"type": "string"
+								},
+								"series": {
+									"minItems": 1,
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"column": {
+												"type": "string",
+												"description": "Result column the series plots."
+											},
+											"label": {
+												"description": "Name of the series in the legend and tooltips. Absent, the column name.",
+												"type": "string"
+											},
+											"color": {
+												"description": "Color the series is drawn in. Absent, the next color of the palette.",
+												"oneOf": [
+													{
+														"type": "string",
+														"enum": [
+															"blue",
+															"yellow",
+															"pink",
+															"green",
+															"purple",
+															"red"
+														]
+													},
+													{
+														"type": "string",
+														"pattern": "^#(?:[0-9a-fA-F]{3}){1,2}$"
+													}
+												]
+											},
+											"size": {
+												"description": "What sizes the points. Absent, every point has the same size.",
+												"type": "object",
+												"properties": {
+													"column": {
+														"type": "string",
+														"description": "Numeric column whose magnitude sizes each point."
+													}
+												},
+												"required": [
+													"column"
+												],
+												"additionalProperties": false,
+												"title": "Point size"
+											}
+										},
+										"required": [
+											"column"
+										],
+										"additionalProperties": false,
+										"title": "Scatter series"
+									},
+									"description": "Columns plotted as the value of each point, one set of points each."
+								}
+							},
+							"required": [
+								"series"
+							],
+							"additionalProperties": false,
+							"title": "Scatter values",
+							"description": "The columns plotted as the value of each point, and their axis."
+						},
+						"legend": {
+							"description": "The legend naming each series, or each slice. Absent, it is drawn wherever there is more than one to name.",
+							"type": "object",
+							"properties": {
+								"hidden": {
+									"description": "Whether the legend is left out.",
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"title": "Legend",
+							"minProperties": 1
+						}
+					},
+					"required": [
+						"type",
+						"value"
+					],
+					"additionalProperties": false,
+					"title": "Scatter chart"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string",
+							"const": "heatmap",
+							"description": "Kind of chart."
+						},
+						"title": {
+							"description": "Heading shown with the chart.",
+							"type": "string"
+						},
+						"category": {
+							"type": "object",
+							"properties": {
+								"column": {
+									"type": "string",
+									"description": "Column whose values name the columns of the grid."
+								},
+								"label": {
+									"description": "Title of the category axis.",
+									"type": "string"
+								}
+							},
+							"required": [
+								"column"
+							],
+							"additionalProperties": false,
+							"title": "Grid columns",
+							"description": "The grid's columns, along the category axis."
+						},
+						"group": {
+							"type": "object",
+							"properties": {
+								"column": {
+									"type": "string",
+									"description": "Column whose values name the rows of the grid."
+								},
+								"label": {
+									"description": "Title of the group axis.",
+									"type": "string"
+								}
+							},
+							"required": [
+								"column"
+							],
+							"additionalProperties": false,
+							"title": "Grid rows",
+							"description": "The grid's rows, along the group axis."
+						},
+						"value": {
+							"type": "object",
+							"properties": {
+								"column": {
+									"type": "string",
+									"description": "Result column whose values color the cells."
+								},
+								"label": {
+									"description": "Title of the color legend, and the name of the measure in tooltips. Absent, the column name.",
+									"type": "string"
+								}
+							},
+							"required": [
+								"column"
+							],
+							"additionalProperties": false,
+							"title": "Heatmap measure",
+							"description": "The column whose values color the cells."
+						},
+						"legend": {
+							"description": "The legend naming each series, or each slice. Absent, it is drawn wherever there is more than one to name.",
+							"type": "object",
+							"properties": {
+								"hidden": {
+									"description": "Whether the legend is left out.",
+									"type": "boolean"
+								}
+							},
+							"additionalProperties": false,
+							"title": "Legend",
+							"minProperties": 1
+						}
+					},
+					"required": [
+						"type",
+						"category",
+						"group",
+						"value"
+					],
+					"additionalProperties": false,
+					"title": "Heatmap"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string",
+							"const": "counter",
+							"description": "Kind of chart."
+						},
+						"title": {
+							"description": "Heading shown with the chart.",
+							"type": "string"
+						},
+						"value": {
+							"description": "The column the counter adds up. Absent, it counts the rows.",
+							"type": "object",
+							"properties": {
+								"column": {
+									"type": "string",
+									"description": "Result column the counter adds up."
+								}
+							},
+							"required": [
+								"column"
+							],
+							"additionalProperties": false,
+							"title": "Counter measure"
+						}
+					},
+					"required": [
+						"type"
+					],
+					"additionalProperties": false,
+					"title": "Counter"
+				}
+			],
+			"title": "Visualization"
 		}
 	}
 }

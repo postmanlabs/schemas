@@ -24,7 +24,7 @@ it('keeps the inline definitions of a self-contained schema (v3)', () => {
   const v3 = versions.find((v) => v.draft === 'draft-07' && v.version === 'v3.0.0')!;
   const raw = utils.removeCommentsAndLoadJSON(v3.schemaPath);
 
-  expect(Object.keys(raw.definitions ?? {})).toHaveLength(61);
+  expect(Object.keys(raw.definitions ?? {})).toHaveLength(62);
   expect(lib.compile(v3.schemaPath, v3.schemaDir, 'draft-07')).toEqual(raw);
 });
 
